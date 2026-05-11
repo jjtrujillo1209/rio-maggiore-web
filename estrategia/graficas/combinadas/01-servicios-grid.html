@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Servicios Grid — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;background:#07070f}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column}
+/* Top header */
+.header{padding:50px 60px 40px;display:flex;justify-content:space-between;align-items:flex-end}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:28px;font-weight:300;color:#F26522}
+.header-right{text-align:right}
+.title{font-size:32px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1}
+.subtitle{font-size:14px;color:rgba(255,255,255,.35);margin-top:4px}
+/* Grid of 6 services */
+.grid{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;padding:0 0 60px 0}
+.service{padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.service::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+/* Service themes */
+.s-pautas{background:#0a0a18}
+.s-pautas::before{background:#F26522}
+.s-redes{background:#0f0f1e}
+.s-redes::before{background:linear-gradient(90deg,#C8317A,#F26522)}
+.s-web{background:#0a1020}
+.s-web::before{background:#1B1B6E}
+.s-ecommerce{background:#150800}
+.s-ecommerce::before{background:linear-gradient(90deg,#F26522,#C8317A)}
+.s-whatsapp{background:#001205}
+.s-whatsapp::before{background:#25d366}
+.s-leads{background:#0c0518}
+.s-leads::before{background:linear-gradient(90deg,#1B1B6E,#C8317A)}
+/* Inside each card */
+.svc-icon{font-size:28px;margin-bottom:8px}
+.svc-name{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px}
+.svc-desc{font-size:12px;color:rgba(255,255,255,.35);line-height:1.5;flex:1}
+.svc-price{font-size:13px;font-weight:700;margin-top:16px}
+.s-pautas .svc-price{color:#F26522}
+.s-redes .svc-price{color:#C8317A}
+.s-web .svc-price{color:#7b7bff}
+.s-ecommerce .svc-price{color:#F26522}
+.s-whatsapp .svc-price{color:#25d366}
+.s-leads .svc-price{color:#C8317A}
+/* Bottom line */
+.bottom{padding:0 60px 50px;display:flex;justify-content:center}
+.cta{font-size:13px;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+    <div class="header-right">
+      <div class="title">Todo lo que<br/>necesitas.</div>
+      <div class="subtitle">6 servicios. Un solo aliado.</div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="service s-pautas">
+      <div>
+        <div class="svc-icon">📣</div>
+        <div class="svc-name">Pautas Digitales</div>
+        <div class="svc-desc">Google Ads + Meta Ads. Llega a tus clientes donde ya están buscando.</div>
+      </div>
+      <div class="svc-price">Desde $2.000.000/mes</div>
+    </div>
+    <div class="service s-redes">
+      <div>
+        <div class="svc-icon">📱</div>
+        <div class="svc-name">Redes Sociales</div>
+        <div class="svc-desc">Contenido estratégico que genera comunidad y convierte seguidores en clientes.</div>
+      </div>
+      <div class="svc-price">Desde $3.500.000/mes</div>
+    </div>
+    <div class="service s-web">
+      <div>
+        <div class="svc-icon">🌐</div>
+        <div class="svc-name">Página Web</div>
+        <div class="svc-desc">Tu vitrina profesional, optimizada para SEO y lista en 15 días.</div>
+      </div>
+      <div class="svc-price">Desde $2.000.000</div>
+    </div>
+    <div class="service s-ecommerce">
+      <div>
+        <div class="svc-icon">🛍️</div>
+        <div class="svc-name">E-Commerce</div>
+        <div class="svc-desc">Tienda online completa con bot de ventas. Vende mientras duermes.</div>
+      </div>
+      <div class="svc-price">$3.900.000 único</div>
+    </div>
+    <div class="service s-whatsapp">
+      <div>
+        <div class="svc-icon">💬</div>
+        <div class="svc-name">WhatsApp Bot</div>
+        <div class="svc-desc">Responde, cotiza y agenda automáticamente. 24/7 sin personal extra.</div>
+      </div>
+      <div class="svc-price">$2.500.000 + $500K/mes</div>
+    </div>
+    <div class="service s-leads">
+      <div>
+        <div class="svc-icon">🎯</div>
+        <div class="svc-name">Lead Qualifier</div>
+        <div class="svc-desc">Filtra tus leads automáticamente. Solo habla con quienes van a comprarte.</div>
+      </div>
+      <div class="svc-price">$2.000.000 + $500K/mes</div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="cta">throughair.co — transforma tu negocio hoy</div>
+  </div>
+</div>
+</body>
+</html>

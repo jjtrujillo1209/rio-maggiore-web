@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colegio Educamos - Colegio Virtual</title>
+  <style>
+    :root {
+      --navy: #0e2238;
+      --navy-2: #163854;
+      --sky: #19b5e6;
+      --sky-2: #0b9fcd;
+      --gold: #f4b942;
+      --mint: #e8f8fd;
+      --paper: #ffffff;
+      --bg: #f3f8fc;
+      --line: #d8e3ec;
+      --text: #142638;
+      --muted: #5a6b7d;
+      --good: #16a34a;
+      --warn: #f59e0b;
+      --danger: #dc2626;
+      --shadow: 0 28px 70px rgba(14, 34, 56, 0.12);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(25, 181, 230, 0.12), transparent 30%),
+        linear-gradient(180deg, #f3f8fc 0%, #f8fbfe 100%);
+      color: var(--text);
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(20px);
+      background: rgba(243, 248, 252, 0.78);
+      border-bottom: 1px solid rgba(14, 34, 56, 0.06);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .brand small {
+      display: block;
+      font-size: 0.74rem;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav a:hover { color: var(--navy); }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 28px rgba(14, 34, 56, 0.12);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--sky) 0%, var(--sky-2) 100%);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: rgba(14, 34, 56, 0.06);
+      color: var(--navy);
+    }
+
+    .btn-demo {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-ai {
+      background: linear-gradient(135deg, #f4b942 0%, #ffcf70 100%);
+      color: #152638;
+      box-shadow: 0 16px 28px rgba(244, 185, 66, 0.22);
+    }
+
+    .hero {
+      padding: 34px 0 22px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-main {
+      background:
+        radial-gradient(circle at top right, rgba(25, 181, 230, 0.18), transparent 34%),
+        linear-gradient(135deg, #0c1f31 0%, #173957 55%, #1ab5e6 100%);
+      color: #fff;
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -90px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 18px 0 14px;
+      font-size: clamp(2.8rem, 5vw, 5.2rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 680px;
+    }
+
+    .hero-main p {
+      max-width: 640px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.04rem;
+      line-height: 1.75;
+      margin: 0 0 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .hero-stat {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-side {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 20px;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid rgba(14, 34, 56, 0.08);
+      border-radius: 30px;
+      box-shadow: 0 18px 44px rgba(14, 34, 56, 0.08);
+    }
+
+    .admissions-card {
+      padding: 24px;
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .panel-head h2,
+    .section-title {
+      margin: 0;
+      font-size: 1.45rem;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--sky-2);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.74rem;
+      font-weight: 800;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--mint);
+      color: var(--navy);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .status::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--good);
+    }
+
+    .admissions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 14px;
+      font: inherit;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    textarea {
+      min-height: 104px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--sky);
+      box-shadow: 0 0 0 4px rgba(25, 181, 230, 0.12);
+    }
+
+    .tiny-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .dashboard-card {
+      padding: 24px;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 16px;
+      background:
+        linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+    }
+
+    .mini-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 14px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .mini-card h3 {
+      margin: 0 0 10px;
+      font-size: 0.98rem;
+    }
+
+    .mini-card p,
+    .mini-card li,
+    .section-copy,
+    .list p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.92rem;
+    }
+
+    .agenda-item,
+    .list-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(14, 34, 56, 0.06);
+    }
+
+    .agenda-item:last-child,
+    .list-row:last-child { border-bottom: none; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .pill.good { background: rgba(22, 163, 74, 0.14); color: #166534; }
+    .pill.warn { background: rgba(245, 158, 11, 0.14); color: #92400e; }
+    .pill.info { background: rgba(25, 181, 230, 0.14); color: #0b6e8f; }
+
+    .section {
+      padding: 26px 0 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .programs-grid,
+    .support-grid,
+    .metrics-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .programs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .support-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .metrics-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .program-card,
+    .support-card,
+    .metric-card,
+    .flow-card {
+      background: var(--paper);
+      border: 1px solid rgba(14, 34, 56, 0.08);
+      border-radius: 28px;
+      padding: 22px;
+      box-shadow: 0 18px 44px rgba(14, 34, 56, 0.06);
+    }
+
+    .program-card {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 14px;
+      overflow: hidden;
+      position: relative;
+      min-height: 360px;
+    }
+
+    .program-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(25, 181, 230, 0.12), transparent 30%);
+      pointer-events: none;
+    }
+
+    .program-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: var(--mint);
+      display: grid;
+      place-items: center;
+      color: var(--sky-2);
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+
+    .program-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .meta-chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(14, 34, 56, 0.05);
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .flow-step {
+      display: inline-flex;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--sky), var(--sky-2));
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: #edf3f8;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--sky), var(--sky-2));
+    }
+
+    .tabs {
+      display: inline-flex;
+      gap: 8px;
+      padding: 6px;
+      background: rgba(14, 34, 56, 0.05);
+      border-radius: 999px;
+    }
+
+    .tab {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      background: #fff;
+      color: var(--navy);
+      box-shadow: 0 6px 18px rgba(14, 34, 56, 0.08);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .demo-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(7, 18, 30, 0.72);
+      backdrop-filter: blur(14px);
+    }
+
+    .demo-modal.active {
+      display: flex;
+    }
+
+    .demo-shell {
+      width: min(1120px, 100%);
+      max-height: min(92vh, 920px);
+      overflow: auto;
+      border-radius: 30px;
+      background: linear-gradient(180deg, #fafdff 0%, #eef6fb 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.34);
+      padding: 24px;
+    }
+
+    .demo-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .demo-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .demo-close {
+      border: none;
+      background: rgba(14, 34, 56, 0.08);
+      color: var(--navy);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+
+    .classroom-card,
+    .demo-side-card {
+      background: #fff;
+      border: 1px solid rgba(14, 34, 56, 0.08);
+      border-radius: 28px;
+      padding: 20px;
+      box-shadow: 0 18px 44px rgba(14, 34, 56, 0.08);
+    }
+
+    .classroom-stage {
+      border-radius: 24px;
+      min-height: 330px;
+      padding: 22px;
+      background:
+        linear-gradient(135deg, rgba(14, 34, 56, 0.9), rgba(25, 181, 230, 0.86)),
+        url('assets/elearning-800x800.png') center/cover;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .classroom-stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6, 14, 24, 0.16), rgba(6, 14, 24, 0.56));
+    }
+
+    .stage-top,
+    .stage-bottom {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(220, 38, 38, 0.92);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .live-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .teacher-card {
+      position: relative;
+      z-index: 1;
+      width: min(320px, 100%);
+      align-self: end;
+      margin-left: auto;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .teacher-card h3,
+    .demo-side-card h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .teacher-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+      line-height: 1.6;
+      font-size: 0.92rem;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .control {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .demo-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .chat-item,
+    .material-row {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(14, 34, 56, 0.08);
+    }
+
+    .chat-item:last-child,
+    .material-row:last-child { border-bottom: none; }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--mint);
+      color: var(--sky-2);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .chat-item p,
+    .material-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .material-row strong,
+    .chat-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--navy);
+    }
+
+    .ai-trigger {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f4b942 0%, #ffcf70 100%);
+      color: #12263a;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 16px 24px rgba(244, 185, 66, 0.2);
+    }
+
+    .ai-panel {
+      display: none;
+      border: 1px solid rgba(244, 185, 66, 0.35);
+      background: linear-gradient(180deg, #fffaf0 0%, #fffdf7 100%);
+    }
+
+    .ai-panel.active {
+      display: block;
+    }
+
+    .ai-headline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .ai-headline strong {
+      color: #7a4a00;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .ai-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .ai-note {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(244, 185, 66, 0.12);
+      border: 1px solid rgba(244, 185, 66, 0.18);
+    }
+
+    .ai-note h4 {
+      margin: 0 0 6px;
+      font-size: 0.92rem;
+      color: #7a4a00;
+    }
+
+    .ai-note p {
+      margin: 0;
+      color: #6f5b2a;
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .footer {
+      padding: 34px 0 52px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .programs-grid,
+      .support-grid,
+      .metrics-grid,
+      .flow-grid,
+      .demo-grid { grid-template-columns: 1fr 1fr; }
+      .hero-side { grid-template-rows: auto auto; }
+    }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      .topbar-inner,
+      .nav,
+      .actions,
+      .panel-head,
+      .section-head,
+      .hero-actions,
+      .hero-stats,
+      .mini-row,
+      .admissions-grid,
+      .programs-grid,
+      .support-grid,
+      .metrics-grid,
+      .flow-grid,
+      .demo-grid { display: grid; grid-template-columns: 1fr; }
+      .topbar-inner { gap: 12px; }
+      .nav { gap: 10px; }
+      .hero-main,
+      .admissions-card,
+      .dashboard-card,
+      .program-card,
+      .support-card,
+      .metric-card,
+      .flow-card { padding: 20px; border-radius: 24px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .demo-shell { padding: 18px; border-radius: 24px; }
+      .classroom-card,
+      .demo-side-card { padding: 18px; border-radius: 24px; }
+      .classroom-stage { min-height: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#inicio">
+        <img src="assets/LOGO-NEGRO.png" alt="Logo Educamos" />
+        <span>
+          Colegio Educamos
+          <small>Colegio virtual con acompañamiento real</small>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="#programas">Programas</a>
+        <a href="#admisiones">Admisiones</a>
+        <a href="#estudiantes">Vida académica</a>
+        <a href="#seguimiento">Seguimiento</a>
+      </nav>
+      <div class="actions">
+        <a class="btn btn-secondary" href="/platform">Ingresar</a>
+        <button class="btn btn-ai" type="button" id="openAIDemo">Asistente AI</button>
+        <a class="btn btn-primary" href="#admisiones">Preinscribirme</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" id="inicio">
+      <div class="hero-grid">
+        <article class="hero-main">
+          <div class="tag">Educación con tecnología al alcance de todos</div>
+          <h1>Estudia, avanza y haz seguimiento de tu proceso en un mismo lugar</h1>
+          <p>
+            Colegio Educamos reúne admisiones, clases en vivo, grabaciones, tareas, notas y acompañamiento
+            académico en una experiencia más clara para estudiantes, acudientes y equipo institucional.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#admisiones">Comenzar preinscripción</a>
+            <a class="btn btn-secondary" href="#seguimiento">Ver panel estudiantil</a>
+            <a class="btn btn-secondary" href="/platform">Entrar a la plataforma</a>
+            <button class="btn btn-demo" type="button" id="openDemo">Ver demo de clase</button>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>4 pasos</strong>
+              <span>para activar tu ingreso</span>
+            </div>
+            <div class="hero-stat">
+              <strong>En vivo</strong>
+              <span>clases y acompañamiento docente</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Siempre visible</strong>
+              <span>progreso, asistencia y tareas</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="hero-side">
+          <section class="panel admissions-card" id="admisiones">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">Admisiones</span>
+                <h2>Registro rápido</h2>
+              </div>
+              <div class="status">Cupo disponible</div>
+            </div>
+            <form class="admissions-grid" id="leadForm">
+              <div class="field">
+                <label for="nombre">Nombre completo</label>
+                <input id="nombre" name="nombre" placeholder="Escribe tu nombre" required />
+              </div>
+              <div class="field">
+                <label for="celular">Celular</label>
+                <input id="celular" name="celular" placeholder="310 000 0000" required />
+              </div>
+              <div class="field">
+                <label for="correo">Correo</label>
+                <input id="correo" name="correo" type="email" placeholder="correo@ejemplo.com" required />
+              </div>
+              <div class="field">
+                <label for="perfil">Perfil</label>
+                <select id="perfil" name="perfil">
+                  <option>Estudiante</option>
+                  <option>Acudiente</option>
+                  <option>Empresa / convenio</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="programa">Programa de interés</label>
+                <select id="programa" name="programa">
+                  <option>Bachillerato por ciclos</option>
+                  <option>Bachillerato acelerado</option>
+                  <option>Primaria y bachillerato</option>
+                  <option>Tutorías académicas</option>
+                  <option>Cursos rápidos</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="jornada">Disponibilidad</label>
+                <select id="jornada" name="jornada">
+                  <option>Mañana</option>
+                  <option>Tarde</option>
+                  <option>Noche</option>
+                  <option>Flexible</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="mensaje">Cuéntanos tu objetivo</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Quiero terminar mi bachillerato este año y necesito una modalidad flexible."></textarea>
+              </div>
+              <div class="field full">
+                <button class="btn btn-primary" type="submit">Enviar preinscripción</button>
+              </div>
+            </form>
+            <p class="tiny-note" id="leadMessage">
+              Al enviar el formulario, el equipo de admisiones puede validar perfil, recomendar programa y activar el siguiente paso.
+            </p>
+          </section>
+
+          <section class="panel dashboard-card" id="estudiantes">
+            <div class="panel-head" style="margin-bottom:0;">
+              <div>
+                <span class="eyebrow">Portal académico</span>
+                <h2>Vista del estudiante</h2>
+              </div>
+              <div class="pill info">Sesión activa</div>
+            </div>
+
+            <div class="mini-row">
+              <article class="mini-card">
+                <h3>Hoy en tu agenda</h3>
+                <div class="agenda-item">
+                  <div>
+                    <strong>Matemáticas</strong>
+                    <p>8:00 AM · Clase en vivo</p>
+                  </div>
+                  <span class="pill good">Entrar</span>
+                </div>
+                <div class="agenda-item">
+                  <div>
+                    <strong>Sociales</strong>
+                    <p>2:00 PM · Clase grabada</p>
+                  </div>
+                  <span class="pill info">Ver</span>
+                </div>
+                <div class="agenda-item">
+                  <div>
+                    <strong>Inglés</strong>
+                    <p>Mañana · Quiz corto</p>
+                  </div>
+                  <span class="pill warn">Preparar</span>
+                </div>
+              </article>
+              <article class="mini-card">
+                <h3>Estado académico</h3>
+                <div class="list-row">
+                  <span>Asistencia</span>
+                  <strong>92%</strong>
+                </div>
+                <div class="list-row">
+                  <span>Tareas al día</span>
+                  <strong>8 de 9</strong>
+                </div>
+                <div class="list-row">
+                  <span>Promedio parcial</span>
+                  <strong>4.4 / 5.0</strong>
+                </div>
+              </article>
+            </div>
+
+            <article class="mini-card">
+              <h3>Progreso por asignatura</h3>
+              <div class="list-row">
+                <div>
+                  <strong>Lenguaje</strong>
+                  <p>Lectura crítica y producción textual</p>
+                </div>
+                <strong>76%</strong>
+              </div>
+              <div class="progress-track"><div class="progress-bar" style="width:76%"></div></div>
+
+              <div class="list-row" style="margin-top:14px;">
+                <div>
+                  <strong>Matemáticas</strong>
+                  <p>Álgebra y resolución de problemas</p>
+                </div>
+                <strong>64%</strong>
+              </div>
+              <div class="progress-track"><div class="progress-bar" style="width:64%"></div></div>
+
+              <div class="list-row" style="margin-top:14px;">
+                <div>
+                  <strong>Ciencias Sociales</strong>
+                  <p>Ciudadanía, historia y territorio</p>
+                </div>
+                <strong>83%</strong>
+              </div>
+              <div class="progress-track"><div class="progress-bar" style="width:83%"></div></div>
+            </article>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="programas">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Oferta organizada</span>
+          <h2 class="section-title">Programas principales</h2>
+        </div>
+        <p class="section-copy">Cada programa tiene una entrada clara, tiempo estimado y llamada a la acción concreta.</p>
+      </div>
+
+      <div class="programs-grid">
+        <article class="program-card">
+          <div class="program-icon">01</div>
+          <div>
+            <h3>Bachillerato por ciclos</h3>
+            <p class="section-copy">Ruta flexible para estudiantes mayores de 13 años que necesitan avanzar por ciclos con acompañamiento constante.</p>
+          </div>
+          <div class="program-meta">
+            <span class="meta-chip">Virtual</span>
+            <span class="meta-chip">Con clases en vivo</span>
+            <span class="meta-chip">Seguimiento semanal</span>
+          </div>
+          <div>
+            <p class="section-copy">Ideal para jóvenes que buscan terminar su formación de forma más ágil sin perder estructura académica.</p>
+          </div>
+          <a class="btn btn-secondary" href="#admisiones">Solicitar orientación</a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-icon">02</div>
+          <div>
+            <h3>Bachillerato acelerado</h3>
+            <p class="section-copy">Modalidad intensiva dirigida a mayores de edad que necesitan una ruta corta, ordenada y viable para graduarse.</p>
+          </div>
+          <div class="program-meta">
+            <span class="meta-chip">Adultos</span>
+            <span class="meta-chip">1 año estimado</span>
+            <span class="meta-chip">Activación rápida</span>
+          </div>
+          <div>
+            <p class="section-copy">El sitio puede priorizar esta modalidad con testimonios, requisitos y ruta de inscripción paso a paso.</p>
+          </div>
+          <a class="btn btn-secondary" href="#admisiones">Ver requisitos</a>
+        </article>
+
+        <article class="program-card">
+          <div class="program-icon">03</div>
+          <div>
+            <h3>Tutorías y cursos rápidos</h3>
+            <p class="section-copy">Oferta complementaria para refuerzo académico y certificación rápida, organizada sin competir con la promesa principal del colegio.</p>
+          </div>
+          <div class="program-meta">
+            <span class="meta-chip">Refuerzo</span>
+            <span class="meta-chip">Certificable</span>
+            <span class="meta-chip">Bajo demanda</span>
+          </div>
+          <div>
+            <p class="section-copy">Debe presentarse como ecosistema complementario, no como distracción del camino principal de admisión.</p>
+          </div>
+          <a class="btn btn-secondary" href="#admisiones">Hablar con asesor</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="seguimiento">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Seguimiento visible</span>
+          <h2 class="section-title">Paneles por perfil</h2>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Paneles">
+          <button class="tab active" data-tab="estudiante">Estudiante</button>
+          <button class="tab" data-tab="acudiente">Acudiente</button>
+          <button class="tab" data-tab="coordinacion">Coordinación</button>
+        </div>
+      </div>
+
+      <div class="tab-panel active" id="panel-estudiante">
+        <div class="metrics-grid">
+          <article class="metric-card">
+            <span class="eyebrow">Meta de la semana</span>
+            <h3>4 actividades por cerrar</h3>
+            <p class="section-copy">Tareas visibles y ordenadas por prioridad.</p>
+          </article>
+          <article class="metric-card">
+            <span class="eyebrow">Clase próxima</span>
+            <h3>Inglés · 6:00 PM</h3>
+            <p class="section-copy">Acceso directo a la clase en vivo o grabada.</p>
+          </article>
+          <article class="metric-card">
+            <span class="eyebrow">Asistencia acumulada</span>
+            <h3>92%</h3>
+            <p class="section-copy">Indicador simple y fácil de leer.</p>
+          </article>
+          <article class="metric-card">
+            <span class="eyebrow">Promedio</span>
+            <h3>4.4 / 5.0</h3>
+            <p class="section-copy">Notas parciales listas para consulta.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="panel-acudiente">
+        <div class="metrics-grid">
+          <article class="metric-card">
+            <span class="eyebrow">Resumen del hijo</span>
+            <h3>Estado general estable</h3>
+            <p class="section-copy">Vista de progreso, asistencia y observaciones.</p>
+          </article>
+          <article class="metric-card">
+            <span class="eyebrow">Alertas</span>
+            <h3>1 tarea pendiente</h3>
+            <p class="section-copy">Notificación temprana para acompañar mejor.</p>
+          </article>
+          <article class="metric-card">
+            <span class="eyebrow">Canal directo</span>
+            <h3>Mensajes con tutor</h3>
+            <p class="section-copy">Comunicación más organizada con el equipo docente.</p>
+          </article>
+          <article class="metric-card">
+            <span class="eyebrow">Pagos y matrícula</span>
+            <h3>Al día</h3>
+            <p class="section-copy">Consulta rápida del estado administrativo.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="panel-coordinacion">
+        <div class="metrics-grid">
+          <article class="metric-card">
+            <span class="eyebrow">Panel operativo</span>
+            <h3>38 estudiantes activos</h3>
+            <p class="section-copy">Vista rápida de cohortes y estado general.</p>
+          </article>
+          <article class="metric-card">
+            <span class="eyebrow">Riesgo académico</span>
+            <h3>5 alertas tempranas</h3>
+            <p class="section-copy">Seguimiento preventivo por inasistencia o atraso.</p>
+          </article>
+          <article class="metric-card">
+            <span class="eyebrow">Admisiones</span>
+            <h3>12 aspirantes nuevos</h3>
+            <p class="section-copy">Embudo visible desde preinscripción hasta activación.</p>
+          </article>
+          <article class="metric-card">
+            <span class="eyebrow">Tutores activos</span>
+            <h3>8 docentes conectados</h3>
+            <p class="section-copy">Control más claro de agenda y capacidad.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Ruta de ingreso</span>
+          <h2 class="section-title">Admisión simple en cuatro pasos</h2>
+        </div>
+        <p class="section-copy">Esta estructura convierte el proceso de inscripción en una experiencia más entendible.</p>
+      </div>
+
+      <div class="flow-grid">
+        <article class="flow-card">
+          <div class="flow-step">1</div>
+          <h3>Preinscripción</h3>
+          <p class="section-copy">Formulario corto para conocer perfil, programa y disponibilidad.</p>
+        </article>
+        <article class="flow-card">
+          <div class="flow-step">2</div>
+          <h3>Validación</h3>
+          <p class="section-copy">Revisión de documentos y orientación por parte del equipo.</p>
+        </article>
+        <article class="flow-card">
+          <div class="flow-step">3</div>
+          <h3>Pago y matrícula</h3>
+          <p class="section-copy">Confirmación administrativa en una sola ruta visible.</p>
+        </article>
+        <article class="flow-card">
+          <div class="flow-step">4</div>
+          <h3>Activación</h3>
+          <p class="section-copy">Acceso a clases, horarios, tareas y acompañamiento académico.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Acompañamiento</span>
+          <h2 class="section-title">Servicios de soporte dentro de la misma experiencia</h2>
+        </div>
+      </div>
+
+      <div class="support-grid">
+        <article class="support-card">
+          <h3>Mesa de ayuda</h3>
+          <p class="section-copy">Soporte para acceso, plataforma, contraseñas, enlaces y activación de usuario.</p>
+        </article>
+        <article class="support-card">
+          <h3>Orientación académica</h3>
+          <p class="section-copy">Canal directo para elegir programa, revisar avances y resolver dudas de proceso.</p>
+        </article>
+        <article class="support-card">
+          <h3>Reportes y alertas</h3>
+          <p class="section-copy">Notificaciones de tareas, ausencias y eventos importantes para estudiantes y acudientes.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        Prototipo conceptual creado para el nuevo cliente <strong>Colegio Educamos</strong>, basado en el análisis de la presencia pública de Educamos Online.
+      </p>
+    </footer>
+  </main>
+
+  <div class="demo-modal" id="demoModal" aria-hidden="true">
+    <div class="demo-shell" role="dialog" aria-modal="true" aria-labelledby="demoTitle">
+      <div class="demo-head">
+        <div>
+          <span class="eyebrow">Demo guiada</span>
+          <h2 class="section-title" id="demoTitle">Así interactúa un estudiante con sus clases</h2>
+        </div>
+        <div class="demo-actions">
+          <span class="pill info">Clase simulada</span>
+          <button class="demo-close" type="button" id="closeDemo" aria-label="Cerrar demo">×</button>
+        </div>
+      </div>
+
+      <div class="demo-grid">
+        <section class="classroom-card">
+          <div class="classroom-stage">
+            <div class="stage-top">
+              <span class="live-badge">En vivo</span>
+              <span class="pill info">Matemáticas · Ciclo 4</span>
+            </div>
+
+            <div class="teacher-card">
+              <h3>Profesora Laura Gómez</h3>
+              <p>
+                Hoy resolvemos ecuaciones lineales. El estudiante puede unirse a clase, ver material,
+                participar por chat y revisar la grabación después.
+              </p>
+            </div>
+
+            <div class="stage-bottom">
+              <div class="controls">
+                <span class="control">Micrófono</span>
+                <span class="control">Chat</span>
+                <span class="control">Material</span>
+                <span class="control">Grabación</span>
+                <button class="ai-trigger" type="button" id="toggleAI">Asistente AI</button>
+              </div>
+              <span class="pill good">42 min restantes</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="demo-stack">
+          <section class="demo-side-card">
+            <h3>Chat de la clase</h3>
+            <div class="chat-item">
+              <div class="avatar">A</div>
+              <div>
+                <strong>Ana</strong>
+                <p>Profe, ¿podemos repetir el paso donde despejamos la variable?</p>
+              </div>
+            </div>
+            <div class="chat-item">
+              <div class="avatar">L</div>
+              <div>
+                <strong>Laura Gómez</strong>
+                <p>Claro. Queda grabado y además dejo un ejercicio guiado en materiales.</p>
+              </div>
+            </div>
+            <div class="chat-item">
+              <div class="avatar">J</div>
+              <div>
+                <strong>Juan</strong>
+                <p>Ya entregué la actividad 3. ¿Se actualiza el progreso hoy?</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="demo-side-card">
+            <h3>Materiales y acciones</h3>
+            <div class="material-row">
+              <div class="avatar">PDF</div>
+              <div>
+                <strong>Guía de ecuaciones</strong>
+                <p>Disponible para descargar antes y después de la clase.</p>
+              </div>
+            </div>
+            <div class="material-row">
+              <div class="avatar">VID</div>
+              <div>
+                <strong>Grabación automática</strong>
+                <p>Se publica al cerrar la sesión para repaso o recuperación.</p>
+              </div>
+            </div>
+            <div class="material-row">
+              <div class="avatar">HW</div>
+              <div>
+                <strong>Tarea próxima</strong>
+                <p>Entrega mañana 6:00 PM. El estudiante la ve desde su panel y recibe alerta.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="demo-side-card ai-panel" id="aiPanel">
+            <div class="ai-headline">
+              <div>
+                <strong>Asistente AI en clase</strong>
+                <h3>Potencializa lo que explica el profesor</h3>
+              </div>
+              <span class="pill warn">Activa</span>
+            </div>
+            <div class="ai-list">
+              <div class="ai-note">
+                <h4>Resumen en tiempo real</h4>
+                <p>
+                  El asistente detecta que la clase está explicando cómo despejar la variable
+                  y resume el proceso en pasos simples para el estudiante.
+                </p>
+              </div>
+              <div class="ai-note">
+                <h4>Conceptos clave</h4>
+                <p>
+                  Identifica términos como igualdad, término independiente, operaciones inversas
+                  y los deja listos para repaso rápido después de la clase.
+                </p>
+              </div>
+              <div class="ai-note">
+                <h4>Práctica sugerida</h4>
+                <p>
+                  Genera dos ejercicios adicionales con nivel parecido al que acaba de explicar la profesora,
+                  para reforzar antes de la tarea.
+                </p>
+              </div>
+              <div class="ai-note">
+                <h4>Dudas rápidas</h4>
+                <p>
+                  Si el estudiante no entendió un paso, puede pedir una explicación más sencilla
+                  sin interrumpir el ritmo general de la clase.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("leadForm");
+    const leadMessage = document.getElementById("leadMessage");
+    const demoModal = document.getElementById("demoModal");
+    const openDemo = document.getElementById("openDemo");
+    const openAIDemo = document.getElementById("openAIDemo");
+    const closeDemo = document.getElementById("closeDemo");
+    const toggleAI = document.getElementById("toggleAI");
+    const aiPanel = document.getElementById("aiPanel");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const nombre = data.get("nombre") || "Tu registro";
+      const programa = data.get("programa") || "el programa";
+      leadMessage.textContent = `${nombre}, tu preinscripción para ${programa} quedó lista como demo. El siguiente paso sería conectarla con CRM, correo o WhatsApp institucional.`;
+      form.reset();
+    });
+
+    const tabs = document.querySelectorAll(".tab");
+    const panels = {
+      estudiante: document.getElementById("panel-estudiante"),
+      acudiente: document.getElementById("panel-acudiente"),
+      coordinacion: document.getElementById("panel-coordinacion")
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((item) => item.classList.remove("active"));
+        Object.values(panels).forEach((panel) => panel.classList.remove("active"));
+        tab.classList.add("active");
+        panels[tab.dataset.tab].classList.add("active");
+      });
+    });
+
+    openDemo.addEventListener("click", () => {
+      demoModal.classList.add("active");
+      demoModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    });
+
+    openAIDemo.addEventListener("click", () => {
+      demoModal.classList.add("active");
+      demoModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      aiPanel.classList.add("active");
+    });
+
+    const hideDemo = () => {
+      demoModal.classList.remove("active");
+      demoModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    };
+
+    closeDemo.addEventListener("click", hideDemo);
+
+    toggleAI.addEventListener("click", () => {
+      aiPanel.classList.toggle("active");
+    });
+
+    demoModal.addEventListener("click", (event) => {
+      if (event.target === demoModal) {
+        hideDemo();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && demoModal.classList.contains("active")) {
+        hideDemo();
+      }
+    });
+  </script>
+</body>
+</html>

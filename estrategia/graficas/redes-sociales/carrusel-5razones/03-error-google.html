@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Error 02 — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 30% 8%, rgba(27,27,110,.7) 0%, rgba(242,101,34,.12) 50%, #07070f 68%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+.slide-num{position:absolute;top:28px;right:32px;font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.25);text-transform:uppercase}
+.err-badge{background:rgba(27,27,110,.4);border:1px solid rgba(107,127,212,.35);border-radius:50px;padding:8px 20px;font-size:12px;font-weight:700;color:#6b7fd4;letter-spacing:3px;text-transform:uppercase;display:inline-block;margin-bottom:20px}
+.number{font-size:220px;font-weight:900;line-height:.8;letter-spacing:-14px;color:rgba(255,255,255,.04);position:absolute;right:60px;top:100px}
+.headline{font-size:68px;font-weight:900;color:#fff;line-height:.9;letter-spacing:-3.5px;margin-bottom:16px;position:relative;z-index:2}
+.headline em{font-style:normal;color:#6b7fd4}
+.body-text{font-size:22px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.6;max-width:680px;position:relative;z-index:2;margin:20px 0}
+.body-text strong{color:#fff;font-weight:700}
+
+.search-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px 22px;margin:4px 0 20px;position:relative;z-index:2}
+.search-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+.search-result{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.search-result:last-child{border:none}
+.sr-pos{font-size:13px;font-weight:900;width:24px;color:rgba(255,255,255,.25);flex-shrink:0}
+.sr-pos.top{color:#F26522}
+.sr-title{font-size:15px;font-weight:700;color:rgba(255,255,255,.7)}
+.sr-title.top{color:#F26522}
+.sr-url{font-size:12px;color:rgba(255,255,255,.3)}
+.sr-badge{font-size:11px;font-weight:700;background:rgba(242,101,34,.15);border:1px solid rgba(242,101,34,.3);color:#F26522;padding:3px 10px;border-radius:20px;margin-left:auto;white-space:nowrap}
+
+.fix-box{background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.25);border-radius:18px;padding:22px 28px;margin-bottom:24px;position:relative;z-index:2}
+.fix-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#25d366;margin-bottom:8px}
+.fix-text{font-size:18px;font-weight:700;color:#fff;line-height:1.4}
+
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:26px;font-weight:300;color:#F26522}
+.tag{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:2px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="slide-num">3 / 7 — Desliza</div>
+  <div class="number">02</div>
+  <div class="err-badge">Error 02</div>
+  <div class="headline">No apareces<br/>en <em>Google</em></div>
+  <div class="body-text">Cuando alguien en Bogotá busca <strong>"restaurante cerca de mí"</strong> o <strong>"clínica veterinaria Chapinero"</strong>, tu negocio no existe si no está rankeando.</div>
+
+  <div class="search-box">
+    <div class="search-label">Búsqueda: "agencia de marketing digital Bogotá"</div>
+    <div class="search-result">
+      <span class="sr-pos top">#1</span>
+      <div><div class="sr-title top">Through Air · Agencia Digital Colombia</div><div class="sr-url">throughair.co · Cotización gratis</div></div>
+      <span class="sr-badge">Tu negocio aquí</span>
+    </div>
+    <div class="search-result">
+      <span class="sr-pos">#2</span>
+      <div><div class="sr-title">Competencia 1</div><div class="sr-url">competencia.com.co</div></div>
+    </div>
+    <div class="search-result">
+      <span class="sr-pos">#3</span>
+      <div><div class="sr-title">Competencia 2</div><div class="sr-url">competencia2.co</div></div>
+    </div>
+  </div>
+
+  <div class="fix-box">
+    <div class="fix-label">La solución</div>
+    <div class="fix-text">Google Ads + SEO local. Aparecer primero en las búsquedas que importan: las de tu ciudad, tu servicio.</div>
+  </div>
+
+  <div class="footer">
+    <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+    <div class="tag">#GoogleAds #SEO #PymeColombia</div>
+  </div>
+</div>
+</body>
+</html>

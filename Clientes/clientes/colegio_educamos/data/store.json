@@ -1,0 +1,317 @@
+{
+  "users": [
+    {
+      "id": "admin-1",
+      "name": "Carolina Mejia",
+      "email": "admin@educamos.demo",
+      "password": "demo123",
+      "role": "admin",
+      "phone": "3000000001",
+      "childrenIds": []
+    },
+    {
+      "id": "teacher-1",
+      "name": "Laura Gomez",
+      "email": "profesor@educamos.demo",
+      "password": "demo123",
+      "role": "teacher",
+      "phone": "3000000002",
+      "childrenIds": []
+    },
+    {
+      "id": "teacher-2",
+      "name": "Mateo Perez",
+      "email": "tutor@educamos.demo",
+      "password": "demo123",
+      "role": "teacher",
+      "phone": "3000000003",
+      "childrenIds": []
+    },
+    {
+      "id": "student-1",
+      "name": "Ana Torres",
+      "email": "estudiante@educamos.demo",
+      "password": "demo123",
+      "role": "student",
+      "phone": "3000000004",
+      "childrenIds": []
+    },
+    {
+      "id": "student-2",
+      "name": "Juan Rios",
+      "email": "juan@educamos.demo",
+      "password": "demo123",
+      "role": "student",
+      "phone": "3000000005",
+      "childrenIds": []
+    },
+    {
+      "id": "parent-1",
+      "name": "Marta Torres",
+      "email": "padre@educamos.demo",
+      "password": "demo123",
+      "role": "parent",
+      "phone": "3000000006",
+      "childrenIds": [
+        "student-1"
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "id": "course-1",
+      "title": "Matematicas",
+      "cycle": "Ciclo 4",
+      "description": "Ecuaciones, algebra y resolucion de problemas.",
+      "teacherId": "teacher-1"
+    },
+    {
+      "id": "course-2",
+      "title": "Lenguaje",
+      "cycle": "Ciclo 4",
+      "description": "Comprension lectora, escritura y analisis textual.",
+      "teacherId": "teacher-2"
+    },
+    {
+      "id": "course-3",
+      "title": "Ciencias Sociales",
+      "cycle": "Ciclo 4",
+      "description": "Historia, ciudadania y territorio.",
+      "teacherId": "teacher-2"
+    }
+  ],
+  "enrollments": [
+    {
+      "id": "enroll-1",
+      "studentId": "student-1",
+      "courseId": "course-1"
+    },
+    {
+      "id": "enroll-2",
+      "studentId": "student-1",
+      "courseId": "course-2"
+    },
+    {
+      "id": "enroll-3",
+      "studentId": "student-1",
+      "courseId": "course-3"
+    },
+    {
+      "id": "enroll-4",
+      "studentId": "student-2",
+      "courseId": "course-1"
+    },
+    {
+      "id": "enroll-5",
+      "studentId": "student-2",
+      "courseId": "course-2"
+    }
+  ],
+  "classes": [
+    {
+      "id": "class-1",
+      "courseId": "course-1",
+      "title": "Clase en vivo",
+      "topic": "Ecuaciones lineales con una variable",
+      "startAt": "2026-04-20T13:00:00.000Z",
+      "meetingUrl": "https://meet.educamos.demo/matematicas-c4",
+      "recordingUrl": "https://videos.educamos.demo/matematicas-c4-ecuaciones",
+      "aiSummary": "La clase explica como despejar la variable, identificar terminos semejantes y verificar el resultado."
+    },
+    {
+      "id": "class-2",
+      "courseId": "course-2",
+      "title": "Taller guiado",
+      "topic": "Lectura critica de textos argumentativos",
+      "startAt": "2026-04-21T15:00:00.000Z",
+      "meetingUrl": "https://meet.educamos.demo/lenguaje-c4",
+      "recordingUrl": "",
+      "aiSummary": "Se analizan tesis, argumentos y conectores principales."
+    },
+    {
+      "id": "f4f4a959-e92b-465f-b5a6-2ea6ca0def4c",
+      "courseId": "course-1",
+      "title": "Clase de refuerzo",
+      "topic": "Inecuaciones basicas",
+      "startAt": "2026-04-23T18:00:00.000Z",
+      "meetingUrl": "https://meet.educamos.demo/refuerzo-inecuaciones",
+      "recordingUrl": "",
+      "aiSummary": "Repaso guiado con ejemplos paso a paso."
+    },
+    {
+      "id": "24b45728-6b17-482d-a1ff-37f9c7c892cb",
+      "courseId": "course-1",
+      "title": "Clase Jitsi automatica",
+      "topic": "Factorizacion inicial",
+      "startAt": "2026-04-24T14:00:00.000Z",
+      "meetingUrl": "https://meet.jit.si/Educamos-matematicas-factorizacion-inicial",
+      "recordingUrl": "",
+      "aiSummary": "Resumen de factorizacion y ejemplos base."
+    }
+  ],
+  "assignments": [
+    {
+      "id": "assignment-1",
+      "courseId": "course-1",
+      "title": "Taller de ecuaciones",
+      "description": "Resolver 10 ejercicios y justificar el procedimiento.",
+      "dueAt": "2026-04-21T23:00:00.000Z",
+      "points": 5
+    },
+    {
+      "id": "assignment-2",
+      "courseId": "course-2",
+      "title": "Mapa de argumentos",
+      "description": "Identificar tesis, argumentos y conclusion en un texto.",
+      "dueAt": "2026-04-22T23:00:00.000Z",
+      "points": 5
+    },
+    {
+      "id": "44085839-60d4-40db-8c80-5fc89ab713e7",
+      "courseId": "course-2",
+      "title": "taller 2 ",
+      "description": "haz las planas",
+      "dueAt": "2026-04-25T03:12:00.000Z",
+      "points": 5
+    }
+  ],
+  "submissions": [
+    {
+      "id": "submission-1",
+      "assignmentId": "assignment-2",
+      "courseId": "course-2",
+      "studentId": "student-1",
+      "url": "https://drive.google.com/demo/mapa-argumentos-ana",
+      "comment": "Subo el mapa conceptual final.",
+      "submittedAt": "2026-04-18T21:00:00.000Z"
+    },
+    {
+      "id": "2bace571-dd4d-4aba-a422-c96ee3f352e2",
+      "assignmentId": "assignment-1",
+      "courseId": "course-1",
+      "studentId": "student-1",
+      "url": "",
+      "fileUrl": "/uploads/1776639653990-7b57c6de-337a-409c-913e-bc800be39eb1.txt",
+      "fileName": "educamos-upload-XXXX.txt",
+      "comment": "Adjunto archivo desde prueba automatica",
+      "submittedAt": "2026-04-19T23:00:53.992Z"
+    }
+  ],
+  "grades": [
+    {
+      "id": "grade-1",
+      "courseId": "course-1",
+      "studentId": "student-1",
+      "label": "Quiz algebra",
+      "value": 4.6,
+      "maxValue": 5,
+      "feedback": "Buen dominio del procedimiento."
+    },
+    {
+      "id": "grade-2",
+      "courseId": "course-2",
+      "studentId": "student-1",
+      "label": "Lectura critica",
+      "value": 4.2,
+      "maxValue": 5,
+      "feedback": "Buena identificacion de argumentos."
+    },
+    {
+      "id": "grade-3",
+      "courseId": "course-1",
+      "studentId": "student-2",
+      "label": "Quiz algebra",
+      "value": 3.8,
+      "maxValue": 5,
+      "feedback": "Repasar despeje de terminos."
+    },
+    {
+      "id": "d875fca4-bb1a-41f7-8440-e23c94476203",
+      "courseId": "course-2",
+      "studentId": "student-1",
+      "label": "QUIZ 2",
+      "value": 1,
+      "maxValue": 5,
+      "feedback": "NO ENTREGÓ"
+    }
+  ],
+  "attendance": [
+    {
+      "id": "attendance-1",
+      "courseId": "course-1",
+      "studentId": "student-1",
+      "status": "presente",
+      "date": "2026-04-18"
+    },
+    {
+      "id": "attendance-2",
+      "courseId": "course-2",
+      "studentId": "student-1",
+      "status": "presente",
+      "date": "2026-04-18"
+    },
+    {
+      "id": "attendance-3",
+      "courseId": "course-1",
+      "studentId": "student-2",
+      "status": "ausente",
+      "date": "2026-04-18"
+    },
+    {
+      "id": "8bbfd87c-ac45-45a4-a635-c2c5e9aadb63",
+      "courseId": "course-2",
+      "studentId": "student-1",
+      "status": "presente",
+      "date": "2026-04-23"
+    }
+  ],
+  "announcements": [
+    {
+      "id": "13f54251-6e5a-4c9b-93e7-e48af9a30bc8",
+      "title": "paroooo",
+      "body": "mañana va hay paro",
+      "audience": "students",
+      "createdAt": "2026-04-24T03:08:11.495Z",
+      "createdBy": "admin-1"
+    },
+    {
+      "id": "announcement-1",
+      "title": "Bienvenida al nuevo ciclo",
+      "body": "Recuerda revisar tu agenda semanal, grabaciones y tareas desde el portal estudiantil.",
+      "audience": "all",
+      "createdAt": "2026-04-19T14:00:00.000Z",
+      "createdBy": "admin-1"
+    },
+    {
+      "id": "announcement-2",
+      "title": "Matematicas en vivo",
+      "body": "La clase de ecuaciones lineales tendra apoyo de asistente AI para repaso posterior.",
+      "audience": "students",
+      "createdAt": "2026-04-19T16:00:00.000Z",
+      "createdBy": "teacher-1"
+    }
+  ],
+  "messages": [
+    {
+      "id": "message-1",
+      "fromUserId": "teacher-1",
+      "toUserId": "parent-1",
+      "body": "Ana tuvo muy buen desempeno en el quiz de algebra. Sugiero reforzar ejercicios antes del taller.",
+      "createdAt": "2026-04-19T17:00:00.000Z"
+    },
+    {
+      "id": "message-2",
+      "fromUserId": "parent-1",
+      "toUserId": "teacher-1",
+      "body": "Gracias profesora. Hoy repasamos antes de la tarea.",
+      "createdAt": "2026-04-19T17:30:00.000Z"
+    },
+    {
+      "id": "390117df-00b0-4e5e-8d6f-5c9c3112060f",
+      "fromUserId": "parent-1",
+      "toUserId": "admin-1",
+      "body": "gracias por la gestión",
+      "createdAt": "2026-04-24T03:10:22.766Z"
+    }
+  ]
+}

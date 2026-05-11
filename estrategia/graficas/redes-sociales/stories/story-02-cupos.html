@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Story Cupos — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 50% 20%, rgba(27,27,110,.8) 0%, rgba(242,101,34,.2) 50%, #07070f 72%)}
+.canvas{width:1080px;height:1920px;display:flex;flex-direction:column;padding:80px 72px;position:relative;overflow:hidden}
+
+/* BG decoration */
+.bg-circle{position:absolute;border-radius:50%;background:rgba(242,101,34,.06);border:1px solid rgba(242,101,34,.1)}
+.c1{width:700px;height:700px;top:-200px;left:-200px}
+.c2{width:500px;height:500px;bottom:200px;right:-150px}
+
+.top-zone{height:160px;display:flex;align-items:flex-start;justify-content:flex-end;position:relative;z-index:2}
+.story-indicator{display:flex;gap:4px}
+.si-bar{height:3px;border-radius:2px;background:rgba(255,255,255,.3);flex:1}
+.si-bar.active{background:#F26522}
+
+.middle{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;z-index:2}
+
+.urgency-badge{background:rgba(200,49,122,.2);border:2px solid rgba(200,49,122,.5);border-radius:20px;padding:16px 28px;font-size:15px;font-weight:700;color:#C8317A;letter-spacing:2px;text-transform:uppercase;margin-bottom:36px;display:inline-block}
+
+/* Slots visual */
+.slots-visual{display:flex;gap:10px;justify-content:center;margin-bottom:40px}
+.slot{width:80px;height:80px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900}
+.slot.taken{background:rgba(200,49,122,.2);border:2px solid rgba(200,49,122,.4)}
+.slot.taken-2{background:rgba(242,101,34,.2);border:2px solid rgba(242,101,34,.4)}
+.slot.open{background:rgba(255,255,255,.08);border:2px dashed rgba(255,255,255,.25)}
+
+.headline{font-size:100px;font-weight:900;color:#fff;line-height:.82;letter-spacing:-6px;margin-bottom:20px}
+.headline em{font-style:normal;color:#F26522}
+.sub-big{font-size:30px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:-1px;margin-bottom:16px}
+.sub{font-size:22px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.5;max-width:800px;margin:0 auto 48px}
+.sub strong{color:#fff;font-weight:700}
+
+/* What's included */
+.includes{display:flex;flex-direction:column;gap:12px;width:100%;max-width:840px;margin:0 auto 48px}
+.incl-row{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px 24px}
+.incl-check{width:28px;height:28px;border-radius:8px;background:rgba(37,211,102,.2);border:1px solid rgba(37,211,102,.4);display:flex;align-items:center;justify-content:center;font-size:13px;color:#25d366;flex-shrink:0}
+.incl-text{font-size:18px;font-weight:600;color:rgba(255,255,255,.8)}
+.incl-val{font-size:15px;font-weight:700;color:#F26522;margin-left:auto;white-space:nowrap;flex-shrink:0}
+
+.price-tag{background:rgba(242,101,34,.12);border:2px solid rgba(242,101,34,.35);border-radius:24px;padding:28px 40px;margin-bottom:36px;display:inline-block}
+.pt-was{font-size:20px;color:rgba(255,255,255,.3);text-decoration:line-through;margin-bottom:4px}
+.pt-price{font-size:60px;font-weight:900;letter-spacing:-4px;color:#F26522;line-height:1}
+.pt-sub{font-size:16px;color:rgba(255,255,255,.4);margin-top:6px}
+
+.cta-story{background:#F26522;color:#fff;font-size:22px;font-weight:700;padding:24px 56px;border-radius:100px;display:inline-block;margin:0 auto}
+.cta-note{font-size:16px;color:rgba(255,255,255,.35);margin-top:14px;text-align:center}
+
+.bottom-zone{height:180px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:20px;position:relative;z-index:2}
+.brand{display:flex;align-items:baseline;gap:4px}
+.through{font-size:26px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:32px;font-weight:300;color:#F26522}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="bg-circle c1"></div>
+  <div class="bg-circle c2"></div>
+
+  <div class="top-zone">
+    <div class="story-indicator">
+      <div class="si-bar"></div>
+      <div class="si-bar active"></div>
+      <div class="si-bar"></div>
+    </div>
+  </div>
+
+  <div class="middle">
+    <div class="urgency-badge">Cupos limitados — Marzo 2026</div>
+
+    <div class="slots-visual">
+      <div class="slot taken">✗</div>
+      <div class="slot taken">✗</div>
+      <div class="slot taken-2">✗</div>
+      <div class="slot open">?</div>
+      <div class="slot open">?</div>
+    </div>
+
+    <div class="headline">SOLO<br/><em>2</em><br/>CUPOS</div>
+    <div class="sub-big">para clientes nuevos este mes</div>
+    <div class="sub">Trabajamos a fondo con cada negocio. Por eso limitamos cuántos clientes tomamos. <strong>Estos son los últimos 2 del mes.</strong></div>
+
+    <div class="includes">
+      <div class="incl-row">
+        <div class="incl-check">✓</div>
+        <div class="incl-text">Diagnóstico digital completo</div>
+        <div class="incl-val">$0</div>
+      </div>
+      <div class="incl-row">
+        <div class="incl-check">✓</div>
+        <div class="incl-text">Plan de acción personalizado</div>
+        <div class="incl-val">$0</div>
+      </div>
+      <div class="incl-row">
+        <div class="incl-check">✓</div>
+        <div class="incl-text">Primera consulta 1:1 de 30 min</div>
+        <div class="incl-val">$0</div>
+      </div>
+    </div>
+
+    <div class="price-tag">
+      <div class="pt-was">$350.000 COP</div>
+      <div class="pt-price">$0</div>
+      <div class="pt-sub">Todo completamente gratis para los próximos 2</div>
+    </div>
+
+    <div class="cta-story">Quiero mi cupo ahora</div>
+    <div class="cta-note">Escríbenos hoy · Respuesta en 2 horas</div>
+  </div>
+
+  <div class="bottom-zone">
+    <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+  </div>
+</div>
+</body>
+</html>

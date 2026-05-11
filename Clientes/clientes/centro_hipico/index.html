@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centro Hípico Club — Eje Cafetero · Colombia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@200;300;400;600&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink:          #0d0a06;
+      --earth:        #1c1208;
+      --saddle:       #3a1f0c;
+      --leather:      #5a3018;
+      --copper:       #b06820;
+      --amber:        #d4882a;
+      --gold:         #e8b050;
+      --straw:        #f2d898;
+      --parchment:    #f7eed8;
+      --ivory:        #fdf8ee;
+
+      --serif:        'Libre Baskerville', Georgia, serif;
+      --display:      'Cinzel', Georgia, serif;
+      --sans:         'Josefin Sans', sans-serif;
+
+      --ease:         cubic-bezier(0.25, 0.1, 0.25, 1);
+      --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--sans);
+      background: var(--ink);
+      color: var(--parchment);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── TOPBAR ──────────────────────────────────────────────── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 72px; padding: 0 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.5s, height 0.4s;
+    }
+    .topbar.solid {
+      background: rgba(13, 10, 6, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212, 136, 42, 0.18);
+      height: 60px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .logo-mark {
+      width: 38px; height: 38px; flex-shrink: 0;
+    }
+    .logo-text {
+      font-family: var(--display);
+      font-size: 0.82rem; font-weight: 400;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold);
+      line-height: 1.3;
+    }
+    .logo-sub {
+      font-family: var(--sans);
+      font-size: 0.52rem; font-weight: 200;
+      letter-spacing: 0.4em; text-transform: uppercase;
+      color: rgba(242, 216, 152, 0.5);
+    }
+    nav {
+      display: flex; align-items: center; gap: 36px;
+    }
+    nav a {
+      font-family: var(--sans); font-size: 0.62rem; font-weight: 300;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(247, 238, 216, 0.65);
+      transition: color 0.25s;
+    }
+    nav a:hover { color: var(--gold); }
+    .nav-cta {
+      font-family: var(--display); font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink) !important;
+      background: var(--amber); padding: 10px 24px;
+      border: 1px solid var(--amber);
+      transition: background 0.3s, color 0.3s !important;
+    }
+    .nav-cta:hover {
+      background: transparent !important;
+      color: var(--amber) !important;
+    }
+
+    /* ── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh; min-height: 700px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Sky gradient — dusk palette */
+    .hero-sky {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom,
+          #060300 0%,
+          #0d0702 20%,
+          #1a0d04 42%,
+          #2e1404 58%,
+          #3d1a06 68%,
+          #4a2008 75%,
+          #1c0e04 88%,
+          #0d0702 100%
+        );
+    }
+
+    /* Sun glow on horizon */
+    .hero-sun {
+      position: absolute;
+      bottom: 28%; left: 50%; transform: translateX(-50%);
+      width: 180px; height: 60px;
+      background: radial-gradient(ellipse 100% 100% at 50% 80%,
+        rgba(232, 176, 80, 0.5) 0%,
+        rgba(212, 136, 42, 0.2) 40%,
+        transparent 100%);
+    }
+
+    /* Silhouette hills */
+    .hero-hills {
+      position: absolute; bottom: 0; left: 0; right: 0;
+    }
+    .hero-hills svg { width: 100%; height: auto; display: block; }
+
+    /* Stars */
+    .hero-stars {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 12% 8%,  rgba(232,176,80,0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 5%,  rgba(247,238,216,0.55) 0%, transparent 100%),
+        radial-gradient(1px 1px at 34% 14%, rgba(232,176,80,0.45) 0%, transparent 100%),
+        radial-gradient(1px 1px at 61% 9%,  rgba(247,238,216,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 76% 18%, rgba(232,176,80,0.35) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 5% 22%, rgba(247,238,216,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 48% 6%,  rgba(247,238,216,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 28%, rgba(232,176,80,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22% 32%, rgba(247,238,216,0.2) 0%, transparent 100%);
+    }
+
+    /* Moon */
+    .hero-moon {
+      position: absolute; top: 12%; right: 14%;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, rgba(242,216,152,0.9), rgba(232,176,80,0.4));
+      box-shadow: 0 0 20px 6px rgba(232,176,80,0.12), 0 0 60px 20px rgba(232,176,80,0.05);
+    }
+
+    /* Horse silhouette */
+    .hero-horse-wrap {
+      position: absolute;
+      bottom: 22%; right: 6%;
+      width: min(260px, 28vw);
+      opacity: 0.22;
+    }
+
+    .hero-content {
+      position: relative; z-index: 10;
+      text-align: center; padding: 0 24px;
+      max-width: 860px;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--sans); font-size: 0.56rem; font-weight: 300;
+      letter-spacing: 0.6em; text-transform: uppercase;
+      color: var(--amber);
+      border-top: 1px solid rgba(212,136,42,0.5);
+      border-bottom: 1px solid rgba(212,136,42,0.5);
+      padding: 7px 20px; margin-bottom: 36px;
+      opacity: 0; animation: rise 1s var(--ease-out) 0.4s forwards;
+    }
+    .hero-h1 {
+      font-family: var(--display);
+      font-size: clamp(3.2rem, 7.5vw, 7.5rem);
+      font-weight: 400; letter-spacing: 0.12em; line-height: 0.9;
+      color: var(--ivory);
+      text-shadow: 0 2px 40px rgba(0,0,0,0.6);
+      opacity: 0; animation: rise 1.2s var(--ease-out) 0.7s forwards;
+    }
+    .hero-h1 .accent { color: var(--gold); }
+    .hero-ornament {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin: 28px 0;
+      opacity: 0; animation: fade 1s var(--ease-out) 1.2s forwards;
+    }
+    .hero-ornament-line {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--amber));
+    }
+    .hero-ornament-line.rev {
+      background: linear-gradient(270deg, transparent, var(--amber));
+    }
+    .hero-ornament svg { width: 18px; height: 18px; color: var(--amber); }
+    .hero-tagline {
+      font-family: var(--serif);
+      font-size: clamp(0.88rem, 2vw, 1.1rem);
+      font-weight: 400; font-style: italic;
+      line-height: 1.7; color: rgba(247,238,216,0.8);
+      max-width: 560px; margin: 0 auto 40px;
+      opacity: 0; animation: rise 1s var(--ease-out) 1.4s forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: rise 1s var(--ease-out) 1.8s forwards;
+    }
+    .btn-gold {
+      font-family: var(--display); font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      padding: 15px 38px; background: var(--amber); color: var(--ink);
+      border: 1px solid var(--amber);
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+      cursor: pointer;
+    }
+    .btn-gold:hover { background: transparent; color: var(--gold); transform: translateY(-2px); }
+    .btn-ghost {
+      font-family: var(--display); font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      padding: 15px 38px; background: transparent;
+      color: rgba(247,238,216,0.65);
+      border: 1px solid rgba(247,238,216,0.22);
+      transition: border-color 0.3s, color 0.3s, transform 0.2s;
+      cursor: pointer;
+    }
+    .btn-ghost:hover { border-color: var(--amber); color: var(--gold); transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      opacity: 0; animation: fade 1s var(--ease-out) 2.5s forwards;
+    }
+    .hero-scroll-dot {
+      width: 5px; height: 5px; border-radius: 50%; background: var(--amber);
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .hero-scroll span {
+      font-family: var(--sans); font-size: 0.5rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: rgba(212,136,42,0.5);
+    }
+
+    /* ── SECTIONS ──────────────────────────────────────────────── */
+    section { padding: 96px 0; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+    .tag {
+      font-family: var(--sans); font-size: 0.56rem; font-weight: 300;
+      letter-spacing: 0.55em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 14px;
+    }
+    .h2 {
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 400; letter-spacing: 0.1em; line-height: 1.1;
+      color: var(--ivory);
+    }
+    .h2 em { font-style: italic; color: var(--gold); font-family: var(--serif); }
+    .rule {
+      width: 48px; height: 1px;
+      background: linear-gradient(90deg, var(--amber), transparent);
+      margin: 20px 0;
+    }
+    .lead {
+      font-family: var(--serif); font-size: 1rem; font-weight: 400;
+      font-style: italic; line-height: 1.8;
+      color: rgba(247,238,216,0.72); max-width: 600px;
+    }
+
+    /* ── EL CLUB ──────────────────────────────────────────────── */
+    .about { background: var(--earth); }
+    .about-grid {
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px; align-items: start; margin-top: 56px;
+    }
+    .about-text p {
+      font-family: var(--serif); font-size: 0.92rem; line-height: 1.9;
+      color: rgba(247,238,216,0.72); margin-bottom: 18px;
+    }
+    .about-text strong { color: var(--straw); font-weight: 700; }
+    .about-cta {
+      margin-top: 28px; display: inline-block;
+    }
+    .nums-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; background: rgba(212,136,42,0.08);
+    }
+    .num-cell {
+      background: var(--saddle); padding: 36px 28px;
+      transition: background 0.3s;
+    }
+    .num-cell:hover { background: #4a2810; }
+    .num-big {
+      font-family: var(--display);
+      font-size: 2.6rem; font-weight: 400;
+      color: var(--gold); line-height: 1; margin-bottom: 10px;
+    }
+    .num-label {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 300;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber);
+    }
+    .num-desc {
+      font-family: var(--serif); font-size: 0.76rem; font-style: italic;
+      color: rgba(247,238,216,0.4); margin-top: 5px;
+    }
+
+    /* ── SERVICIOS ──────────────────────────────────────────────── */
+    .servicios { background: var(--ink); }
+    .svc-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; margin-top: 56px;
+      border: 1px solid rgba(212,136,42,0.12);
+    }
+    .svc {
+      padding: 44px 36px;
+      border-right: 1px solid rgba(212,136,42,0.1);
+      border-bottom: 1px solid rgba(212,136,42,0.1);
+      transition: background 0.3s;
+    }
+    .svc:hover { background: rgba(58,31,12,0.5); }
+    .svc-n {
+      font-family: var(--display); font-size: 2rem; font-weight: 400;
+      color: rgba(212,136,42,0.18); line-height: 1; margin-bottom: 20px;
+    }
+    .svc-icon { margin-bottom: 18px; color: var(--amber); }
+    .svc-title {
+      font-family: var(--display); font-size: 1.05rem; font-weight: 400;
+      letter-spacing: 0.1em; color: var(--ivory); margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .svc-body {
+      font-family: var(--serif); font-size: 0.82rem; line-height: 1.85;
+      color: rgba(247,238,216,0.6);
+    }
+    .svc-tags {
+      margin-top: 20px; display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .svc-tag {
+      font-family: var(--sans); font-size: 0.52rem; font-weight: 300;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--amber); padding: 4px 10px;
+      border: 1px solid rgba(212,136,42,0.3);
+    }
+
+    /* ── INVERSIÓN ──────────────────────────────────────────────── */
+    .inversion { background: var(--saddle); }
+    .inv-two {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; margin-top: 56px;
+    }
+    .inv-text p {
+      font-family: var(--serif); font-size: 0.92rem; line-height: 1.9;
+      color: rgba(247,238,216,0.72); margin-bottom: 18px;
+    }
+    .inv-pull {
+      font-family: var(--display); font-size: 1.2rem; font-weight: 400;
+      letter-spacing: 0.05em; color: var(--gold); line-height: 1.5;
+      border-left: 3px solid var(--amber); padding-left: 24px;
+      margin: 28px 0;
+    }
+    .shares-panel {
+      background: var(--earth); padding: 0;
+    }
+    .shares-header {
+      background: var(--copper); padding: 20px 28px;
+      font-family: var(--display); font-size: 0.7rem; font-weight: 400;
+      letter-spacing: 0.25em; text-transform: uppercase; color: var(--ivory);
+    }
+    .shares-body { padding: 28px; }
+    .share-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0; border-bottom: 1px solid rgba(212,136,42,0.12);
+    }
+    .share-row:last-child { border-bottom: none; }
+    .share-key {
+      font-family: var(--sans); font-size: 0.6rem; font-weight: 300;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(247,238,216,0.5);
+    }
+    .share-val {
+      font-family: var(--display); font-size: 1rem; font-weight: 400;
+      color: var(--gold);
+    }
+    .share-val small {
+      font-family: var(--sans); font-size: 0.6rem;
+      color: var(--amber); display: block; text-align: right;
+    }
+    .shares-footer {
+      background: rgba(232,176,80,0.08);
+      padding: 18px 28px;
+      font-family: var(--serif); font-size: 0.78rem; font-style: italic;
+      color: rgba(247,238,216,0.5); line-height: 1.6;
+      border-top: 1px solid rgba(212,136,42,0.2);
+    }
+
+    /* ── BENEFICIOS ──────────────────────────────────────────────── */
+    .beneficios { background: var(--ink); }
+    .bene-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 24px; margin-top: 56px;
+    }
+    .bene {
+      display: flex; gap: 20px;
+      padding: 28px; border: 1px solid rgba(212,136,42,0.1);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .bene:hover { border-color: rgba(212,136,42,0.32); background: rgba(58,31,12,0.3); }
+    .bene-n {
+      font-family: var(--display); font-size: 2.4rem; font-weight: 400;
+      color: rgba(212,136,42,0.2); line-height: 1; flex-shrink: 0; width: 44px;
+    }
+    .bene h3 {
+      font-family: var(--display); font-size: 0.9rem; font-weight: 400;
+      letter-spacing: 0.08em; color: var(--straw); margin-bottom: 10px;
+    }
+    .bene p {
+      font-family: var(--serif); font-size: 0.82rem; line-height: 1.75;
+      color: rgba(247,238,216,0.58);
+    }
+
+    /* ── PROYECCIÓN ──────────────────────────────────────────────── */
+    .proyeccion { background: var(--earth); }
+    .fin-table-wrap { margin-top: 56px; overflow-x: auto; }
+    .fin-table {
+      width: 100%; border-collapse: collapse;
+    }
+    .fin-table thead th {
+      font-family: var(--sans); font-size: 0.58rem; font-weight: 300;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--amber); padding: 12px 18px;
+      border-bottom: 1px solid rgba(212,136,42,0.3);
+      text-align: right;
+    }
+    .fin-table thead th:first-child { text-align: left; }
+    .fin-table tbody td {
+      font-family: var(--sans); font-size: 0.76rem;
+      color: rgba(247,238,216,0.65); padding: 13px 18px;
+      border-bottom: 1px solid rgba(247,238,216,0.05);
+      text-align: right;
+    }
+    .fin-table tbody td:first-child { text-align: left; color: rgba(247,238,216,0.85); }
+    .fin-table tbody tr:hover td { background: rgba(58,31,12,0.4); }
+    .fin-table .total td {
+      font-family: var(--display); font-size: 0.78rem; font-weight: 400;
+      color: var(--gold); border-top: 1px solid rgba(212,136,42,0.3);
+      border-bottom: none;
+    }
+    .fin-table .loss { color: #d46060 !important; }
+    .fin-note {
+      margin-top: 20px; padding-left: 18px;
+      border-left: 2px solid rgba(212,136,42,0.3);
+      font-family: var(--serif); font-size: 0.76rem; font-style: italic;
+      color: rgba(247,238,216,0.38); line-height: 1.7;
+    }
+
+    /* ── CTA ──────────────────────────────────────────────────── */
+    .cta-banner {
+      background:
+        linear-gradient(135deg, #1c1208 0%, #3a1f0c 40%, #2e1408 70%, #1c1208 100%);
+      padding: 120px 0; text-align: center;
+      border-top: 1px solid rgba(212,136,42,0.2);
+      border-bottom: 1px solid rgba(212,136,42,0.2);
+    }
+    .cta-banner .wrap { max-width: 680px; }
+    .cta-banner .h2 { margin-bottom: 24px; }
+    .cta-banner .lead { margin: 0 auto 48px; }
+    .cta-ornament {
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px; margin: 36px 0;
+    }
+    .cta-ornament-line {
+      flex: 1; max-width: 120px; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,136,42,0.5));
+    }
+    .cta-ornament-line.r { background: linear-gradient(270deg, transparent, rgba(212,136,42,0.5)); }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    footer {
+      background: #080604; padding: 64px 0 28px;
+      border-top: 1px solid rgba(212,136,42,0.1);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; padding: 0 56px; max-width: 1200px; margin: 0 auto;
+      margin-bottom: 48px;
+    }
+    .footer-brand-name {
+      font-family: var(--display); font-size: 0.9rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .footer-brand p {
+      font-family: var(--serif); font-size: 0.8rem; line-height: 1.8;
+      color: rgba(247,238,216,0.3); max-width: 270px;
+    }
+    .footer-col h5 {
+      font-family: var(--sans); font-size: 0.56rem; font-weight: 300;
+      letter-spacing: 0.4em; text-transform: uppercase; color: var(--amber);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li {
+      font-family: var(--sans); font-size: 0.7rem; font-weight: 200;
+      color: rgba(247,238,216,0.35); margin-bottom: 10px;
+    }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto; padding: 20px 56px 0;
+      border-top: 1px solid rgba(247,238,216,0.05);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom p {
+      font-family: var(--sans); font-size: 0.58rem;
+      color: rgba(247,238,216,0.18); letter-spacing: 0.1em;
+    }
+
+    /* ── ANIMATIONS ──────────────────────────────────────────── */
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fade { to { opacity: 1; } }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    .on-enter {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+    .on-enter.in { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .wrap { padding: 0 36px; }
+      .svc-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .inv-two { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .topbar { padding: 0 24px; }
+      nav { display: none; }
+      .wrap { padding: 0 24px; }
+      section { padding: 64px 0; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .bene-grid { grid-template-columns: 1fr; }
+      .nums-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-grid, .footer-bottom { padding: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── TOPBAR ─────────────────────────────────────────── -->
+<header class="topbar" id="topbar">
+  <div class="logo">
+    <svg class="logo-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="19" cy="19" r="18" stroke="#d4882a" stroke-width="0.8" opacity="0.5"/>
+      <!-- Simplified horse head silhouette -->
+      <path d="M22 9 C20 8 17 8.5 15.5 10.5 L14 13 C13 13 12 13.5 11.5 15 L10.5 18.5 C10 20 10.5 22 11.5 23 L13 25.5 L15 25.5 L14.5 23 C15 22.5 16 21.5 17.5 21.5 L20.5 21.5 C22 23 22.5 24.5 22.5 25.5 L24.5 25.5 L24 23 C24.5 21.5 25.5 19.5 25.5 17.5 C25.5 14 24 11 22 9Z"
+        fill="#d4882a" opacity="0.7"/>
+    </svg>
+    <div>
+      <div class="logo-text">Centro Hípico</div>
+      <div class="logo-sub">Club · Eje Cafetero</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#club">El Club</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#inversion">Inversión</a>
+    <a href="#proyeccion">Proyecciones</a>
+    <a href="#cta" class="nav-cta">Invertir</a>
+  </nav>
+</header>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-sky"></div>
+  <div class="hero-stars"></div>
+  <div class="hero-sun"></div>
+  <div class="hero-moon"></div>
+
+  <!-- Landscape hills SVG -->
+  <div class="hero-hills">
+    <svg viewBox="0 0 1440 280" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Back hills -->
+      <ellipse cx="360" cy="340" rx="520" ry="200" fill="#180c04" opacity="0.7"/>
+      <ellipse cx="1100" cy="360" rx="480" ry="180" fill="#1c0e06" opacity="0.7"/>
+      <!-- Mid hills -->
+      <path d="M0 280 Q200 120 400 160 Q600 200 720 140 Q840 80 960 150 Q1080 220 1200 160 Q1320 100 1440 180 L1440 280 Z" fill="#0d0702"/>
+      <!-- Fence/railing silhouette -->
+      <line x1="80" y1="220" x2="80" y2="260" stroke="#2e1408" stroke-width="3"/>
+      <line x1="140" y1="215" x2="140" y2="258" stroke="#2e1408" stroke-width="3"/>
+      <line x1="200" y1="212" x2="200" y2="256" stroke="#2e1408" stroke-width="3"/>
+      <line x1="260" y1="210" x2="260" y2="254" stroke="#2e1408" stroke-width="3"/>
+      <line x1="320" y1="209" x2="320" y2="253" stroke="#2e1408" stroke-width="3"/>
+      <line x1="60" y1="228" x2="340" y2="218" stroke="#2e1408" stroke-width="2"/>
+      <line x1="60" y1="240" x2="340" y2="232" stroke="#2e1408" stroke-width="2"/>
+      <!-- Ground -->
+      <rect x="0" y="260" width="1440" height="20" fill="#080503"/>
+    </svg>
+  </div>
+
+  <!-- Horse silhouette SVG -->
+  <div class="hero-horse-wrap">
+    <svg viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M130 170 L130 130 C130 115 127 105 120 98 L106 88 C98 82 95 72 97 62 L102 40 C105 26 109 16 114 10 L112 5 C110 2 107 1 104 3 L100 8 C95 14 90 22 84 26 L78 28 C72 28 67 26 62 24 L54 22 C50 22 47 25 46 29 L45 35 C45 40 47 45 50 48 L55 53 L52 60 C49 68 48 77 50 86 L53 98 C50 104 46 108 40 110 L32 111 C28 111 25 114 25 118 L25 122 C25 126 28 128 32 128 L42 127 L45 136 L45 155 L52 155 L54 136 L60 131 C66 129 72 129 78 132 L82 140 L82 155 L89 155 L89 132 C90 118 98 107 108 102 C116 98 122 91 124 82 L125 70 C126 62 130 55 135 51 L142 47 C148 44 153 41 156 37 L161 28 C163 22 161 15 157 11 L153 8 C150 7 147 8 145 11 L143 16 C141 20 141 26 143 32 L145 41 L143 52 C141 62 134 70 124 73 L115 72 C109 70 105 62 107 55 L111 40 C114 27 114 16 112 8" stroke="#d4882a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Armenia · Eje Cafetero · Colombia · Est. 2026</div>
+    <h1 class="hero-h1">
+      CENTRO<br/><span class="accent">HÍPICO</span><br/>CLUB
+    </h1>
+    <div class="hero-ornament">
+      <div class="hero-ornament-line"></div>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9H22L16 13.5L18.5 20.5L12 16L5.5 20.5L8 13.5L2 9H9.5L12 2Z"/></svg>
+      <div class="hero-ornament-line rev"></div>
+    </div>
+    <p class="hero-tagline">
+      El primer club hípico de inversión colectiva del Eje Cafetero.<br/>
+      Tradición ecuestre colombiana, retorno financiero de primer nivel.
+    </p>
+    <div class="hero-actions">
+      <a href="#inversion" class="btn-gold">Conocer la Inversión</a>
+      <a href="estudio_financiero.html" class="btn-ghost">Estudio Financiero</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-dot"></div>
+    <span>Descubrir</span>
+  </div>
+</section>
+
+<!-- ── EL CLUB ────────────────────────────────────────────── -->
+<section class="about" id="club">
+  <div class="wrap">
+    <div class="tag on-enter">El Proyecto</div>
+    <h2 class="h2 on-enter">Donde la <em>chalanería</em> se convierte en patrimonio</h2>
+    <div class="rule on-enter"></div>
+    <div class="about-grid">
+      <div class="about-text on-enter">
+        <p>El <strong>Centro Hípico Club</strong> es una propuesta de inversión colectiva estructurada como sociedad de acciones, que nace de la riqueza cultural y natural del Eje Cafetero. Un espacio donde el arte de la chalanería colombiana, la cría y comercialización de caballos de paso fino, y la vida social de club convergen en un ecosistema único.</p>
+        <p>Cada accionista se convierte en co-propietario de un activo real: 8.5 hectáreas en el corredor La Tebaida–Montenegro, con instalaciones de clase mundial diseñadas para generar ingresos recurrentes desde múltiples fuentes: caballerizas, picadero, clases, subastas, restaurante y club house.</p>
+        <p>Las acciones del Centro Hípico no son simples membresías — son participaciones en una empresa patrimonial de largo plazo, con dividendos anuales, beneficios de uso y valorización del activo inmobiliario.</p>
+        <a href="#inversion" class="btn-gold on-enter" style="display:inline-block;margin-top:16px;">Ver Estructura de Inversión</a>
+      </div>
+      <div class="nums-grid on-enter">
+        <div class="num-cell">
+          <div class="num-big">8.5</div>
+          <div class="num-label">Hectáreas</div>
+          <div class="num-desc">Predio premium</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">40</div>
+          <div class="num-label">Caballerizas</div>
+          <div class="num-desc">Boxes europeos</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">55</div>
+          <div class="num-label">Acciones</div>
+          <div class="num-desc">Fundadoras</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">11%</div>
+          <div class="num-label">ROI Año 2</div>
+          <div class="num-desc">Retorno estimado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICIOS ──────────────────────────────────────────── -->
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="tag on-enter">Fuentes de Ingreso</div>
+    <h2 class="h2 on-enter">Seis servicios.<br/><em>Un solo ecosistema.</em></h2>
+    <div class="rule on-enter"></div>
+    <div class="svc-grid on-enter">
+
+      <div class="svc">
+        <div class="svc-n">01</div>
+        <div class="svc-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 28L8 16C8 12 10 9 14 8L18 7C22 7 24 10 24 13C24 17 22 20 18 21L16 22L16 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M6 12L14 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="svc-title">Chalanería &<br/>Equitación</div>
+        <p class="svc-body">Clases magistrales de chalanería colombiana, doma de caballos de paso fino y equitación clásica. Instructores certificados por FEDEQUINAS para todos los niveles.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Grupos 6-10 alumnos</span>
+          <span class="svc-tag">Privadas disponibles</span>
+          <span class="svc-tag">Cursos intensivos</span>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-n">02</div>
+        <div class="svc-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="10" width="24" height="16" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M4 16L28 16" stroke="currentColor" stroke-width="1.5"/><path d="M12 10L12 6L20 6L20 10" stroke="currentColor" stroke-width="1.5"/><path d="M10 26L10 28M22 26L22 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="svc-title">Alquiler de<br/>Caballerizas</div>
+        <p class="svc-body">40 boxes de diseño europeo con ventilación natural y pisos técnicos. Palafrenero incluido, alimentación gestionada con nutricionista equino, veterinaria de guardia 24/7.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">40 boxes premium</span>
+          <span class="svc-tag">Veterinario residente</span>
+          <span class="svc-tag">Herrador certificado</span>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-n">03</div>
+        <div class="svc-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="20" rx="12" ry="8" stroke="currentColor" stroke-width="1.5"/><path d="M4 20L4 24C4 26.2 9.4 28 16 28C22.6 28 28 26.2 28 24L28 20" stroke="currentColor" stroke-width="1.5"/><path d="M8 8L8 20M24 8L24 20M8 8L24 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="svc-title">Picadero<br/>& Ruedo</div>
+        <p class="svc-body">Picadero cubierto de 2,400 m² con arena sílice técnica y ruedo exterior. Habilitado para competencias departamentales y nacionales. Aforo para 500 espectadores.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">2,400 m² cubierto</span>
+          <span class="svc-tag">500 espectadores</span>
+          <span class="svc-tag">Alquiler por evento</span>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-n">04</div>
+        <div class="svc-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 24L12 8L16 18L20 12L24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="svc-title">Subasta de<br/>Caballos</div>
+        <p class="svc-body">Cuatro subastas anuales de caballos de paso fino colombiano. El club se posiciona como el referente de comercialización equina del Eje Cafetero, con transmisión en línea y compradores internacionales.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">4 subastas/año</span>
+          <span class="svc-tag">Transmisión online</span>
+          <span class="svc-tag">Comisión 5%</span>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-n">05</div>
+        <div class="svc-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 26L6 14C6 12 8 10 10 10L22 10C24 10 26 12 26 14L26 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M4 26L28 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 26L12 18L20 18L20 26" stroke="currentColor" stroke-width="1.5"/><path d="M14 10L14 6C14 5 14.9 4 16 4C17.1 4 18 5 18 6L18 10" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="svc-title">Restaurante<br/>de Campo</div>
+        <p class="svc-body">Cocina tradicional del Eje Cafetero con terraza panorámica sobre el picadero. 120 comensales, carta de vinos y menú especial de eventos. Alquiler para matrimonios y celebraciones.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">120 cubiertos</span>
+          <span class="svc-tag">Vista al ruedo</span>
+          <span class="svc-tag">Eventos privados</span>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-n">06</div>
+        <div class="svc-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M4 28L28 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M6 28L6 14L16 6L26 14L26 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="18" width="8" height="10" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="svc-title">Club House<br/>& Eventos</div>
+        <p class="svc-body">Salón principal con capacidad para 300 personas. Área lounge exclusiva para socios, sala de catas, biblioteca hípica, sala de conferencias y zona outdoor con asadores.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">300 personas</span>
+          <span class="svc-tag">Zona socios VIP</span>
+          <span class="svc-tag">Congresos ecuestres</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── INVERSIÓN ──────────────────────────────────────────── -->
+<section class="inversion" id="inversion">
+  <div class="wrap">
+    <div class="tag on-enter">Estructura de Inversión</div>
+    <h2 class="h2 on-enter">41 acciones en venta.<br/><em>El predio ya es nuestro.</em></h2>
+    <div class="rule on-enter"></div>
+    <div class="inv-two">
+      <div class="inv-text on-enter">
+        <p>El promotor del proyecto ya es dueño del predio de 8.5 ha, valorado en <strong>$700,000,000 COP</strong>, que se aporta como capital en especie equivalente a <strong>14 acciones fundadoras</strong>. Esto significa que solo se requiere recaudar <strong>$2,050,000,000 COP en efectivo</strong> mediante la venta de las <strong>41 acciones restantes a $50,000,000 COP cada una</strong>.</p>
+        <p>Este modelo reduce la barrera de capitalización en un 25% frente a proyectos sin tierra propia y elimina el riesgo de adquisición predial. Las 41 acciones externas representan el 74.5% del club; el aportante del predio retiene el 25.5% desde el día uno.</p>
+        <div class="inv-pull">
+          "Una acción no es solo un título — es co-propiedad de un legado cultural, uso vitalicio de instalaciones de primer nivel y participación en el ecosistema hípico más dinámico del Eje Cafetero."
+        </div>
+        <p>El plan de negocios proyecta EBITDA positivo desde el año 2, con retornos distribuibles de <strong>11% anual en el año 2</strong> y hasta el <strong>17.4% al año 3</strong> de operación plena.</p>
+        <a href="estudio_financiero.html" class="btn-ghost on-enter" style="display:inline-block;margin-top:20px;">Ver Estudio Financiero Completo</a>
+      </div>
+      <div class="on-enter">
+        <div class="shares-panel">
+          <div class="shares-header">Estructura Accionaria — Resumen</div>
+          <div class="shares-body">
+            <div class="share-row">
+              <span class="share-key">Acciones totales</span>
+              <div class="share-val">55<small>fundadoras (S.A.S.)</small></div>
+            </div>
+            <div class="share-row">
+              <span class="share-key">Aporte promotor</span>
+              <div class="share-val">14 acciones<small>predio 8.5 ha · $700M COP en especie</small></div>
+            </div>
+            <div class="share-row">
+              <span class="share-key">Acciones en venta</span>
+              <div class="share-val">41 acciones<small>$50,000,000 COP c/u · efectivo</small></div>
+            </div>
+            <div class="share-row">
+              <span class="share-key">Capital a recaudar</span>
+              <div class="share-val">$2,050,000,000<small>COP en efectivo</small></div>
+            </div>
+            <div class="share-row">
+              <span class="share-key">Participación promotor</span>
+              <div class="share-val">25.5%<small>sin desembolso en efectivo</small></div>
+            </div>
+            <div class="share-row">
+              <span class="share-key">Dividendo año 3 / acción</span>
+              <div class="share-val">$2.0M COP<small>retorno distribuible est.</small></div>
+            </div>
+            <div class="share-row">
+              <span class="share-key">ROI inversor externo año 5</span>
+              <div class="share-val">16.0%<small>dividendos acum. 5 años / $50M</small></div>
+            </div>
+          </div>
+          <div class="shares-footer">
+            Acciones libremente transferibles con aprobación de junta directiva. Los valores de dividendo son proyecciones de carácter estimado. Ver metodología en el estudio financiero completo.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFICIOS ─────────────────────────────────────────── -->
+<section class="beneficios" id="beneficios">
+  <div class="wrap">
+    <div class="tag on-enter">Privilegios del Accionista</div>
+    <h2 class="h2 on-enter">Los beneficios de <em>pertenecer</em></h2>
+    <div class="rule on-enter"></div>
+    <div class="bene-grid">
+      <div class="bene on-enter">
+        <div class="bene-n">01</div>
+        <div>
+          <h3>Dividendos Anuales</h3>
+          <p>Participación proporcional en las utilidades netas del club. Proyección de $5.5M COP/acción en año 2 y $8.7M COP en año 3, con crecimiento sostenido hacia el año 5.</p>
+        </div>
+      </div>
+      <div class="bene on-enter">
+        <div class="bene-n">02</div>
+        <div>
+          <h3>Uso de Instalaciones</h3>
+          <p>Acceso prioritario y tarifas preferenciales del 30% en todos los servicios del club. Dos boxes reservados para uso exclusivo del accionista sin cargo adicional.</p>
+        </div>
+      </div>
+      <div class="bene on-enter">
+        <div class="bene-n">03</div>
+        <div>
+          <h3>Valorización del Activo</h3>
+          <p>El predio de 8.5 ha en el corredor La Tebaida–Montenegro presenta valorización histórica del 8–12% anual. La acción se aprecia junto al inmueble y la marca del club.</p>
+        </div>
+      </div>
+      <div class="bene on-enter">
+        <div class="bene-n">04</div>
+        <div>
+          <h3>Transferibilidad</h3>
+          <p>Las acciones son libremente transferibles previa aprobación de la junta directiva, garantizando liquidez futura y la posibilidad de heredar o vender la participación.</p>
+        </div>
+      </div>
+      <div class="bene on-enter">
+        <div class="bene-n">05</div>
+        <div>
+          <h3>Voz en la Dirección</h3>
+          <p>Participación en la Asamblea de Accionistas con voto en decisiones estratégicas: subastas, expansión de instalaciones, aprobación de presupuesto anual y distribución de utilidades.</p>
+        </div>
+      </div>
+      <div class="bene on-enter">
+        <div class="bene-n">06</div>
+        <div>
+          <h3>Red Ecuestre Nacional</h3>
+          <p>Acceso exclusivo a la red de criadores, compradores internacionales de caballos de paso fino y contactos de FEDEQUINAS, la Federación Colombiana de Asociaciones Equinas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROYECCIÓN FINANCIERA ──────────────────────────────── -->
+<section class="proyeccion" id="proyeccion">
+  <div class="wrap">
+    <div class="tag on-enter">Proyección Financiera</div>
+    <h2 class="h2 on-enter">Ingresos consolidados <em>por fuente</em></h2>
+    <div class="rule on-enter"></div>
+    <div class="fin-table-wrap on-enter">
+      <table class="fin-table">
+        <thead>
+          <tr>
+            <th>Fuente de Ingreso</th>
+            <th>Año 1 (M COP)</th>
+            <th>Año 2 (M COP)</th>
+            <th>Año 3 (M COP)</th>
+            <th>Año 4 (M COP)</th>
+            <th>Año 5 (M COP)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alquiler de caballerizas (40 boxes)</td>
+            <td>$270</td><td>$399</td><td>$480</td><td>$518</td><td>$560</td>
+          </tr>
+          <tr>
+            <td>Alquiler de picadero & ruedo</td>
+            <td>$96</td><td>$132</td><td>$168</td><td>$181</td><td>$196</td>
+          </tr>
+          <tr>
+            <td>Clases de chalanería y equitación</td>
+            <td>$126</td><td>$192</td><td>$264</td><td>$285</td><td>$308</td>
+          </tr>
+          <tr>
+            <td>Subastas de caballos (comisión 5%)</td>
+            <td>$72</td><td>$108</td><td>$144</td><td>$156</td><td>$168</td>
+          </tr>
+          <tr>
+            <td>Restaurante de campo</td>
+            <td>$96</td><td>$168</td><td>$216</td><td>$233</td><td>$252</td>
+          </tr>
+          <tr>
+            <td>Club House & eventos</td>
+            <td>$48</td><td>$72</td><td>$108</td><td>$117</td><td>$126</td>
+          </tr>
+          <tr class="total">
+            <td>INGRESO BRUTO TOTAL</td>
+            <td>$708</td><td>$1,071</td><td>$1,380</td><td>$1,490</td><td>$1,610</td>
+          </tr>
+          <tr>
+            <td style="color:rgba(247,238,216,0.42)">Costos operacionales</td>
+            <td class="loss">($768)</td>
+            <td style="color:rgba(247,238,216,0.42)">($768)</td>
+            <td style="color:rgba(247,238,216,0.42)">($900)</td>
+            <td style="color:rgba(247,238,216,0.42)">($960)</td>
+            <td style="color:rgba(247,238,216,0.42)">($1,020)</td>
+          </tr>
+          <tr class="total">
+            <td>EBITDA</td>
+            <td class="loss">-$60</td>
+            <td>$303</td><td>$480</td><td>$530</td><td>$590</td>
+          </tr>
+          <tr class="total">
+            <td>Dividendo estimado / acción</td>
+            <td class="loss">—</td>
+            <td>$5.5M</td><td>$8.7M</td><td>$9.6M</td><td>$10.7M</td>
+          </tr>
+          <tr class="total">
+            <td>ROI sobre acción ($50M)</td>
+            <td class="loss">—</td>
+            <td>11.0%</td><td>17.4%</td><td>19.2%</td><td>21.4%</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="fin-note">Cifras en millones de pesos colombianos (COP). Proyecciones de carácter estimado sujetas a condiciones reales de mercado. El año 1 incluye período de montaje y apertura gradual; la pérdida operacional está cubierta por la reserva de capital de trabajo incluida en la inversión. Para metodología y supuestos detallados, consulte el estudio financiero completo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Centro Hípico Club</div>
+      <p>El primer club hípico de inversión colectiva del Eje Cafetero. Tradición ecuestre colombiana con retorno financiero de clase mundial.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Servicios</h5>
+      <ul>
+        <li>Chalanería</li>
+        <li>Caballerizas</li>
+        <li>Picadero</li>
+        <li>Subastas</li>
+        <li>Restaurante</li>
+        <li>Club House</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Inversión</h5>
+      <ul>
+        <li>Estructura accionaria</li>
+        <li>Estudio financiero</li>
+        <li>Beneficios del socio</li>
+        <li>Proyecciones</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li>Eje Cafetero</li>
+        <li>Colombia</li>
+        <li>&nbsp;</li>
+        <li>Por invitación</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Centro Hípico Club · Todos los derechos reservados</p>
+    <p>Documento confidencial para uso exclusivo de inversionistas potenciales</p>
+  </div>
+</footer>
+
+<script>
+  // Topbar scroll
+  const topbar = document.getElementById('topbar');
+  addEventListener('scroll', () => topbar.classList.toggle('solid', scrollY > 50));
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.on-enter').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

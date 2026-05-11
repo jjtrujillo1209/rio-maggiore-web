@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Error 03 — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 60% 5%, rgba(37,211,102,.2) 0%, rgba(27,27,110,.25) 45%, #07070f 68%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+.slide-num{position:absolute;top:28px;right:32px;font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.25);text-transform:uppercase}
+.err-badge{background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);border-radius:50px;padding:8px 20px;font-size:12px;font-weight:700;color:#25d366;letter-spacing:3px;text-transform:uppercase;display:inline-block;margin-bottom:20px}
+.number{font-size:220px;font-weight:900;line-height:.8;letter-spacing:-14px;color:rgba(255,255,255,.04);position:absolute;right:60px;top:100px}
+.headline{font-size:68px;font-weight:900;color:#fff;line-height:.9;letter-spacing:-3.5px;margin-bottom:16px;position:relative;z-index:2}
+.headline em{font-style:normal;color:#25d366}
+.body-text{font-size:22px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.6;max-width:680px;position:relative;z-index:2;margin:20px 0}
+.body-text strong{color:#fff;font-weight:700}
+
+.payment-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:4px 0 20px;position:relative;z-index:2}
+.pay-card{border-radius:16px;padding:20px 20px;border:1px solid;text-align:center}
+.pay-card.yes{background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.3)}
+.pay-card.no{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.07);opacity:.5}
+.pay-icon{font-size:32px;margin-bottom:8px}
+.pay-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px}
+.pay-users{font-size:12px;color:rgba(255,255,255,.4)}
+.pay-status{font-size:12px;font-weight:700;margin-top:8px;padding:4px 10px;border-radius:20px;display:inline-block}
+.yes .pay-status{background:rgba(37,211,102,.2);color:#25d366}
+.no .pay-status{background:rgba(255,255,255,.06);color:rgba(255,255,255,.3)}
+
+.fix-box{background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.25);border-radius:18px;padding:22px 28px;margin-bottom:24px;position:relative;z-index:2}
+.fix-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#25d366;margin-bottom:8px}
+.fix-text{font-size:18px;font-weight:700;color:#fff;line-height:1.4}
+
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:26px;font-weight:300;color:#F26522}
+.tag{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:2px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="slide-num">4 / 7 — Desliza</div>
+  <div class="number">03</div>
+  <div class="err-badge">Error 03</div>
+  <div class="headline">No aceptas<br/><em>pagos digitales</em></div>
+  <div class="body-text">Colombia tiene <strong>+30 millones de usuarios</strong> de billeteras digitales. Si no aceptas Nequi, PSE o Daviplata, ya perdiste la venta.</div>
+
+  <div class="payment-grid">
+    <div class="pay-card yes">
+      <div class="pay-icon">💚</div>
+      <div class="pay-name">Nequi</div>
+      <div class="pay-users">17M usuarios</div>
+      <div class="pay-status">Activo</div>
+    </div>
+    <div class="pay-card yes">
+      <div class="pay-icon">🏦</div>
+      <div class="pay-name">PSE</div>
+      <div class="pay-users">Todos los bancos</div>
+      <div class="pay-status">Activo</div>
+    </div>
+    <div class="pay-card no">
+      <div class="pay-icon">💳</div>
+      <div class="pay-name">Solo efectivo</div>
+      <div class="pay-users">Tu negocio hoy</div>
+      <div class="pay-status">Sin activar</div>
+    </div>
+  </div>
+
+  <div class="fix-box">
+    <div class="fix-label">La solución</div>
+    <div class="fix-text">E-commerce o tienda online integrada con pasarelas de pago colombianas. Vendes mientras duermes.</div>
+  </div>
+
+  <div class="footer">
+    <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+    <div class="tag">#Nequi #PSE #EcommerceColombia</div>
+  </div>
+</div>
+</body>
+</html>

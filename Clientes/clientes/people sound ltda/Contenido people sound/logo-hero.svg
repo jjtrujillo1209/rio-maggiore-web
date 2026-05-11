@@ -1,0 +1,33 @@
+<svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue Background -->
+  <rect width="1200" height="200" fill="#0052FF"/>
+
+  <!-- PEOPLE Yellow Box -->
+  <rect x="30" y="30" width="380" height="140" fill="#FFFF00" rx="8"/>
+
+  <!-- PEOPLE Text -->
+  <text x="220" y="145" font-family="Montserrat, Arial, sans-serif" font-size="110" font-weight="900" fill="#000000" text-anchor="middle" letter-spacing="2">PEOPLE</text>
+
+  <!-- SOUND Text (White) -->
+  <text x="850" y="145" font-family="Montserrat, Arial, sans-serif" font-size="110" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">SOUND</text>
+
+  <!-- Sound Wave Lines (Yellow) - Professional -->
+  <g stroke="#FFFF00" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Center horizontal line -->
+    <line x1="450" y1="100" x2="750" y2="100" stroke-width="5"/>
+
+    <!-- Wave pulses -->
+    <path d="M 470 100 Q 485 65, 500 100"/>
+    <path d="M 515 100 Q 530 80, 545 100"/>
+    <path d="M 560 100 Q 575 65, 590 100"/>
+    <path d="M 605 100 Q 620 80, 635 100"/>
+    <path d="M 650 100 Q 665 65, 680 100"/>
+    <path d="M 695 100 Q 710 80, 725 100"/>
+  </g>
+
+  <!-- Exclamation Mark (Yellow) -->
+  <text x="1020" y="145" font-family="Montserrat, Arial, sans-serif" font-size="120" font-weight="900" fill="#FFFF00" text-anchor="middle">!</text>
+
+  <!-- LTDA (White) -->
+  <text x="1130" y="130" font-family="Montserrat, Arial, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">LTDA.</text>
+</svg>

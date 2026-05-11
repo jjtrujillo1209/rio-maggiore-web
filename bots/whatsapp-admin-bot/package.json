@@ -1,0 +1,16 @@
+{
+  "name": "whatsapp-admin-bot",
+  "version": "1.0.0",
+  "description": "Bot de WhatsApp 24/7 para Through Air — atiende clientes automáticamente con IA",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0",
+    "axios": "^1.7.0",
+    "express": "^4.19.0"
+  }
+}

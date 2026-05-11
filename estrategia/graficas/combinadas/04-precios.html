@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Precios — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;background:#fff}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column}
+/* Header */
+.header{background:#1B1B6E;padding:56px 80px 48px;flex:none;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(242,101,34,.18),transparent 65%)}
+.brand{display:flex;align-items:baseline;gap:3px;margin-bottom:28px;position:relative;z-index:1}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:26px;font-weight:300;color:#F26522}
+.headline{font-size:52px;font-weight:900;color:#fff;letter-spacing:-2px;line-height:.95;position:relative;z-index:1}
+.headline em{font-style:normal;color:#F26522}
+/* Price cards area */
+.cards-area{flex:1;padding:40px 80px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.price-card{border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:8px;border:1.5px solid}
+/* Mensual cards */
+.card-pautas{background:#f0f4ff;border-color:#c8d4ff}
+.card-redes{background:#fff0f9;border-color:#f9c0e0}
+.card-pack{background:#07070f;border-color:rgba(242,101,34,.3);grid-column:span 1}
+/* Unico cards */
+.card-web{background:#f5f5ff;border-color:#d0d0ff}
+.card-ecom{background:#fff5f0;border-color:#ffd0b0}
+.card-bot{background:#f0fff5;border-color:#a8e6c0}
+/* Card internals */
+.card-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:2px}
+.card-pautas .card-label{color:#1B1B6E}
+.card-redes .card-label{color:#C8317A}
+.card-pack .card-label{color:rgba(255,255,255,.4)}
+.card-web .card-label{color:#1B1B6E}
+.card-ecom .card-label{color:#F26522}
+.card-bot .card-label{color:#25a862}
+.card-name{font-size:16px;font-weight:700}
+.card-pautas .card-name,.card-web .card-name,.card-redes .card-name{color:#1a1a2e}
+.card-pack .card-name{color:#fff}
+.card-ecom .card-name{color:#1a1a2e}
+.card-bot .card-name{color:#1a1a2e}
+.card-price{font-size:28px;font-weight:900;letter-spacing:-1px;margin-top:auto}
+.card-pautas .card-price{color:#1B1B6E}
+.card-redes .card-price{color:#C8317A}
+.card-pack .card-price{background:linear-gradient(135deg,#F26522,#C8317A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.card-web .card-price,.card-bot .card-price{color:#1B1B6E}
+.card-ecom .card-price{color:#F26522}
+.price-period{font-size:12px;font-weight:400;color:inherit;opacity:.5}
+.card-note{font-size:11px;color:rgba(0,0,0,.4);margin-top:2px}
+.card-pack .card-note{color:rgba(255,255,255,.35)}
+.card-pack .card-note strong{color:#F26522}
+.featured-badge{font-size:10px;font-weight:700;background:linear-gradient(135deg,#F26522,#C8317A);color:#fff;padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:6px}
+/* Bottom */
+.bottom{padding:24px 80px;background:#f9f9fc;display:flex;justify-content:space-between;align-items:center;flex:none}
+.bottom-note{font-size:13px;color:#888}
+.bottom-note strong{color:#1B1B6E}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="header">
+    <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+    <div class="headline">Precios claros.<br/><em>Sin sorpresas.</em></div>
+  </div>
+  <div class="cards-area">
+    <!-- Row 1: Monthly -->
+    <div class="price-card card-pautas">
+      <div class="card-label">Mensual</div>
+      <div class="card-name">Pautas Digitales</div>
+      <div class="card-price">$2.000.000<span class="price-period">/mes</span></div>
+      <div class="card-note">Google Ads + Meta Ads gestionados</div>
+    </div>
+    <div class="price-card card-redes">
+      <div class="card-label">Mensual</div>
+      <div class="card-name">Redes Sociales</div>
+      <div class="card-price">$3.500.000<span class="price-period">/mes</span></div>
+      <div class="card-note">12 piezas + calendario editorial</div>
+    </div>
+    <div class="price-card card-pack">
+      <div class="featured-badge">Más popular</div>
+      <div class="card-label">Pack — Mensual</div>
+      <div class="card-name">Pautas + Redes</div>
+      <div class="card-price">$4.000.000<span class="price-period">/mes</span></div>
+      <div class="card-note">Ahorras <strong>$1.500.000/mes</strong></div>
+    </div>
+    <!-- Row 2: One-time + recurring -->
+    <div class="price-card card-web">
+      <div class="card-label">Pago único</div>
+      <div class="card-name">Página Web</div>
+      <div class="card-price">$2.000.000</div>
+      <div class="card-note">Diseño + desarrollo + SEO</div>
+    </div>
+    <div class="price-card card-ecom">
+      <div class="card-label">Pago único</div>
+      <div class="card-name">E-Commerce</div>
+      <div class="card-price">$3.900.000</div>
+      <div class="card-note">Tienda + bot de ventas incluido</div>
+    </div>
+    <div class="price-card card-bot">
+      <div class="card-label">Bots IA</div>
+      <div class="card-name">WhatsApp / Lead Bot</div>
+      <div class="card-price">$2.000.000<span class="price-period"> + $500k/mes</span></div>
+      <div class="card-note">Implementación + soporte mensual</div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="bottom-note">Todos los precios en <strong>COP</strong> • Sin permanencia mínima • Cancelación libre</div>
+  </div>
+</div>
+</body>
+</html>

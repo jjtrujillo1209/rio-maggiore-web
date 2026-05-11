@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Pack Mensual — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 70% 8%, rgba(27,27,110,.6) 0%, rgba(242,101,34,.18) 50%, #07070f 70%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px}
+.mega-wrap{margin-bottom:0}
+.mega{font-size:160px;font-weight:900;line-height:.82;letter-spacing:-9px;color:#fff}
+.mega em{font-style:normal;color:#F26522}
+
+/* main layout */
+.visual{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 0}
+
+/* left: included */
+.left-col{display:flex;flex-direction:column;justify-content:center;gap:20px}
+.section-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:4px}
+.service-row{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.service-accent{width:3px;height:36px;border-radius:2px;flex-shrink:0;margin-top:2px}
+.sa-orange{background:#F26522}.sa-navy{background:#1B1B6E}.sa-coral{background:#F04E37}.sa-pink{background:#C8317A}
+.service-info{flex:1}
+.service-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
+.service-desc{font-size:12px;color:rgba(255,255,255,.35);line-height:1.4}
+.service-orig{font-size:12px;text-decoration:line-through;color:rgba(255,255,255,.2)}
+
+/* right: savings */
+.right-col{display:flex;flex-direction:column;gap:16px;justify-content:center}
+.savings-circle{background:rgba(242,101,34,.12);border:1.5px solid rgba(242,101,34,.35);border-radius:20px;padding:28px 24px;text-align:center}
+.save-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:8px}
+.save-num{font-size:80px;font-weight:900;letter-spacing:-4px;line-height:.9;background:linear-gradient(135deg,#F26522,#C8317A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.save-sub{font-size:13px;color:rgba(255,255,255,.35);margin-top:8px}
+.total-row{background:rgba(27,27,110,.4);border:1px solid rgba(27,27,110,.6);border-radius:14px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center}
+.total-label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.total-val{font-size:28px;font-weight:900;color:#fff;letter-spacing:-1px}
+
+/* bottom */
+.info-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px}
+.info-text{font-size:16px;color:rgba(255,255,255,.6);line-height:1.5;flex:1}
+.info-text strong{color:#fff}
+.cta-pill{background:linear-gradient(135deg,#1B1B6E,#F26522);color:#fff;font-size:13px;font-weight:700;padding:12px 24px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:25px;font-weight:300;color:#F26522}
+.price{font-size:13px;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase}
+.price strong{color:rgba(255,255,255,.65);font-size:18px;font-weight:700;letter-spacing:-0.5px}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="mega-wrap">
+    <div class="eyebrow">Presencia total.</div>
+    <div class="mega">UN PRE<em>CIO.</em></div>
+  </div>
+
+  <div class="visual">
+    <div class="left-col">
+      <div class="section-title">Lo que incluye</div>
+      <div class="service-row">
+        <div class="service-accent sa-orange"></div>
+        <div class="service-info">
+          <div class="service-name">Pautas Digitales</div>
+          <div class="service-desc">Google Ads + Meta Ads gestionados y optimizados</div>
+          <div class="service-orig">$2.000.000 separado</div>
+        </div>
+      </div>
+      <div class="service-row">
+        <div class="service-accent sa-pink"></div>
+        <div class="service-info">
+          <div class="service-name">Redes Sociales</div>
+          <div class="service-desc">12 piezas/mes + calendario + métricas</div>
+          <div class="service-orig">$3.500.000 separado</div>
+        </div>
+      </div>
+      <div class="service-row">
+        <div class="service-accent sa-navy"></div>
+        <div class="service-info">
+          <div class="service-name">Reporte + Soporte prioritario</div>
+          <div class="service-desc">KPIs mensuales + respuesta en 2 horas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-col">
+      <div class="savings-circle">
+        <div class="save-label">Ahorras cada mes</div>
+        <div class="save-num">27%</div>
+        <div class="save-sub">vs. contratar por separado</div>
+      </div>
+      <div class="total-row">
+        <span class="total-label">Pack mensual</span>
+        <span class="total-val">$4.000.000</span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="info-card">
+      <div class="info-text"><strong>Estrategia unificada, un solo equipo.</strong> Sin coordinar proveedores. Sin permanencia mínima.</div>
+      <div class="cta-pill">Activar pack hoy</div>
+    </div>
+    <div class="footer">
+      <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+      <div class="price">Pack mensual <strong>$4.000.000</strong> COP</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

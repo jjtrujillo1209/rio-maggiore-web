@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Lead Qualifier Bot — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 68% 10%, rgba(27,27,110,.6) 0%, rgba(242,101,34,.15) 48%, #07070f 70%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px}
+.mega{font-size:180px;font-weight:900;line-height:.82;letter-spacing:-10px;color:#fff}
+.mega em{font-style:normal;background:linear-gradient(135deg,#F26522,#C8317A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* funnel visual */
+.visual{flex:1;display:flex;align-items:center;gap:40px;margin:28px 0}
+.funnel-col{flex:1;display:flex;flex-direction:column;gap:12px}
+.step{border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:14px;position:relative}
+.step.s1{background:rgba(27,27,110,.4);border:1px solid rgba(27,27,110,.6);border-left:3px solid #1B1B6E}
+.step.s2{background:rgba(240,78,55,.1);border:1px solid rgba(240,78,55,.25);border-left:3px solid #F04E37}
+.step.s3{background:rgba(242,101,34,.1);border:1px solid rgba(242,101,34,.25);border-left:3px solid #F26522}
+.step.s4{background:rgba(200,49,122,.12);border:1px solid rgba(200,49,122,.3);border-left:3px solid #C8317A}
+.step-n{font-size:11px;font-weight:900;color:rgba(255,255,255,.3);width:20px;flex-shrink:0}
+.step-info{flex:1}
+.step-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
+.step-desc{font-size:11px;color:rgba(255,255,255,.35)}
+.step-pct{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px}
+
+/* right stats */
+.stats-col{width:260px;display:flex;flex-direction:column;gap:14px}
+.stat-big{background:rgba(242,101,34,.12);border:1px solid rgba(242,101,34,.3);border-radius:20px;padding:28px 24px;text-align:center}
+.stat-big-num{font-size:80px;font-weight:900;letter-spacing:-4px;line-height:.9;background:linear-gradient(135deg,#F26522,#C8317A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-big-label{font-size:13px;color:rgba(255,255,255,.4);margin-top:8px;line-height:1.4}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1}
+.stat-mini{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px;text-align:center}
+.stat-mini-n{font-size:24px;font-weight:900;color:#fff;letter-spacing:-1px}
+.stat-mini-l{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
+
+/* bottom */
+.info-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px}
+.info-text{font-size:16px;color:rgba(255,255,255,.6);line-height:1.5;flex:1}
+.info-text strong{color:#fff}
+.cta-pill{background:linear-gradient(135deg,#F26522,#C8317A);color:#fff;font-size:13px;font-weight:700;padding:12px 24px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:25px;font-weight:300;color:#F26522}
+.price{font-size:13px;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase}
+.price strong{color:rgba(255,255,255,.65);font-size:18px;font-weight:700;letter-spacing:-0.5px}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div>
+    <div class="eyebrow">Leads calificados</div>
+    <div class="mega">SIN ESFUER<em>ZO.</em></div>
+  </div>
+
+  <div class="visual">
+    <div class="funnel-col">
+      <div class="step s1">
+        <span class="step-n">01</span>
+        <div class="step-info">
+          <div class="step-title">Visitante llega al widget</div>
+          <div class="step-desc">Embed en tu web o landing page</div>
+        </div>
+        <span class="step-pct">100%</span>
+      </div>
+      <div class="step s2">
+        <span class="step-n">02</span>
+        <div class="step-info">
+          <div class="step-title">El bot inicia conversación</div>
+          <div class="step-desc">Preguntas naturales, sin scripts rígidos</div>
+        </div>
+        <span class="step-pct">78%</span>
+      </div>
+      <div class="step s3">
+        <span class="step-n">03</span>
+        <div class="step-info">
+          <div class="step-title">Datos capturados</div>
+          <div class="step-desc">Empresa, presupuesto, necesidad</div>
+        </div>
+        <span class="step-pct">62%</span>
+      </div>
+      <div class="step s4">
+        <span class="step-n">04</span>
+        <div class="step-info">
+          <div class="step-title">Lead calificado y entregado</div>
+          <div class="step-desc">Listo para que tu equipo cierre</div>
+        </div>
+        <span class="step-pct">41%</span>
+      </div>
+    </div>
+
+    <div class="stats-col">
+      <div class="stat-big">
+        <div class="stat-big-num">41%</div>
+        <div class="stat-big-label">de visitantes se convierten en leads listos para comprar</div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-mini"><div class="stat-mini-n">24/7</div><div class="stat-mini-l">Activo</div></div>
+        <div class="stat-mini"><div class="stat-mini-n">2 min</div><div class="stat-mini-l">Califica</div></div>
+        <div class="stat-mini"><div class="stat-mini-n">0</div><div class="stat-mini-l">Perdidos</div></div>
+        <div class="stat-mini"><div class="stat-mini-n">CRM</div><div class="stat-mini-l">Integrado</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="info-card">
+      <div class="info-text"><strong>Filtra curiosos, entrega solo quien tiene plata y ganas de comprar.</strong> Tu equipo cierra — no atiende.</div>
+      <div class="cta-pill">Calificar leads</div>
+    </div>
+    <div class="footer">
+      <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+      <div class="price"><strong>$2.500.000</strong> COP + $700K/mes</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

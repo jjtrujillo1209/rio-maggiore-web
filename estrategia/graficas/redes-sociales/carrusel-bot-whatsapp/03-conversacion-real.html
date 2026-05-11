@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Conversación Real — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 50% 5%, rgba(37,211,102,.15) 0%, rgba(27,27,110,.28) 45%, #07070f 68%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+.slide-num{position:absolute;top:28px;right:32px;font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.25);text-transform:uppercase}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}
+.headline{font-size:50px;font-weight:900;color:#fff;line-height:.95;letter-spacing:-2.5px;margin-bottom:8px}
+.headline em{font-style:normal;color:#25d366}
+.sub{font-size:18px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.4}
+
+.phone-wide{flex:1;background:#1a1a2e;border-radius:24px;border:1px solid rgba(255,255,255,.08);overflow:hidden;margin:22px 0;display:flex;flex-direction:column;box-shadow:0 40px 80px rgba(0,0,0,.4)}
+.wa-header{background:#1f2d24;padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06)}
+.wa-av{width:36px;height:36px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;flex-shrink:0}
+.wa-info-name{font-size:14px;font-weight:700;color:#fff}
+.wa-status{font-size:11px;color:#25d366}
+.wa-msgs{background:#111827;flex:1;padding:16px 18px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.msg{max-width:78%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.5;color:#e2e8f0}
+.msg.u{background:#1f2d24;align-self:flex-start;border-bottom-left-radius:3px}
+.msg.b{background:#25d366;color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
+.msg.b.dark{background:#128C7E}
+.mt{font-size:9px;opacity:.45;margin-top:4px;text-align:right}
+
+.results-row{display:flex;gap:14px;margin-bottom:20px}
+.r-card{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:18px 20px;text-align:center}
+.r-card.green{background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.25)}
+.r-n{font-size:38px;font-weight:900;letter-spacing:-2px;line-height:1;color:#fff}
+.green .r-n{color:#25d366}
+.r-l{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:5px}
+
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:26px;font-weight:300;color:#F26522}
+.tag{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:2px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="slide-num">3 / 6 — Desliza</div>
+  <div>
+    <div class="eyebrow">Conversación real — restaurante en Bogotá</div>
+    <div class="headline">El bot que cotiza,<br/>agenda y <em>cierra ventas</em></div>
+    <div class="sub">Sin intervención humana. En tiempo real.</div>
+  </div>
+
+  <div class="phone-wide">
+    <div class="wa-header">
+      <div class="wa-av">R</div>
+      <div><div class="wa-info-name">Restaurante Don Pedrito</div><div class="wa-status">Bot activo · en línea ahora</div></div>
+    </div>
+    <div class="wa-msgs">
+      <div class="msg u">Buenas, tienen domicilio a Chapinero? Cuánto demora?<div class="mt">11:47 pm</div></div>
+      <div class="msg b">¡Hola! Claro que sí, hacemos domicilio a Chapinero. El tiempo estimado es de 35-45 minutos. ¿Qué vas a pedir?<div class="mt">11:47 pm</div></div>
+      <div class="msg u">Qué tiene el menú ejecutivo?<div class="mt">11:48 pm</div></div>
+      <div class="msg b dark">El menú ejecutivo incluye: sopa del día, plato principal (3 opciones: pollo, res o vegetariano), bebida y postre. Todo por $22.000. ¿Lo pedimos?<div class="mt">11:48 pm</div></div>
+      <div class="msg u">Sí, uno de pollo. Pago por Nequi.<div class="mt">11:48 pm</div></div>
+      <div class="msg b">Perfecto! Te envío el número de Nequi ahora. ¿Me confirmas tu dirección exacta en Chapinero?<div class="mt">11:49 pm</div></div>
+    </div>
+  </div>
+
+  <div class="results-row">
+    <div class="r-card green">
+      <div class="r-n">2 min</div>
+      <div class="r-l">Pedido cerrado</div>
+    </div>
+    <div class="r-card">
+      <div class="r-n">$0</div>
+      <div class="r-l">Costo de atención</div>
+    </div>
+    <div class="r-card">
+      <div class="r-n">11PM</div>
+      <div class="r-l">Sin nadie conectado</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+    <div class="tag">#WhatsAppBot #Restaurantes #PymeColombia</div>
+  </div>
+</div>
+</body>
+</html>

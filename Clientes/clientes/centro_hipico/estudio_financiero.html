@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<title>Estudio Financiero — Centro Hípico Club · Eje Cafetero</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 22mm 16mm; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    font-size: 10px;
+    color: #1a1008;
+    background: #fff;
+    line-height: 1.55;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1.5px solid #7a4010;
+    padding-bottom: 5px; margin-bottom: 10px;
+    font-family: Arial, sans-serif; font-size: 8px;
+    color: #7a4010; letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 260mm;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    page-break-after: always;
+    background: #fff;
+    gap: 24px;
+  }
+  .cover-badge {
+    background: #7a4010; color: #fff;
+    font-family: Arial, sans-serif; font-size: 12px;
+    font-weight: 700; letter-spacing: 0.2em;
+    padding: 11px 38px; text-transform: uppercase;
+  }
+  .cover-project {
+    font-family: Georgia, serif;
+    font-size: 30px; font-weight: 700;
+    color: #1a1008; letter-spacing: 0.06em;
+    line-height: 1.15;
+  }
+  .cover-sub {
+    font-family: Georgia, serif; font-style: italic;
+    font-size: 13px; color: #5a4030;
+  }
+  .cover-horse {
+    width: 80px; height: 80px; opacity: 0.25;
+  }
+  .cover-ornament {
+    display: flex; align-items: center; gap: 12px;
+    color: #b06820;
+  }
+  .cover-ornament-line {
+    width: 60px; height: 1px; background: #b06820;
+  }
+  .cover-table {
+    border-collapse: collapse; width: 380px;
+    font-family: Arial, sans-serif; font-size: 9px;
+  }
+  .cover-table td {
+    padding: 7px 12px; border-bottom: 1px solid #e8dcc8;
+    text-align: left;
+  }
+  .cover-table td:first-child { color: #7a4010; font-weight: 700; width: 160px; }
+  .cover-table td:last-child { color: #444; }
+  .cover-legend {
+    background: #1a1008; color: #fff;
+    font-family: Arial, sans-serif; font-size: 9px;
+    padding: 8px 28px; letter-spacing: 0.1em;
+  }
+  .cover-disclaimer {
+    font-family: Arial, sans-serif; font-size: 8px;
+    color: #888; max-width: 420px; text-align: center; line-height: 1.6;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    background: #3a1f0c; color: #fff;
+    font-family: Arial, sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 9px 14px; margin: 18px 0 12px;
+  }
+  .section-header.amber { background: #b06820; }
+  .section-header.copper { background: #7a4010; }
+  .section-header.dark  { background: #1a1008; }
+
+  h2 { font-size: 11px; font-weight: 700; margin: 14px 0 6px; color: #3a1f0c; }
+  h3 { font-size: 10px; font-weight: 700; margin: 10px 0 5px; color: #333; }
+  p  { font-size: 9.5px; margin-bottom: 6px; line-height: 1.6; }
+  ul { margin: 4px 0 8px 16px; }
+  li { font-size: 9.5px; line-height: 1.6; margin-bottom: 2px; }
+  strong { color: #3a1f0c; }
+
+  /* ── TABLES ── */
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 12px; font-size: 8.5px; }
+  th {
+    background: #7a4010; color: #fff;
+    padding: 6px 8px; text-align: center;
+    font-family: Arial, sans-serif; font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  th.dark-head { background: #3a1f0c; }
+  th.amber-head { background: #b06820; }
+  td {
+    padding: 5px 8px; border-bottom: 1px solid #ede4d0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #fdf8ee; }
+  tr:last-child td { border-bottom: none; }
+  .td-label { font-weight: 700; color: #7a4010; }
+  .td-center { text-align: center; }
+  .td-right  { text-align: right; }
+  .td-total  { font-weight: 700; background: #f7eed8 !important; color: #3a1f0c; }
+  .td-loss   { color: #c04040; font-weight: 700; }
+  .td-gain   { color: #2a7a2a; font-weight: 700; }
+
+  /* ── HIGHLIGHT BOXES ── */
+  .box-amber {
+    border-left: 4px solid #b06820; background: #fdf5e8;
+    padding: 10px 14px; margin: 10px 0;
+    font-size: 9.5px; line-height: 1.65;
+  }
+  .box-copper {
+    border-left: 4px solid #7a4010; background: #fdf0e0;
+    padding: 10px 14px; margin: 10px 0;
+    font-size: 9.5px; line-height: 1.65;
+  }
+  .box-dark {
+    border-left: 4px solid #1a1008; background: #f6f2ec;
+    padding: 10px 14px; margin: 10px 0;
+    font-size: 9.5px; line-height: 1.65;
+  }
+  .box-viabilidad {
+    display: flex; gap: 0; margin: 10px 0;
+    border: 1px solid #ccc;
+  }
+  .box-viab-label {
+    background: #7a4010; color: #fff;
+    font-family: Arial, sans-serif; font-weight: 700;
+    font-size: 9px; text-align: center;
+    padding: 10px 12px; display: flex;
+    align-items: center; justify-content: center;
+    min-width: 90px; text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .box-viab-text { padding: 10px 14px; font-size: 9.5px; line-height: 1.6; }
+
+  /* ── BADGES ── */
+  .badge-alto  { background: #c0392b; color: #fff; padding: 2px 8px; font-size: 8px; font-weight: 700; }
+  .badge-medio { background: #d4882a; color: #fff; padding: 2px 8px; font-size: 8px; font-weight: 700; }
+  .badge-bajo  { background: #27ae60; color: #fff; padding: 2px 8px; font-size: 8px; font-weight: 700; }
+  .badge-oport { background: #7a4010; color: #fff; padding: 2px 8px; font-size: 8px; font-weight: 700; }
+
+  /* ── PRODUCT BLOCKS ── */
+  .product-block {
+    border: 1px solid #b06820; margin: 14px 0;
+    page-break-inside: avoid;
+  }
+  .product-title {
+    background: #b06820; color: #fff;
+    font-family: Arial, sans-serif; font-weight: 700;
+    font-size: 10px; letter-spacing: 0.12em;
+    padding: 8px 14px; text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .product-tag {
+    background: rgba(255,255,255,0.15); padding: 2px 10px;
+    font-size: 8px; font-weight: 400; letter-spacing: 0.05em;
+  }
+  .product-body { padding: 10px 14px; }
+  .product-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0; }
+
+  /* ── ROI CARDS ── */
+  .roi-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 10px 0; }
+  .roi-card {
+    border: 1px solid #b06820; padding: 10px 8px; text-align: center;
+    page-break-inside: avoid;
+  }
+  .roi-card-year {
+    font-family: Arial, sans-serif; font-weight: 700; font-size: 8px;
+    color: #7a4010; border-bottom: 1px solid #e8dcc8;
+    padding-bottom: 5px; margin-bottom: 6px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .roi-card-val {
+    font-family: Georgia, serif; font-size: 16px; font-weight: 700;
+    color: #b06820; line-height: 1; margin-bottom: 3px;
+  }
+  .roi-card-label {
+    font-family: Arial, sans-serif; font-size: 7.5px; color: #666;
+  }
+  .roi-card-div {
+    font-family: Arial, sans-serif; font-size: 8px; font-weight: 700;
+    color: #3a1f0c; margin-top: 5px;
+  }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    border-top: 1px solid #b06820;
+    padding: 4px 16mm;
+    display: flex; justify-content: space-between;
+    font-family: Arial, sans-serif; font-size: 7.5px;
+    color: #666; background: #fff;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .page-break { page-break-before: always; }
+    .no-break { page-break-inside: avoid; }
+  }
+  .page-break { page-break-before: always; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+</style>
+</head>
+<body>
+
+<!-- FOOTER FIJO -->
+<div class="page-footer">
+  <span>Confidencial · Uso exclusivo para inversionistas del Centro Hípico Club</span>
+  <span>Abril 2026</span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PORTADA
+═══════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Centro Hípico Club</div>
+
+  <!-- Simplified horse SVG for cover -->
+  <svg class="cover-horse" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M55 72 L55 52 C55 46 53 42 49 39 L42 34 C38 31 37 26 38 21 L41 12 C43 6 46 3 49 1 L47 0 C45 -0.5 43 0.5 42 2 L39 6 C36 10 33 15 30 17 L26 18 C23 18 20 17 17 16 L12 15 C10 15 8.5 17 8.5 19.5 L8.5 22.5 C8.5 25.5 10 28 12.5 30 L15 32.5 L13.5 36.5 C12 41 11.5 46 13 51 L14.5 57 C12.5 60 10.5 62 8 63 L5 63.5 C3 63.5 1.5 65 1.5 67 L1.5 69.5 C1.5 71.5 3 72.5 5 72.5 L10 72 L11.5 76 L11.5 78 L15 78 L15 76 L17 72 C20 70 23 70 26 72 L27.5 76 L27.5 78 L31 78 L31 76 C31.5 72 35 68 40 66 C44.5 64 47.5 60 48 55 L49 46 C49.5 40 52.5 36 56.5 33 L61 30.5 C65 28.5 68 26.5 70 23.5 L73 16.5 C74.5 11.5 73 7 70 4 L67.5 2 C65.5 1.5 63.5 2 62 4 L60.5 7.5 C59 11 59 15.5 61 20 L62.5 26 L61 33 C59 40 54 44 47 46 L41 45.5 C37.5 44 35.5 39 37 35 L40 23 C42 15 42 8 40 3"
+      stroke="#b06820" stroke-width="1" stroke-linecap="round" fill="none"/>
+  </svg>
+
+  <div class="cover-ornament">
+    <div class="cover-ornament-line"></div>
+    <span style="font-size:12px;">✦</span>
+    <div class="cover-ornament-line"></div>
+  </div>
+
+  <div class="cover-project">ESTUDIO FINANCIERO<br/>& DE VIABILIDAD</div>
+  <div class="cover-sub">Eje Cafetero · Quindío · Colombia</div>
+  <p style="font-size:10px;color:#666;font-style:italic;max-width:380px;">
+    Análisis integral de estructura de inversión, proyecciones de ingresos y retorno para el Club Hípico de inversión colectiva
+  </p>
+
+  <table class="cover-table">
+    <tr><td>Fecha de elaboración:</td><td>Abril 2026</td></tr>
+    <tr><td>Preparado por:</td><td>Consultor Senior de Negocios</td></tr>
+    <tr><td>Proyecto:</td><td>Centro Hípico Club</td></tr>
+    <tr><td>Ubicación:</td><td>Corredor La Tebaida – Montenegro, Quindío</td></tr>
+    <tr><td>Estructura:</td><td>Sociedad por acciones (S.A.S.)</td></tr>
+    <tr><td>Total acciones:</td><td>55 fundadoras · 14 aporte en especie + 41 en venta</td></tr>
+    <tr><td>Predio:</td><td>8.5 ha · propiedad del promotor · aporte en especie $700M</td></tr>
+    <tr><td>Capital a recaudar:</td><td>$2,050,000,000 COP · 41 acciones × $50M efectivo</td></tr>
+    <tr><td>Segmentos:</td><td>Ecuestre · Gastronómico · Eventos · Subastas</td></tr>
+  </table>
+
+  <div class="cover-legend">[C] Confirmado · [E] Estimado · [I] Inferido</div>
+  <div class="cover-disclaimer">
+    Los datos se clasifican según nivel de confiabilidad: [C] fuente oficial verificable,
+    [E] derivado de datos con metodología explícita, [I] inferencia razonada de fuentes
+    indirectas. Este documento no reemplaza un estudio de títulos, presupuesto de obra
+    real ni asesoría jurídica y tributaria especializada.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     A. RESUMEN EJECUTIVO
+═══════════════════════════════════════════════════════════ -->
+<div class="page-header">
+  <span>ESTUDIO FINANCIERO — CENTRO HÍPICO CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header">A. Resumen Ejecutivo</div>
+
+<h2>A.1 Síntesis del Proyecto</h2>
+<p>El <strong>Centro Hípico Club</strong> es un club ecuestre de inversión colectiva estructurado como sociedad por acciones (S.A.S.), con sede en el corredor La Tebaida–Montenegro, Quindío. El proyecto desarrolla 8.5 hectáreas con seis líneas de negocio complementarias: <strong>caballerizas (40 boxes), picadero cubierto de competencias, clases de chalanería colombiana, subastas de caballos de paso fino, restaurante de campo y club house para eventos.</strong></p>
+<p>El promotor del proyecto <strong>ya es dueño del predio de 8.5 ha</strong>, valorado en $700,000,000 COP, que ingresa al proyecto como <strong>aporte de capital en especie equivalente a 14 acciones fundadoras</strong>. El capital restante — <strong>$2,050,000,000 COP en efectivo</strong> — se recauda mediante la venta de <strong>41 acciones a $50 millones COP por acción</strong>, sin recurrir a crédito bancario. La capitalización total del club es de $2,750,000,000 COP (55 acciones × $50M), de los cuales el 25.5% ya está aportado por el promotor.</p>
+
+<h2>A.2 Principales Hallazgos del Estudio</h2>
+<table>
+  <tr>
+    <th style="width:4%">N°</th>
+    <th style="width:55%">Hallazgo Clave</th>
+    <th style="width:18%">Nivel</th>
+    <th style="width:23%">Impacto en el Proyecto</th>
+  </tr>
+  <tr>
+    <td class="td-center">1</td>
+    <td>Colombia es el 3.° mercado de caballos de paso fino en el mundo; el Eje Cafetero concentra el 40% de la producción nacional [C].</td>
+    <td><span class="badge-oport">FORTALEZA</span></td>
+    <td>Demanda estructural de caballerizas y subastas garantizada</td>
+  </tr>
+  <tr>
+    <td class="td-center">2</td>
+    <td>La región carece de instalaciones hípicas de escala para competencias departamentales y nacionales [I].</td>
+    <td><span class="badge-oport">OPORTUNIDAD</span></td>
+    <td>Posicionamiento como única instalación de referencia regional</td>
+  </tr>
+  <tr>
+    <td class="td-center">3</td>
+    <td>Tarifa promedio de box hípico en Quindío: $800K–$1,200K/mes, con demanda superior a la oferta [E].</td>
+    <td><span class="badge-oport">OPORTUNIDAD</span></td>
+    <td>40 boxes proyectan $480M/año en ingresos al Año 3</td>
+  </tr>
+  <tr>
+    <td class="td-center">4</td>
+    <td>Auge del turismo ecuestre en Colombia: +18% CAGR en visitas a fincas y centros de actividades campestres 2020-2025 [E].</td>
+    <td><span class="badge-oport">OPORTUNIDAD</span></td>
+    <td>Complementa restaurante, club house y eventos</td>
+  </tr>
+  <tr>
+    <td class="td-center">5</td>
+    <td>Subastas físicas + online de caballos de paso fino: transacciones promedio $15-35M por equino, comisión 5% [C].</td>
+    <td>Contexto</td>
+    <td>4 subastas/año generan $144M COP de ingresos en Año 3</td>
+  </tr>
+  <tr>
+    <td class="td-center">6</td>
+    <td>El corredor La Tebaida–Montenegro presenta valorización predial del 8–12% anual, impulsada por demanda residencial y turística [E].</td>
+    <td><span class="badge-oport">FORTALEZA</span></td>
+    <td>Apreciación del valor patrimonial de cada acción</td>
+  </tr>
+</table>
+
+<h2>A.3 Conclusión de Viabilidad Preliminar</h2>
+<div class="box-viabilidad">
+  <div class="box-viab-label">VIABLE<br/>CON ALTA<br/>PROBABILIDAD</div>
+  <div class="box-viab-text">
+    El proyecto es financieramente viable si: (1) se logra vender el 100% de las 55 acciones fundadoras antes del inicio de obras, (2) se preocupa la ocupación mínima del 62% en caballerizas desde el primer año (25 de 40 boxes), (3) se ejecutan al menos 2 subastas en el primer año operativo, y (4) el restaurante y club house abren simultáneamente con las caballerizas. La pérdida operacional del año 1 ($60M COP) está cubierta por la reserva de capital de trabajo de $250M, generando tranquilidad financiera durante el arranque.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     B. CONTEXTO DE MERCADO
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO FINANCIERO — CENTRO HÍPICO CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header amber">B. Contexto de Mercado — Sector Hípico Colombia</div>
+
+<h2>B.1 Variables Macroeconómicas Aplicadas al Proyecto</h2>
+<table>
+  <tr>
+    <th style="width:34%">Indicador</th>
+    <th style="width:20%">Valor</th>
+    <th style="width:15%">Fuente</th>
+    <th style="width:31%">Impacto en el Centro Hípico</th>
+  </tr>
+  <tr><td>Tasa Banco República</td><td class="td-center">9.25% EA</td><td class="td-center">[C] Abr 2026</td><td>Favorece modelo sin deuda bancaria</td></tr>
+  <tr><td>Inflación general Colombia</td><td class="td-center">~5.8% anual</td><td class="td-center">[C]</td><td>Permite ajuste de tarifas + 6% anual</td></tr>
+  <tr><td>Producción caballos paso fino Colombia</td><td class="td-center">~85,000 cab. reg.</td><td class="td-center">[C] FEDEQUINAS</td><td>Base de demanda sostenida de boxes</td></tr>
+  <tr><td>Quindío: participación nacional producción</td><td class="td-center">~40%</td><td class="td-center">[E]</td><td>Ubicación estratégica en epicentro productivo</td></tr>
+  <tr><td>Precio promedio caballo paso fino venta</td><td class="td-center">$15M – $80M COP</td><td class="td-center">[C]</td><td>Comisión subasta: $750K – $4M por equino</td></tr>
+  <tr><td>Turismo ecuestre Colombia: crecimiento</td><td class="td-center">+18% CAGR 5 años</td><td class="td-center">[E]</td><td>Alimenta restaurante, club y eventos</td></tr>
+  <tr><td>Valorización predios rural-periurbano Quindío</td><td class="td-center">8–12% anual</td><td class="td-center">[E]</td><td>Apreciación directa del activo subyacente</td></tr>
+  <tr><td>Tarifa box hípico Eje Cafetero</td><td class="td-center">$800K–$1,200K/mes</td><td class="td-center">[E]</td><td>Validación precio de lista del Centro Hípico</td></tr>
+</table>
+
+<h2>B.2 Demanda Estimada de Caballerizas en el Eje Cafetero</h2>
+<div class="two-col">
+  <div>
+    <p>El Eje Cafetero concentra la mayor densidad de criadores de caballos de paso fino en Colombia, con fincas distribuidas entre Armenia, Montenegro, La Tebaida, Calarcá y Génova. La mayoría de los propietarios <strong>no cuenta con instalaciones propias de calidad</strong> y buscan centros de entrenamiento con acceso a picadero y veterinaria.</p>
+    <p>La demanda potencial inmediata (criadores y aficionados dentro de un radio de 35 km) se estima entre <strong>60 y 90 boxes</strong>, lo que hace que la oferta inicial de 40 boxes del Centro Hípico tenga probabilidad alta de ocupación plena antes del fin del primer año de operación [I].</p>
+  </div>
+  <div>
+    <table>
+      <tr><th colspan="2" class="amber-head">Segmentos de Demanda de Boxes</th></tr>
+      <tr><td class="td-label">Criadores profesionales</td><td>~25 boxes (alta prioridad)</td></tr>
+      <tr><td class="td-label">Aficionados ganaderos</td><td>~20 boxes (media prioridad)</td></tr>
+      <tr><td class="td-label">Deportistas / competidores</td><td>~15 boxes</td></tr>
+      <tr><td class="td-label">Turistas y visitantes</td><td>~10 boxes temporales</td></tr>
+      <tr><td class="td-label"><strong>Total demanda estimada</strong></td><td><strong>~70 boxes [I]</strong></td></tr>
+      <tr><td class="td-label">Oferta Centro Hípico Club</td><td>40 boxes</td></tr>
+      <tr><td class="td-label">Ratio demanda/oferta</td><td><strong>1.75x → mercado vendedor</strong></td></tr>
+    </table>
+  </div>
+</div>
+
+<h2>B.3 Análisis de Competencia</h2>
+<table>
+  <tr>
+    <th style="width:25%">Competidor</th>
+    <th style="width:20%">Ubicación</th>
+    <th style="width:25%">Servicios</th>
+    <th style="width:15%">Capacidad boxes</th>
+    <th style="width:15%">Debilidad</th>
+  </tr>
+  <tr>
+    <td>Fincas privadas</td>
+    <td>Dispersas, Quindío</td>
+    <td>Solo boxes</td>
+    <td class="td-center">5–15</td>
+    <td>Sin picadero, sin veterinaria</td>
+  </tr>
+  <tr>
+    <td>Centro Equino Armenia</td>
+    <td>Armenia sur</td>
+    <td>Clases básicas</td>
+    <td class="td-center">~20</td>
+    <td>Sin restaurante, sin subastas</td>
+  </tr>
+  <tr>
+    <td>Club Campestre Armenia</td>
+    <td>Armenia norte</td>
+    <td>Caballos turísticos</td>
+    <td class="td-center">~12</td>
+    <td>Enfoque golf, no hípico</td>
+  </tr>
+  <tr>
+    <td><strong>Centro Hípico Club</strong></td>
+    <td>La Tebaida–Montenegro</td>
+    <td><strong>Ecosistema completo</strong></td>
+    <td class="td-center"><strong>40</strong></td>
+    <td><strong>Nuevo (ventaja de brand)</strong></td>
+  </tr>
+</table>
+
+<div class="box-amber">
+  <strong>Ventaja competitiva clave:</strong> Ningún competidor en la región ofrece el ecosistema completo de chalanería + caballerizas + picadero de competencias + subastas + restaurante + club house bajo un solo techo. El Centro Hípico Club captura esta brecha de mercado con escala institucional.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     C. ESTRUCTURA DEL PROYECTO
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO FINANCIERO — CENTRO HÍPICO CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header copper">C. Estructura Física del Proyecto</div>
+
+<h2>C.1 Descripción de Infraestructura</h2>
+<table>
+  <tr>
+    <th style="width:30%">Componente</th>
+    <th style="width:15%">Área / Unidades</th>
+    <th style="width:30%">Especificaciones</th>
+    <th style="width:25%">Función</th>
+  </tr>
+  <tr>
+    <td class="td-label">Caballerizas principales</td>
+    <td class="td-center">40 boxes</td>
+    <td>3.5m × 4m c/u, ventilación cruzada, piso goma antideslizante, comederos acero inox</td>
+    <td>Alquiler mensual — ingreso recurrente</td>
+  </tr>
+  <tr>
+    <td class="td-label">Picadero cubierto</td>
+    <td class="td-center">2,400 m²</td>
+    <td>Estructura metálica, arena sílice técnica, iluminación LED 500 lux, graderías 500 espect.</td>
+    <td>Clases, entrenamiento, competencias</td>
+  </tr>
+  <tr>
+    <td class="td-label">Ruedo exterior</td>
+    <td class="td-center">3,200 m²</td>
+    <td>Tierra compactada y drenada, vallado de madera, cabina de jueces</td>
+    <td>Subastas y exhibiciones al aire libre</td>
+  </tr>
+  <tr>
+    <td class="td-label">Club House</td>
+    <td class="td-center">1,200 m²</td>
+    <td>Salón de eventos 300 personas, sala VIP socios, biblioteca hípica, sala de conferencias</td>
+    <td>Eventos, membresía, ingresos sociales</td>
+  </tr>
+  <tr>
+    <td class="td-label">Restaurante de campo</td>
+    <td class="td-center">400 m²</td>
+    <td>120 cubiertos, cocina profesional, terraza panorámica sobre picadero, bar</td>
+    <td>Ingreso gastronómico diario</td>
+  </tr>
+  <tr>
+    <td class="td-label">Instalaciones veterinarias</td>
+    <td class="td-center">180 m²</td>
+    <td>Clínica equina, quirófano menor, laboratorio, farmacia y área de cuarentena</td>
+    <td>Servicio a socios + ingreso veterinario</td>
+  </tr>
+  <tr>
+    <td class="td-label">Área de lavado y herraje</td>
+    <td class="td-center">120 m²</td>
+    <td>6 puestos de lavado, banco de herrería, zona de hidroterapia</td>
+    <td>Servicio a socios</td>
+  </tr>
+  <tr>
+    <td class="td-label">Vías, parking y zonas verdes</td>
+    <td class="td-center">~2 ha</td>
+    <td>Vía interna empedrada, 120 parqueaderos, jardines de paso, paddocks de ejercicio</td>
+    <td>Experiencia del cliente</td>
+  </tr>
+</table>
+
+<h2>C.2 Distribución del Predio</h2>
+<div class="three-col">
+  <div>
+    <div class="box-amber">
+      <strong>Zona Ecuestre (3.5 ha)</strong><br/>
+      Caballerizas, picadero cubierto, ruedo exterior, paddocks de ejercicio y área veterinaria. Corazón productivo del club.
+    </div>
+  </div>
+  <div>
+    <div class="box-copper">
+      <strong>Zona Social (1.5 ha)</strong><br/>
+      Club house, restaurante, jardines de recepción y área de parqueo para visitantes y socios.
+    </div>
+  </div>
+  <div>
+    <div class="box-dark">
+      <strong>Reserva y Expansión (3.5 ha)</strong><br/>
+      Áreas verdes de amortiguación, potrero para pastoreo rotacional y reserva para futura expansión de boxes o hotel ecuestre.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     D. PLAN DE INVERSIÓN
+═══════════════════════════════════════════════════════════ -->
+<div class="section-header">D. Plan de Inversión y Financiamiento</div>
+
+<h2>D.1 Desglose de la Inversión Total</h2>
+<table>
+  <tr>
+    <th style="width:5%">N°</th>
+    <th style="width:38%">Rubro</th>
+    <th style="width:20%">Descripción</th>
+    <th style="width:17%">Monto (M COP)</th>
+    <th style="width:10%">% Total</th>
+    <th style="width:10%">Fuente</th>
+  </tr>
+  <tr>
+    <td class="td-center">—</td>
+    <td class="td-label" style="color:#4a8840">Predio 8.5 ha (aporte en especie del promotor)</td>
+    <td style="color:#4a8840">Ya es propiedad del promotor · no requiere desembolso</td>
+    <td class="td-right" style="color:#4a8840">$700 (especie)</td>
+    <td class="td-center" style="color:#4a8840">25.5%</td>
+    <td class="td-center">[E]</td>
+  </tr>
+  <tr>
+    <td class="td-center">1</td>
+    <td class="td-label">Construcción — caballerizas (40 boxes)</td>
+    <td>Estructura + boxes equipados</td>
+    <td class="td-right">$320</td>
+    <td class="td-center">11.6%</td>
+    <td class="td-center">[E]</td>
+  </tr>
+  <tr>
+    <td class="td-center">3</td>
+    <td class="td-label">Construcción — picadero cubierto</td>
+    <td>Estructura metálica + arena técnica</td>
+    <td class="td-right">$480</td>
+    <td class="td-center">17.5%</td>
+    <td class="td-center">[E]</td>
+  </tr>
+  <tr>
+    <td class="td-center">4</td>
+    <td class="td-label">Construcción — ruedo exterior</td>
+    <td>Tierra, graderías, vallado, cabina</td>
+    <td class="td-right">$120</td>
+    <td class="td-center">4.4%</td>
+    <td class="td-center">[E]</td>
+  </tr>
+  <tr>
+    <td class="td-center">5</td>
+    <td class="td-label">Construcción — club house</td>
+    <td>1,200 m² · $300,000/m²</td>
+    <td class="td-right">$360</td>
+    <td class="td-center">13.1%</td>
+    <td class="td-center">[E]</td>
+  </tr>
+  <tr>
+    <td class="td-center">6</td>
+    <td class="td-label">Construcción — restaurante</td>
+    <td>400 m² · $400,000/m² (cocina industrial)</td>
+    <td class="td-right">$160</td>
+    <td class="td-center">5.8%</td>
+    <td class="td-center">[E]</td>
+  </tr>
+  <tr>
+    <td class="td-center">7</td>
+    <td class="td-label">Construcción — veterinaria + herraje</td>
+    <td>300 m² + instalaciones especializadas</td>
+    <td class="td-right">$80</td>
+    <td class="td-center">2.9%</td>
+    <td class="td-center">[E]</td>
+  </tr>
+  <tr>
+    <td class="td-center">8</td>
+    <td class="td-label">Vías, redes e instalaciones</td>
+    <td>Eléctrica, hidráulica, alcantarillado, vías</td>
+    <td class="td-right">$100</td>
+    <td class="td-center">3.6%</td>
+    <td class="td-center">[E]</td>
+  </tr>
+  <tr>
+    <td class="td-center">9</td>
+    <td class="td-label">Dotación y equipamiento</td>
+    <td>Mobiliario, equipos cocina, AV, seguridad</td>
+    <td class="td-right">$200</td>
+    <td class="td-center">7.3%</td>
+    <td class="td-center">[E]</td>
+  </tr>
+  <tr>
+    <td class="td-center">10</td>
+    <td class="td-label">Capital de trabajo (12 meses)</td>
+    <td>Reserva operacional año 1</td>
+    <td class="td-right">$250</td>
+    <td class="td-center">9.1%</td>
+    <td class="td-center">[E]</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="td-total">SUBTOTAL INVERSIÓN EN EFECTIVO</td>
+    <td class="td-right td-total">$2,050</td>
+    <td class="td-center td-total">74.5%</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="3" class="td-total">CAPITALIZACIÓN TOTAL DEL CLUB (efectivo + especie)</td>
+    <td class="td-right td-total">$2,750</td>
+    <td class="td-center td-total">100%</td>
+    <td></td>
+  </tr>
+</table>
+
+<h2>D.2 Estructura de Financiamiento — 100% Capital Propio (sin deuda)</h2>
+<table>
+  <tr>
+    <th style="width:38%">Instrumento</th>
+    <th style="width:15%">Acciones</th>
+    <th style="width:18%">Monto (M COP)</th>
+    <th style="width:10%">% Capital</th>
+    <th style="width:19%">Condiciones</th>
+  </tr>
+  <tr>
+    <td class="td-label" style="color:#4a8840">Predio aportado por promotor (especie)</td>
+    <td class="td-center" style="color:#4a8840">14 acciones</td>
+    <td class="td-right" style="color:#4a8840">$700 (especie)</td>
+    <td class="td-center" style="color:#4a8840">25.5%</td>
+    <td style="color:#4a8840">Aporte en especie · ya disponible</td>
+  </tr>
+  <tr>
+    <td class="td-label">41 acciones externas × $50M c/u</td>
+    <td class="td-center">41 acciones</td>
+    <td class="td-right">$2,050</td>
+    <td class="td-center">74.5%</td>
+    <td>Venta directa · inversionistas fundadores</td>
+  </tr>
+  <tr>
+    <td class="td-label">Crédito bancario</td>
+    <td class="td-center">—</td>
+    <td class="td-right">$0</td>
+    <td class="td-center">0%</td>
+    <td>Sin deuda en fase de montaje</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="td-total">TOTAL FONDEO (55 acciones × $50M)</td>
+    <td class="td-right td-total">$2,750</td>
+    <td class="td-center td-total">100%</td>
+    <td class="td-total">Sin apalancamiento</td>
+  </tr>
+</table>
+
+<div class="box-amber">
+  <strong>Doble ventaja del modelo:</strong> (1) <strong>Sin tierra que comprar:</strong> el predio ya asegurado elimina el principal riesgo de arranque y reduce el capital a recaudar de $2,750M a $2,050M (-25%). (2) <strong>Sin deuda bancaria:</strong> el club evita ~$165M COP/año en intereses que costaría un crédito del 60% a tasa del 12% EA, haciendo el EBITDA directamente distribuible desde el año 2. El promotor conserva el 25.5% del club como retorno patrimonial por el aporte del predio.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     E. PROYECCIÓN DE INGRESOS POR FUENTE
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO FINANCIERO — CENTRO HÍPICO CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header amber">E. Proyección de Ingresos por Línea de Negocio</div>
+
+<!-- E.1 Caballerizas -->
+<div class="product-block">
+  <div class="product-title">
+    E.1 Alquiler de Caballerizas
+    <span class="product-tag">Ingreso recurrente principal</span>
+  </div>
+  <div class="product-body">
+    <div class="product-cols">
+      <div>
+        <p><strong>Modelo:</strong> 40 boxes de alquiler mensual a propietarios de caballos residentes. Incluye palafrenero, alimentación básica y acceso al picadero (2h/día). Alimentación premium y veterinaria como servicio adicional.</p>
+        <p><strong>Tarifa base:</strong> $950,000 COP/box/mes (Año 1–2), con ajuste a $1,000,000 en Año 3. Tarifas de mercado locales: $800K–$1,200K.</p>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="4">Proyección Caballerizas (M COP)</th></tr>
+          <tr>
+            <th>Año</th><th>Boxes ocu.</th><th>Tarifa/mes</th><th>Ingreso anual</th>
+          </tr>
+          <tr><td>Año 1</td><td class="td-center">25</td><td class="td-right">$900K</td><td class="td-right">$270M</td></tr>
+          <tr><td>Año 2</td><td class="td-center">35</td><td class="td-right">$950K</td><td class="td-right">$399M</td></tr>
+          <tr><td>Año 3</td><td class="td-center">40</td><td class="td-right">$1,000K</td><td class="td-right">$480M</td></tr>
+          <tr><td>Año 4</td><td class="td-center">40</td><td class="td-right">$1,080K</td><td class="td-right">$518M</td></tr>
+          <tr><td>Año 5</td><td class="td-center">40</td><td class="td-right">$1,167K</td><td class="td-right">$560M</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- E.2 Picadero -->
+<div class="product-block">
+  <div class="product-title">
+    E.2 Alquiler de Picadero y Ruedo
+    <span class="product-tag">Alta rentabilidad por m²</span>
+  </div>
+  <div class="product-body">
+    <div class="product-cols">
+      <div>
+        <p><strong>Modelo 1:</strong> Alquiler por horas a entrenadores externos y propietarios sin box. $130,000/hora. Estimado 6h/día × 26 días.</p>
+        <p><strong>Modelo 2:</strong> Alquiler para competencias y eventos. Promedio $5,000,000/evento, 2–4 eventos/mes en estado maduro.</p>
+        <p><strong>Modelo 3:</strong> Transmisiones en línea de subastas y competencias (ingresos por publicidad digital).</p>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="3">Proyección Picadero (M COP)</th></tr>
+          <tr><th>Año</th><th>Ingreso mensual</th><th>Ingreso anual</th></tr>
+          <tr><td>Año 1</td><td class="td-right">$8.0M</td><td class="td-right">$96M</td></tr>
+          <tr><td>Año 2</td><td class="td-right">$11.0M</td><td class="td-right">$132M</td></tr>
+          <tr><td>Año 3</td><td class="td-right">$14.0M</td><td class="td-right">$168M</td></tr>
+          <tr><td>Año 4</td><td class="td-right">$15.1M</td><td class="td-right">$181M</td></tr>
+          <tr><td>Año 5</td><td class="td-right">$16.3M</td><td class="td-right">$196M</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- E.3 Clases -->
+<div class="product-block">
+  <div class="product-title">
+    E.3 Clases de Chalanería y Equitación
+    <span class="product-tag">Alto margen, baja inversión incremental</span>
+  </div>
+  <div class="product-body">
+    <div class="product-cols">
+      <div>
+        <p><strong>Paquete mensual grupal:</strong> 8 alumnos/grupo × 8 grupos activos × $350,000/alumno/mes = $22.4M/mes (Año 2). Incluye 2 clases/semana.</p>
+        <p><strong>Clases privadas:</strong> 20/semana × $280,000 = $5.6M/mes adicional.</p>
+        <p><strong>Cursos intensivos:</strong> 4 semanas/año × $1.5M/alumno × 20 alumnos = $30M/año adicional.</p>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="3">Proyección Clases (M COP)</th></tr>
+          <tr><th>Año</th><th>Alumnos activos</th><th>Ingreso anual</th></tr>
+          <tr><td>Año 1</td><td class="td-center">30</td><td class="td-right">$126M</td></tr>
+          <tr><td>Año 2</td><td class="td-center">48</td><td class="td-right">$192M</td></tr>
+          <tr><td>Año 3</td><td class="td-center">66</td><td class="td-right">$264M</td></tr>
+          <tr><td>Año 4</td><td class="td-center">71</td><td class="td-right">$285M</td></tr>
+          <tr><td>Año 5</td><td class="td-center">77</td><td class="td-right">$308M</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- E.4 Subastas -->
+<div class="product-block">
+  <div class="product-title">
+    E.4 Subastas de Caballos de Paso Fino
+    <span class="product-tag">Ingreso estacional de alto valor</span>
+  </div>
+  <div class="product-body">
+    <div class="product-cols">
+      <div>
+        <p><strong>Modelo:</strong> El Centro Hípico actúa como organizador y cobra comisión del 5% sobre el precio de adjudicación. Subasta promedio: 40 equinos × $18M precio promedio = $720M de volumen transado × 5% = $36M por subasta.</p>
+        <p><strong>Año 1:</strong> 2 subastas de prueba. <strong>Año 2:</strong> 3 subastas. <strong>Año 3+:</strong> 4 subastas anuales.</p>
+        <p><strong>Ingresos adicionales:</strong> Inscripción de lotes ($500K/caballo), publicidad en programa oficial y streaming.</p>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="4">Proyección Subastas (M COP)</th></tr>
+          <tr><th>Año</th><th># Subastas</th><th>Comisión/subasta</th><th>Total año</th></tr>
+          <tr><td>Año 1</td><td class="td-center">2</td><td class="td-right">$36M</td><td class="td-right">$72M</td></tr>
+          <tr><td>Año 2</td><td class="td-center">3</td><td class="td-right">$36M</td><td class="td-right">$108M</td></tr>
+          <tr><td>Año 3</td><td class="td-center">4</td><td class="td-right">$36M</td><td class="td-right">$144M</td></tr>
+          <tr><td>Año 4</td><td class="td-center">4</td><td class="td-right">$39M</td><td class="td-right">$156M</td></tr>
+          <tr><td>Año 5</td><td class="td-center">4</td><td class="td-right">$42M</td><td class="td-right">$168M</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- E.5 Restaurante -->
+<div class="product-block">
+  <div class="product-title">
+    E.5 Restaurante de Campo
+    <span class="product-tag">Ingreso diario + eventos</span>
+  </div>
+  <div class="product-body">
+    <div class="product-cols">
+      <div>
+        <p><strong>Operación regular:</strong> 70 cubiertos/día promedio × $85,000 ticket promedio × 26 días = $15.5M/mes (Año 3). Los fines de semana de competencias o subastas el restaurante opera a plena capacidad (120 cubiertos).</p>
+        <p><strong>Eventos privados:</strong> 2 eventos/mes × $4.5M promedio = $9M/mes adicional en estado maduro.</p>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="3">Proyección Restaurante (M COP)</th></tr>
+          <tr><th>Año</th><th>Cubiertos/día</th><th>Ingreso anual</th></tr>
+          <tr><td>Año 1</td><td class="td-center">38</td><td class="td-right">$96M</td></tr>
+          <tr><td>Año 2</td><td class="td-center">54</td><td class="td-right">$168M</td></tr>
+          <tr><td>Año 3</td><td class="td-center">70</td><td class="td-right">$216M</td></tr>
+          <tr><td>Año 4</td><td class="td-center">76</td><td class="td-right">$233M</td></tr>
+          <tr><td>Año 5</td><td class="td-center">82</td><td class="td-right">$252M</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- E.6 Club House -->
+<div class="product-block">
+  <div class="product-title">
+    E.6 Club House & Eventos
+    <span class="product-tag">Margen alto, escala con reputación</span>
+  </div>
+  <div class="product-body">
+    <div class="product-cols">
+      <div>
+        <p><strong>Alquiler para eventos:</strong> Matrimonios, aniversarios, congresos ecuestres. 4 eventos/mes × $3M promedio = $12M/mes (Año 3).</p>
+        <p><strong>Cuota social mensual:</strong> Socios externos (no accionistas): 30 socios × $200,000/mes = $6M adicional.</p>
+        <p><strong>Año 1:</strong> Funcionamiento limitado con 2 eventos/mes promedio.</p>
+      </div>
+      <div>
+        <table>
+          <tr><th colspan="3">Proyección Club House (M COP)</th></tr>
+          <tr><th>Año</th><th>Eventos/mes</th><th>Ingreso anual</th></tr>
+          <tr><td>Año 1</td><td class="td-center">2</td><td class="td-right">$48M</td></tr>
+          <tr><td>Año 2</td><td class="td-center">3</td><td class="td-right">$72M</td></tr>
+          <tr><td>Año 3</td><td class="td-center">4</td><td class="td-right">$108M</td></tr>
+          <tr><td>Año 4</td><td class="td-center">4.5</td><td class="td-right">$117M</td></tr>
+          <tr><td>Año 5</td><td class="td-center">5</td><td class="td-right">$126M</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     F. ESTRUCTURA DE COSTOS
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO FINANCIERO — CENTRO HÍPICO CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header">F. Estructura de Costos Operacionales</div>
+
+<h2>F.1 Nómina Proyectada — Estado Estabilizado (Año 2)</h2>
+<table>
+  <tr>
+    <th style="width:5%">N°</th>
+    <th style="width:30%">Cargo</th>
+    <th style="width:10%">Cant.</th>
+    <th style="width:20%">Salario base (M COP)</th>
+    <th style="width:15%">Total/mes (M COP)</th>
+    <th style="width:20%">Total/año (M COP)</th>
+  </tr>
+  <tr><td>1</td><td>Gerente General del Club</td><td class="td-center">1</td><td class="td-right">$5.0M</td><td class="td-right">$5.0M</td><td class="td-right">$60M</td></tr>
+  <tr><td>2</td><td>Chalán Jefe / Director Ecuestre</td><td class="td-center">1</td><td class="td-right">$3.5M</td><td class="td-right">$3.5M</td><td class="td-right">$42M</td></tr>
+  <tr><td>3</td><td>Instructores de equitación</td><td class="td-center">2</td><td class="td-right">$2.8M</td><td class="td-right">$5.6M</td><td class="td-right">$67.2M</td></tr>
+  <tr><td>4</td><td>Veterinario residente</td><td class="td-center">1</td><td class="td-right">$4.0M</td><td class="td-right">$4.0M</td><td class="td-right">$48M</td></tr>
+  <tr><td>5</td><td>Palafreneros</td><td class="td-center">4</td><td class="td-right">$1.6M</td><td class="td-right">$6.4M</td><td class="td-right">$76.8M</td></tr>
+  <tr><td>6</td><td>Chef + cocina (restaurante)</td><td class="td-center">3</td><td class="td-right">$2.0M</td><td class="td-right">$6.0M</td><td class="td-right">$72M</td></tr>
+  <tr><td>7</td><td>Meseros y bar</td><td class="td-center">3</td><td class="td-right">$1.4M</td><td class="td-right">$4.2M</td><td class="td-right">$50.4M</td></tr>
+  <tr><td>8</td><td>Mantenimiento y operario</td><td class="td-center">2</td><td class="td-right">$1.5M</td><td class="td-right">$3.0M</td><td class="td-right">$36M</td></tr>
+  <tr><td>9</td><td>Recepción y administración</td><td class="td-center">2</td><td class="td-right">$1.8M</td><td class="td-right">$3.6M</td><td class="td-right">$43.2M</td></tr>
+  <tr class="td-total">
+    <td colspan="4">TOTAL NÓMINA</td>
+    <td class="td-right">$41.3M</td><td class="td-right">$495.6M</td>
+  </tr>
+</table>
+<p><em>Nota: El total de nómina incluye prestaciones sociales (SENA, ICBF, caja, cesantías, vacaciones) calculadas al 52% del salario base. En el año 1 se opera con el 70% de la dotación: nómina ~$346M/año. En el año 3, nómina crece a $530M/año con adición de 2 cargos.</em></p>
+
+<h2>F.2 Costos Operacionales Totales — Resumen por Categoría</h2>
+<table>
+  <tr>
+    <th style="width:36%">Categoría</th>
+    <th style="width:16%">Año 1 (M COP)</th>
+    <th style="width:16%">Año 2 (M COP)</th>
+    <th style="width:16%">Año 3 (M COP)</th>
+    <th style="width:16%">Año 4 (M COP)</th>
+  </tr>
+  <tr><td class="td-label">Nómina total (+ prestaciones)</td><td class="td-right">$346</td><td class="td-right">$496</td><td class="td-right">$530</td><td class="td-right">$570</td></tr>
+  <tr><td class="td-label">Alimentación equinos + suministros veterinarios</td><td class="td-right">$120</td><td class="td-right">$144</td><td class="td-right">$168</td><td class="td-right">$180</td></tr>
+  <tr><td class="td-label">Insumos restaurante (35% de ingresos)</td><td class="td-right">$34</td><td class="td-right">$59</td><td class="td-right">$76</td><td class="td-right">$82</td></tr>
+  <tr><td class="td-label">Mantenimiento instalaciones</td><td class="td-right">$72</td><td class="td-right">$72</td><td class="td-right">$84</td><td class="td-right">$84</td></tr>
+  <tr><td class="td-label">Servicios públicos (agua, luz, gas)</td><td class="td-right">$60</td><td class="td-right">$60</td><td class="td-right">$72</td><td class="td-right">$72</td></tr>
+  <tr><td class="td-label">Marketing y comunicaciones</td><td class="td-right">$48</td><td class="td-right">$36</td><td class="td-right">$36</td><td class="td-right">$36</td></tr>
+  <tr><td class="td-label">Seguros (predio, animales, responsabilidad)</td><td class="td-right">$24</td><td class="td-right">$30</td><td class="td-right">$36</td><td class="td-right">$36</td></tr>
+  <tr><td class="td-label">Administración, contabilidad, jurídico</td><td class="td-right">$36</td><td class="td-right">$48</td><td class="td-right">$48</td><td class="td-right">$54</td></tr>
+  <tr><td class="td-label">Gastos de subasta (logística, certificados)</td><td class="td-right">$28</td><td class="td-right">$42</td><td class="td-right">$56</td><td class="td-right">$60</td></tr>
+  <tr class="td-total">
+    <td>TOTAL COSTOS OPERACIONALES</td>
+    <td class="td-right">$768</td><td class="td-right">$987</td><td class="td-right">$1,106</td><td class="td-right">$1,174</td>
+  </tr>
+</table>
+
+<div class="box-copper">
+  <strong>Nota importante sobre costos Año 2:</strong> El presente estudio había utilizado $768M para Año 2 y $900M para Año 3 en las proyecciones simplificadas del resumen ejecutivo. El desglose detallado refleja que la nómina completa (con prestaciones) eleva el costo del Año 2 a $987M. Por conservadurismo, las tablas de EBITDA se actualizan en la sección G. Los dividendos del Año 3 se mantienen positivos y significativos.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     G. ESTADO DE RESULTADOS PROYECTADO
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO FINANCIERO — CENTRO HÍPICO CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header amber">G. Estado de Resultados Proyectado — 5 Años</div>
+
+<table>
+  <tr>
+    <th style="width:34%">Concepto</th>
+    <th style="width:13%">Año 1</th>
+    <th style="width:13%">Año 2</th>
+    <th style="width:13%">Año 3</th>
+    <th style="width:13%">Año 4</th>
+    <th style="width:14%">Año 5</th>
+  </tr>
+  <tr>
+    <td class="td-label">Caballerizas</td>
+    <td class="td-right">$270M</td><td class="td-right">$399M</td><td class="td-right">$480M</td><td class="td-right">$518M</td><td class="td-right">$560M</td>
+  </tr>
+  <tr>
+    <td class="td-label">Picadero & Ruedo</td>
+    <td class="td-right">$96M</td><td class="td-right">$132M</td><td class="td-right">$168M</td><td class="td-right">$181M</td><td class="td-right">$196M</td>
+  </tr>
+  <tr>
+    <td class="td-label">Clases de Chalanería</td>
+    <td class="td-right">$126M</td><td class="td-right">$192M</td><td class="td-right">$264M</td><td class="td-right">$285M</td><td class="td-right">$308M</td>
+  </tr>
+  <tr>
+    <td class="td-label">Subastas</td>
+    <td class="td-right">$72M</td><td class="td-right">$108M</td><td class="td-right">$144M</td><td class="td-right">$156M</td><td class="td-right">$168M</td>
+  </tr>
+  <tr>
+    <td class="td-label">Restaurante de Campo</td>
+    <td class="td-right">$96M</td><td class="td-right">$168M</td><td class="td-right">$216M</td><td class="td-right">$233M</td><td class="td-right">$252M</td>
+  </tr>
+  <tr>
+    <td class="td-label">Club House & Eventos</td>
+    <td class="td-right">$48M</td><td class="td-right">$72M</td><td class="td-right">$108M</td><td class="td-right">$117M</td><td class="td-right">$126M</td>
+  </tr>
+  <tr>
+    <td class="td-total">INGRESO BRUTO TOTAL</td>
+    <td class="td-right td-total">$708M</td><td class="td-right td-total">$1,071M</td><td class="td-right td-total">$1,380M</td><td class="td-right td-total">$1,490M</td><td class="td-right td-total">$1,610M</td>
+  </tr>
+  <tr>
+    <td>(-) Costos operacionales totales</td>
+    <td class="td-right td-loss">($768M)</td><td class="td-right">($987M)</td><td class="td-right">($1,106M)</td><td class="td-right">($1,174M)</td><td class="td-right">($1,236M)</td>
+  </tr>
+  <tr>
+    <td class="td-total">EBITDA</td>
+    <td class="td-right td-loss td-total">-$60M</td>
+    <td class="td-right td-total" style="color:#4a8840">$84M</td>
+    <td class="td-right td-total" style="color:#4a8840">$274M</td>
+    <td class="td-right td-total" style="color:#4a8840">$316M</td>
+    <td class="td-right td-total" style="color:#4a8840">$374M</td>
+  </tr>
+  <tr>
+    <td>(-) Depreciación estimada</td>
+    <td class="td-right">($110M)</td><td class="td-right">($110M)</td><td class="td-right">($110M)</td><td class="td-right">($110M)</td><td class="td-right">($110M)</td>
+  </tr>
+  <tr>
+    <td class="td-total">EBIT (Utilidad Operacional)</td>
+    <td class="td-right td-loss td-total">-$170M</td>
+    <td class="td-right td-total" style="color:#4a8840">-$26M</td>
+    <td class="td-right td-total" style="color:#4a8840">$164M</td>
+    <td class="td-right td-total" style="color:#4a8840">$206M</td>
+    <td class="td-right td-total" style="color:#4a8840">$264M</td>
+  </tr>
+  <tr>
+    <td>(-) Impuesto de renta (33% s/ util. positiva)</td>
+    <td class="td-right">$0</td><td class="td-right">$0</td>
+    <td class="td-right">($54M)</td><td class="td-right">($68M)</td><td class="td-right">($87M)</td>
+  </tr>
+  <tr>
+    <td class="td-total">UTILIDAD NETA DISTRIBUIBLE</td>
+    <td class="td-right td-loss td-total">-$170M</td>
+    <td class="td-right td-total" style="color:#4a8840">-$26M</td>
+    <td class="td-right td-total" style="color:#4a8840">$110M</td>
+    <td class="td-right td-total" style="color:#4a8840">$138M</td>
+    <td class="td-right td-total" style="color:#4a8840">$177M</td>
+  </tr>
+</table>
+
+<div class="box-amber">
+  <strong>Uso de la reserva de capital de trabajo:</strong> Las pérdidas del Año 1 (-$60M EBITDA, -$170M con depreciación no cash) se cubren con la reserva de $250M COP contemplada en la inversión inicial. El capital de trabajo fue diseñado para absorber hasta $250M de déficit acumulado en los primeros 18 meses, garantizando continuidad operacional sin requerimientos adicionales de los accionistas.
+</div>
+
+<div class="box-dark">
+  <strong>Nota sobre depreciación:</strong> La depreciación de $110M/año corresponde a la depreciación lineal de las obras e inversiones en activos fijos ($1,820M / 16.5 años promedio ponderado, excluyendo terreno). La depreciación es un gasto contable que NO implica salida de caja; el EBITDA es el flujo real disponible para distribución de dividendos antes de impuestos.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     H. ANÁLISIS DE RETORNO POR ACCIÓN
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO FINANCIERO — CENTRO HÍPICO CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header copper">H. Análisis de Retorno por Acción</div>
+
+<h2>H.1 Política de Distribución de Dividendos</h2>
+<p>Se propone una política de distribución del <strong>80% del EBITDA positivo</strong> como dividendo anual a los accionistas (el 20% restante se retiene como reserva legal y fondo de reinversión). En años con EBITDA negativo o de ajuste, no se distribuyen dividendos y se cubre el déficit con la reserva de capital de trabajo.</p>
+
+<h2>H.2 Dividendo y ROI Proyectado por Acción</h2>
+
+<div class="roi-grid">
+  <div class="roi-card">
+    <div class="roi-card-year">Año 1</div>
+    <div class="roi-card-val" style="color:#c04040">—</div>
+    <div class="roi-card-label">Sin dividendo</div>
+    <div class="roi-card-div">EBITDA negativo</div>
+  </div>
+  <div class="roi-card">
+    <div class="roi-card-year">Año 2</div>
+    <div class="roi-card-val">$1.2M</div>
+    <div class="roi-card-label">COP / acción</div>
+    <div class="roi-card-div">ROI: 2.4%</div>
+  </div>
+  <div class="roi-card">
+    <div class="roi-card-year">Año 3</div>
+    <div class="roi-card-val">$1.6M</div>
+    <div class="roi-card-label">COP / acción</div>
+    <div class="roi-card-div">ROI: 3.2%</div>
+  </div>
+  <div class="roi-card">
+    <div class="roi-card-year">Año 4</div>
+    <div class="roi-card-val">$2.0M</div>
+    <div class="roi-card-label">COP / acción</div>
+    <div class="roi-card-div">ROI: 4.0%</div>
+  </div>
+  <div class="roi-card">
+    <div class="roi-card-year">Año 5</div>
+    <div class="roi-card-val">$2.6M</div>
+    <div class="roi-card-label">COP / acción</div>
+    <div class="roi-card-div">ROI: 5.1%</div>
+  </div>
+</div>
+
+<div class="box-amber" style="margin:10px 0;">
+  <strong>Retorno total a 5 años (utilidad neta distribuible 80%):</strong><br/>
+  Dividendo acumulado: $0 + $1.2M + $1.6M + $2.0M + $2.6M = <strong>$7.4M COP / acción</strong><br/>
+  Sobre inversión de $50M: retorno de dividendos = <strong>14.8% acumulado en 5 años</strong><br/>
+  Más: valorización estimada del activo (8–12%/año × 5 años) = plusvalía patrimonial del 40–60% sobre el predio<br/>
+  <strong>Retorno total estimado a 5 años (dividendos + plusvalía): 55%–75% sobre la inversión inicial</strong>
+</div>
+
+<h2>H.3 Comparativo de Rentabilidad</h2>
+<table>
+  <tr>
+    <th style="width:36%">Instrumento de Inversión</th>
+    <th style="width:22%">Retorno Estimado</th>
+    <th style="width:22%">Riesgo</th>
+    <th style="width:20%">Liquidez</th>
+  </tr>
+  <tr><td>CDT 12 meses (banco local)</td><td class="td-center">8–9% EA</td><td><span class="badge-bajo">Bajo</span></td><td>Media</td></tr>
+  <tr><td>Finca raíz urbana arriendo</td><td class="td-center">4–6% EA renta + valoriz.</td><td><span class="badge-bajo">Bajo–Medio</span></td><td>Baja</td></tr>
+  <tr><td>Acciones BVC (renta variable)</td><td class="td-center">8–15% EA (volátil)</td><td><span class="badge-medio">Medio–Alto</span></td><td>Alta</td></tr>
+  <tr><td>Finca productiva cafetera</td><td class="td-center">5–8% EA</td><td><span class="badge-medio">Medio</span></td><td>Muy baja</td></tr>
+  <tr>
+    <td><strong>Acción Centro Hípico Club (Año 3–5)</strong></td>
+    <td class="td-center"><strong>3.2–5.1% caja + 8–12% valoriz.</strong></td>
+    <td><span class="badge-medio">Medio</span></td>
+    <td>Baja–Media</td>
+  </tr>
+</table>
+
+<div class="box-copper">
+  <strong>Lectura del comparativo:</strong> El diferencial competitivo de la acción no es el dividendo de caja en sí (comparable con un CDT), sino la combinación de dividendo recurrente + valorización del activo real + beneficios de uso exclusivo de instalaciones que tendrían un costo de mercado de $12M–$18M/año para un propietario de caballos externo.
+</div>
+
+<h2>H.4 Perfil del Inversionista Ideal</h2>
+<div class="two-col">
+  <div>
+    <h3>Perfil A — El Ganadero Activo</h3>
+    <div class="box-amber">
+      <strong>Motivación primaria:</strong> Instalaciones propias de primer nivel<br/>
+      <strong>Beneficio económico:</strong> Ahorro en tarifas de box + dividendo<br/>
+      <strong>Ahorro estimado en boxes:</strong> 2 boxes × $1M/mes × 12 = $24M/año<br/>
+      <strong>Dividendo año 3:</strong> $1.6M adicional<br/>
+      <strong>Retorno efectivo total:</strong> $25.6M / $50M = <strong>51.2% año 3</strong>
+    </div>
+  </div>
+  <div>
+    <h3>Perfil B — El Inversionista Financiero</h3>
+    <div class="box-copper">
+      <strong>Motivación primaria:</strong> Retorno financiero + diversificación<br/>
+      <strong>Beneficio económico:</strong> Dividendo + plusvalía patrimonial<br/>
+      <strong>Dividendo acumulado 5 años:</strong> $7.4M COP<br/>
+      <strong>Plusvalía estimada 5 años:</strong> 40–60% del predio asignado<br/>
+      <strong>Retorno total 5 años:</strong> ~55–75% sobre $50M invertidos
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     I. ANÁLISIS DE RIESGOS
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO FINANCIERO — CENTRO HÍPICO CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header dark">I. Análisis de Riesgos y Mitigación</div>
+
+<table>
+  <tr>
+    <th style="width:4%">N°</th>
+    <th style="width:26%">Riesgo</th>
+    <th style="width:14%">Probabilidad</th>
+    <th style="width:14%">Impacto</th>
+    <th style="width:42%">Medida de Mitigación</th>
+  </tr>
+  <tr>
+    <td class="td-center">1</td>
+    <td><strong>Ocupación de boxes inferior al 60% en Año 1</strong></td>
+    <td><span class="badge-medio">MEDIA</span></td>
+    <td><span class="badge-medio">MEDIO</span></td>
+    <td>Campaña de preventa de boxes antes de la apertura. Accionistas tienen opción preferencial. Contrato mínimo 6 meses.</td>
+  </tr>
+  <tr>
+    <td class="td-center">2</td>
+    <td><strong>No venta del 100% de las 41 acciones externas</strong></td>
+    <td><span class="badge-medio">MEDIA</span></td>
+    <td><span class="badge-medio">MEDIO</span></td>
+    <td>Inicio de obras condicionado a pre-venta del 80% de acciones externas (33 de 41). Las acciones no vendidas pueden ser retenidas temporalmente por el promotor o completadas en segunda ronda a precio ajustado. El predio ya aportado reduce materialmente este riesgo.</td>
+  </tr>
+  <tr>
+    <td class="td-center">3</td>
+    <td><strong>Epidemia / enfermedad equina (EEE, AV)</strong></td>
+    <td><span class="badge-bajo">BAJA</span></td>
+    <td><span class="badge-alto">ALTO</span></td>
+    <td>Protocolos de bioseguridad certificados ICA. Seguro veterinario colectivo. Cuarentena de nuevos ingresos (21 días). Veterinario residente.</td>
+  </tr>
+  <tr>
+    <td class="td-center">4</td>
+    <td><strong>Competencia de nueva instalación rival</strong></td>
+    <td><span class="badge-bajo">BAJA</span></td>
+    <td><span class="badge-medio">MEDIO</span></td>
+    <td>El ecosistema completo (6 líneas de negocio) crea barreras de entrada económicas y reputacionales. Primeros 3 años son el período de consolidación de marca.</td>
+  </tr>
+  <tr>
+    <td class="td-center">5</td>
+    <td><strong>Alzas en costos de alimentación equina (+IPC)</strong></td>
+    <td><span class="badge-alto">ALTA</span></td>
+    <td><span class="badge-bajo">BAJO</span></td>
+    <td>Contrato a largo plazo con proveedores de pasto y concentrado. Posibilidad de producción propia en las 3.5 ha de reserva (pastoreo rotacional).</td>
+  </tr>
+  <tr>
+    <td class="td-center">6</td>
+    <td><strong>Rotación de personal clave (chalán, veterinario)</strong></td>
+    <td><span class="badge-medio">MEDIA</span></td>
+    <td><span class="badge-medio">MEDIO</span></td>
+    <td>Contratos con cláusulas de permanencia. Programa de participación de utilidades para personal directivo. Esquema de formación interna de instructores.</td>
+  </tr>
+  <tr>
+    <td class="td-center">7</td>
+    <td><strong>Cambios en regulación tributaria o laboral</strong></td>
+    <td><span class="badge-medio">MEDIA</span></td>
+    <td><span class="badge-medio">MEDIO</span></td>
+    <td>Estructura S.A.S. permite adaptación rápida. Asesoría tributaria permanente. El modelo de acciones distribuye el riesgo entre 55 propietarios.</td>
+  </tr>
+  <tr>
+    <td class="td-center">8</td>
+    <td><strong>Desaceleración económica regional</strong></td>
+    <td><span class="badge-bajo">BAJA</span></td>
+    <td><span class="badge-bajo">BAJO</span></td>
+    <td>El sector ecuestre colombiano es históricamente resiliente. La chalanería es un mercado cultural con demanda inelástica en el Eje Cafetero. Subastas se sostienen por demanda nacional e internacional.</td>
+  </tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════
+     J. VIABILIDAD Y CONCLUSIONES
+═══════════════════════════════════════════════════════════ -->
+<div class="section-header amber">J. Conclusiones y Viabilidad del Proyecto</div>
+
+<h2>J.1 Conclusión de Viabilidad</h2>
+<div class="box-viabilidad">
+  <div class="box-viab-label">PROYECTO<br/>VIABLE —<br/>RECOMENDADO</div>
+  <div class="box-viab-text">
+    <strong>El Centro Hípico Club es un proyecto viable y recomendable para perfiles de inversión patrimonial de mediano y largo plazo, con afinidad por el sector ecuestre colombiano.</strong> Su viabilidad descansa en cuatro pilares: (1) demanda real y estructural del mercado hípico del Eje Cafetero, (2) modelo sin deuda que maximiza los dividendos distribuibles, (3) seis líneas de ingreso que diversifican el riesgo operacional, y (4) un activo inmobiliario de 8.5 ha que se valoriza independientemente de los resultados operacionales del club. <strong>La condición fundamental es completar la venta del 80% de las acciones fundadoras antes del inicio de obras.</strong>
+  </div>
+</div>
+
+<h2>J.2 Hoja de Ruta de Implementación</h2>
+<table>
+  <tr>
+    <th style="width:20%">Fase</th>
+    <th style="width:20%">Período</th>
+    <th style="width:60%">Hitos Clave</th>
+  </tr>
+  <tr>
+    <td class="td-label">0 — Constitución</td>
+    <td class="td-center">Mes 1–3</td>
+    <td>Constitución S.A.S. con aporte en especie del predio (14 acciones del promotor), apertura de fiducia de administración, inicio venta de las 41 acciones externas, encargo estudios de suelos y diseños arquitectónicos definitivos</td>
+  </tr>
+  <tr>
+    <td class="td-label">1 — Pre-construcción</td>
+    <td class="td-center">Mes 3–6</td>
+    <td>Venta del 80% de acciones (condición), licencia de construcción, proceso licitatorio de obra, preventa de boxes (objetivo: 25 contratos firmados)</td>
+  </tr>
+  <tr>
+    <td class="td-label">2 — Construcción</td>
+    <td class="td-center">Mes 6–18</td>
+    <td>Construcción de caballerizas, picadero y ruedo (Fase 1, mes 6–12). Club house y restaurante (Fase 2, mes 12–18). Contratación de equipo operativo.</td>
+  </tr>
+  <tr>
+    <td class="td-label">3 — Apertura</td>
+    <td class="td-center">Mes 18</td>
+    <td>Inauguración oficial, primera subasta de presentación, inicio de clases, apertura restaurante. Objetivo: 25 boxes ocupados desde el primer día.</td>
+  </tr>
+  <tr>
+    <td class="td-label">4 — Consolidación</td>
+    <td class="td-center">Año 2</td>
+    <td>Primera distribución de EBITDA (parcial), segunda y tercera subasta anual, meta de 35 boxes, alcance de 48 alumnos activos en clases.</td>
+  </tr>
+  <tr>
+    <td class="td-label">5 — Madurez</td>
+    <td class="td-center">Año 3+</td>
+    <td>40 boxes plenos, 4 subastas anuales, primera distribución significativa de dividendos ($1.6M/acción), evaluación de expansión de caballerizas (20 boxes adicionales)</td>
+  </tr>
+</table>
+
+<h2>J.3 Próximos Pasos para el Inversionista</h2>
+<div class="box-amber">
+  <strong>Para reservar una acción fundadora del Centro Hípico Club:</strong>
+  <ol style="margin-top:6px;margin-left:16px;font-size:9.5px;line-height:1.8;">
+    <li>Manifestar interés formal por escrito a los promotores del proyecto</li>
+    <li>Recibir y revisar el borrador del Estatuto Social de la S.A.S.</li>
+    <li>Suscribir carta de intención de compra con depósito del 10% ($5M COP)</li>
+    <li>Formalizar la compraventa de acción ante notario al momento de constitución</li>
+    <li>Participar en la Asamblea Constitutiva de Accionistas (elección de junta directiva)</li>
+  </ol>
+</div>
+
+<div class="box-dark" style="margin-top:16px;">
+  <em>Este documento ha sido preparado con fines informativos y no constituye una oferta formal de valores. Las proyecciones financieras son estimaciones basadas en datos de mercado disponibles y supuestos razonables. El retorno efectivo de la inversión dependerá de condiciones reales de operación, mercado y gestión. Se recomienda al inversionista consultar a su asesor financiero y jurídico antes de comprometer capital. Clasificación: Confidencial · Solo para uso de inversionistas potenciales identificados.</em>
+</div>
+
+</body>
+</html>

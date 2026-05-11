@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta - Colegio Educamos</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 16mm;
+    }
+
+    :root {
+      --navy: #0d2438;
+      --sky: #19b5e6;
+      --sky-soft: #e5f7fd;
+      --ink: #1a2431;
+      --muted: #617184;
+      --line: #d6e3eb;
+      --gold: #f4b942;
+      --paper: #ffffff;
+      --bg: #f4f8fb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+      font-size: 10px;
+    }
+
+    .page {
+      width: 100%;
+      background: var(--paper);
+      padding: 0;
+    }
+
+    .cover {
+      min-height: 265mm;
+      background:
+        radial-gradient(circle at top right, rgba(25, 181, 230, 0.22), transparent 30%),
+        linear-gradient(135deg, #0b1f33 0%, #14324d 58%, #19b5e6 100%);
+      color: #fff;
+      padding: 22mm 18mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+    }
+
+    .cover-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 7px 14px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 8px;
+    }
+
+    .cover-chip img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .cover h1 {
+      margin: 18mm 0 6mm;
+      font-size: 34px;
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+    }
+
+    .cover-lead {
+      max-width: 122mm;
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .cover-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8mm;
+    }
+
+    .cover-card {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 4mm;
+    }
+
+    .cover-label {
+      font-size: 7px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.62);
+      margin-bottom: 2mm;
+    }
+
+    .cover-value {
+      font-size: 11px;
+      line-height: 1.5;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding: 0 0 4mm;
+      margin-bottom: 6mm;
+    }
+
+    .page-title {
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sky);
+      font-weight: 700;
+    }
+
+    .page-sub {
+      font-size: 8px;
+      color: var(--muted);
+    }
+
+    .content {
+      padding: 0 0 8mm;
+    }
+
+    h2 {
+      margin: 0 0 4mm;
+      color: var(--navy);
+      font-size: 18px;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    h3 {
+      margin: 0 0 3mm;
+      font-size: 10px;
+      color: var(--navy);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0 0 3.2mm;
+      color: #334155;
+      line-height: 1.7;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 4mm;
+    }
+
+    li {
+      margin-bottom: 2.4mm;
+      color: #334155;
+      line-height: 1.65;
+    }
+
+    .section {
+      margin-bottom: 8mm;
+      page-break-inside: avoid;
+    }
+
+    .hero-box {
+      background: linear-gradient(180deg, #f8fdff 0%, #eef8fd 100%);
+      border: 1px solid #cdebf6;
+      border-radius: 5mm;
+      padding: 6mm;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      display: grid;
+      gap: 4mm;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 5mm;
+      padding: 5mm;
+      background: #fff;
+    }
+
+    .accent-card {
+      border: 1px solid #cdebf6;
+      background: var(--sky-soft);
+      border-radius: 5mm;
+      padding: 5mm;
+    }
+
+    .metric {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2mm;
+    }
+
+    .phase {
+      border-left: 3px solid var(--sky);
+      padding-left: 4mm;
+    }
+
+    .price-card {
+      border: 1px solid #bce3f0;
+      border-radius: 5mm;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .price-head {
+      background: var(--navy);
+      color: #fff;
+      padding: 4mm 5mm;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    .price-body {
+      padding: 5mm;
+    }
+
+    .price-number {
+      font-size: 21px;
+      color: var(--sky);
+      font-weight: 700;
+      margin-bottom: 2mm;
+    }
+
+    .footnote {
+      margin-top: 4mm;
+      font-size: 8px;
+      color: var(--muted);
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="cover">
+      <div>
+        <div class="cover-chip">
+          <img src="assets/LOGO-NEGRO.png" alt="Logo Educamos" />
+          Propuesta digital integral
+        </div>
+        <h1>Colegio Educamos<br />plataforma para un colegio virtual claro, confiable y escalable</h1>
+        <p class="cover-lead">
+          Propuesta para reorganizar la presencia digital de Educamos alrededor de tres momentos clave:
+          admisiones, experiencia académica y seguimiento continuo del estudiante.
+        </p>
+      </div>
+      <div class="cover-grid">
+        <article class="cover-card">
+          <div class="cover-label">Cliente</div>
+          <div class="cover-value">Colegio Educamos</div>
+        </article>
+        <article class="cover-card">
+          <div class="cover-label">Entrega</div>
+          <div class="cover-value">Sitio base + estudio + propuesta PDF</div>
+        </article>
+        <article class="cover-card">
+          <div class="cover-label">Fecha</div>
+          <div class="cover-value">19 de abril de 2026</div>
+        </article>
+        <article class="cover-card">
+          <div class="cover-label">Objetivo</div>
+          <div class="cover-value">Convertir visitas en estudiantes activos</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="page-header">
+        <div class="page-title">Resumen ejecutivo</div>
+        <div class="page-sub">Colegio Educamos · Propuesta inicial</div>
+      </div>
+
+      <div class="section hero-box">
+        <h2>Qué estamos proponiendo</h2>
+        <p>
+          Construir una presencia digital más coherente para Educamos, pensada como colegio virtual y no solo
+          como portal de servicios. La solución incluye una ruta de admisiones simple, una capa de experiencia
+          académica visible y un panel informativo que haga tangible el progreso del estudiante.
+        </p>
+      </div>
+
+      <div class="section grid-3">
+        <article class="card">
+          <h3>Problema actual</h3>
+          <p>
+            La oferta está dispersa entre cursos, tutorías, programas, tienda y canales externos. Esto reduce
+            claridad y baja la percepción institucional.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Solución</h3>
+          <p>
+            Una arquitectura digital centrada en perfiles de usuario: aspirante, estudiante, acudiente y equipo académico.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Beneficio</h3>
+          <p>
+            Más confianza, menos fricción en inscripción y una experiencia académica mejor comunicada.
+          </p>
+        </article>
+      </div>
+
+      <div class="section">
+        <h2>Objetivos del proyecto</h2>
+        <div class="grid-2">
+          <article class="accent-card">
+            <h3>Objetivos de negocio</h3>
+            <ul>
+              <li>Aumentar la conversión de visitantes a preinscritos.</li>
+              <li>Ordenar la oferta comercial para evitar saturación.</li>
+              <li>Posicionar a Educamos como colegio virtual con acompañamiento real.</li>
+            </ul>
+          </article>
+          <article class="accent-card">
+            <h3>Objetivos de experiencia</h3>
+            <ul>
+              <li>Mostrar claramente el paso a paso de admisión.</li>
+              <li>Visibilizar agenda, tareas, clases y progreso.</li>
+              <li>Hacer que estudiantes y acudientes entiendan el estado académico de un vistazo.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="section page-break">
+        <div class="page-header">
+          <div class="page-title">Arquitectura funcional</div>
+          <div class="page-sub">Módulos recomendados</div>
+        </div>
+
+        <h2>Módulos que debe incluir la plataforma</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>1. Inicio institucional</h3>
+            <ul>
+              <li>Mensaje principal por perfil: terminar estudios, nivelación o cursos.</li>
+              <li>Programas destacados con duración y modalidad.</li>
+              <li>Prueba social: testimonios, convenios y beneficios.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>2. Admisiones</h3>
+            <ul>
+              <li>Formulario de preinscripción claro y corto.</li>
+              <li>Checklist de documentos.</li>
+              <li>Estado del proceso: recibido, validando, pago, activación.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>3. Vida académica</h3>
+            <ul>
+              <li>Agenda semanal y acceso a clases en vivo.</li>
+              <li>Clases grabadas y materiales del módulo.</li>
+              <li>Tareas próximas y recordatorios de entregas.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>4. Seguimiento</h3>
+            <ul>
+              <li>Avance por asignatura o ciclo.</li>
+              <li>Asistencia, alertas y notas parciales.</li>
+              <li>Vista para acudientes y coordinación académica.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Experiencia propuesta</h2>
+        <div class="grid-4">
+          <article class="card">
+            <span class="metric">4 pasos</span>
+            <p>Preinscripción, validación, pago y activación de acceso.</p>
+          </article>
+          <article class="card">
+            <span class="metric">3 vistas</span>
+            <p>Aspirante, estudiante y acudiente dentro de una misma lógica.</p>
+          </article>
+          <article class="card">
+            <span class="metric">1 panel</span>
+            <p>Resumen de agenda, progreso, tareas y avisos clave.</p>
+          </article>
+          <article class="card">
+            <span class="metric">0 confusión</span>
+            <p>Oferta ordenada y orientada a decisiones rápidas.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Fases de implementación sugeridas</h2>
+        <div class="grid-3">
+          <article class="card phase">
+            <h3>Fase 1. Base institucional</h3>
+            <ul>
+              <li>Definición de arquitectura.</li>
+              <li>Landing principal y páginas de programas.</li>
+              <li>Formularios y CTA de admisión.</li>
+            </ul>
+          </article>
+          <article class="card phase">
+            <h3>Fase 2. Portal académico</h3>
+            <ul>
+              <li>Dashboard estudiantil.</li>
+              <li>Agenda, clases, tareas y progreso.</li>
+              <li>Integración con procesos internos existentes.</li>
+            </ul>
+          </article>
+          <article class="card phase">
+            <h3>Fase 3. Optimización</h3>
+            <ul>
+              <li>Vista para acudientes.</li>
+              <li>Automatizaciones de seguimiento.</li>
+              <li>Mejoras de analítica y conversión.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="section page-break">
+        <div class="page-header">
+          <div class="page-title">Alcance y entregables</div>
+          <div class="page-sub">Versión inicial</div>
+        </div>
+
+        <h2>Entregables incluidos en esta primera propuesta</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Entregables conceptuales</h3>
+            <ul>
+              <li>Estudio de marca y diagnóstico digital.</li>
+              <li>Definición de propuesta de valor y rutas de usuario.</li>
+              <li>Prioridades funcionales para el colegio virtual.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Entregables de interfaz</h3>
+            <ul>
+              <li>HTML demo con home, admisiones y panel de estudiante.</li>
+              <li>Sistema visual inicial alineado con la marca actual.</li>
+              <li>Diseño preparado para evolucionar a desarrollo real.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Inversión sugerida por etapa</h2>
+        <div class="grid-3">
+          <article class="price-card">
+            <div class="price-head">Etapa 1</div>
+            <div class="price-body">
+              <div class="price-number">COP 2.500.000</div>
+              <p>Arquitectura, copy estratégico, diseño base y sitio institucional inicial.</p>
+            </div>
+          </article>
+          <article class="price-card">
+            <div class="price-head">Etapa 2</div>
+            <div class="price-body">
+              <div class="price-number">COP 3.800.000</div>
+              <p>Portal estudiantil, vistas de seguimiento y componentes académicos prioritarios.</p>
+            </div>
+          </article>
+          <article class="price-card">
+            <div class="price-head">Etapa 3</div>
+            <div class="price-body">
+              <div class="price-number">COP 1.800.000</div>
+              <p>Optimización, mejoras de conversión, reportes para acudientes y pulido final.</p>
+            </div>
+          </article>
+        </div>
+        <p class="footnote">
+          Valores de referencia para discusión comercial inicial. Pueden ajustarse según integraciones, alcance técnico real y tiempos del proyecto.
+        </p>
+      </div>
+
+      <div class="section hero-box">
+        <h2>Cierre</h2>
+        <p>
+          Educamos ya tiene una base comercial y una promesa valiosa. El siguiente paso no es agregar más páginas,
+          sino convertir esa oferta en una experiencia digital que haga sentir que el estudiante entra a un colegio
+          virtual serio, fácil de usar y acompañado de punta a punta.
+        </p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

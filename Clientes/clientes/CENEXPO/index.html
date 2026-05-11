@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Centro de exposiciones y eventos. Coliseos, salones y pabellones para ferias, convenciones y eventos corporativos en Armenia, Quindío.">
+  <meta name="keywords" content="centro de exposiciones, eventos, convenciones, coliseos, salones, pabellones, ferias, Armenia, Quindío">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Cenexpo | Centro de Exposiciones y Eventos">
+  <meta property="og:description" content="Espacios modernos para tus eventos y convenciones. Infraestructura de clase mundial en Armenia, Quindío.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <link rel="canonical" href="https://cenexpo.com">
+  <title>Cenexpo | Centro de Exposiciones y Eventos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; overflow-x:hidden; }
+    body { font-family:'Inter',system-ui,sans-serif; color:#1a1a2e; background:#fff; line-height:1.6; overflow-x:hidden; max-width:100vw; }
+    h1,h2,h3,h4,h5 { font-family:'Barlow Condensed',system-ui,sans-serif; letter-spacing:0.01em; }
+    a { text-decoration:none; }
+    img { max-width:100%; display:block; }
+
+    /* ── TOKENS ── */
+    :root {
+      --navy: #0D1B3E;
+      --navy2: #0f2456;
+      --blue: #1565C0;
+      --gold: #A8B0BC;
+      --gold2: #C8CDD6;
+      --gold3: #8A9099;
+      --white: #ffffff;
+      --neutral-50: #f9fafb;
+      --neutral-100: #f3f4f6;
+      --neutral-200: #e5e7eb;
+      --neutral-400: #9ca3af;
+      --neutral-500: #6b7280;
+      --neutral-600: #4b5563;
+      --neutral-700: #374151;
+      --neutral-800: #1f2937;
+      --neutral-900: #111827;
+    }
+
+    /* ── UTILITIES ── */
+    .container { max-width:1152px; margin:0 auto; padding:0 1.5rem; }
+    .section { padding:5rem 1.5rem; }
+    .section-title { font-size:clamp(2rem,5vw,3rem); font-weight:800; margin-bottom:1rem; color:var(--navy); }
+    .section-sub { font-size:1.1rem; color:var(--neutral-600); margin-bottom:3rem; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:.75rem 1.75rem; border-radius:8px; font-weight:700; font-size:1rem; border:none; cursor:pointer; transition:all .25s; font-family:'Inter',sans-serif; }
+    .btn-gold { background:var(--blue); color:#fff; }
+    .btn-gold:hover { background:#1254a1; transform:translateY(-2px); }
+    .btn-outline-gold { background:transparent; color:#fff; border:2px solid rgba(255,255,255,.7); }
+    .btn-outline-gold:hover { background:rgba(255,255,255,.12); transform:translateY(-2px); }
+    .btn-navy { background:var(--navy); color:#fff; }
+    .btn-navy:hover { background:var(--navy2); transform:translateY(-2px); }
+    .btn-blue { background:var(--blue); color:#fff; }
+    .btn-blue:hover { background:#1254a1; }
+    .fade-in { animation:fadeInUp .7s ease both; }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ── HEADER ── */
+    header {
+      position:sticky; top:0; z-index:100;
+      background:#ffffff;
+      box-shadow:0 1px 14px rgba(13,27,62,.13);
+      padding:.3rem 0;
+    }
+    .header-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .logo-wrap { display:flex; align-items:center; }
+    .logo-img { height:76px; width:auto; object-fit:contain; }
+    nav { display:flex; gap:2rem; align-items:center; }
+    nav a { font-size:.9rem; font-weight:500; color:var(--neutral-700); transition:color .2s; }
+    nav a:hover { color:var(--blue); }
+    .nav-cta { background:var(--blue); color:#fff !important; font-weight:700; padding:.45rem 1.2rem; border-radius:7px; }
+    .nav-cta:hover { background:#1254a1 !important; color:#fff !important; }
+    .menu-btn { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .menu-btn span { display:block; width:24px; height:2px; background:var(--navy); border-radius:2px; transition:all .3s; }
+
+    /* ── HERO ── */
+    #inicio {
+      position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(160deg, var(--navy) 0%, var(--navy2) 45%, var(--blue) 100%);
+      overflow:hidden;
+    }
+    .hero-glow {
+      position:absolute; inset:0; pointer-events:none;
+      background:radial-gradient(ellipse 70% 55% at 50% 65%, rgba(168,176,188,.13) 0%, transparent 70%);
+    }
+    .hero-svg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+    /* Replicamos el FluidPaths de hero.tsx: 60 líneas onduladas con draw cíclico */
+    @keyframes fluidDraw {
+      0%   { stroke-dashoffset: 4000; opacity: var(--op-low);  }
+      35%  { stroke-dashoffset: 0;    opacity: var(--op-high); }
+      65%  { stroke-dashoffset: 0;    opacity: var(--op-high); }
+      100% { stroke-dashoffset: -4000; opacity: var(--op-low); }
+    }
+    .fp { stroke-dasharray: 4000; stroke-dashoffset: 4000; animation: fluidDraw var(--dur) ease-in-out var(--del) infinite; }
+    .hero-content { position:relative; z-index:2; text-align:center; max-width:56rem; padding:2rem 1.5rem; }
+    .hero-h1 {
+      font-size:clamp(2.5rem,8vw,5rem); font-weight:800; line-height:1.05; margin-bottom:1.25rem;
+      background:linear-gradient(90deg,#ffffff 0%,#dce8ff 40%,#ffffff 75%,#a8c4f0 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      animation:fadeInUp .8s ease both;
+    }
+    .hero-p { font-size:clamp(1rem,2.5vw,1.35rem); color:rgba(255,255,255,.82); margin-bottom:2.5rem; animation:fadeInUp .8s .2s ease both; }
+    .hero-cta { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; animation:fadeInUp .8s .35s ease both; }
+
+    /* ── ABOUT ── */
+    #sobre-nosotros { background:#fff; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; margin-bottom:3rem; }
+    .about-list { list-style:none; margin-top:1.5rem; }
+    .about-list li { display:flex; gap:.75rem; padding:.6rem 0; color:var(--neutral-700); font-size:.95rem; align-items:flex-start; }
+    .about-list li::before { content:"✓"; color:var(--gold); font-weight:800; font-size:1.1rem; margin-top:1px; flex-shrink:0; }
+    .about-visual { background:linear-gradient(135deg,#eef3fc,#dbe6f8); border-radius:16px; padding:3rem; display:flex; align-items:center; justify-content:center; min-height:360px; }
+    .about-logo-box { text-align:center; }
+    .about-logo-box img { width:160px; height:160px; object-fit:contain; background:#fff; border-radius:16px; padding:1rem; box-shadow:0 8px 30px rgba(21,101,192,.15); margin:0 auto 1rem; }
+    .about-logo-box p { color:var(--blue); font-weight:600; font-size:1rem; }
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+    .stat-card { background:linear-gradient(135deg,var(--navy),var(--blue)); border-radius:12px; padding:1.75rem 1rem; text-align:center; color:#fff; }
+    .stat-num { font-family:'Barlow Condensed',sans-serif; font-size:2.2rem; font-weight:800; color:var(--gold2); }
+    .stat-label { font-size:.85rem; opacity:.88; margin-top:.25rem; }
+
+    /* ── SPACES ── */
+    #espacios { background:var(--neutral-50); }
+    .spaces-hint { display:inline-flex; align-items:center; gap:.5rem; font-size:.8rem; color:var(--blue); font-weight:600; margin-bottom:2.5rem; }
+    .spaces-hint::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--blue); animation:pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .spaces-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:4rem; }
+    .space-card {
+      background:#fff; border-radius:14px; padding:1.75rem; border:1.5px solid var(--neutral-200);
+      cursor:pointer; transition:all .25s; text-align:left;
+      display:flex; flex-direction:column;
+    }
+    .space-card:hover { border-color:var(--blue); box-shadow:0 12px 40px rgba(21,101,192,.15); transform:translateY(-4px); }
+    .space-type { font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--blue); margin-bottom:.5rem; }
+    .space-name { font-family:'Barlow Condensed',sans-serif; font-size:1.3rem; font-weight:700; color:var(--navy); margin-bottom:.9rem; }
+    .space-meta { display:flex; gap:1rem; margin-bottom:1rem; }
+    .space-meta-item { font-size:.85rem; color:var(--neutral-600); }
+    .space-meta-item strong { display:block; font-size:.95rem; color:var(--neutral-800); font-weight:600; }
+    .space-divider { width:1px; background:var(--neutral-200); }
+    .space-desc { font-size:.875rem; color:var(--neutral-600); flex:1; line-height:1.6; margin-bottom:1.25rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    .space-footer { margin-top:auto; padding-top:1rem; border-top:1px solid var(--neutral-100); display:flex; justify-content:space-between; align-items:center; }
+    .space-price-label { font-size:.7rem; color:var(--neutral-400); }
+    .space-price { font-family:'Barlow Condensed',sans-serif; font-size:1.2rem; font-weight:700; color:var(--blue); }
+    .space-price span { font-size:.7rem; font-weight:400; color:var(--neutral-400); }
+    .space-badge { background:var(--navy); color:var(--gold2); font-size:.72rem; font-weight:700; padding:.3rem .8rem; border-radius:6px; transition:background .2s; }
+    .space-card:hover .space-badge { background:var(--blue); }
+
+    /* Tabla tarifas */
+    #tarifas { scroll-margin-top:80px; }
+    .table-wrap { overflow-x:auto; border-radius:14px; border:1px solid var(--neutral-200); }
+    table { width:100%; border-collapse:collapse; font-size:.9rem; }
+    thead tr { background:var(--navy); color:#fff; }
+    thead th { padding:1rem 1.25rem; font-weight:700; text-align:left; font-family:'Inter',sans-serif; letter-spacing:.02em; }
+    thead th:last-child,thead th:nth-child(4),thead th:nth-child(3) { text-align:right; }
+    tbody tr { cursor:pointer; border-top:1px solid var(--neutral-200); transition:background .15s; }
+    tbody tr:nth-child(even) { background:var(--neutral-50); }
+    tbody tr:hover { background:#eef3fc; }
+    tbody td { padding:.9rem 1.25rem; color:var(--neutral-700); }
+    tbody td:nth-child(3),tbody td:nth-child(4),tbody td:nth-child(5) { text-align:right; }
+    tbody td:nth-child(4) { color:var(--blue); font-weight:600; }
+    tbody td:nth-child(5) { font-weight:700; color:var(--navy); }
+
+    /* ── SERVICES ── */
+    #servicios { background:#fff; }
+    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .service-card { background:var(--neutral-50); border-radius:12px; padding:1.75rem; transition:box-shadow .2s; }
+    .service-card:hover { box-shadow:0 8px 30px rgba(21,101,192,.12); }
+    .service-card h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.2rem; font-weight:700; color:var(--navy); margin-bottom:.6rem; }
+    .service-card p { font-size:.875rem; color:var(--neutral-600); margin-bottom:1rem; }
+    .service-list { list-style:none; }
+    .service-list li { font-size:.85rem; color:var(--neutral-700); padding:.35rem 0; display:flex; gap:.5rem; align-items:flex-start; }
+    .service-list li::before { content:"→"; color:var(--blue); font-weight:700; margin-top:1px; }
+
+    /* ── CALENDAR ── */
+    #calendario { background:var(--neutral-50); scroll-margin-top:80px; }
+    .cal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem; }
+    .cal-nav { display:flex; align-items:center; gap:.75rem; }
+    .cal-nav button { background:var(--navy); color:var(--gold2); border:none; border-radius:8px; width:36px; height:36px; font-size:1.2rem; cursor:pointer; transition:background .2s; display:flex; align-items:center; justify-content:center; }
+    .cal-nav button:hover { background:var(--blue); }
+    .cal-month-title { font-family:'Barlow Condensed',sans-serif; font-size:1.4rem; font-weight:700; color:var(--navy); min-width:200px; text-align:center; }
+    .space-filter { display:flex; gap:.5rem; flex-wrap:wrap; }
+    .space-filter button { padding:.35rem 1rem; border-radius:20px; border:2px solid var(--blue); background:#fff; color:var(--blue); font-weight:600; font-size:.8rem; cursor:pointer; transition:all .2s; font-family:'Inter',sans-serif; }
+    .space-filter button.active { background:var(--navy); color:var(--gold2); border-color:var(--navy); }
+    .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
+    .cal-day-name { text-align:center; font-size:.7rem; font-weight:700; color:var(--neutral-500); padding:.5rem 0; text-transform:uppercase; letter-spacing:.05em; }
+    .cal-cell { min-height:90px; border-radius:8px; border:1px solid var(--neutral-200); padding:.4rem .45rem; background:#fff; transition:box-shadow .2s; }
+    .cal-cell.other-month { background:var(--neutral-50); opacity:.5; }
+    .cal-cell.today { border:2px solid var(--blue); }
+    .cal-cell:not(.other-month):hover { box-shadow:0 4px 16px rgba(21,101,192,.18); cursor:pointer; }
+    .cal-date { font-size:.72rem; font-weight:700; color:var(--neutral-700); margin-bottom:.2rem; }
+    .cal-cell.today .cal-date { color:var(--blue); }
+    .event-chip { border-radius:4px; font-size:.62rem; font-weight:700; padding:2px 5px; margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer; line-height:1.4; }
+    .chip-coliseo { background:var(--blue); color:#fff; }
+    .chip-pabellon { background:var(--navy); color:var(--gold2); }
+    .chip-salon { background:var(--gold); color:var(--navy); }
+    .chip-fonda { background:#7c3aed; color:#fff; }
+    .chip-plazoleta { background:#059669; color:#fff; }
+    .chip-disponible { background:#d1fae5; color:#065f46; border:1px solid #6ee7b7; }
+    .cal-legend { display:flex; gap:1.25rem; flex-wrap:wrap; margin-top:1rem; font-size:.78rem; }
+    .legend-item { display:flex; align-items:center; gap:.4rem; color:var(--neutral-700); font-weight:500; }
+    .legend-dot { width:12px; height:12px; border-radius:3px; flex-shrink:0; }
+
+    /* ── CTA ── */
+    #cta-section {
+      position:relative; overflow:hidden;
+      background:linear-gradient(160deg, var(--navy) 0%, var(--navy2) 50%, var(--blue) 100%);
+      text-align:center; padding:5rem 1.5rem;
+    }
+    #cta-section::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 60% 50% at 50% 60%,rgba(168,176,188,.13) 0%,transparent 70%); }
+    .cta-inner { position:relative; z-index:1; max-width:42rem; margin:0 auto; }
+    .cta-inner h2 { font-size:clamp(2rem,5vw,3rem); font-weight:800; color:var(--gold2); margin-bottom:1rem; }
+    .cta-inner p { font-size:1.15rem; color:rgba(255,255,255,.82); margin-bottom:2rem; }
+    .cta-buttons { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+    /* ── FOOTER ── */
+    footer { background:var(--neutral-900); color:#d1d5db; padding:4rem 1.5rem 2rem; }
+    .footer-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-bottom:3rem; }
+    .footer-logo-wrap { display:flex; align-items:center; gap:.6rem; margin-bottom:.75rem; }
+    .footer-logo { width:40px; height:40px; border-radius:6px; object-fit:contain; background:#fff; padding:3px; }
+    .footer-brand .name { color:#fff; font-weight:700; font-size:.95rem; }
+    .footer-brand .sub { color:rgba(168,176,188,.75); font-size:.65rem; text-transform:uppercase; letter-spacing:.1em; }
+    .footer-desc { font-size:.85rem; color:#9ca3af; line-height:1.7; }
+    .footer-col h4 { color:#fff; font-weight:700; margin-bottom:1rem; font-size:.95rem; }
+    .footer-col ul { list-style:none; }
+    .footer-col ul li { margin-bottom:.6rem; }
+    .footer-col ul li a { font-size:.85rem; color:#9ca3af; transition:color .2s; }
+    .footer-col ul li a:hover { color:var(--gold2); }
+    .social-row { display:flex; gap:.75rem; margin-top:.5rem; }
+    .social-btn { width:40px; height:40px; border-radius:50%; background:#374151; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1rem; transition:background .2s; }
+    .social-btn:hover { background:var(--blue); }
+    .footer-bottom { border-top:1px solid #374151; padding-top:1.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.75rem; font-size:.8rem; color:#6b7280; }
+    .footer-bottom a { color:#6b7280; transition:color .2s; }
+    .footer-bottom a:hover { color:#9ca3af; }
+
+    /* ── MODAL (Spaces) ── */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:500; align-items:center; justify-content:center; padding:1rem; backdrop-filter:blur(4px); }
+    .modal-overlay.open { display:flex; animation:fadeIn .2s ease; }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    .space-modal { background:#fff; border-radius:16px; width:100%; max-width:760px; max-height:90vh; overflow-y:auto; box-shadow:0 30px 80px rgba(0,0,0,.3); animation:slideUp .25s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .modal-header { background:#fff; padding:2rem 2rem 1rem; border-bottom:1px solid var(--neutral-200); text-align:center; position:relative; }
+    .modal-close { position:absolute; top:1rem; right:1rem; background:rgba(0,0,0,.1); border:none; border-radius:50%; width:32px; height:32px; font-size:1rem; cursor:pointer; color:var(--neutral-700); transition:background .2s; display:flex; align-items:center; justify-content:center; }
+    .modal-close:hover { background:rgba(0,0,0,.2); }
+    .modal-type { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:var(--blue); display:block; margin-bottom:.4rem; }
+    .modal-title { font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:.05em; }
+    .modal-desc { background:var(--neutral-50); padding:1.25rem 2rem; font-size:.9rem; color:var(--neutral-700); font-weight:500; text-transform:uppercase; border-bottom:1px solid var(--neutral-200); line-height:1.6; }
+    .modal-body { display:grid; grid-template-columns:1fr 1fr; }
+    .modal-col { padding:1.75rem; }
+    .modal-col:first-child { border-right:1px solid var(--neutral-200); }
+    .modal-col h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; color:var(--navy); text-align:center; text-transform:uppercase; margin-bottom:1.25rem; }
+    .info-table { width:100%; border-collapse:collapse; border-radius:10px; overflow:hidden; border:1px solid var(--blue); }
+    .info-table td { padding:.85rem 1rem; vertical-align:middle; font-size:.85rem; }
+    .info-table tr { border-bottom:1px solid rgba(21,101,192,.3); }
+    .info-table tr:last-child { border-bottom:none; }
+    .info-table .td-label { background:var(--blue); color:#fff; font-weight:700; font-size:.7rem; text-transform:uppercase; letter-spacing:.06em; width:48%; text-align:center; }
+    .info-table .td-val { background:#fff; color:var(--neutral-900); font-weight:600; text-align:center; }
+    .modal-map { aspect-ratio:4/3; background:var(--neutral-100); border-radius:10px; border:2px dashed var(--neutral-300); display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--neutral-400); gap:.5rem; margin-bottom:1rem; }
+    .modal-map svg { width:48px; height:48px; }
+    .modal-map span { font-size:.8rem; font-weight:500; }
+    .features-grid { display:grid; grid-template-columns:1fr 1fr; gap:.5rem; margin-top:1rem; }
+    .feature-item { display:flex; align-items:center; gap:.5rem; font-size:.8rem; color:var(--neutral-600); }
+    .feature-dot { width:8px; height:8px; border-radius:50%; background:var(--blue); flex-shrink:0; }
+    .modal-footer-cta { background:var(--navy); padding:1.25rem 2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; border-radius:0 0 16px 16px; }
+    .modal-footer-cta p { color:rgba(255,255,255,.8); font-size:.9rem; }
+    .modal-footer-cta a { background:#fff; color:var(--blue); font-weight:700; padding:.6rem 1.5rem; border-radius:8px; font-size:.9rem; transition:background .2s; }
+    .modal-footer-cta a:hover { background:var(--neutral-100); }
+
+    /* Modal calendario */
+    .cal-modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:600; align-items:center; justify-content:center; padding:1rem; }
+    .cal-modal-overlay.open { display:flex; animation:fadeIn .2s ease; }
+    .cal-modal { background:#fff; border-radius:14px; padding:2rem; max-width:440px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,.25); animation:slideUp .25s ease; }
+    .cal-modal h3 { color:var(--navy); font-size:1.15rem; margin-bottom:.5rem; }
+    .cal-modal-close { float:right; background:none; border:none; font-size:1.3rem; cursor:pointer; color:var(--neutral-500); margin-top:-4px; }
+    .cal-modal-close:hover { color:var(--navy); }
+    .cal-modal-badge { display:inline-block; border-radius:20px; padding:.2rem .8rem; font-size:.75rem; font-weight:700; margin-bottom:.75rem; }
+    .cal-modal-info { font-size:.875rem; color:var(--neutral-700); line-height:1.8; }
+    .avail-row { display:flex; align-items:center; gap:.6rem; padding:.45rem 0; border-bottom:1px solid var(--neutral-100); font-size:.85rem; }
+    .avail-row:last-child { border-bottom:none; }
+    .avail-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+    .cal-modal-actions { margin-top:1.25rem; display:flex; gap:.75rem; }
+
+    /* ── RESPONSIVE ── */
+
+    /* Tablet grande (≤1024px) */
+    @media (max-width:1024px) {
+      .spaces-grid { grid-template-columns:repeat(2,1fr); }
+      .services-grid { grid-template-columns:repeat(2,1fr); }
+      .footer-grid { grid-template-columns:repeat(2,1fr); }
+      .stats-grid { grid-template-columns:repeat(2,1fr); }
+      .about-grid { gap:2rem; }
+    }
+
+    /* Tablet / Mobile (≤768px) */
+    @media (max-width:768px) {
+      /* Header */
+      header { position:sticky; top:0; }
+      .logo-img { height:56px; }
+      .menu-btn { display:flex; }
+      nav { display:none; }
+      nav.open {
+        display:flex; flex-direction:column;
+        position:fixed; top:0; left:0; right:0; bottom:0;
+        background:#fff; padding:5rem 2rem 2rem;
+        gap:1.5rem; z-index:99;
+        overflow-y:auto;
+      }
+      nav.open a { font-size:1.3rem; font-weight:600; color:var(--navy); padding:.5rem 0; border-bottom:1px solid var(--neutral-100); }
+      nav.open .nav-cta { background:var(--blue); color:#fff !important; border-radius:8px; text-align:center; padding:.75rem; border-bottom:none; }
+
+      /* Sections */
+      .section { padding:3rem 1rem; }
+      .section-sub { font-size:1rem; margin-bottom:2rem; }
+
+      /* About */
+      .about-grid { grid-template-columns:1fr; gap:1.5rem; }
+      .about-visual { min-height:200px; padding:2rem; }
+
+      /* Stats */
+      .stats-grid { grid-template-columns:repeat(2,1fr); gap:.75rem; }
+      .stat-card { padding:1.25rem .75rem; }
+      .stat-num { font-size:1.8rem; }
+
+      /* Spaces */
+      .spaces-grid { grid-template-columns:1fr; gap:1rem; }
+      .space-card { padding:1.25rem; }
+
+      /* Tabla tarifas */
+      .table-wrap { border-radius:8px; }
+      table { font-size:.78rem; }
+      thead th, tbody td { padding:.65rem .75rem; }
+
+      /* Services */
+      .services-grid { grid-template-columns:1fr; gap:1rem; }
+
+      /* Calendar */
+      .cal-header { flex-direction:column; align-items:flex-start; gap:.75rem; }
+      .cal-month-title { font-size:1.1rem; min-width:auto; }
+      .cal-cell { min-height:60px; padding:.25rem .3rem; }
+      .cal-day-name { font-size:.6rem; padding:.3rem 0; }
+      .event-chip { font-size:.55rem; padding:1px 3px; }
+      .cal-legend { gap:.75rem; font-size:.72rem; }
+      .space-filter { gap:.35rem; }
+      .space-filter button { padding:.25rem .7rem; font-size:.72rem; }
+
+      /* Modal */
+      .modal-overlay { padding:.5rem; align-items:flex-end; }
+      .space-modal { max-height:95vh; border-radius:16px 16px 0 0; }
+      .modal-header { padding:1.25rem 1.25rem .75rem; }
+      .modal-title { font-size:1.5rem; }
+      .modal-desc { padding:1rem 1.25rem; font-size:.82rem; }
+      .modal-body { grid-template-columns:1fr; }
+      .modal-col { padding:1.25rem; }
+      .modal-col:first-child { border-right:none; border-bottom:1px solid var(--neutral-200); }
+      .modal-footer-cta { padding:1rem 1.25rem; border-radius:0; }
+      .modal-footer-cta p { font-size:.8rem; }
+      .features-grid { grid-template-columns:1fr; gap:.35rem; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns:1fr; gap:1.5rem; }
+      .footer-bottom { flex-direction:column; text-align:center; gap:.5rem; }
+
+      /* CTA section */
+      #cta-section { padding:3rem 1rem; }
+      .cta-buttons { flex-direction:column; align-items:center; }
+      .cta-buttons .btn { width:100%; max-width:320px; }
+    }
+
+    /* Mobile pequeño (≤480px) */
+    @media (max-width:480px) {
+      .hero-h1 { font-size:2rem; line-height:1.1; }
+      .hero-p { font-size:.95rem; margin-bottom:1.75rem; }
+      .hero-cta { flex-direction:column; align-items:center; }
+      .hero-cta .btn { width:100%; max-width:280px; }
+      .stats-grid { grid-template-columns:1fr 1fr; }
+      .stat-num { font-size:1.6rem; }
+      .section-title { font-size:1.75rem; }
+      .cal-cell { min-height:48px; }
+      .cal-grid { gap:2px; }
+      .space-meta { flex-direction:column; gap:.4rem; }
+      .space-divider { display:none; }
+      table { font-size:.72rem; }
+      thead th, tbody td { padding:.5rem .6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Schema JSON-LD -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Cenexpo","description":"Centro de exposiciones y eventos en Armenia, Quindío","url":"https://cenexpo.com","sameAs":["https://facebook.com/cenexpo","https://instagram.com/cenexpo"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"EventVenue","name":"Cenexpo","description":"Centro de exposiciones con coliseos, salones y pabellones","url":"https://cenexpo.com"}</script>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="container header-inner">
+    <div class="logo-wrap">
+      <img class="logo-img" src="logo_cenexpo_final.jpeg" alt="CENEXPO de Grupo CASGO SAS">
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
+      <a href="#inicio">Inicio</a>
+      <a href="#sobre-nosotros">Nosotros</a>
+      <a href="#espacios">Espacios</a>
+      <a href="#tarifas">Tarifas</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#calendario">Calendario</a>
+      <a href="#contacto" class="nav-cta">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section id="inicio">
+  <div class="hero-glow"></div>
+  <!-- FluidPaths: 60 ondas generadas por JS igual que hero.tsx -->
+  <svg id="heroSvg" class="hero-svg" viewBox="0 0 1200 1500" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+
+  <div class="hero-content">
+    <h1 class="hero-h1">Centro de Exposiciones<br>y Eventos</h1>
+    <p class="hero-p">Espacios modernos para tus convenciones, ferias y eventos corporativos<br>en Armenia, Quindío</p>
+    <div class="hero-cta">
+      <a href="https://wa.me/573142617456?text=Hola%2C%20quiero%20reservar%20un%20espacio%20en%20CENEXPO" target="_blank" rel="noopener" class="btn btn-gold">Reservar Ahora</a>
+      <button class="btn btn-outline-gold" onclick="document.getElementById('espacios').scrollIntoView({behavior:'smooth'})">Ver Disponibilidad</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="sobre-nosotros" class="section">
+  <div class="container">
+    <h2 class="section-title">Sobre Cenexpo</h2>
+    <div class="about-grid">
+      <div>
+        <h3 style="font-family:'Barlow Condensed';font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:.75rem;">Infraestructura de Primer Nivel</h3>
+        <p style="color:var(--neutral-600);font-size:.95rem;line-height:1.7;margin-bottom:1.25rem;">Somos el principal centro de exposiciones y eventos de la región, especializados en ofrecer espacios versátiles y modernos para ferias comerciales, convenciones, conferencias y eventos corporativos de gran escala.</p>
+        <h3 style="font-family:'Barlow Condensed';font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:.75rem;">Nuestra Misión</h3>
+        <p style="color:var(--neutral-600);font-size:.95rem;line-height:1.7;margin-bottom:1rem;">Proporcionar espacios excepcionales que faciliten la conexión de negocios, la innovación y el crecimiento empresarial en Armenia, Quindío, consolidándonos como destino preferido para eventos de envergadura regional e internacional.</p>
+        <ul class="about-list">
+          <li>Más de 20 años de experiencia en gestión de eventos</li>
+          <li>Certificaciones internacionales de calidad</li>
+          <li>Equipo especializado disponible 24/7</li>
+          <li>Tecnología de punta en audiovisuales y telecomunicaciones</li>
+        </ul>
+      </div>
+      <div class="about-visual">
+        <div class="about-logo-box">
+          <img src="logo_cenexpo_final.jpeg" alt="CENEXPO de Grupo CASGO SAS" onerror="this.style.display='none'">
+          <p>CENEXPO de Grupo CASGO SAS</p>
+        </div>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">500+</div><div class="stat-label">Eventos Anuales</div></div>
+      <div class="stat-card"><div class="stat-num">50,000m²</div><div class="stat-label">Área Total</div></div>
+      <div class="stat-card"><div class="stat-num">15,000+</div><div class="stat-label">Visitantes Promedio</div></div>
+      <div class="stat-card"><div class="stat-num">99%</div><div class="stat-label">Satisfacción Clientes</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SPACES ── -->
+<section id="espacios" class="section">
+  <div class="container">
+    <h2 class="section-title">Nuestros Espacios</h2>
+    <p class="section-sub" style="margin-bottom:.5rem;">6 escenarios únicos para todo tipo de evento. Haz clic en cualquier espacio para ver costos y detalles.</p>
+    <div class="spaces-hint">Toca una tarjeta para ver tarifas y metraje</div>
+
+    <div class="spaces-grid" id="spacesGrid"></div>
+
+    <!-- Tabla tarifas -->
+    <div id="tarifas" style="margin-top:1rem;">
+      <h2 class="section-title" style="font-size:2rem;margin-bottom:.5rem;">Tabla de Tarifas</h2>
+      <p style="color:var(--neutral-500);font-size:.85rem;margin-bottom:1.5rem;">Precios en COP · IVA no incluido · Haz clic en una fila para ver el detalle completo.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Espacio</th>
+              <th>Área</th>
+              <th>Aforo</th>
+              <th>Por hora</th>
+              <th>Por día</th>
+            </tr>
+          </thead>
+          <tbody id="tarifasBody"></tbody>
+        </table>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;justify-content:flex-end;">
+        <a href="https://wa.me/573142617456?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n%20para%20un%20evento%20en%20CENEXPO." target="_blank" rel="noopener" class="btn btn-navy">Solicitar cotización</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="servicios" class="section">
+  <div class="container">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <p class="section-sub">Ofrecemos una gama completa de servicios diseñados para hacer de tu evento una experiencia memorable.</p>
+    <div class="services-grid" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- ── CALENDAR ── -->
+<section id="calendario" class="section">
+  <div class="container">
+    <h2 class="section-title">Calendario de Disponibilidad</h2>
+    <p class="section-sub" style="margin-bottom:1.5rem;">Consulta la disponibilidad de nuestros espacios y solicita tu reserva.</p>
+
+    <div class="cal-header">
+      <div class="cal-nav">
+        <button id="prevMonth" title="Mes anterior">&#8249;</button>
+        <div class="cal-month-title" id="calTitle"></div>
+        <button id="nextMonth" title="Mes siguiente">&#8250;</button>
+      </div>
+      <div class="space-filter" id="spaceFilter">
+        <button class="active" data-space="all">Todos</button>
+        <button data-space="coliseo">Coliseo Gran Riviera</button>
+        <button data-space="pabellon">Pabellón San Carlos</button>
+        <button data-space="salon">Salones Gótica</button>
+        <button data-space="fonda">Fonda Milagros</button>
+        <button data-space="plazoleta">Plazoleta Banderas</button>
+      </div>
+    </div>
+
+    <div class="cal-grid" id="calGrid"></div>
+
+    <div class="cal-legend">
+      <div class="legend-item"><div class="legend-dot chip-coliseo" style="background:#1565C0"></div> Coliseo Gran Riviera</div>
+      <div class="legend-item"><div class="legend-dot chip-pabellon" style="background:#0D1B3E"></div> Pabellón San Carlos</div>
+      <div class="legend-item"><div class="legend-dot chip-salon" style="background:#A8B0BC"></div> Salones Gótica</div>
+      <div class="legend-item"><div class="legend-dot chip-fonda" style="background:#7c3aed"></div> Fonda Milagros</div>
+      <div class="legend-item"><div class="legend-dot chip-plazoleta" style="background:#059669"></div> Plazoleta Banderas</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#d1fae5;border:1px solid #6ee7b7"></div> Disponible</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section id="cta-section">
+  <div class="cta-inner">
+    <h2>¿Listo para tu Próximo Evento?</h2>
+    <p>Contacta nuestro equipo de expertos hoy mismo</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/573142617456" target="_blank" rel="noopener" class="btn btn-gold">💬 Escribir por WhatsApp</a>
+      <a href="mailto:info@cenexpo.com" class="btn btn-outline-gold">📧 Enviar Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer id="contacto">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-wrap">
+          <img class="footer-logo" src="logo_cenexpo_final.jpeg" alt="CENEXPO" onerror="this.style.display='none'">
+          <div class="footer-brand">
+            <p class="name">CENEXPO</p>
+            <p class="sub">de Grupo CASGO SAS</p>
+          </div>
+        </div>
+        <p class="footer-desc">Centro de exposiciones y eventos de referencia en Armenia, Quindío.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces Rápidos</h4>
+        <ul>
+          <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#espacios">Espacios</a></li>
+          <li><a href="#tarifas">Tarifas</a></li>
+          <li><a href="#calendario">Calendario</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/573142617456" target="_blank" rel="noopener">📞 +57 314 261 7456</a></li>
+          <li><a href="mailto:info@cenexpo.com">📧 info@cenexpo.com</a></li>
+          <li>📍 Armenia, Quindío, Colombia</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <div class="social-row">
+          <a href="#" class="social-btn">f</a>
+          <a href="#" class="social-btn">🔗</a>
+          <a href="#" class="social-btn">📷</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 CENEXPO — Grupo CASGO SAS. Todos los derechos reservados.</p>
+      <div style="display:flex;gap:1rem;">
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Términos y Condiciones</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SPACE MODAL ── -->
+<div class="modal-overlay" id="spaceModal">
+  <div class="space-modal">
+    <div class="modal-header">
+      <button class="modal-close" id="spaceModalClose">✕</button>
+      <span class="modal-type" id="modalType"></span>
+      <h2 class="modal-title" id="modalTitle"></h2>
+    </div>
+    <div class="modal-desc" id="modalDesc"></div>
+    <div class="modal-body">
+      <div class="modal-col">
+        <h3>Aforo de Personas</h3>
+        <table class="info-table" id="modalTable"></table>
+      </div>
+      <div class="modal-col">
+        <h3>Ubicación</h3>
+        <div class="modal-map">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          <span>Plano de ubicación</span>
+          <span id="modalArea" style="font-size:.75rem;color:#9ca3af;"></span>
+        </div>
+        <div class="features-grid" id="modalFeatures"></div>
+      </div>
+    </div>
+    <div class="modal-footer-cta">
+      <p>¿Listo para reservar este espacio?</p>
+      <a href="https://wa.me/573142617456?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n%20para%20un%20evento%20en%20CENEXPO." target="_blank" rel="noopener" id="modalCTALink">Solicitar cotización →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── CALENDAR MODAL ── -->
+<div class="cal-modal-overlay" id="calModal">
+  <div class="cal-modal">
+    <button class="cal-modal-close" id="calModalClose">✕</button>
+    <div id="calModalBadge" class="cal-modal-badge"></div>
+    <h3 id="calModalTitle"></h3>
+    <div class="cal-modal-info" id="calModalInfo"></div>
+    <div class="cal-modal-actions">
+      <a href="mailto:info@cenexpo.com" class="btn btn-navy" style="font-size:.85rem;padding:.55rem 1.1rem;">Solicitar Reserva</a>
+      <button class="btn btn-outline-gold" id="calModalCloseBtn" style="color:var(--blue);border-color:var(--blue);font-size:.85rem;padding:.55rem 1.1rem;">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DATA ────────────────────────────────────────────────
+const SPACES_DATA = [
+  { id:'coliseo', type:'Coliseo', title:'Coliseo Gran Riviera', capacity:'7,262', area:'1,815 m² (arena 787m² + graderías 1,028m²)', desc:'Gran coliseo multipropósito con arena central de 787 m² y 4 graderías de 1,028 m². Capacidad máxima de 7,262 personas sin palcos, o 6,081 con palcos y tarima adicional. Ideal para conciertos, ferias nacionales, convenciones y eventos deportivos de gran escala.', features:['Camerinos VIP','Acceso de carga'], img:'images/espacios/coliseo.webp?v=3', porHora:'$4.500.000', minHoras:'4', porDia:'$22.000.000' },
+  { id:'pabellon', type:'Pabellón', title:'Pabellón San Carlos', capacity:'5,000+', area:'20,000 m²', desc:'Pabellón techado de gran formato ideal para ferias comerciales, exposiciones industriales y showrooms. Puertas de acceso amplias para maquinaria y stands.', features:['Puertas de 6m de alto','Conexiones eléctricas','Bodega de carga'], img:'images/espacios/pabellon.webp?v=4', porHora:'$2.800.000', minHoras:'4', porDia:'$14.000.000' },
+  { id:'salon', type:'Salón (x2)', title:'Salones Gótica', capacity:'3,000', area:'1,200 m² c/u', desc:'Dos salones modulables que pueden unificarse para mayor capacidad. Perfectos para conferencias, graduaciones, lanzamientos y eventos corporativos.', features:['Divisibles en 2 secciones','Climatización','Equipo audiovisual'], img:'images/espacios/salon-gotica.webp?v=3', porHora:'$650.000', minHoras:'3', porDia:'$3.200.000' },
+  { id:'salon-sm', type:'Plazoleta outdoor', title:'Salón Santa Marta', capacity:'800', area:'502.57 m²', desc:'Plazoleta de comidas outdoor que hace parte del Mall Santa Marta. Espacio de 502.57 m² con aforo máximo de 800 personas. Ideal para eventos gastronómicos, activaciones de marca y ferias al aire libre.', features:['Decoración personalizable','Cocina equipada','Iluminación ambiental','Acceso VIP'], img:'images/espacios/salon-santa-marta.webp?v=4', porHora:'$720.000', minHoras:'4', porDia:"$5'760.000" },
+  { id:'fonda', type:'Fonda', title:'Fonda Milagros', capacity:'1,000', area:'600 m²', desc:'Espacio con ambientación típica colombiana, ideal para eventos culturales, celebraciones tradicionales, fiestas temáticas y activaciones de marca.', features:['Ambientación típica','Barra de bebidas','Pista de baile','Zona de fogón'], img:'images/espacios/fonda.webp?v=3', porHora:'$380.000', minHoras:'3', porDia:'$1.800.000' },
+  { id:'plazoleta', type:'Plazoleta exterior', title:'Plazoleta de Banderas', capacity:'4,742', area:'2,637 m² (Plazoleta 2 y 3)', desc:'Plazoletas al aire libre conectadas entre sí. Plazoleta 2: 866 m² con aforo de 1,200 personas. Plazoleta 3: 1,771 m² con aforo de 3,542 personas (2 m² x pax). Perfectas para eventos outdoor, food trucks, conciertos abiertos y activaciones.', features:['Área 2 y 3 separables','Zona verde','Puntos de luz exterior','Carpa instalable'], img:'images/espacios/plazoleta.webp?v=4', porHora:'$280.000', minHoras:'3', porDia:'$1.200.000' },
+];
+
+const SERVICES_DATA = [
+  { title:'Espacios Versátiles', desc:'Coliseos, salones modulables y pabellones configurables según tus necesidades específicas.', items:['Coliseo 7,262 personas','Salones multiuso dividibles','Pabellones técnicamente equipados'] },
+  { title:'Servicios Técnicos', desc:'Equipamiento de clase mundial para todas tus necesidades audiovisuales y tecnológicas.', items:['Sistemas de sonido profesional','Proyecciones 4K y mapping 3D','Telecomunicaciones integradas'] },
+  { title:'Servicios de Catering', desc:'Opciones gastronómicas variadas con chefs especializados en eventos corporativos.', items:['Menús personalizados','Servicio de bebidas premium','Montajes temáticos'] },
+  { title:'Coordinación Integral', desc:'Equipo de profesionales que gestiona cada detalle de tu evento.', items:['Planificación y coordinación','Seguridad y logística','Asesoramiento personalizado'] },
+  { title:'Estacionamiento y Transporte', desc:'Facilidades de acceso y movilidad para tus asistentes.', items:['Estacionamiento cubierto','Servicios de shuttle','Zonas VIP exclusivas'] },
+  { title:'Marketing y Promoción', desc:'Apoyo en la difusión y promoción de tu evento.', items:['Estrategias digitales','Publicidad local y regional','Social media management'] },
+];
+
+// Mapa de id de espacio → chipClass
+const SPACE_CHIP = {
+  coliseo:'chip-coliseo', pabellon:'chip-pabellon', salon:'chip-salon',
+  'salon-sm':'chip-salon', fonda:'chip-fonda', plazoleta:'chip-plazoleta'
+};
+// Para filtro del calendario
+const CAL_SPACE_MAP = {
+  coliseo:'coliseo', pabellon:'pabellon', salon:'salon', fonda:'fonda', plazoleta:'plazoleta'
+};
+
+const CAL_EVENTS = [];
+
+const MONTH_NAMES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const DAY_NAMES = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+
+// ── RENDER SPACES CARDS ──────────────────────────────
+function renderSpaces() {
+  const grid = document.getElementById('spacesGrid');
+  const tbody = document.getElementById('tarifasBody');
+  grid.innerHTML = '';
+  tbody.innerHTML = '';
+  SPACES_DATA.forEach((s,i) => {
+    // Card
+    const card = document.createElement('div');
+    card.className = 'space-card';
+    card.innerHTML = `
+      <div class="space-type">${s.type}</div>
+      <div class="space-name">${s.title}</div>
+      <div class="space-meta">
+        <div class="space-meta-item"><strong>${s.capacity} pers.</strong>Aforo</div>
+        <div class="space-divider"></div>
+        <div class="space-meta-item"><strong>${s.area}</strong>Área</div>
+      </div>
+      <div class="space-desc">${s.desc}</div>
+      <div class="space-footer">
+        <div>
+          <div class="space-price-label">Desde</div>
+          <div class="space-price">${s.porHora}<span>/hr</span></div>
+        </div>
+        <div class="space-badge">Ver más</div>
+      </div>`;
+    card.addEventListener('click', () => openSpaceModal(s));
+    grid.appendChild(card);
+
+    // Table row
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td style="font-weight:600;color:var(--navy)">${s.title}</td><td style="color:var(--neutral-500)">${s.area}</td><td>${s.capacity}</td><td>${s.porHora}</td><td>${s.porDia}</td>`;
+    tr.addEventListener('click', () => openSpaceModal(s));
+    tbody.appendChild(tr);
+  });
+}
+
+// ── SPACE MODAL ──────────────────────────────────────
+function openSpaceModal(s) {
+  document.getElementById('modalType').textContent = s.type;
+  document.getElementById('modalTitle').textContent = s.title;
+  document.getElementById('modalDesc').textContent = s.desc;
+  const mapEl = document.querySelector('#spaceModal .modal-map');
+  if (s.img) {
+    mapEl.innerHTML = `<img src="${s.img}" alt="Plano ${s.title}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">`;
+    mapEl.style.cssText = 'aspect-ratio:4/3;border-radius:10px;overflow:hidden;margin-bottom:1rem;';
+  } else {
+    mapEl.innerHTML = `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg><span>Plano de ubicación</span><span style="font-size:.75rem;color:#9ca3af;">${s.area}</span>`;
+    mapEl.style.cssText = '';
+  }
+  document.getElementById('modalTable').innerHTML = `
+    <tr><td class="td-label">Nombre</td><td class="td-val">${s.title}</td></tr>
+    <tr><td class="td-label">Área</td><td class="td-val">${s.area}</td></tr>
+    <tr><td class="td-label">Total Aforo</td><td class="td-val" style="font-size:1.1rem;font-weight:800;">${s.capacity}</td></tr>
+    <tr><td class="td-label">Renta por Hora<br><span style="font-weight:400;font-size:.65rem;color:rgba(255,255,255,.7)">(${s.minHoras} horas mínimo)</span></td><td class="td-val">${s.porHora} <span style="font-size:.7rem;color:#6b7280">+ IVA</span></td></tr>
+    <tr><td class="td-label">Renta por Día</td><td class="td-val">${s.porDia} <span style="font-size:.7rem;color:#6b7280">+ IVA</span></td></tr>`;
+  const featGrid = document.getElementById('modalFeatures');
+  featGrid.innerHTML = s.features.map(f => `<div class="feature-item"><div class="feature-dot"></div>${f}</div>`).join('');
+  const waMsg = encodeURIComponent(`Hola, me gustaría solicitar una cotización para el ${s.title} en CENEXPO.`);
+  document.getElementById('modalCTALink').href = `https://wa.me/573142617456?text=${waMsg}`;
+  document.getElementById('spaceModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+document.getElementById('spaceModalClose').addEventListener('click', closeSpaceModal);
+document.getElementById('spaceModal').addEventListener('click', e => { if(e.target===e.currentTarget) closeSpaceModal(); });
+function closeSpaceModal() {
+  document.getElementById('spaceModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── RENDER SERVICES ──────────────────────────────────
+function renderServices() {
+  const grid = document.getElementById('servicesGrid');
+  SERVICES_DATA.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'service-card';
+    card.innerHTML = `<h3>${s.title}</h3><p>${s.desc}</p><ul class="service-list">${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+    grid.appendChild(card);
+  });
+}
+
+// ── CALENDAR ─────────────────────────────────────────
+let currentCal = new Date(2026, 4, 1);
+let activeSpace = 'all';
+
+function renderCalendar() {
+  const year = currentCal.getFullYear(), month = currentCal.getMonth();
+  document.getElementById('calTitle').textContent = `${MONTH_NAMES[month]} ${year}`;
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+
+  DAY_NAMES.forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'cal-day-name';
+    el.textContent = d;
+    grid.appendChild(el);
+  });
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  const daysInPrev = new Date(year, month, 0).getDate();
+  const today = new Date();
+  const monthStr = `${year}-${String(month+1).padStart(2,'0')}`;
+
+  const filtered = CAL_EVENTS.filter(e =>
+    e.date.startsWith(monthStr) &&
+    (activeSpace === 'all' || CAL_SPACE_MAP[e.space] === activeSpace || e.space === activeSpace)
+  );
+  const byDay = {};
+  filtered.forEach(e => {
+    const day = parseInt(e.date.split('-')[2]);
+    (byDay[day] = byDay[day]||[]).push(e);
+  });
+
+  const total = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+  for (let i = 0; i < total; i++) {
+    const dayNum = i - firstDay + 1;
+    const cell = document.createElement('div');
+
+    if (i < firstDay) {
+      cell.className = 'cal-cell other-month';
+      cell.innerHTML = `<div class="cal-date">${daysInPrev - firstDay + i + 1}</div>`;
+    } else if (dayNum > daysInMonth) {
+      cell.className = 'cal-cell other-month';
+      cell.innerHTML = `<div class="cal-date">${dayNum - daysInMonth}</div>`;
+    } else {
+      const isToday = today.getFullYear()===year && today.getMonth()===month && today.getDate()===dayNum;
+      cell.className = 'cal-cell' + (isToday ? ' today' : '');
+      const dateDiv = document.createElement('div');
+      dateDiv.className = 'cal-date';
+      dateDiv.textContent = dayNum;
+      cell.appendChild(dateDiv);
+
+      const evs = byDay[dayNum] || [];
+      evs.slice(0,2).forEach(ev => {
+        const chip = document.createElement('div');
+        chip.className = 'event-chip ' + (SPACE_CHIP[ev.space]||'chip-salon');
+        chip.textContent = ev.title;
+        chip.title = ev.title;
+        chip.addEventListener('click', e => { e.stopPropagation(); openCalModal(ev); });
+        cell.appendChild(chip);
+      });
+      if (evs.length > 2) {
+        const more = document.createElement('div');
+        more.style.cssText = 'font-size:.6rem;color:#6b7280;padding:1px 4px;';
+        more.textContent = `+${evs.length-2} más`;
+        cell.appendChild(more);
+      }
+      if (evs.length === 0) {
+        const avail = document.createElement('div');
+        avail.className = 'event-chip chip-disponible';
+        avail.textContent = 'Disponible';
+        cell.appendChild(avail);
+      }
+      cell.addEventListener('click', () => openDayModal(year, month, dayNum, evs));
+    }
+    grid.appendChild(cell);
+  }
+}
+
+function formatDate(str) {
+  const [y,m,d] = str.split('-');
+  return `${parseInt(d)} de ${MONTH_NAMES[parseInt(m)-1]} de ${y}`;
+}
+
+const SPACE_LABEL = { coliseo:'Coliseo Gran Riviera', pabellon:'Pabellón San Carlos', salon:'Salones Gótica', 'salon-sm':'Salón Santa Marta', fonda:'Fonda Milagros', plazoleta:'Plazoleta de Banderas' };
+const SPACE_COLOR = { coliseo:'#1565C0', pabellon:'#0D1B3E', salon:'#A8B0BC', fonda:'#7c3aed', plazoleta:'#059669' };
+const SPACE_TEXT  = { coliseo:'#fff', pabellon:'#C8CDD6', salon:'#0D1B3E', fonda:'#fff', plazoleta:'#fff' };
+
+function openCalModal(ev) {
+  const sc = ev.status==='reservado'?'#dc2626':'#059669';
+  const label = SPACE_LABEL[ev.space]||ev.space;
+  const color = SPACE_COLOR[ev.space]||'#1565C0';
+  const text  = SPACE_TEXT[ev.space]||'#fff';
+  const badge = document.getElementById('calModalBadge');
+  badge.textContent = label;
+  badge.style.cssText = `background:${color};color:${text};`;
+  document.getElementById('calModalTitle').textContent = ev.title;
+  document.getElementById('calModalInfo').innerHTML = `
+    <div class="avail-row"><div class="avail-dot" style="background:${sc}"></div><strong>Estado:</strong>&nbsp;${ev.status.charAt(0).toUpperCase()+ev.status.slice(1)}</div>
+    <div class="avail-row"><strong>Fecha:</strong>&nbsp;${formatDate(ev.date)}</div>
+    <div class="avail-row"><strong>Horario:</strong>&nbsp;${ev.time}</div>
+    <div class="avail-row"><strong>Capacidad:</strong>&nbsp;${ev.capacity}</div>
+    <div class="avail-row"><strong>Espacio:</strong>&nbsp;${label}</div>`;
+  document.getElementById('calModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function openDayModal(y, m, d, evs) {
+  const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  if (evs.length === 0) {
+    const badge = document.getElementById('calModalBadge');
+    badge.textContent='Sin eventos';
+    badge.style.cssText='background:#d1fae5;color:#065f46;';
+    document.getElementById('calModalTitle').textContent = formatDate(dateStr);
+    document.getElementById('calModalInfo').innerHTML = '<p style="color:#059669;font-weight:600;">✓ Todos los espacios están disponibles para este día.</p><p style="margin-top:.5rem;color:#6b7280;font-size:.85rem;">Contáctanos para solicitar tu reserva.</p>';
+  } else if (evs.length === 1) {
+    openCalModal(evs[0]); return;
+  } else {
+    const badge = document.getElementById('calModalBadge');
+    badge.textContent=`${evs.length} eventos este día`;
+    badge.style.cssText='background:var(--navy);color:var(--gold2);';
+    document.getElementById('calModalTitle').textContent = formatDate(dateStr);
+    document.getElementById('calModalInfo').innerHTML = evs.map(ev => {
+      const color = SPACE_COLOR[ev.space]||'#1565C0';
+      const sc = ev.status==='reservado'?'#dc2626':'#059669';
+      const label = SPACE_LABEL[ev.space]||ev.space;
+      return `<div class="avail-row"><div class="avail-dot" style="background:${color}"></div><div><strong>${ev.title}</strong><br><span style="color:#6b7280">${label} · ${ev.time} · <span style="color:${sc}">${ev.status}</span></span></div></div>`;
+    }).join('');
+  }
+  document.getElementById('calModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeCalModal() {
+  document.getElementById('calModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('calModalClose').addEventListener('click', closeCalModal);
+document.getElementById('calModalCloseBtn').addEventListener('click', closeCalModal);
+document.getElementById('calModal').addEventListener('click', e => { if(e.target===e.currentTarget) closeCalModal(); });
+
+document.getElementById('prevMonth').addEventListener('click', () => { currentCal.setMonth(currentCal.getMonth()-1); renderCalendar(); });
+document.getElementById('nextMonth').addEventListener('click', () => { currentCal.setMonth(currentCal.getMonth()+1); renderCalendar(); });
+document.getElementById('spaceFilter').addEventListener('click', e => {
+  if (!e.target.dataset.space) return;
+  activeSpace = e.target.dataset.space;
+  document.querySelectorAll('#spaceFilter button').forEach(b => b.classList.toggle('active', b===e.target));
+  renderCalendar();
+});
+
+// ── MOBILE NAV ──────────────────────────────────────
+const menuBtn = document.getElementById('menuBtn');
+const mainNav = document.getElementById('mainNav');
+menuBtn.addEventListener('click', () => {
+  const isOpen = mainNav.classList.toggle('open');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+  menuBtn.style.zIndex = isOpen ? '100' : '';
+  menuBtn.style.position = isOpen ? 'fixed' : '';
+  menuBtn.style.top = isOpen ? '1.1rem' : '';
+  menuBtn.style.right = isOpen ? '1.5rem' : '';
+});
+document.querySelectorAll('#mainNav a').forEach(a => {
+  a.addEventListener('click', () => {
+    mainNav.classList.remove('open');
+    document.body.style.overflow = '';
+    menuBtn.style.cssText = '';
+  });
+});
+
+// ── SMOOTH SCROLL ───────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href !== '#' && document.querySelector(href)) {
+      e.preventDefault();
+      document.querySelector(href).scrollIntoView({ behavior:'smooth' });
+    }
+  });
+});
+
+// ── FLUID PATHS (replica exacta de hero.tsx FluidPaths) ──────────
+function buildFluidPaths() {
+  const svg = document.getElementById('heroSvg');
+  const COLORS = ['#A8B0BC', '#1565C0', '#0D1B3E'];
+  const NS = 'http://www.w3.org/2000/svg';
+
+  for (let i = 0; i < 60; i++) {
+    const y = i * 25;
+    // Fórmula idéntica a hero.tsx:
+    // d: `M 0,${i*25} Q 300,${i*25-50} 600,${i*25} T 1200,${i*25}`
+    const d = `M 0,${y} Q 300,${y - 50} 600,${y} T 1200,${y}`;
+    const opacity = 0.18 + (i % 8) * 0.05;
+    const width   = 2 + (i % 4) * 1.2;
+    const color   = i < 20 ? COLORS[0] : i < 40 ? COLORS[1] : COLORS[2];
+    const dur     = (5 + (i % 5)) + 's';
+    const del     = (i * 0.04) + 's';
+
+    const path = document.createElementNS(NS, 'path');
+    path.setAttribute('d', d);
+    path.setAttribute('stroke', color);
+    path.setAttribute('stroke-width', width);
+    path.setAttribute('fill', 'none');
+    path.setAttribute('class', 'fp');
+    path.style.setProperty('--op-low',  opacity * 0.3);
+    path.style.setProperty('--op-high', opacity);
+    path.style.setProperty('--dur', dur);
+    path.style.setProperty('--del', del);
+    svg.appendChild(path);
+  }
+}
+
+// ── INIT ────────────────────────────────────────────
+buildFluidPaths();
+renderSpaces();
+renderServices();
+renderCalendar();
+</script>
+
+
+<!-- ── WHATSAPP FLOTANTE ── -->
+<style>
+  .wa-wrap { position:fixed; bottom:28px; right:28px; z-index:9999; display:flex; flex-direction:column; align-items:flex-end; gap:12px; }
+
+  /* Burbuja popup */
+  .wa-popup {
+    background:#fff; border-radius:16px; padding:1rem 1.1rem;
+    box-shadow:0 8px 30px rgba(0,0,0,.18);
+    max-width:260px; display:none; flex-direction:column; gap:.6rem;
+    animation:waPop .25s ease;
+    position:relative;
+  }
+  .wa-popup::after {
+    content:''; position:absolute; bottom:-10px; right:22px;
+    border:10px solid transparent; border-top-color:#fff; border-bottom:none;
+  }
+  .wa-popup.show { display:flex; }
+  @keyframes waPop { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+  .wa-popup-header { display:flex; align-items:center; gap:.6rem; }
+  .wa-popup-avatar { width:40px; height:40px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .wa-popup-avatar svg { width:22px; height:22px; fill:#fff; }
+  .wa-popup-name { font-weight:700; font-size:.88rem; color:#111; line-height:1.2; }
+  .wa-popup-status { font-size:.72rem; color:#25D366; font-weight:500; }
+  .wa-popup-msg { background:#f0f4f8; border-radius:10px; padding:.65rem .8rem; font-size:.82rem; color:#374151; line-height:1.5; }
+  .wa-popup-cta {
+    display:flex; align-items:center; justify-content:center; gap:.5rem;
+    background:#25D366; color:#fff; font-weight:700; font-size:.88rem;
+    padding:.65rem 1rem; border-radius:10px; text-decoration:none;
+    transition:background .2s;
+  }
+  .wa-popup-cta:hover { background:#1ebe5a; }
+  .wa-popup-cta svg { width:18px; height:18px; fill:#fff; flex-shrink:0; }
+  .wa-popup-close { position:absolute; top:.5rem; right:.6rem; background:none; border:none; cursor:pointer; color:#9ca3af; font-size:1rem; line-height:1; }
+  .wa-popup-close:hover { color:#374151; }
+
+  /* Botón principal */
+  .wa-btn {
+    width:60px; height:60px; border-radius:50%; background:#25D366;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 24px rgba(37,211,102,.45);
+    cursor:pointer; border:none;
+    transition:transform .2s, box-shadow .2s;
+    position:relative;
+  }
+  .wa-btn:hover { transform:scale(1.08); box-shadow:0 8px 30px rgba(37,211,102,.55); }
+  .wa-btn svg { width:32px; height:32px; fill:#fff; }
+  .wa-pulse {
+    position:absolute; inset:0; border-radius:50%;
+    background:rgba(37,211,102,.4);
+    animation:waPulse 2s ease-out infinite;
+  }
+  @keyframes waPulse { 0%{transform:scale(1);opacity:.6} 100%{transform:scale(1.7);opacity:0} }
+</style>
+
+<div class="wa-wrap">
+  <!-- Popup -->
+  <div class="wa-popup" id="waPopup">
+    <button class="wa-popup-close" id="waPopupClose">✕</button>
+    <div class="wa-popup-header">
+      <div class="wa-popup-avatar">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.771.464 3.437 1.28 4.878L2 22l5.233-1.267A9.973 9.973 0 0012.004 22C17.527 22 22 17.523 22 12.004 22 6.477 17.527 2 12.004 2zm0 18.189a8.17 8.17 0 01-4.17-1.142l-.299-.178-3.106.752.784-2.97-.195-.307a8.19 8.19 0 01-1.196-4.344c0-4.514 3.673-8.187 8.182-8.187 4.51 0 8.183 3.673 8.183 8.187 0 4.509-3.673 8.189-8.183 8.189z"/></svg>
+      </div>
+      <div>
+        <div class="wa-popup-name">CENEXPO</div>
+        <div class="wa-popup-status">● En línea</div>
+      </div>
+    </div>
+    <div class="wa-popup-msg">¡Hola! 👋 ¿Quieres reservar un espacio o tienes alguna consulta? Escríbenos directamente.</div>
+    <a class="wa-popup-cta" href="https://wa.me/573142617456?text=Hola%2C%20quiero%20información%20sobre%20los%20espacios%20de%20CENEXPO" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.771.464 3.437 1.28 4.878L2 22l5.233-1.267A9.973 9.973 0 0012.004 22C17.527 22 22 17.523 22 12.004 22 6.477 17.527 2 12.004 2zm0 18.189a8.17 8.17 0 01-4.17-1.142l-.299-.178-3.106.752.784-2.97-.195-.307a8.19 8.19 0 01-1.196-4.344c0-4.514 3.673-8.187 8.182-8.187 4.51 0 8.183 3.673 8.183 8.187 0 4.509-3.673 8.189-8.183 8.189z"/></svg>
+      Iniciar chat
+    </a>
+  </div>
+  <!-- Botón flotante -->
+  <button class="wa-btn" id="waBtn" aria-label="Abrir WhatsApp">
+    <div class="wa-pulse"></div>
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.771.464 3.437 1.28 4.878L2 22l5.233-1.267A9.973 9.973 0 0012.004 22C17.527 22 22 17.523 22 12.004 22 6.477 17.527 2 12.004 2zm0 18.189a8.17 8.17 0 01-4.17-1.142l-.299-.178-3.106.752.784-2.97-.195-.307a8.19 8.19 0 01-1.196-4.344c0-4.514 3.673-8.187 8.182-8.187 4.51 0 8.183 3.673 8.183 8.187 0 4.509-3.673 8.189-8.183 8.189z"/></svg>
+  </button>
+</div>
+
+<script>
+  const waBtn = document.getElementById('waBtn');
+  const waPopup = document.getElementById('waPopup');
+  const waPopupClose = document.getElementById('waPopupClose');
+  // Abre popup al hacer clic en el botón
+  waBtn.addEventListener('click', () => waPopup.classList.toggle('show'));
+  waPopupClose.addEventListener('click', (e) => { e.stopPropagation(); waPopup.classList.remove('show'); });
+  // Muestra popup automáticamente después de 4 segundos
+  setTimeout(() => waPopup.classList.add('show'), 4000);
+</script>
+
+</body>
+</html>

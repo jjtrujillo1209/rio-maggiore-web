@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E-Commerce Sales Bot — Through Air</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1B1B6E;
+      --orange:  #F26522;
+      --coral:   #F04E37;
+      --magenta: #C8317A;
+      --grad:    linear-gradient(135deg, #F26522 0%, #F04E37 45%, #C8317A 100%);
+      --bg:      #07070b;
+      --surface: #0f0f1a;
+      --card:    #141420;
+      --border:  #1e1e3a;
+      --text:    #e2e2f0;
+      --muted:   #6b6b8a;
+    }
+
+    html, body { height: 100%; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOPBAR ──────────────────────────────────────────── */
+    .topbar {
+      background: var(--navy);
+      padding: .85rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .topbar-left { display: flex; align-items: center; gap: 1rem; }
+    .topbar-logo { display: flex; align-items: center; gap: .3rem; }
+    .logo-through { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.3rem; color: #fff; }
+    .logo-air     { font-family: 'Nunito', sans-serif; font-weight: 300; font-size: 1.3rem; color: var(--orange); }
+    .topbar-sep { width: 1px; height: 20px; background: rgba(255,255,255,.15); }
+    .topbar-store { font-size: .85rem; color: rgba(255,255,255,.7); font-weight: 500; }
+    .topbar-store strong { color: #fff; }
+
+    .topbar-right { display: flex; align-items: center; gap: .8rem; }
+    .cart-btn {
+      display: flex; align-items: center; gap: .5rem; cursor: pointer;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px; padding: .45rem .9rem; transition: all .2s;
+      font-size: .82rem; color: rgba(255,255,255,.8);
+    }
+    .cart-btn:hover { background: rgba(255,255,255,.12); color: #fff; }
+    .cart-btn svg { width: 16px; height: 16px; }
+    .cart-badge {
+      background: var(--grad); color: #fff; font-size: .65rem; font-weight: 900;
+      width: 18px; height: 18px; border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+    }
+    .cart-badge.visible { display: flex; }
+    .admin-btn {
+      display: flex; align-items: center; gap: .4rem;
+      padding: .45rem .9rem; background: var(--grad); border: none; border-radius: 10px;
+      color: #fff; font-size: .8rem; font-weight: 700; cursor: pointer; text-decoration: none;
+      transition: all .2s;
+    }
+    .admin-btn:hover { transform: translateY(-1px); }
+    .admin-btn svg { width: 14px; height: 14px; }
+
+    /* ── MAIN LAYOUT ─────────────────────────────────────── */
+    .layout {
+      flex: 1; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 360px;
+      gap: 0;
+    }
+
+    /* ── STORE SIDE ──────────────────────────────────────── */
+    .store-side {
+      overflow-y: auto; padding: 1.5rem 1.5rem 1.5rem 2rem;
+    }
+    .store-side::-webkit-scrollbar { width: 5px; }
+    .store-side::-webkit-scrollbar-track { background: transparent; }
+    .store-side::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    .store-header { margin-bottom: 1.5rem; }
+    .store-header h2 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.4rem; color: #fff; }
+    .store-header p { font-size: .82rem; color: var(--muted); margin-top: .2rem; }
+
+    .product-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1rem;
+    }
+    .product-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 18px; padding: 1.2rem;
+      display: flex; flex-direction: column; align-items: center; gap: .6rem;
+      transition: all .25s; cursor: pointer; position: relative;
+    }
+    .product-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(242,101,34,.15); }
+    .product-emoji {
+      width: 56px; height: 56px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(242,101,34,.1), rgba(200,49,122,.1));
+      border: 1px solid rgba(242,101,34,.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+    }
+    .product-name { font-weight: 700; font-size: .88rem; color: #fff; text-align: center; line-height: 1.3; }
+    .product-category { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .product-price { font-weight: 900; font-size: 1.05rem; color: var(--orange); font-family: 'Nunito', sans-serif; }
+    .product-stock { font-size: .7rem; color: var(--muted); }
+    .product-stock.low { color: #f59e0b; }
+    .product-stock.out { color: #ef4444; }
+    .add-to-cart {
+      width: 100%; padding: .55rem; border: none; border-radius: 10px;
+      background: var(--grad); color: #fff; font-size: .8rem; font-weight: 700;
+      cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: .4rem;
+    }
+    .add-to-cart:hover { transform: scale(1.02); box-shadow: 0 4px 12px rgba(242,101,34,.3); }
+    .add-to-cart:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .add-to-cart svg { width: 14px; height: 14px; }
+
+    /* In-cart indicator */
+    .in-cart-badge {
+      position: absolute; top: .7rem; right: .7rem;
+      background: var(--grad); color: #fff; font-size: .65rem; font-weight: 900;
+      padding: .15rem .45rem; border-radius: 50px; display: none;
+    }
+    .in-cart-badge.visible { display: block; }
+
+    /* Loading skeleton */
+    .skeleton {
+      background: var(--card); border: 1.5px solid var(--border); border-radius: 18px;
+      padding: 1.2rem; display: flex; flex-direction: column; align-items: center; gap: .6rem;
+    }
+    .skel-box { background: var(--border); border-radius: 8px; animation: shimmer 1.5s infinite; }
+    @keyframes shimmer { 0%,100%{opacity:.4} 50%{opacity:.8} }
+
+    /* ── CART SIDEBAR ────────────────────────────────────── */
+    .cart-sidebar {
+      border-left: 1px solid var(--border);
+      display: flex; flex-direction: column; overflow: hidden;
+      background: var(--surface);
+    }
+    .cart-header { padding: 1.2rem 1.2rem .8rem; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+    .cart-title { display: flex; align-items: center; gap: .5rem; }
+    .cart-title h3 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1rem; color: #fff; }
+    .cart-title svg { width: 18px; height: 18px; color: var(--orange); }
+    .cart-count { font-size: .75rem; color: var(--muted); margin-top: .1rem; }
+
+    .cart-items { flex: 1; overflow-y: auto; padding: .8rem; display: flex; flex-direction: column; gap: .6rem; }
+    .cart-items::-webkit-scrollbar { width: 4px; }
+    .cart-items::-webkit-scrollbar-thumb { background: var(--border); }
+
+    .cart-item {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: .8rem; display: flex; align-items: center; gap: .7rem;
+    }
+    .cart-item-emoji { font-size: 1.3rem; flex-shrink: 0; }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-name { font-size: .82rem; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cart-item-price { font-size: .75rem; color: var(--orange); font-weight: 700; margin-top: .1rem; }
+    .cart-item-qty { display: flex; align-items: center; gap: .3rem; }
+    .qty-btn {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: var(--border); border: none; color: var(--text);
+      font-size: .9rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .15s;
+    }
+    .qty-btn:hover { background: rgba(242,101,34,.2); }
+    .qty-val { font-size: .82rem; font-weight: 700; color: #fff; min-width: 16px; text-align: center; }
+
+    .empty-cart { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem; padding: 2rem; }
+    .empty-cart svg { width: 40px; height: 40px; color: var(--border); }
+    .empty-cart p { font-size: .82rem; color: var(--muted); text-align: center; }
+
+    .cart-total {
+      padding: .8rem 1rem; border-top: 1px solid var(--border); flex-shrink: 0;
+      background: var(--card);
+    }
+    .cart-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: .6rem; }
+    .cart-total-label { font-size: .82rem; color: var(--muted); }
+    .cart-total-val { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.2rem; color: #fff; }
+
+    /* ── CHAT PANEL ──────────────────────────────────────── */
+    .chat-panel {
+      flex-shrink: 0; border-top: 1px solid var(--border);
+      background: var(--surface); display: flex; flex-direction: column;
+      height: 260px;
+    }
+    .chat-header-bar {
+      padding: .6rem 1rem; background: var(--grad);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .chat-header-bar h4 { font-weight: 700; font-size: .85rem; color: #fff; }
+    .chat-header-bar span { font-size: .72rem; color: rgba(255,255,255,.75); }
+
+    .chat-messages {
+      flex: 1; overflow-y: auto; padding: .6rem .8rem;
+      display: flex; flex-direction: column; gap: .5rem;
+    }
+    .chat-messages::-webkit-scrollbar { width: 3px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: var(--border); }
+
+    .chat-msg { max-width: 85%; padding: .45rem .75rem; border-radius: 12px; font-size: .8rem; line-height: 1.45; }
+    .chat-msg.bot  { background: var(--card); color: var(--text); border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 3px; }
+    .chat-msg.user { background: var(--grad); color: #fff; align-self: flex-end; border-bottom-right-radius: 3px; }
+
+    .chat-typing { display: none; align-self: flex-start; }
+    .chat-typing.visible { display: flex; }
+    .chat-typing span {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: .45rem .75rem; display: flex; gap: .3rem; align-items: center;
+    }
+    .t-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); animation: typingBounce 1.2s infinite; }
+    .t-dot:nth-child(2) { animation-delay: .2s; }
+    .t-dot:nth-child(3) { animation-delay: .4s; }
+    @keyframes typingBounce { 0%,80%,100%{transform:scale(.8);opacity:.5} 40%{transform:scale(1);opacity:1} }
+
+    .chat-input-row {
+      display: flex; gap: .5rem; padding: .6rem .8rem;
+      border-top: 1px solid var(--border); flex-shrink: 0;
+    }
+    .chat-input-field {
+      flex: 1; background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 50px; padding: .5rem .9rem; color: var(--text);
+      font-size: .82rem; font-family: inherit; outline: none; transition: border-color .2s;
+    }
+    .chat-input-field:focus { border-color: var(--orange); }
+    .chat-input-field::placeholder { color: var(--muted); }
+    .chat-send {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--grad); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all .2s;
+    }
+    .chat-send:hover { transform: scale(1.08); }
+    .chat-send svg { width: 14px; height: 14px; color: #fff; }
+
+    /* ── RIGHT COLUMN ────────────────────────────────────── */
+    .right-col {
+      display: flex; flex-direction: column; height: 100%; overflow: hidden;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .layout { grid-template-columns: 1fr; overflow: visible; }
+      .cart-sidebar { display: none; }
+      .right-col { height: auto; }
+      .chat-panel { height: 320px; }
+    }
+    @media (max-width: 600px) {
+      .topbar { padding: .7rem 1rem; }
+      .store-side { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-logo">
+      <span class="logo-through">through</span>
+      <span class="logo-air">air</span>
+    </div>
+    <div class="topbar-sep"></div>
+    <div class="topbar-store">E-Commerce Bot · <strong id="storeName">Mi Tienda</strong></div>
+  </div>
+  <div class="topbar-right">
+    <div class="cart-btn" onclick="toggleCartPanel()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+      Carrito
+      <div class="cart-badge" id="cartBadge">0</div>
+    </div>
+    <a href="http://localhost:3003/admin" target="_blank" class="admin-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Admin
+    </a>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+  <!-- Store side -->
+  <div class="store-side">
+    <div class="store-header">
+      <h2>Nuestros productos</h2>
+      <p id="storeDesc">Explora el catálogo y pregúntale al asistente lo que necesites</p>
+    </div>
+    <div class="product-grid" id="productGrid">
+      <!-- Skeleton -->
+      <div class="skeleton"><div class="skel-box" style="width:56px;height:56px;border-radius:16px"></div><div class="skel-box" style="width:80%;height:14px"></div><div class="skel-box" style="width:50%;height:12px"></div><div class="skel-box" style="width:60%;height:12px"></div><div class="skel-box" style="width:100%;height:30px;border-radius:10px"></div></div>
+      <div class="skeleton"><div class="skel-box" style="width:56px;height:56px;border-radius:16px"></div><div class="skel-box" style="width:80%;height:14px"></div><div class="skel-box" style="width:50%;height:12px"></div><div class="skel-box" style="width:60%;height:12px"></div><div class="skel-box" style="width:100%;height:30px;border-radius:10px"></div></div>
+      <div class="skeleton"><div class="skel-box" style="width:56px;height:56px;border-radius:16px"></div><div class="skel-box" style="width:80%;height:14px"></div><div class="skel-box" style="width:50%;height:12px"></div><div class="skel-box" style="width:60%;height:12px"></div><div class="skel-box" style="width:100%;height:30px;border-radius:10px"></div></div>
+    </div>
+  </div>
+
+  <!-- Right column -->
+  <div class="right-col">
+    <!-- Cart sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <div class="cart-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          <h3>Carrito</h3>
+        </div>
+        <div class="cart-count" id="cartCountLabel">0 productos</div>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <div class="empty-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          <p>Tu carrito está vacío.<br/>Agrega productos para comenzar.</p>
+        </div>
+      </div>
+      <div class="cart-total" id="cartTotalSection" style="display:none">
+        <div class="cart-total-row">
+          <span class="cart-total-label">Total</span>
+          <span class="cart-total-val" id="cartTotal">$0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat panel -->
+    <div class="chat-panel">
+      <div class="chat-header-bar">
+        <h4 id="botName">Asistente de ventas</h4>
+        <span id="chatBotStatus">Conectando...</span>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-typing" id="chatTyping">
+          <span>
+            <div class="t-dot"></div>
+            <div class="t-dot"></div>
+            <div class="t-dot"></div>
+          </span>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="chat-input-field" placeholder="Pregunta sobre productos, pedidos o envíos..." autocomplete="off"/>
+        <button class="chat-send" id="chatSendBtn" aria-label="Enviar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API = 'http://localhost:3003';
+  const sessionId = 'ui_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+  let cart = {};        // { productId: { ...product, qty } }
+  let catalog = {};     // { id: product }
+
+  // ── Elements
+  const productGrid   = document.getElementById('productGrid');
+  const cartItemsEl   = document.getElementById('cartItems');
+  const cartBadge     = document.getElementById('cartBadge');
+  const cartCountLabel = document.getElementById('cartCountLabel');
+  const cartTotalEl   = document.getElementById('cartTotal');
+  const cartTotalSection = document.getElementById('cartTotalSection');
+  const chatMessages  = document.getElementById('chatMessages');
+  const chatTyping    = document.getElementById('chatTyping');
+  const chatInput     = document.getElementById('chatInput');
+  const chatSendBtn   = document.getElementById('chatSendBtn');
+
+  // ── Helpers
+  function formatPrice(n) {
+    return '$' + Number(n).toLocaleString('es-CO');
+  }
+
+  function timestamp() {
+    return new Date().toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  // ── Cart
+  function getCartItems() {
+    return Object.values(cart);
+  }
+
+  function getCartArray() {
+    return getCartItems().map(i => ({ id: i.id, name: i.name, qty: i.qty, price: i.price }));
+  }
+
+  function updateCartUI() {
+    const items = getCartItems();
+    const totalQty = items.reduce((s, i) => s + i.qty, 0);
+    const totalPrice = items.reduce((s, i) => s + i.price * i.qty, 0);
+
+    // Badge
+    if (totalQty > 0) {
+      cartBadge.textContent = totalQty;
+      cartBadge.classList.add('visible');
+    } else {
+      cartBadge.classList.remove('visible');
+    }
+    cartCountLabel.textContent = `${totalQty} producto${totalQty !== 1 ? 's' : ''}`;
+
+    // Total
+    if (items.length > 0) {
+      cartTotalEl.textContent = formatPrice(totalPrice);
+      cartTotalSection.style.display = '';
+    } else {
+      cartTotalSection.style.display = 'none';
+    }
+
+    // Items
+    if (items.length === 0) {
+      cartItemsEl.innerHTML = `<div class="empty-cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><p>Tu carrito está vacío.<br/>Agrega productos para comenzar.</p></div>`;
+    } else {
+      cartItemsEl.innerHTML = items.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-emoji">${item.emoji || '📦'}</div>
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">${formatPrice(item.price)}</div>
+          </div>
+          <div class="cart-item-qty">
+            <button class="qty-btn" onclick="changeQty('${item.id}', -1)">−</button>
+            <span class="qty-val">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Update in-cart badges on product cards
+    document.querySelectorAll('.product-card').forEach(card => {
+      const id = card.dataset.id;
+      const badge = card.querySelector('.in-cart-badge');
+      if (badge) badge.classList.toggle('visible', !!(id && cart[id]));
+    });
+  }
+
+  function addToCart(id) {
+    const p = catalog[id];
+    if (!p) return;
+    if (cart[id]) { cart[id].qty++; }
+    else { cart[id] = { ...p, qty: 1 }; }
+    updateCartUI();
+  }
+
+  function changeQty(id, delta) {
+    if (!cart[id]) return;
+    cart[id].qty += delta;
+    if (cart[id].qty <= 0) delete cart[id];
+    updateCartUI();
+  }
+
+  function toggleCartPanel() {
+    const sidebar = document.getElementById('cartSidebar');
+    sidebar.style.display = sidebar.style.display === 'none' ? '' : '';
+  }
+
+  // ── Products
+  async function loadProducts() {
+    try {
+      const res = await fetch(`${API}/api/products`);
+      if (!res.ok) throw new Error();
+      catalog = await res.json();
+
+      productGrid.innerHTML = '';
+      Object.values(catalog).forEach(p => {
+        const stockClass = p.stock === 0 ? 'out' : p.stock <= 3 ? 'low' : '';
+        const stockText = p.stock === 0 ? 'Sin stock' : p.stock <= 3 ? `Solo ${p.stock} restantes` : `${p.stock} disponibles`;
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.dataset.id = p.id;
+        card.innerHTML = `
+          <div class="in-cart-badge">En carrito</div>
+          <div class="product-emoji">${p.emoji || '📦'}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-category">${p.category || 'General'}</div>
+          <div class="product-price">${formatPrice(p.price)}</div>
+          <div class="product-stock ${stockClass}">${stockText}</div>
+          <button class="add-to-cart" onclick="addToCart('${p.id}')" ${p.stock === 0 ? 'disabled' : ''}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Agregar
+          </button>
+        `;
+        productGrid.appendChild(card);
+      });
+
+      if (Object.keys(catalog).length === 0) {
+        productGrid.innerHTML = '<div style="color:var(--muted);font-size:.85rem;padding:1rem">No hay productos en el catálogo. Agrégalos desde el panel admin.</div>';
+      }
+    } catch {
+      productGrid.innerHTML = `<div style="color:var(--muted);font-size:.85rem;padding:1rem;grid-column:1/-1">
+        No se pudo conectar al servidor (puerto 3003). Inicia el bot con <code style="color:var(--orange)">npm start</code>.
+      </div>`;
+    }
+  }
+
+  // ── Chat
+  function addChatMsg(text, role) {
+    const msg = document.createElement('div');
+    msg.className = 'chat-msg ' + role;
+    msg.textContent = text;
+    chatMessages.insertBefore(msg, chatTyping);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function showTyping()  { chatTyping.classList.add('visible'); chatMessages.scrollTop = chatMessages.scrollHeight; }
+  function hideTyping()  { chatTyping.classList.remove('visible'); }
+
+  async function sendChatMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    chatInput.value = '';
+    addChatMsg(text, 'user');
+    chatInput.disabled = true;
+    chatSendBtn.disabled = true;
+    showTyping();
+
+    try {
+      const res = await fetch(`${API}/api/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId, message: text, cart: getCartArray() }),
+      });
+      const data = await res.json();
+      hideTyping();
+      if (data.reply) addChatMsg(data.reply, 'bot');
+    } catch {
+      hideTyping();
+      addChatMsg('Servidor no disponible. Inicia el bot con npm start (puerto 3003).', 'bot');
+    } finally {
+      chatInput.disabled = false;
+      chatSendBtn.disabled = false;
+      chatInput.focus();
+    }
+  }
+
+  async function startChat() {
+    showTyping();
+    try {
+      // Load config for bot name & store name
+      const cfgRes = await fetch(`${API}/api/config`);
+      if (cfgRes.ok) {
+        const cfg = await cfgRes.json();
+        document.getElementById('storeName').textContent = cfg.storeName || 'Mi Tienda';
+        document.getElementById('botName').textContent = (cfg.botName || 'Aire') + ' — Asistente de ventas';
+        document.getElementById('storeDesc').textContent = `${cfg.storeName || 'Mi Tienda'} · ${cfg.storeDescription || 'tu tienda online'}`;
+      }
+
+      const res = await fetch(`${API}/api/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId, message: 'hola', cart: [] }),
+      });
+      const data = await res.json();
+      hideTyping();
+      if (data.reply) addChatMsg(data.reply, 'bot');
+      document.getElementById('chatBotStatus').textContent = 'En línea';
+    } catch {
+      hideTyping();
+      document.getElementById('chatBotStatus').textContent = 'Desconectado';
+      addChatMsg('Servidor apagado. Inicia el bot con: npm start', 'bot');
+    }
+  }
+
+  // ── Events
+  chatSendBtn.addEventListener('click', sendChatMessage);
+  chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChatMessage(); });
+
+  // ── Init
+  loadProducts();
+  startChat();
+</script>
+</body>
+</html>

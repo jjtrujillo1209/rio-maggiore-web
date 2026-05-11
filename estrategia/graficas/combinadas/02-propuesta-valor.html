@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Propuesta de Valor — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;background:#fff}
+.canvas{width:1080px;height:1080px;position:relative;display:flex;flex-direction:column}
+/* Left accent strip */
+.accent{position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(180deg,#1B1B6E,#F26522,#C8317A)}
+/* Top */
+.top{padding:80px 80px 60px 100px;flex:none}
+.tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#1B1B6E;background:rgba(27,27,110,.08);padding:8px 16px;border-radius:50px;display:inline-block;margin-bottom:32px}
+.headline{font-size:72px;font-weight:900;color:#07070f;line-height:.92;letter-spacing:-3px;margin-bottom:24px}
+.headline em{font-style:normal;color:#F26522}
+.sub{font-size:20px;color:#666;line-height:1.5;max-width:640px}
+/* Comparison */
+.comparison{flex:1;display:grid;grid-template-columns:1fr 1fr;padding:0 80px 0 100px;gap:40px;align-items:center}
+.col-before{padding:32px;border-radius:20px;background:#fafafa;border:1px solid #f0f0f0}
+.col-after{padding:32px;border-radius:20px;background:#07070f;border:1px solid rgba(255,255,255,.08)}
+.col-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px}
+.col-before .col-label{color:#999}
+.col-after .col-label{color:rgba(255,255,255,.35)}
+.col-title{font-size:20px;font-weight:700;margin-bottom:20px}
+.col-before .col-title{color:#1a1a2e}
+.col-after .col-title{color:#fff}
+.check-list{display:flex;flex-direction:column;gap:12px}
+.check-item{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.4}
+.col-before .check-item{color:#888}
+.col-after .check-item{color:rgba(255,255,255,.6)}
+.check-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;flex-shrink:0;margin-top:1px}
+.col-before .check-icon{background:#fee;color:#f44}
+.col-after .check-icon{background:linear-gradient(135deg,#F26522,#C8317A);color:#fff}
+/* Arrow between cols */
+.arrow-sep{display:flex;align-items:center;justify-content:center;font-size:28px;color:#F26522;font-weight:900}
+/* Bottom */
+.bottom{padding:32px 80px 32px 100px;background:#f9f9fc;display:flex;justify-content:space-between;align-items:center;flex:none}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:18px;font-weight:900;color:#1B1B6E;letter-spacing:-1px}
+.air{font-size:22px;font-weight:300;color:#F26522}
+.bottom-text{font-size:14px;color:#999}
+.bottom-text strong{color:#1B1B6E}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="accent"></div>
+  <div class="top">
+    <div class="tag">Propuesta de Valor</div>
+    <h1 class="headline">Antes vs.<br/><em>Después.</em></h1>
+    <p class="sub">Lo que cambia cuando tu negocio tiene una estrategia digital real.</p>
+  </div>
+  <div class="comparison">
+    <div class="col-before">
+      <div class="col-label">Sin Through Air</div>
+      <div class="col-title">Tu negocio hoy</div>
+      <div class="check-list">
+        <div class="check-item">
+          <div class="check-icon">✕</div>
+          <span>Dependes del voz a voz para conseguir clientes</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">✕</div>
+          <span>Respondes mensajes a toda hora o los pierdes</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">✕</div>
+          <span>Sin datos de cuántos clientes perdiste esta semana</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">✕</div>
+          <span>Cada cliente nuevo te cuesta esfuerzo manual</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">✕</div>
+          <span>Tu competencia te está quitando clientes online</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-after">
+      <div class="col-label">Con Through Air</div>
+      <div class="col-title">Tu negocio en 30 días</div>
+      <div class="check-list">
+        <div class="check-item">
+          <div class="check-icon">✓</div>
+          <span>Clientes nuevos llegando cada día por pautas y redes</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">✓</div>
+          <span>Bot responde y vende mientras tú descansas</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">✓</div>
+          <span>Dashboard con métricas en tiempo real</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">✓</div>
+          <span>Sistema automático que califica y cierra leads</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">✓</div>
+          <span>Presencia digital que trabaja 24/7 por ti</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+    <div class="bottom-text">El cambio puede empezar <strong>esta semana.</strong></div>
+  </div>
+</div>
+</body>
+</html>

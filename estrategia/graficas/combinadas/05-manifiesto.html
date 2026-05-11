@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Manifiesto — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;background:#07070f}
+.canvas{width:1080px;height:1080px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 120px}
+/* Background */
+.bg-radial{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(27,27,110,.7) 0%,transparent 70%)}
+.stripe-top{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#1B1B6E,#F04E37,#F26522,#C8317A)}
+.stripe-bot{position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#C8317A,#F26522,#F04E37,#1B1B6E)}
+/* Decorative lines */
+.line-left{position:absolute;left:60px;top:50%;transform:translateY(-50%);width:1px;height:300px;background:linear-gradient(180deg,transparent,rgba(242,101,34,.4),transparent)}
+.line-right{position:absolute;right:60px;top:50%;transform:translateY(-50%);width:1px;height:300px;background:linear-gradient(180deg,transparent,rgba(242,101,34,.4),transparent)}
+/* Content */
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:32px;position:relative;z-index:2}
+.big-word{font-size:120px;font-weight:900;line-height:.85;letter-spacing:-6px;background:linear-gradient(135deg,#F26522,#C8317A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:24px;position:relative;z-index:2}
+.manifesto-text{font-size:24px;color:rgba(255,255,255,.6);line-height:1.6;max-width:720px;margin-bottom:48px;position:relative;z-index:2}
+.manifesto-text strong{color:#fff;font-weight:700}
+/* Divider */
+.divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,#F26522,transparent);margin:0 auto 40px;position:relative;z-index:2}
+/* Brand */
+.brand-big{display:flex;align-items:baseline;gap:6px;justify-content:center;position:relative;z-index:2;margin-bottom:16px}
+.through{font-size:32px;font-weight:900;color:#fff;letter-spacing:-2px}
+.air{font-size:40px;font-weight:300;color:#F26522}
+.tagline{font-size:15px;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase;position:relative;z-index:2}
+/* Services badges */
+.services{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:32px;position:relative;z-index:2}
+.svc-badge{font-size:11px;font-weight:600;padding:6px 14px;border-radius:50px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="bg-radial"></div>
+  <div class="stripe-top"></div>
+  <div class="stripe-bot"></div>
+  <div class="line-left"></div>
+  <div class="line-right"></div>
+  <div class="eyebrow">Un mensaje para tu negocio</div>
+  <div class="big-word">Digital<br/>o invisible.</div>
+  <div class="divider"></div>
+  <p class="manifesto-text">
+    Tus clientes buscan en Google, compran en Instagram y preguntan por WhatsApp. Si no estás ahí, <strong>alguien más lo está.</strong> No es el futuro. Es el presente.
+  </p>
+  <div class="brand-big">
+    <span class="through">through</span><span class="air">air</span>
+  </div>
+  <div class="tagline">Tecnología que trabaja para tu negocio</div>
+  <div class="services">
+    <div class="svc-badge">Pautas Digitales</div>
+    <div class="svc-badge">Redes Sociales</div>
+    <div class="svc-badge">Página Web</div>
+    <div class="svc-badge">E-Commerce</div>
+    <div class="svc-badge">WhatsApp Bot</div>
+    <div class="svc-badge">Lead Qualifier</div>
+  </div>
+</div>
+</body>
+</html>

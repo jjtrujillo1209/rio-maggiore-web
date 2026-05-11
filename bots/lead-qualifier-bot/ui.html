@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lead Qualifier Bot — Through Air</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1B1B6E;
+      --orange:  #F26522;
+      --coral:   #F04E37;
+      --magenta: #C8317A;
+      --grad:    linear-gradient(135deg, #F26522 0%, #F04E37 45%, #C8317A 100%);
+      --bg:      #07070b;
+      --surface: #0f0f1a;
+      --card:    #141420;
+      --border:  #1e1e3a;
+      --text:    #e2e2f0;
+      --muted:   #6b6b8a;
+    }
+
+    html { height: 100%; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 420px 1fr;
+      grid-template-rows: 1fr;
+      overflow: hidden;
+    }
+
+    /* Background glow */
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 55% 45% at 30% 50%, rgba(27,27,110,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 55% at 70% 50%, rgba(200,49,122,.12) 0%, transparent 60%);
+    }
+
+    /* Left panel — brand info */
+    .side-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 3rem 2rem 3rem 3.5rem;
+      position: relative; z-index: 1;
+    }
+    .brand { margin-bottom: 3rem; }
+    .brand-logo { display: flex; align-items: center; gap: .4rem; margin-bottom: .8rem; }
+    .logo-through { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.8rem; color: #fff; }
+    .logo-air     { font-family: 'Nunito', sans-serif; font-weight: 300; font-size: 1.8rem; color: var(--orange); }
+    .brand-tagline { font-size: .85rem; color: var(--muted); }
+
+    .side-title {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: clamp(1.6rem, 2.5vw, 2.4rem); line-height: 1.2; color: #fff;
+      margin-bottom: 1rem;
+    }
+    .side-title span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .side-desc { font-size: .88rem; color: var(--muted); line-height: 1.7; max-width: 38ch; margin-bottom: 2rem; }
+
+    .features-list { display: flex; flex-direction: column; gap: .75rem; }
+    .feature-item { display: flex; align-items: flex-start; gap: .8rem; }
+    .feature-check {
+      width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px;
+      background: rgba(242,101,34,.15); border: 1px solid rgba(242,101,34,.3);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    }
+    .feature-check svg { width: 10px; height: 10px; color: var(--orange); }
+    .feature-text { font-size: .84rem; color: var(--muted); line-height: 1.45; }
+    .feature-text strong { color: var(--text); font-weight: 600; }
+
+    .admin-link {
+      display: inline-flex; align-items: center; gap: .5rem; margin-top: 2.5rem;
+      padding: .65rem 1.4rem; border-radius: 10px;
+      border: 1.5px solid var(--border); color: var(--muted);
+      text-decoration: none; font-size: .82rem; font-weight: 600;
+      transition: all .2s; width: fit-content;
+    }
+    .admin-link:hover { border-color: var(--orange); color: var(--orange); }
+    .admin-link svg { width: 14px; height: 14px; }
+
+    /* Center — chat widget */
+    .widget-wrap {
+      display: flex; flex-direction: column;
+      padding: 2rem 0;
+      position: relative; z-index: 2;
+      align-items: center; justify-content: center;
+    }
+    .widget {
+      width: 100%; max-width: 400px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 32px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.03);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      height: min(calc(100vh - 4rem), 680px);
+    }
+
+    .widget-header {
+      background: var(--grad);
+      padding: 1.4rem 1.5rem;
+      position: relative; flex-shrink: 0;
+    }
+    .widget-header::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+    }
+    .widget-header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: .5rem; }
+    .widget-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      border: 2px solid rgba(255,255,255,.4);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .widget-avatar svg { width: 20px; height: 20px; color: #fff; }
+    .widget-status {
+      display: flex; align-items: center; gap: .35rem;
+      font-size: .72rem; color: rgba(255,255,255,.75);
+    }
+    .widget-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+    .widget-title { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.05rem; color: #fff; }
+    .widget-subtitle { font-size: .8rem; color: rgba(255,255,255,.75); margin-top: .15rem; }
+
+    /* Progress bar */
+    .progress-wrap { padding: .8rem 1.2rem; background: var(--surface); flex-shrink: 0; border-bottom: 1px solid var(--border); }
+    .progress-label { display: flex; justify-content: space-between; margin-bottom: .4rem; }
+    .progress-label span { font-size: .72rem; color: var(--muted); }
+    .progress-label strong { font-size: .72rem; color: var(--orange); font-weight: 700; }
+    .progress-track {
+      height: 4px; background: var(--border); border-radius: 4px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; background: var(--grad); border-radius: 4px;
+      width: 0%; transition: width .5s ease;
+    }
+
+    /* Messages */
+    .messages {
+      flex: 1; overflow-y: auto; padding: 1rem;
+      display: flex; flex-direction: column; gap: .8rem;
+      scroll-behavior: smooth;
+    }
+    .messages::-webkit-scrollbar { width: 4px; }
+    .messages::-webkit-scrollbar-track { background: transparent; }
+    .messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .msg-wrap { display: flex; flex-direction: column; }
+    .msg-wrap.user { align-items: flex-end; }
+    .msg-wrap.bot  { align-items: flex-start; }
+
+    .msg-bubble {
+      max-width: 82%; padding: .65rem 1rem; border-radius: 16px;
+      font-size: .875rem; line-height: 1.5;
+    }
+    .msg-bubble.user {
+      background: var(--grad); color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .msg-bubble.bot {
+      background: var(--surface); color: var(--text); border: 1px solid var(--border);
+      border-bottom-left-radius: 4px;
+    }
+    .msg-time { font-size: .65rem; color: var(--muted); margin-top: .3rem; }
+
+    .typing-indicator { display: none; align-items: center; gap: .3rem; padding: .55rem .9rem; }
+    .typing-indicator.visible { display: flex; }
+    .typing-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--muted);
+      animation: typingBounce 1.2s infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: .2s; }
+    .typing-dot:nth-child(3) { animation-delay: .4s; }
+    @keyframes typingBounce { 0%,80%,100%{transform:scale(.8);opacity:.5} 40%{transform:scale(1);opacity:1} }
+
+    /* Qualified banner */
+    .qualified-banner {
+      margin: .5rem 1rem;
+      background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.3);
+      border-radius: 12px; padding: .8rem 1rem;
+      display: none; align-items: center; gap: .7rem;
+      font-size: .82rem; color: #4ade80;
+    }
+    .qualified-banner.visible { display: flex; }
+    .qualified-banner svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* Input */
+    .widget-input-wrap { padding: .8rem 1rem; border-top: 1px solid var(--border); flex-shrink: 0; }
+    .widget-input-row { display: flex; gap: .6rem; align-items: center; }
+    .widget-input {
+      flex: 1; background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: 50px; padding: .65rem 1.1rem;
+      color: var(--text); font-size: .875rem; font-family: inherit;
+      outline: none; transition: border-color .2s;
+    }
+    .widget-input:focus { border-color: var(--orange); }
+    .widget-input::placeholder { color: var(--muted); }
+    .widget-input:disabled { opacity: .5; cursor: not-allowed; }
+    .send-btn {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      background: var(--grad); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s; box-shadow: 0 3px 10px rgba(242,101,34,.35);
+    }
+    .send-btn:hover:not(:disabled) { transform: scale(1.08); box-shadow: 0 5px 15px rgba(242,101,34,.45); }
+    .send-btn:disabled { opacity: .5; cursor: not-allowed; }
+    .send-btn svg { width: 16px; height: 16px; color: #fff; }
+    .powered-by { text-align: center; font-size: .68rem; color: var(--muted); margin-top: .5rem; }
+
+    /* Right panel — leads counter */
+    .side-right {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 3rem 3.5rem 3rem 2rem;
+      position: relative; z-index: 1;
+    }
+    .leads-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .leads-card-header { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.2rem; }
+    .leads-card-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--grad); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .leads-card-icon svg { width: 18px; height: 18px; color: #fff; }
+    .leads-card-title { font-weight: 700; font-size: .88rem; color: #fff; }
+    .leads-card-sub   { font-size: .75rem; color: var(--muted); margin-top: .1rem; }
+    .leads-count { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 3rem; color: #fff; line-height: 1; }
+    .leads-count span { font-size: 1.2rem; color: var(--muted); font-weight: 400; }
+
+    .divider { height: 1px; background: var(--border); margin: .8rem 0; }
+
+    .lead-item {
+      display: flex; flex-direction: column; gap: .15rem; padding: .6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .lead-item:last-child { border-bottom: none; }
+    .lead-name { font-size: .83rem; font-weight: 600; color: var(--text); }
+    .lead-meta { font-size: .75rem; color: var(--muted); }
+    .lead-service {
+      display: inline-block; font-size: .67rem; font-weight: 700; padding: .15rem .5rem;
+      background: rgba(242,101,34,.12); border: 1px solid rgba(242,101,34,.25);
+      border-radius: 50px; color: var(--orange); margin-top: .2rem;
+    }
+
+    .no-leads { font-size: .82rem; color: var(--muted); text-align: center; padding: 1rem 0; }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      body { grid-template-columns: 1fr; grid-template-rows: auto; overflow: auto; min-height: 100vh; }
+      body::before { position: fixed; }
+      .side-left, .side-right { padding: 2rem 1.5rem; }
+      .widget-wrap { padding: 0 1rem 2rem; }
+      .widget { height: 560px; }
+      .side-right .leads-card:nth-child(2) { display: none; }
+    }
+    @media (max-width: 600px) {
+      .side-left { padding: 1.5rem 1.2rem; }
+      .widget-wrap { padding: 0 .8rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LEFT: brand info -->
+<aside class="side-left">
+  <div class="brand">
+    <div class="brand-logo">
+      <span class="logo-through">through</span>
+      <span class="logo-air">air</span>
+    </div>
+    <div class="brand-tagline">Conectando tu negocio con el mundo</div>
+  </div>
+
+  <h2 class="side-title">
+    Califica leads<br/>en <span>2 minutos</span>
+  </h2>
+  <p class="side-desc">
+    El bot pregunta lo necesario para saber si el prospecto es un cliente ideal — sin formularios fríos, de forma conversacional.
+  </p>
+
+  <div class="features-list">
+    <div class="feature-item">
+      <div class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="feature-text"><strong>Conversación natural</strong> — sin formularios rígidos</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="feature-text"><strong>Captura nombre, empresa y presupuesto</strong> automáticamente</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="feature-text"><strong>Guarda el lead</strong> en tiempo real para seguimiento</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="feature-text"><strong>Embebible</strong> en cualquier sitio web con un iframe</div>
+    </div>
+  </div>
+
+  <a href="http://localhost:3002/admin" target="_blank" class="admin-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    Abrir panel de administración
+  </a>
+</aside>
+
+<!-- CENTER: chat widget -->
+<main class="widget-wrap">
+  <div class="widget">
+    <!-- Header -->
+    <div class="widget-header">
+      <div class="widget-header-top">
+        <div class="widget-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="widget-status">
+          <div class="widget-status-dot"></div>
+          <span id="botStatus">Conectando...</span>
+        </div>
+      </div>
+      <div class="widget-title" id="widgetTitle">Through Air — Habla con nosotros</div>
+      <div class="widget-subtitle" id="widgetSubtitle">Responde unas preguntas y te enviamos una propuesta personalizada</div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>Progreso de calificación</span>
+        <strong id="progressPct">0%</strong>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="messages" id="messages">
+      <div class="typing-indicator" id="typing">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    </div>
+
+    <!-- Qualified banner -->
+    <div class="qualified-banner" id="qualifiedBanner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span>Lead calificado correctamente. Juan José te contactará pronto.</span>
+    </div>
+
+    <!-- Input -->
+    <div class="widget-input-wrap">
+      <div class="widget-input-row">
+        <input
+          type="text" id="chatInput" class="widget-input"
+          placeholder="Escribe tu mensaje..."
+          autocomplete="off"
+        />
+        <button class="send-btn" id="sendBtn" aria-label="Enviar mensaje">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+      <div class="powered-by">Powered by Claude Haiku · Through Air</div>
+    </div>
+  </div>
+</main>
+
+<!-- RIGHT: leads dashboard -->
+<aside class="side-right">
+  <div class="leads-card">
+    <div class="leads-card-header">
+      <div class="leads-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div>
+        <div class="leads-card-title">Leads capturados</div>
+        <div class="leads-card-sub">Total acumulado</div>
+      </div>
+    </div>
+    <div class="leads-count" id="totalLeads">— <span>leads</span></div>
+  </div>
+
+  <div class="leads-card">
+    <div class="leads-card-header">
+      <div class="leads-card-icon" style="background: linear-gradient(135deg, #1B1B6E, #3535c5);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <div class="leads-card-title">Últimos leads</div>
+        <div class="leads-card-sub" id="leadsSubtitle">Cargando...</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div id="recentLeads">
+      <div class="no-leads">Cargando leads...</div>
+    </div>
+  </div>
+</aside>
+
+<script>
+  const API = 'http://localhost:3002';
+  const sessionId = 'ui_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+  let messageCount = 0;
+  let isQualified = false;
+  let progressStep = 0;
+  const TOTAL_STEPS = 5; // qualifyFields count
+
+  const messagesEl  = document.getElementById('messages');
+  const inputEl     = document.getElementById('chatInput');
+  const sendBtn     = document.getElementById('sendBtn');
+  const typingEl    = document.getElementById('typing');
+  const progressFill = document.getElementById('progressFill');
+  const progressPct  = document.getElementById('progressPct');
+  const qualifiedBanner = document.getElementById('qualifiedBanner');
+
+  function timestamp() {
+    return new Date().toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function addMessage(text, role) {
+    const wrap = document.createElement('div');
+    wrap.className = 'msg-wrap ' + role;
+    const bubble = document.createElement('div');
+    bubble.className = 'msg-bubble ' + role;
+    bubble.textContent = text;
+    const time = document.createElement('div');
+    time.className = 'msg-time';
+    time.textContent = timestamp();
+    wrap.appendChild(bubble);
+    wrap.appendChild(time);
+    messagesEl.insertBefore(wrap, typingEl);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function showTyping()  { typingEl.classList.add('visible'); messagesEl.scrollTop = messagesEl.scrollHeight; }
+  function hideTyping()  { typingEl.classList.remove('visible'); }
+
+  function updateProgress(step) {
+    const pct = Math.min(Math.round((step / TOTAL_STEPS) * 100), 100);
+    progressFill.style.width = pct + '%';
+    progressPct.textContent = pct + '%';
+  }
+
+  async function sendMessage() {
+    const text = inputEl.value.trim();
+    if (!text || isQualified) return;
+
+    inputEl.value = '';
+    addMessage(text, 'user');
+    inputEl.disabled = true;
+    sendBtn.disabled = true;
+    showTyping();
+    messageCount++;
+
+    try {
+      const res = await fetch(`${API}/api/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId, message: text }),
+      });
+
+      const data = await res.json();
+      hideTyping();
+
+      if (data.reply) {
+        addMessage(data.reply, 'bot');
+        progressStep = Math.min(progressStep + 1, TOTAL_STEPS);
+        updateProgress(progressStep);
+      }
+
+      if (data.qualified) {
+        isQualified = true;
+        qualifiedBanner.classList.add('visible');
+        updateProgress(TOTAL_STEPS);
+        inputEl.placeholder = 'Lead calificado — gracias';
+        fetchLeads();
+      } else {
+        inputEl.disabled = false;
+        sendBtn.disabled = false;
+        inputEl.focus();
+      }
+    } catch {
+      hideTyping();
+      addMessage('El bot no está disponible. Asegúrate de que el servidor esté corriendo en el puerto 3002.', 'bot');
+      inputEl.disabled = false;
+      sendBtn.disabled = false;
+    }
+  }
+
+  async function startConversation() {
+    showTyping();
+    try {
+      // Fetch config for welcome message
+      const cfgRes = await fetch(`${API}/api/config`);
+      const cfg = cfgRes.ok ? await cfgRes.json() : null;
+
+      if (cfg) {
+        document.getElementById('widgetTitle').textContent =
+          (cfg.companyName || 'Through Air') + ' — ' + (cfg.widgetTitle || 'Habla con nosotros');
+        document.getElementById('widgetSubtitle').textContent =
+          cfg.widgetSubtitle || 'Responde unas preguntas y te enviamos una propuesta personalizada';
+      }
+
+      // Send empty trigger to get welcome message
+      const res = await fetch(`${API}/api/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId, message: 'hola' }),
+      });
+      const data = await res.json();
+      hideTyping();
+      if (data.reply) addMessage(data.reply, 'bot');
+      document.getElementById('botStatus').textContent = 'En línea';
+    } catch {
+      hideTyping();
+      document.getElementById('botStatus').textContent = 'Desconectado';
+      addMessage('El servidor no está disponible. Inicia el bot con: npm start (puerto 3002)', 'bot');
+    }
+  }
+
+  async function fetchLeads() {
+    try {
+      const res = await fetch(`${API}/api/leads`);
+      if (!res.ok) throw new Error();
+      const leads = await res.json();
+
+      document.getElementById('totalLeads').innerHTML =
+        `${leads.length} <span>leads</span>`;
+      document.getElementById('leadsSubtitle').textContent =
+        `Última actualización ${timestamp()}`;
+
+      const recentEl = document.getElementById('recentLeads');
+      const recent = leads.slice(-4).reverse();
+      if (recent.length === 0) {
+        recentEl.innerHTML = '<div class="no-leads">Aún no hay leads</div>';
+      } else {
+        recentEl.innerHTML = recent.map(l => `
+          <div class="lead-item">
+            <div class="lead-name">${l.nombre || 'Sin nombre'}</div>
+            <div class="lead-meta">${l.empresa || 'Sin empresa'}</div>
+            ${l.servicio ? `<span class="lead-service">${l.servicio}</span>` : ''}
+          </div>
+        `).join('');
+      }
+    } catch {
+      document.getElementById('leadsSubtitle').textContent = 'Servidor no disponible';
+      document.getElementById('recentLeads').innerHTML =
+        '<div class="no-leads">Inicia el servidor para ver leads</div>';
+    }
+  }
+
+  // Events
+  sendBtn.addEventListener('click', sendMessage);
+  inputEl.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+
+  // Init
+  startConversation();
+  fetchLeads();
+  setInterval(fetchLeads, 30000);
+</script>
+</body>
+</html>

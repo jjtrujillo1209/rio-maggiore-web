@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Error 05 — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 70% 5%, rgba(242,101,34,.3) 0%, rgba(27,27,110,.2) 45%, #07070f 68%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+.slide-num{position:absolute;top:28px;right:32px;font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.25);text-transform:uppercase}
+.err-badge{background:rgba(242,101,34,.15);border:1px solid rgba(242,101,34,.3);border-radius:50px;padding:8px 20px;font-size:12px;font-weight:700;color:#F26522;letter-spacing:3px;text-transform:uppercase;display:inline-block;margin-bottom:20px}
+.number{font-size:220px;font-weight:900;line-height:.8;letter-spacing:-14px;color:rgba(255,255,255,.04);position:absolute;right:60px;top:100px}
+.headline{font-size:68px;font-weight:900;color:#fff;line-height:.9;letter-spacing:-3.5px;margin-bottom:16px;position:relative;z-index:2}
+.headline em{font-style:normal;color:#F26522}
+.body-text{font-size:22px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.6;max-width:680px;position:relative;z-index:2;margin:20px 0}
+.body-text strong{color:#fff;font-weight:700}
+
+.speed-visual{display:flex;gap:16px;margin:4px 0 20px;position:relative;z-index:2}
+.speed-card{flex:1;border-radius:18px;padding:22px 24px;border:1px solid}
+.speed-card.slow{background:rgba(200,49,122,.08);border-color:rgba(200,49,122,.25)}
+.speed-card.fast{background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.25)}
+.sc-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.slow .sc-label{color:#C8317A}
+.fast .sc-label{color:#25d366}
+.sc-time{font-size:52px;font-weight:900;letter-spacing:-3px;line-height:1}
+.slow .sc-time{color:#C8317A}
+.fast .sc-time{color:#25d366}
+.sc-unit{font-size:16px;font-weight:400;color:rgba(255,255,255,.35);letter-spacing:0}
+.sc-desc{font-size:14px;color:rgba(255,255,255,.45);margin-top:8px;line-height:1.4}
+.progress-bar{height:6px;border-radius:3px;margin-top:14px}
+.slow .progress-bar{background:linear-gradient(90deg,#C8317A 60%,rgba(255,255,255,.1) 60%)}
+.fast .progress-bar{background:linear-gradient(90deg,#25d366 15%,rgba(255,255,255,.1) 15%)}
+
+.stat-inline{background:rgba(242,101,34,.1);border:1px solid rgba(242,101,34,.25);border-radius:14px;padding:16px 22px;margin:0 0 20px;font-size:18px;font-weight:700;color:#fff;line-height:1.4;position:relative;z-index:2}
+.stat-inline em{font-style:normal;color:#F26522}
+
+.fix-box{background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.25);border-radius:18px;padding:22px 28px;margin-bottom:24px;position:relative;z-index:2}
+.fix-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#25d366;margin-bottom:8px}
+.fix-text{font-size:18px;font-weight:700;color:#fff;line-height:1.4}
+
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:26px;font-weight:300;color:#F26522}
+.tag{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:2px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="slide-num">6 / 7 — Desliza</div>
+  <div class="number">05</div>
+  <div class="err-badge">Error 05</div>
+  <div class="headline">Tu web<br/>es <em>lenta</em></div>
+  <div class="body-text"><strong>El 53% abandona una página</strong> si tarda más de 3 segundos en cargar. En Colombia, con conexiones móviles variables, esto mata tus ventas.</div>
+
+  <div class="speed-visual">
+    <div class="speed-card slow">
+      <div class="sc-label">Tu web actual</div>
+      <div class="sc-time">8<span class="sc-unit"> seg</span></div>
+      <div class="sc-desc">El cliente ya cerró la pestaña y buscó a tu competencia</div>
+      <div class="progress-bar"></div>
+    </div>
+    <div class="speed-card fast">
+      <div class="sc-label">Web de Through Air</div>
+      <div class="sc-time">&lt;1<span class="sc-unit"> seg</span></div>
+      <div class="sc-desc">Optimizada para Colombia: mobile-first, CDN, hosting local</div>
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
+  <div class="stat-inline">Google penaliza las webs lentas — <em>pierdes posición en búsquedas</em> además de perder clientes.</div>
+
+  <div class="fix-box">
+    <div class="fix-label">La solución</div>
+    <div class="fix-text">Página web profesional lista en 15 días, optimizada para velocidad en Colombia. Desde $3.500.000.</div>
+  </div>
+
+  <div class="footer">
+    <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+    <div class="tag">#WebDesign #PageSpeed #PymeColombia</div>
+  </div>
+</div>
+</body>
+</html>

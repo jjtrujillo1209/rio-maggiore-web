@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Servicios y Precios — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 72% 8%, rgba(27,27,110,.6) 0%, rgba(242,101,34,.15) 50%, #07070f 70%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px}
+.headline{font-size:80px;font-weight:900;color:#fff;line-height:.88;letter-spacing:-4px;margin-bottom:6px}
+.headline em{font-style:normal;color:#F26522}
+.sub{font-size:20px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.4}
+
+.services{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.svc{border-radius:18px;padding:22px 24px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);display:flex;flex-direction:column;gap:0;position:relative;overflow:hidden}
+.svc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.s1::before{background:#1B1B6E}
+.s2::before{background:linear-gradient(90deg,#C8317A,#F04E37)}
+.s3::before{background:#F26522}
+.s4::before{background:linear-gradient(90deg,#F26522,#C8317A)}
+.s5::before{background:#25d366}
+.svc-tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px}
+.svc-name{font-size:20px;font-weight:900;color:#fff;letter-spacing:-0.5px;margin-bottom:6px}
+.svc-desc{font-size:13px;color:rgba(255,255,255,.38);line-height:1.4;flex:1}
+.svc-price{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07)}
+.price-val{font-size:22px;font-weight:900;color:#fff;letter-spacing:-0.5px}
+.s1 .price-val{color:#6b7fd4}
+.s2 .price-val{color:#f47558}
+.s3 .price-val{color:#F26522}
+.s4 .price-val{color:#F26522}
+.s5 .price-val{color:#25d366}
+.price-period{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+
+/* pack highlight */
+.svc.pack{background:rgba(27,27,110,.3);border-color:rgba(27,27,110,.5);grid-column:span 2;flex-direction:row;align-items:center;gap:24px}
+.pack::before{background:linear-gradient(90deg,#1B1B6E,#F26522)}
+.pack-badge{background:linear-gradient(135deg,#F26522,#C8317A);color:#fff;font-size:11px;font-weight:700;padding:6px 14px;border-radius:50px;white-space:nowrap;flex-shrink:0}
+.pack .svc-name{margin-bottom:4px}
+.pack-info{flex:1}
+.pack .svc-price{margin-top:8px;padding-top:8px;border-top:none}
+
+.cta-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.cta-note{font-size:15px;color:rgba(255,255,255,.45);line-height:1.4}
+.cta-note strong{color:#fff}
+.cta-btn{background:#F26522;color:#fff;font-size:14px;font-weight:700;padding:14px 28px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:26px;font-weight:300;color:#F26522}
+.tag{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:2px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div>
+    <div class="eyebrow">Sin letras pequeñas · Sin permanencia</div>
+    <div class="headline">Lo que hace<br/><em>Through Air</em></div>
+    <div class="sub">Precios transparentes para PYMEs colombianas.</div>
+  </div>
+
+  <div class="services">
+    <div class="svc s1">
+      <div class="svc-tag">Marketing</div>
+      <div class="svc-name">Pautas Digitales</div>
+      <div class="svc-desc">Google Ads + Meta Ads gestionados y optimizados para tu negocio</div>
+      <div class="svc-price">
+        <div class="price-val">$2.000.000</div>
+        <div class="price-period">COP / mes</div>
+      </div>
+    </div>
+    <div class="svc s2">
+      <div class="svc-tag">Redes Sociales</div>
+      <div class="svc-name">Gestión de Redes</div>
+      <div class="svc-desc">12 piezas/mes + calendario editorial + reporte mensual</div>
+      <div class="svc-price">
+        <div class="price-val">$3.500.000</div>
+        <div class="price-period">COP / mes</div>
+      </div>
+    </div>
+    <div class="svc s3">
+      <div class="svc-tag">Web</div>
+      <div class="svc-name">Página Web</div>
+      <div class="svc-desc">Diseño profesional listo en 15 días, optimizada para Colombia</div>
+      <div class="svc-price">
+        <div class="price-val">$3.500.000</div>
+        <div class="price-period">COP · pago único</div>
+      </div>
+    </div>
+    <div class="svc s4">
+      <div class="svc-tag">Bots IA</div>
+      <div class="svc-name">WhatsApp + Bots</div>
+      <div class="svc-desc">Atiende, cotiza y vende 24/7 con inteligencia artificial</div>
+      <div class="svc-price">
+        <div class="price-val">Desde $2.500.000</div>
+        <div class="price-period">COP + $700K/mes</div>
+      </div>
+    </div>
+    <div class="svc pack">
+      <div class="pack-info">
+        <div class="svc-tag">Recomendado · Más popular</div>
+        <div class="svc-name">Pack Mensual — Pautas + Redes</div>
+        <div class="svc-price">
+          <div class="price-val">$4.000.000 <span style="font-size:14px;color:rgba(255,255,255,.35);font-weight:400">/ mes · ahorra 27%</span></div>
+        </div>
+      </div>
+      <div class="pack-badge">El más pedido</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="cta-row">
+      <div class="cta-note"><strong>Primera consulta gratis.</strong><br/>Cuéntanos tu negocio y empezamos.</div>
+      <div class="cta-btn">Cotización gratis</div>
+    </div>
+    <div class="footer">
+      <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+      <div class="tag">#ThroughAir #AgenciaDigital #PymeColombia</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

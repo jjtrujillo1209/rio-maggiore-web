@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WhatsApp Admin Bot — Through Air</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1B1B6E;
+      --orange:  #F26522;
+      --coral:   #F04E37;
+      --magenta: #C8317A;
+      --grad:    linear-gradient(135deg, #F26522 0%, #F04E37 45%, #C8317A 100%);
+      --bg:      #07070b;
+      --surface: #0f0f1a;
+      --card:    #141420;
+      --border:  #1e1e3a;
+      --text:    #e2e2f0;
+      --muted:   #6b6b8a;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 2.5rem;
+      background: rgba(7,7,11,.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: .5rem; }
+    .logo-through { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.6rem; color: #fff; }
+    .logo-air     { font-family: 'Nunito', sans-serif; font-weight: 300; font-size: 1.6rem; color: var(--orange); }
+    .nav-badge {
+      font-size: .65rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
+      background: var(--grad); color: #fff;
+      padding: .25rem .7rem; border-radius: 50px;
+    }
+    .nav-actions { display: flex; gap: .8rem; align-items: center; }
+    .btn-nav {
+      display: flex; align-items: center; gap: .4rem;
+      padding: .55rem 1.1rem; border-radius: 10px; font-size: .82rem; font-weight: 600;
+      text-decoration: none; cursor: pointer; transition: all .2s;
+    }
+    .btn-nav.outline {
+      background: transparent; border: 1.5px solid var(--border); color: var(--muted);
+    }
+    .btn-nav.outline:hover { border-color: var(--orange); color: var(--orange); }
+    .btn-nav.primary {
+      background: var(--grad); border: none; color: #fff;
+      box-shadow: 0 4px 16px rgba(242,101,34,.3);
+    }
+    .btn-nav.primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(242,101,34,.4); }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 4rem;
+      padding: 7rem 6rem 4rem;
+      position: relative;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(242,101,34,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(242,101,34,.1); border: 1px solid rgba(242,101,34,.3);
+      border-radius: 50px; padding: .4rem 1rem;
+      font-size: .75rem; font-weight: 600; color: var(--orange);
+      margin-bottom: 1.5rem; letter-spacing: .4px;
+    }
+    .hero-title {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.15;
+      color: #fff; margin-bottom: 1.2rem;
+    }
+    .hero-title span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-desc {
+      font-size: 1rem; color: var(--muted); line-height: 1.7;
+      max-width: 44ch; margin-bottom: 2rem;
+    }
+    .hero-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .8rem 1.8rem; background: var(--grad);
+      border: none; border-radius: 12px; color: #fff;
+      font-size: .9rem; font-weight: 700; cursor: pointer; text-decoration: none;
+      box-shadow: 0 6px 20px rgba(242,101,34,.35); transition: all .25s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(242,101,34,.45); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .8rem 1.8rem; background: transparent;
+      border: 1.5px solid var(--border); border-radius: 12px; color: var(--text);
+      font-size: .9rem; font-weight: 600; cursor: pointer; text-decoration: none;
+      transition: all .25s;
+    }
+    .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* Status pill */
+    .status-row { display: flex; align-items: center; gap: .8rem; margin-top: 1.8rem; }
+    .status-pill {
+      display: flex; align-items: center; gap: .45rem;
+      background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.25);
+      border-radius: 50px; padding: .3rem .9rem;
+      font-size: .78rem; font-weight: 600; color: #22c55e;
+    }
+    .status-pill.offline { background: rgba(239,68,68,.1); border-color: rgba(239,68,68,.25); color: #ef4444; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .status-detail { font-size: .78rem; color: var(--muted); }
+
+    /* ── PHONE MOCKUP ────────────────────────────────────── */
+    .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+    .phone {
+      width: 280px; background: #111118; border-radius: 40px;
+      border: 2px solid rgba(255,255,255,.1);
+      box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.03);
+      overflow: hidden; position: relative;
+    }
+    .phone::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+    }
+    .phone-notch {
+      display: flex; justify-content: center; padding: .6rem 0 .3rem;
+    }
+    .phone-notch-inner {
+      width: 80px; height: 20px; background: #111118;
+      border-radius: 0 0 14px 14px; border: 1.5px solid rgba(255,255,255,.08);
+      border-top: none;
+    }
+    .wa-header {
+      background: #075E54; padding: .8rem 1rem;
+      display: flex; align-items: center; gap: .7rem;
+    }
+    .wa-back { color: rgba(255,255,255,.8); width: 16px; cursor: pointer; }
+    .wa-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--grad); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: .7rem; font-weight: 700; color: #fff; letter-spacing: .5px;
+    }
+    .wa-info { flex: 1; }
+    .wa-name { font-size: .85rem; font-weight: 600; color: #fff; }
+    .wa-status { font-size: .68rem; color: rgba(255,255,255,.6); }
+    .wa-actions { display: flex; gap: .9rem; }
+    .wa-actions svg { width: 18px; height: 18px; color: rgba(255,255,255,.7); }
+
+    .wa-body {
+      background: #0b141a url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='400' fill='%230b141a'/%3E%3C/svg%3E") center/cover;
+      padding: .8rem; min-height: 340px; display: flex; flex-direction: column; gap: .6rem;
+      font-size: .75rem;
+    }
+    .wa-date {
+      text-align: center; font-size: .65rem; color: rgba(255,255,255,.5);
+      background: rgba(0,0,0,.25); padding: .2rem .6rem; border-radius: 8px;
+      align-self: center; margin: .2rem 0;
+    }
+    .wa-msg {
+      max-width: 78%; padding: .5rem .75rem .4rem; border-radius: 10px;
+      line-height: 1.4; position: relative;
+    }
+    .wa-msg .wa-time { font-size: .6rem; opacity: .6; float: right; margin-left: .5rem; margin-top: .1rem; }
+    .wa-msg.recv { background: #202c33; color: #e9edef; align-self: flex-start; border-bottom-left-radius: 2px; }
+    .wa-msg.sent { background: #005c4b; color: #e9edef; align-self: flex-end; border-bottom-right-radius: 2px; }
+
+    .wa-input {
+      background: #1f2c34; padding: .6rem .8rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .wa-input-box {
+      flex: 1; background: #2a3942; border: none; border-radius: 20px;
+      padding: .5rem .9rem; color: #d1d7db; font-size: .75rem;
+      font-family: inherit; outline: none;
+    }
+    .wa-send {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: #00a884; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .wa-send svg { width: 16px; height: 16px; color: #fff; }
+
+    /* Glow ring behind phone */
+    .phone-glow {
+      position: absolute; width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(242,101,34,.15) 0%, transparent 70%);
+      border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+
+    /* ── STATS ───────────────────────────────────────────── */
+    .stats {
+      padding: 4rem 6rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 1.8rem;
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      transition: border-color .25s, transform .25s;
+      cursor: default;
+    }
+    .stat-card:hover { border-color: var(--orange); transform: translateY(-3px); }
+    .stat-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: var(--grad); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .stat-icon svg { width: 24px; height: 24px; color: #fff; }
+    .stat-value {
+      font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 2rem; color: #fff;
+      line-height: 1;
+    }
+    .stat-label { font-size: .8rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ── FEATURES ────────────────────────────────────────── */
+    .features { padding: 2rem 6rem 5rem; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-tag {
+      display: inline-block; background: rgba(242,101,34,.1); border: 1px solid rgba(242,101,34,.25);
+      border-radius: 50px; padding: .35rem .9rem; font-size: .72rem; font-weight: 700;
+      color: var(--orange); letter-spacing: .5px; margin-bottom: 1rem; text-transform: uppercase;
+    }
+    .section-title {
+      font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 2rem; color: #fff; margin-bottom: .5rem;
+    }
+    .section-desc { font-size: .9rem; color: var(--muted); line-height: 1.6; max-width: 50ch; margin: 0 auto; }
+
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+    }
+    .feature-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 1.5rem; transition: all .25s; cursor: default;
+    }
+    .feature-card:hover { border-color: rgba(242,101,34,.4); background: #181828; }
+    .feature-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: rgba(242,101,34,.12); border: 1px solid rgba(242,101,34,.2);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+    }
+    .feature-icon svg { width: 20px; height: 20px; color: var(--orange); }
+    .feature-title { font-weight: 700; font-size: .92rem; color: #fff; margin-bottom: .4rem; }
+    .feature-desc { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border); padding: 2rem 6rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-logo { display: flex; align-items: center; gap: .4rem; }
+    .footer-logo .through { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 1.2rem; color: #fff; }
+    .footer-logo .air    { font-family: 'Nunito', sans-serif; font-weight: 300; font-size: 1.2rem; color: var(--orange); }
+    .footer-copy { font-size: .78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: .8rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--orange); }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; padding: 6rem 2.5rem 3rem; gap: 3rem; text-align: center; }
+      .hero-desc { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .status-row { justify-content: center; }
+      .hero-visual { order: -1; }
+      .stats { padding: 3rem 2.5rem; grid-template-columns: 1fr; }
+      .features { padding: 2rem 2.5rem 4rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1.2rem; padding: 1.8rem 2.5rem; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: .9rem 1.2rem; }
+      .hero { padding: 5rem 1.2rem 2.5rem; }
+      .stats { padding: 2rem 1.2rem; }
+      .features { padding: 1.5rem 1.2rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="logo-through">through</span>
+    <span class="logo-air">air</span>
+  </div>
+  <div class="nav-actions">
+    <a href="http://localhost:3001/health" target="_blank" class="btn-nav outline">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Estado
+    </a>
+    <a href="http://localhost:3001/admin" target="_blank" class="btn-nav primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Panel Admin
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.99 2C6.47 2 2 6.47 2 12c0 1.773.467 3.44 1.282 4.885L2 22l5.234-1.258A9.948 9.948 0 0012 22c5.523 0 10-4.477 10-10S17.513 2 11.99 2z"/></svg>
+      WhatsApp Admin Bot · Puerto 3001
+    </div>
+    <h1 class="hero-title">
+      Atención 24/7<br/>en <span>WhatsApp</span><br/>con IA
+    </h1>
+    <p class="hero-desc">
+      Responde clientes, cotiza servicios y agenda reuniones automáticamente. Configuración sin código, listo en minutos.
+    </p>
+    <div class="hero-actions">
+      <a href="http://localhost:3001/admin" target="_blank" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Abrir Panel Admin
+      </a>
+      <a href="http://localhost:3001/health" target="_blank" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Ver estado
+      </a>
+    </div>
+    <div class="status-row">
+      <div class="status-pill" id="statusPill">
+        <span class="status-dot"></span>
+        Verificando...
+      </div>
+      <span class="status-detail" id="statusDetail">Conectando con el servidor...</span>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="phone-glow"></div>
+    <div class="phone">
+      <div class="phone-notch"><div class="phone-notch-inner"></div></div>
+      <!-- WhatsApp Header -->
+      <div class="wa-header">
+        <svg class="wa-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <div class="wa-avatar">TA</div>
+        <div class="wa-info">
+          <div class="wa-name">Through Air</div>
+          <div class="wa-status">en línea</div>
+        </div>
+        <div class="wa-actions">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+        </div>
+      </div>
+      <!-- Chat body -->
+      <div class="wa-body">
+        <div class="wa-date">hoy</div>
+        <div class="wa-msg recv">
+          ¡Hola! Me interesa saber más sobre sus servicios de marketing digital
+          <span class="wa-time">10:24</span>
+        </div>
+        <div class="wa-msg sent">
+          ¡Hola! Con gusto te cuento. 😊 Ofrecemos Pautas Digitales desde $2.000.000/mes, Redes Sociales desde $3.500.000/mes, y Página Web desde $3.500.000. ¿Cuál te interesa?
+          <span class="wa-time">10:24 ✓✓</span>
+        </div>
+        <div class="wa-msg recv">
+          Me interesa Google Ads, ¿tienen planes flexibles?
+          <span class="wa-time">10:25</span>
+        </div>
+        <div class="wa-msg sent">
+          Sí, manejamos desde $2.000.000 COP/mes en Pautas Digitales (Google + Meta). Incluye configuración, optimización y reportes. ¿Quieres que Juan José te llame para una propuesta?
+          <span class="wa-time">10:25 ✓✓</span>
+        </div>
+        <div class="wa-msg recv">
+          Sí, por favor
+          <span class="wa-time">10:26</span>
+        </div>
+        <div class="wa-msg sent">
+          Perfecto. ¿Me das tu nombre y empresa para que Juan José te contacte?
+          <span class="wa-time">10:26 ✓✓</span>
+        </div>
+      </div>
+      <!-- Input -->
+      <div class="wa-input">
+        <div class="wa-input-box">Escribe un mensaje...</div>
+        <button class="wa-send" aria-label="Enviar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat-card">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </div>
+    <div>
+      <div class="stat-value" id="convCount">—</div>
+      <div class="stat-label">Conversaciones activas</div>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    </div>
+    <div>
+      <div class="stat-value" id="uptimeVal">—</div>
+      <div class="stat-label">Horas en línea</div>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <div>
+      <div class="stat-value" id="configStatus">—</div>
+      <div class="stat-label">Estado de configuración</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="section-header">
+    <div class="section-tag">Capacidades</div>
+    <h2 class="section-title">Todo lo que hace el bot</h2>
+    <p class="section-desc">Powered by Claude Haiku · responde en segundos, 24/7, sin intervención humana</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="feature-title">Respuesta instantánea</div>
+      <div class="feature-desc">Atiende cualquier mensaje en menos de 3 segundos, día y noche, sin descanso.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <div class="feature-title">Cotiza servicios</div>
+      <div class="feature-desc">Informa precios precisos de cada servicio y nunca inventa información fuera del catálogo.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="feature-title">Agenda reuniones</div>
+      <div class="feature-desc">Ofrece llamadas de 15 minutos con el propietario cuando el cliente está listo para avanzar.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="feature-title">Captura datos de prospectos</div>
+      <div class="feature-desc">Solicita nombre, empresa y servicio de interés antes de escalar a una propuesta formal.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="feature-title">Escalamiento inteligente</div>
+      <div class="feature-desc">Cuando no sabe algo, responde con la frase configurada y notifica al propietario.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M5.34 18.66l-1.41 1.41M20 12h2M2 12h2m15.07 7.07l-1.41-1.41M5.34 5.34L3.93 3.93M12 20v2M12 2v2"/></svg>
+      </div>
+      <div class="feature-title">Configurable sin código</div>
+      <div class="feature-desc">Cambia tono, servicios, precios y credenciales desde el panel admin en tiempo real.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span class="through">through</span>
+    <span class="air">air</span>
+  </div>
+  <span class="footer-copy">WhatsApp Admin Bot · Claude Haiku 4.5 · Puerto 3001</span>
+  <div class="footer-links">
+    <a href="http://localhost:3001/admin" target="_blank">Admin</a>
+    <a href="http://localhost:3001/health" target="_blank">Health</a>
+    <a href="../README.md" target="_blank">Docs</a>
+  </div>
+</footer>
+
+<script>
+  // Fetch health status from server
+  async function checkHealth() {
+    try {
+      const res = await fetch('http://localhost:3001/health');
+      if (!res.ok) throw new Error('Server error');
+      const data = await res.json();
+
+      document.getElementById('statusPill').className = 'status-pill';
+      document.getElementById('statusPill').innerHTML = `<span class="status-dot"></span> Bot activo`;
+      document.getElementById('statusDetail').textContent = `${data.bot || 'WhatsApp Admin Bot'} · ${data.configured ? 'API configurada' : 'Falta configurar API key'}`;
+
+      document.getElementById('convCount').textContent = data.conversations ?? 0;
+      document.getElementById('uptimeVal').textContent = data.uptime != null ? (data.uptime / 3600).toFixed(1) + 'h' : '—';
+      document.getElementById('configStatus').textContent = data.configured ? 'OK' : 'Pendiente';
+    } catch {
+      document.getElementById('statusPill').className = 'status-pill offline';
+      document.getElementById('statusPill').innerHTML = `<span class="status-dot"></span> Servidor apagado`;
+      document.getElementById('statusDetail').textContent = 'Inicia el bot con: npm start (puerto 3001)';
+      document.getElementById('convCount').textContent = '—';
+      document.getElementById('uptimeVal').textContent = '—';
+      document.getElementById('configStatus').textContent = '—';
+    }
+  }
+
+  checkHealth();
+  setInterval(checkHealth, 15000);
+</script>
+</body>
+</html>

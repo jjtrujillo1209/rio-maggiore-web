@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Suite Bots IA — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 50% 5%, rgba(27,27,110,.55) 0%, rgba(242,101,34,.1) 50%, #07070f 72%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px}
+.mega{font-size:165px;font-weight:900;line-height:.82;letter-spacing:-9px;color:#fff}
+.mega em{font-style:normal;background:linear-gradient(135deg,#F26522,#C8317A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* bots grid */
+.bots{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:28px 0}
+.bot{border-radius:20px;padding:28px 24px;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:0;position:relative;overflow:hidden}
+.bot::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.bot.wa{background:rgba(0,20,8,.6)}.bot.wa::before{background:#25d366}
+.bot.lq{background:rgba(10,10,40,.6)}.bot.lq::before{background:linear-gradient(90deg,#1B1B6E,#F26522)}
+.bot.ec{background:rgba(28,8,0,.6)}.bot.ec::before{background:linear-gradient(90deg,#F26522,#C8317A)}
+
+.bot-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
+.wa .bot-label{color:rgba(37,211,102,.6)}
+.lq .bot-label{color:rgba(242,101,34,.6)}
+.ec .bot-label{color:rgba(200,49,122,.6)}
+
+.bot-name{font-size:17px;font-weight:900;color:#fff;letter-spacing:-0.5px;margin-bottom:8px}
+.bot-desc{font-size:13px;color:rgba(255,255,255,.38);line-height:1.5;flex:1}
+
+.bot-feats{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:7px}
+.feat{font-size:12px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:8px}
+.feat-dash{width:10px;height:1.5px;flex-shrink:0}
+.wa .feat-dash{background:#25d366}
+.lq .feat-dash{background:#F26522}
+.ec .feat-dash{background:#C8317A}
+
+.bot-stat{margin-top:16px}
+.stat-n{font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1}
+.wa .stat-n{color:#25d366}
+.lq .stat-n{color:#F26522}
+.ec .stat-n{color:#C8317A}
+.stat-l{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:3px}
+
+/* bottom */
+.info-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px}
+.info-text{font-size:16px;color:rgba(255,255,255,.6);line-height:1.5;flex:1}
+.info-text strong{color:#fff}
+.cta-pill{background:linear-gradient(135deg,#F26522,#C8317A);color:#fff;font-size:13px;font-weight:700;padding:12px 24px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:25px;font-weight:300;color:#F26522}
+.price{font-size:13px;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase}
+.price strong{color:rgba(255,255,255,.65);font-size:18px;font-weight:700;letter-spacing:-0.5px}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div>
+    <div class="eyebrow">Tu negocio en</div>
+    <div class="mega">AUTOMÁTI<em>CO.</em></div>
+  </div>
+
+  <div class="bots">
+    <div class="bot wa">
+      <div class="bot-label">WhatsApp</div>
+      <div class="bot-name">Admin Bot</div>
+      <div class="bot-desc">Atiende, cotiza y agenda por WhatsApp sin que estés conectado.</div>
+      <div class="bot-feats">
+        <div class="feat"><div class="feat-dash"></div>Respuestas en segundos</div>
+        <div class="feat"><div class="feat-dash"></div>Agenda reuniones auto</div>
+        <div class="feat"><div class="feat-dash"></div>Aprende de cada conv.</div>
+      </div>
+      <div class="bot-stat">
+        <div class="stat-n">3 AM</div>
+        <div class="stat-l">Siempre activo</div>
+      </div>
+    </div>
+    <div class="bot lq">
+      <div class="bot-label">Calificación</div>
+      <div class="bot-name">Lead Qualifier</div>
+      <div class="bot-desc">Filtra visitantes y entrega solo los leads listos para comprar.</div>
+      <div class="bot-feats">
+        <div class="feat"><div class="feat-dash"></div>Califica en 2 minutos</div>
+        <div class="feat"><div class="feat-dash"></div>Embed en tu web</div>
+        <div class="feat"><div class="feat-dash"></div>CRM integrado</div>
+      </div>
+      <div class="bot-stat">
+        <div class="stat-n">41%</div>
+        <div class="stat-l">Conversión</div>
+      </div>
+    </div>
+    <div class="bot ec">
+      <div class="bot-label">E-Commerce</div>
+      <div class="bot-name">Sales Bot</div>
+      <div class="bot-desc">Recomienda, cierra ventas y recupera carritos abandonados.</div>
+      <div class="bot-feats">
+        <div class="feat"><div class="feat-dash"></div>Recomendaciones IA</div>
+        <div class="feat"><div class="feat-dash"></div>Recupera carritos</div>
+        <div class="feat"><div class="feat-dash"></div>Soporte post-venta</div>
+      </div>
+      <div class="bot-stat">
+        <div class="stat-n">+30%</div>
+        <div class="stat-l">Ventas adicionales</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="info-card">
+      <div class="info-text"><strong>Tres bots. Un solo objetivo: más ventas, menos trabajo.</strong> Sin contratar más personal.</div>
+      <div class="cta-pill">Implementar suite</div>
+    </div>
+    <div class="footer">
+      <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+      <div class="price">Desde <strong>$2.500.000</strong> COP + $700K/mes por bot</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

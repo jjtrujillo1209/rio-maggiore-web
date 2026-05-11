@@ -1,0 +1,14 @@
+<svg viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- PEOPLE Yellow Box -->
+  <rect x="5" y="5" width="110" height="70" fill="#FFFF00" rx="3"/>
+  <text x="60" y="58" font-family="Montserrat, Arial, sans-serif" font-size="48" font-weight="900" fill="#000000" text-anchor="middle">PEOPLE</text>
+
+  <!-- SOUND Text (White) -->
+  <text x="270" y="58" font-family="Montserrat, Arial, sans-serif" font-size="48" font-weight="900" fill="#FFFFFF" text-anchor="middle">SOUND</text>
+
+  <!-- Exclamation (Yellow) -->
+  <text x="330" y="58" font-family="Montserrat, Arial, sans-serif" font-size="52" font-weight="900" fill="#FFFF00">!</text>
+
+  <!-- LTDA (Small) -->
+  <text x="420" y="50" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">LTDA</text>
+</svg>

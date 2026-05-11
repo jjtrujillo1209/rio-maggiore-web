@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Manual de Marca — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+:root {
+  --navy:    #1B1B6E;
+  --orange:  #F26522;
+  --coral:   #F04E37;
+  --magenta: #C8317A;
+  --dark:    #07070f;
+  --gray-50: #f9f9fc;
+  --gray-100:#f0f0f5;
+  --gray-300:#c8c8d8;
+  --gray-500:#888899;
+  --gray-700:#444455;
+  --white:   #ffffff;
+}
+html { scroll-behavior: smooth }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── Layout ──────────────────────────────────────────────── */
+.page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 120px 140px;
+  position: relative;
+  overflow: hidden;
+}
+.page-narrow { max-width: 900px; margin: 0 auto }
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+h2.title {
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: -2.5px;
+  line-height: 0.92;
+  margin-bottom: 24px;
+}
+h3.subtitle {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+p.lead {
+  font-size: 20px;
+  color: var(--gray-700);
+  line-height: 1.65;
+  max-width: 680px;
+}
+.divider {
+  height: 1px;
+  background: var(--gray-100);
+  margin: 80px 0;
+}
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px }
+.grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px }
+
+/* ── Nav ─────────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-100);
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-brand { display: flex; align-items: baseline; gap: 2px }
+.nav-through { font-size: 18px; font-weight: 900; color: var(--navy); letter-spacing: -1px }
+.nav-air     { font-size: 22px; font-weight: 300; color: var(--orange) }
+.nav-links { display: flex; gap: 32px }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-500);
+  text-decoration: none;
+  letter-spacing: .3px;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--navy) }
+.nav-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray-300);
+}
+
+/* ══════════════════════════════════════════════════════════
+   01 — PORTADA
+══════════════════════════════════════════════════════════ */
+#portada {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0;
+  position: relative;
+}
+.portada-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 40%, rgba(27,27,110,.7) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 80%, rgba(200,49,122,.15) 0%, transparent 50%);
+}
+.portada-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.portada-stripe {
+  position: absolute; top: 0; left: 0; right: 0; height: 5px;
+  background: linear-gradient(90deg, var(--navy), var(--coral), var(--orange), var(--magenta));
+}
+.portada-content {
+  position: relative; z-index: 2;
+  padding: 120px 140px;
+}
+.portada-eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: 4px;
+  text-transform: uppercase; color: rgba(255,255,255,.35);
+  margin-bottom: 40px;
+}
+.portada-logo {
+  display: flex; align-items: baseline; gap: 6px;
+  margin-bottom: 60px;
+}
+.portada-through {
+  font-size: 100px; font-weight: 900; color: #fff;
+  letter-spacing: -6px; line-height: 1;
+}
+.portada-air {
+  font-size: 120px; font-weight: 300; color: var(--orange);
+  letter-spacing: -6px; line-height: 1;
+}
+.portada-tagline {
+  font-size: 26px; font-weight: 300; color: rgba(255,255,255,.4);
+  letter-spacing: .5px; margin-bottom: 80px; max-width: 600px;
+  line-height: 1.5;
+}
+.portada-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 32px 140px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  position: relative; z-index: 2;
+}
+.portada-footer-left { font-size: 13px; color: rgba(255,255,255,.25); letter-spacing: 1px }
+.portada-footer-right { font-size: 13px; color: rgba(255,255,255,.25) }
+
+/* ══════════════════════════════════════════════════════════
+   02 — ÍNDICE
+══════════════════════════════════════════════════════════ */
+#indice { padding: 140px; background: var(--gray-50) }
+.indice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 60px;
+}
+.indice-item {
+  background: var(--white);
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: background .2s;
+  border-bottom: 1px solid var(--gray-100);
+}
+.indice-item:hover { background: var(--navy); }
+.indice-item:hover .indice-num { color: var(--orange) }
+.indice-item:hover .indice-title { color: #fff }
+.indice-item:hover .indice-desc { color: rgba(255,255,255,.4) }
+.indice-num {
+  font-size: 42px; font-weight: 900; color: var(--gray-100);
+  letter-spacing: -2px; line-height: 1; flex-shrink: 0;
+  transition: color .2s;
+}
+.indice-title {
+  font-size: 18px; font-weight: 700; color: var(--dark);
+  margin-bottom: 4px; transition: color .2s;
+}
+.indice-desc { font-size: 13px; color: var(--gray-500); transition: color .2s }
+
+/* ══════════════════════════════════════════════════════════
+   03 — ESENCIA DE MARCA
+══════════════════════════════════════════════════════════ */
+#esencia { padding: 140px }
+.esencia-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: start;
+}
+.mision-card, .vision-card, .valores-card {
+  background: var(--gray-50);
+  border-radius: 24px;
+  padding: 40px;
+  border: 1.5px solid var(--gray-100);
+}
+.card-icon { font-size: 32px; margin-bottom: 16px }
+.card-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 12px;
+}
+.card-title { font-size: 22px; font-weight: 700; margin-bottom: 12px; color: var(--dark) }
+.card-body { font-size: 15px; color: var(--gray-700); line-height: 1.7 }
+.valores-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;
+}
+.valor-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px; background: var(--white);
+  border-radius: 12px; border: 1px solid var(--gray-100);
+}
+.valor-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--orange); flex-shrink: 0; margin-top: 5px;
+}
+.valor-text { font-size: 14px; font-weight: 500; color: var(--dark); line-height: 1.4 }
+.manifesto-block {
+  background: var(--dark);
+  border-radius: 32px;
+  padding: 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.manifesto-block::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(27,27,110,.6), transparent 60%);
+}
+.manifesto-quote {
+  font-size: 42px; font-weight: 900; color: #fff;
+  letter-spacing: -2px; line-height: 1.1;
+  position: relative; z-index: 1;
+  margin-bottom: 16px;
+}
+.manifesto-quote em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--orange), var(--magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.manifesto-by {
+  font-size: 14px; color: rgba(255,255,255,.3);
+  letter-spacing: 2px; text-transform: uppercase;
+  position: relative; z-index: 1;
+}
+
+/* ══════════════════════════════════════════════════════════
+   04 — LOGOTIPO
+══════════════════════════════════════════════════════════ */
+#logotipo { padding: 140px; background: var(--gray-50) }
+.logo-showcase {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  margin: 60px 0;
+}
+.logo-box {
+  padding: 60px;
+  display: flex; flex-direction: column;
+  align-items: flex-start; gap: 32px;
+}
+.logo-box-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gray-500);
+}
+.logo-render { display: flex; align-items: baseline; gap: 4px }
+/* Versión oscura */
+.logo-box-dark { background: var(--dark) }
+.logo-box-dark .logo-box-label { color: rgba(255,255,255,.3) }
+.logo-box-dark .l-through { font-size: 48px; font-weight: 900; color: #fff; letter-spacing: -3px }
+.logo-box-dark .l-air     { font-size: 60px; font-weight: 300; color: var(--orange); letter-spacing: -3px }
+/* Versión blanca */
+.logo-box-white { background: var(--white) }
+.logo-box-white .l-through { font-size: 48px; font-weight: 900; color: var(--navy); letter-spacing: -3px }
+.logo-box-white .l-air     { font-size: 60px; font-weight: 300; color: var(--orange); letter-spacing: -3px }
+/* Versión navy */
+.logo-box-navy { background: var(--navy) }
+.logo-box-navy .logo-box-label { color: rgba(255,255,255,.3) }
+.logo-box-navy .l-through { font-size: 48px; font-weight: 900; color: #fff; letter-spacing: -3px }
+.logo-box-navy .l-air     { font-size: 60px; font-weight: 300; color: var(--orange); letter-spacing: -3px }
+/* Versión horizontal compacta */
+.logo-box-compact { background: var(--gray-50) }
+.logo-compact .l-through { font-size: 28px; font-weight: 900; color: var(--navy); letter-spacing: -1.5px }
+.logo-compact .l-air     { font-size: 34px; font-weight: 300; color: var(--orange); letter-spacing: -1.5px }
+/* Reglas del logo */
+.logo-rules {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  margin-top: 60px;
+}
+.logo-rule {
+  padding: 28px;
+  border-radius: 20px;
+  border: 1.5px solid;
+}
+.logo-rule.do   { border-color: #bbf7d0; background: #f0fdf4 }
+.logo-rule.dont { border-color: #fecaca; background: #fef2f2 }
+.rule-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.rule-tag.ok   { color: #16a34a }
+.rule-tag.no   { color: #dc2626 }
+.rule-title { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 8px }
+.rule-desc  { font-size: 13px; color: var(--gray-700); line-height: 1.5 }
+/* Anatomía */
+.anatomy {
+  margin-top: 80px;
+  background: var(--white);
+  border-radius: 24px;
+  padding: 60px;
+  border: 1.5px solid var(--gray-100);
+}
+.anatomy-render {
+  display: flex; align-items: baseline; gap: 6px;
+  justify-content: center; margin: 40px 0;
+  position: relative;
+}
+.anatomy-through {
+  font-size: 80px; font-weight: 900; color: var(--navy);
+  letter-spacing: -5px; line-height: 1; position: relative;
+}
+.anatomy-air {
+  font-size: 100px; font-weight: 300; color: var(--orange);
+  letter-spacing: -5px; line-height: 1; position: relative;
+}
+.anatomy-labels {
+  display: flex; justify-content: space-around; margin-top: 20px;
+}
+.anatomy-label {
+  text-align: center;
+  font-size: 12px; color: var(--gray-500);
+}
+.anatomy-label strong { display: block; color: var(--dark); font-size: 13px; margin-bottom: 2px }
+
+/* ══════════════════════════════════════════════════════════
+   05 — PALETA DE COLOR
+══════════════════════════════════════════════════════════ */
+#colores { padding: 140px }
+.paleta-primaria {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 2px; margin: 60px 0;
+}
+.color-swatch-main {
+  height: 320px; padding: 32px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative; overflow: hidden;
+}
+.color-swatch-sm {
+  height: 160px; padding: 20px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.swatch-name { font-size: 18px; font-weight: 700; letter-spacing: -0.5px }
+.swatch-hex  { font-size: 13px; font-weight: 500; margin-top: 4px; opacity: .7 }
+.swatch-role { font-size: 12px; margin-top: 2px; opacity: .5; letter-spacing: .5px }
+/* Navy */
+.sw-navy { background: var(--navy) }
+.sw-navy .swatch-name, .sw-navy .swatch-hex, .sw-navy .swatch-role { color: #fff }
+/* Orange */
+.sw-orange { background: var(--orange) }
+.sw-orange .swatch-name, .sw-orange .swatch-hex, .sw-orange .swatch-role { color: #fff }
+/* Coral */
+.sw-coral { background: var(--coral) }
+.sw-coral .swatch-name, .sw-coral .swatch-hex, .sw-coral .swatch-role { color: #fff }
+/* Magenta */
+.sw-magenta { background: var(--magenta) }
+.sw-magenta .swatch-name, .sw-magenta .swatch-hex, .sw-magenta .swatch-role { color: #fff }
+/* Dark */
+.sw-dark { background: var(--dark); border: 1px solid #333 }
+.sw-dark .swatch-name, .sw-dark .swatch-hex, .sw-dark .swatch-role { color: #fff }
+/* White */
+.sw-white { background: var(--white); border: 1px solid var(--gray-100) }
+.sw-white .swatch-name, .sw-white .swatch-hex, .sw-white .swatch-role { color: var(--dark) }
+
+.paleta-neutrals {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 2px; margin-bottom: 60px;
+}
+.neutral-swatch {
+  height: 80px;
+  display: flex; align-items: flex-end; padding: 12px;
+}
+.neutral-swatch span { font-size: 11px; font-weight: 600 }
+
+/* Gradientes */
+.gradients-title { font-size: 22px; font-weight: 700; margin-bottom: 24px }
+.gradient-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.gradient-swatch {
+  height: 120px; border-radius: 16px;
+  display: flex; align-items: flex-end; padding: 20px;
+}
+.gradient-swatch span { font-size: 12px; color: #fff; font-weight: 600 }
+.grad-primary { background: linear-gradient(135deg, var(--orange), var(--magenta)) }
+.grad-secondary { background: linear-gradient(135deg, var(--navy), var(--magenta)) }
+.grad-accent { background: linear-gradient(135deg, var(--coral), var(--orange)) }
+.grad-dark { background: linear-gradient(135deg, var(--dark), var(--navy)) }
+.grad-warm { background: linear-gradient(90deg, var(--orange), var(--coral)) }
+.grad-glow { background: radial-gradient(circle at 30% 50%, rgba(242,101,34,.5), var(--dark) 70%), var(--dark) }
+
+/* ══════════════════════════════════════════════════════════
+   06 — TIPOGRAFÍA
+══════════════════════════════════════════════════════════ */
+#tipografia { padding: 140px; background: var(--gray-50) }
+.tipo-hero {
+  margin: 60px 0;
+  background: var(--white); border-radius: 32px;
+  padding: 80px; border: 1.5px solid var(--gray-100);
+}
+.tipo-family { display: flex; align-items: baseline; gap: 0; flex-wrap: wrap }
+.tipo-weight {
+  padding: 20px 0;
+  margin-right: 60px;
+  border-bottom: 2px solid var(--gray-100);
+  margin-bottom: 24px;
+  flex: none;
+}
+.tipo-sample  { font-size: 42px; letter-spacing: -2px; line-height: 1; color: var(--dark) }
+.tipo-meta    { font-size: 12px; color: var(--gray-500); margin-top: 8px; letter-spacing: 1px }
+.tipo-weights { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-bottom: 60px }
+.tw-card {
+  padding: 32px; background: var(--white);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.tw-sample { font-size: 36px; letter-spacing: -1px; line-height: 1; color: var(--dark) }
+.tw-label { font-size: 12px; color: var(--gray-500); letter-spacing: 1px }
+/* Jerarquía tipográfica */
+.tipo-hierarchy {
+  background: var(--white); border-radius: 24px;
+  padding: 60px; border: 1.5px solid var(--gray-100);
+}
+.hier-row {
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 40px; align-items: baseline;
+  padding: 28px 0; border-bottom: 1px solid var(--gray-100);
+}
+.hier-row:last-child { border-bottom: none }
+.hier-meta { font-size: 12px; color: var(--gray-500); line-height: 1.6 }
+.hier-meta strong { display: block; color: var(--dark); font-size: 13px; margin-bottom: 2px }
+.h-display { font-size: 80px; font-weight: 900; letter-spacing: -4px; line-height: 1; color: var(--dark) }
+.h-h1      { font-size: 52px; font-weight: 900; letter-spacing: -2.5px; line-height: .95 }
+.h-h2      { font-size: 36px; font-weight: 700; letter-spacing: -1.5px }
+.h-h3      { font-size: 24px; font-weight: 700; letter-spacing: -.5px }
+.h-body    { font-size: 18px; font-weight: 400; line-height: 1.6; color: var(--gray-700) }
+.h-small   { font-size: 14px; font-weight: 400; color: var(--gray-500); line-height: 1.6 }
+.h-label   { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--orange) }
+
+/* ══════════════════════════════════════════════════════════
+   07 — VOZ Y TONO
+══════════════════════════════════════════════════════════ */
+#voz { padding: 140px }
+.voz-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 32px; margin: 60px 0;
+}
+.voz-card {
+  border-radius: 20px; padding: 36px;
+  border: 1.5px solid var(--gray-100);
+}
+.voz-card-icon { font-size: 28px; margin-bottom: 16px }
+.voz-card-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--dark) }
+.voz-card-desc  { font-size: 15px; color: var(--gray-700); line-height: 1.6; margin-bottom: 20px }
+.voz-examples { display: flex; flex-direction: column; gap: 10px }
+.ex-do, .ex-dont {
+  padding: 12px 16px; border-radius: 10px; font-size: 13px; line-height: 1.4;
+}
+.ex-do   { background: #f0fdf4; border-left: 3px solid #22c55e; color: #166534 }
+.ex-dont { background: #fef2f2; border-left: 3px solid #ef4444; color: #991b1b }
+.ex-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; opacity: .7 }
+/* Personalidad */
+.personalidad {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2px; margin: 60px 0;
+}
+.pers-card {
+  padding: 40px 32px; text-align: center;
+}
+.pers-card:nth-child(1) { background: var(--navy) }
+.pers-card:nth-child(2) { background: #0d0d22 }
+.pers-card:nth-child(3) { background: #160820 }
+.pers-card:nth-child(4) { background: #07070f }
+.pers-word { font-size: 22px; font-weight: 900; color: #fff; letter-spacing: -1px; margin-bottom: 8px }
+.pers-but  { font-size: 12px; color: rgba(255,255,255,.3); margin-bottom: 12px }
+.pers-not  {
+  font-size: 13px; color: rgba(255,255,255,.5);
+  text-decoration: line-through; text-decoration-color: var(--coral);
+}
+/* Vocabulario */
+.vocab-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px }
+.vocab-col-title { font-size: 16px; font-weight: 700; margin-bottom: 20px }
+.vocab-yes .vocab-col-title { color: #16a34a }
+.vocab-no  .vocab-col-title { color: #dc2626 }
+.vocab-pills { display: flex; flex-wrap: wrap; gap: 8px }
+.vocab-pill {
+  padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 500;
+}
+.vocab-yes .vocab-pill { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0 }
+.vocab-no  .vocab-pill { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; text-decoration: line-through }
+
+/* ══════════════════════════════════════════════════════════
+   08 — SERVICIOS
+══════════════════════════════════════════════════════════ */
+#servicios { padding: 140px; background: var(--gray-50) }
+.servicios-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-top: 60px;
+}
+.svc-card {
+  background: var(--white); border-radius: 20px;
+  padding: 32px; border: 1.5px solid var(--gray-100);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.svc-num {
+  font-size: 42px; font-weight: 900; color: var(--gray-100);
+  letter-spacing: -2px; line-height: 1;
+}
+.svc-icon-big { font-size: 32px }
+.svc-name { font-size: 18px; font-weight: 700; color: var(--dark) }
+.svc-desc { font-size: 13px; color: var(--gray-700); line-height: 1.6; flex: 1 }
+.svc-price {
+  font-size: 15px; font-weight: 700; color: var(--navy);
+  padding-top: 12px; border-top: 1px solid var(--gray-100);
+}
+.svc-badge {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 3px 10px; border-radius: 50px;
+  background: var(--gray-50); color: var(--gray-500);
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;
+}
+.svc-badge.mensual { background: rgba(27,27,110,.08); color: var(--navy) }
+.svc-badge.unico   { background: rgba(242,101,34,.1); color: var(--orange) }
+.svc-badge.bot     { background: rgba(200,49,122,.08); color: var(--magenta) }
+
+/* ══════════════════════════════════════════════════════════
+   09 — APLICACIONES
+══════════════════════════════════════════════════════════ */
+#aplicaciones { padding: 140px }
+.apps-intro { margin-bottom: 60px }
+.app-rule-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px; margin-bottom: 80px;
+}
+.app-rule-card {
+  border-radius: 20px; padding: 32px;
+  border: 1.5px solid var(--gray-100);
+}
+.app-rule-icon { font-size: 28px; margin-bottom: 16px }
+.app-rule-title { font-size: 17px; font-weight: 700; margin-bottom: 8px }
+.app-rule-desc  { font-size: 13px; color: var(--gray-700); line-height: 1.6 }
+/* Backgrounds aprobados */
+.approved-bg {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 2px; margin: 40px 0;
+}
+.bg-sample {
+  height: 100px; display: flex;
+  align-items: flex-end; padding: 14px;
+}
+.bg-sample span { font-size: 11px; font-weight: 600 }
+.bg-dark    { background: var(--dark) }
+.bg-dark span    { color: rgba(255,255,255,.5) }
+.bg-navy    { background: var(--navy) }
+.bg-navy span    { color: rgba(255,255,255,.5) }
+.bg-white   { background: var(--white); border: 1px solid var(--gray-100) }
+.bg-white span   { color: var(--gray-500) }
+.bg-gray50  { background: var(--gray-50); border: 1px solid var(--gray-100) }
+.bg-gray50 span  { color: var(--gray-500) }
+.bg-gradient { background: linear-gradient(135deg, var(--navy), var(--dark)) }
+.bg-gradient span { color: rgba(255,255,255,.5) }
+/* Prohibiciones */
+.prohibit-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.prohibit-card {
+  background: #fef2f2; border: 1.5px solid #fecaca;
+  border-radius: 16px; padding: 24px;
+}
+.prohibit-x { font-size: 20px; margin-bottom: 8px }
+.prohibit-text { font-size: 13px; color: #991b1b; line-height: 1.5 }
+
+/* ══════════════════════════════════════════════════════════
+   10 — CONTACTO
+══════════════════════════════════════════════════════════ */
+#contacto {
+  background: var(--dark); padding: 0;
+  min-height: 80vh; display: flex; flex-direction: column;
+  justify-content: flex-end;
+}
+.contacto-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 30%, rgba(27,27,110,.6), transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(200,49,122,.1), transparent 50%);
+}
+.contacto-content {
+  position: relative; z-index: 2;
+  padding: 120px 140px 80px;
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+}
+.contacto-headline {
+  font-size: 80px; font-weight: 900; color: #fff;
+  letter-spacing: -4px; line-height: .9; margin-bottom: 40px;
+}
+.contacto-headline em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--orange), var(--magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.contacto-info {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px; margin-bottom: 60px;
+}
+.contacto-item-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 8px;
+}
+.contacto-item-val {
+  font-size: 17px; color: #fff; font-weight: 500;
+}
+.contacto-footer {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 32px 140px;
+  display: flex; justify-content: space-between; align-items: center;
+  position: relative; z-index: 2;
+}
+.cf-brand { display: flex; align-items: baseline; gap: 3px }
+.cf-through { font-size: 18px; font-weight: 900; color: #fff; letter-spacing: -1px }
+.cf-air     { font-size: 22px; font-weight: 300; color: var(--orange) }
+.cf-note { font-size: 12px; color: rgba(255,255,255,.2); letter-spacing: 1px }
+
+/* ── Print / misc ────────────────────────────────────────── */
+@media print {
+  nav { display: none }
+  .page { padding: 60px 80px }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-brand">
+    <span class="nav-through">through</span><span class="nav-air">air</span>
+  </div>
+  <div class="nav-links">
+    <a href="#esencia">Esencia</a>
+    <a href="#logotipo">Logotipo</a>
+    <a href="#colores">Colores</a>
+    <a href="#tipografia">Tipografía</a>
+    <a href="#voz">Voz</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#aplicaciones">Aplicaciones</a>
+  </div>
+  <div class="nav-tag">Manual de Marca</div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     01 — PORTADA
+══════════════════════════════════════════════════════════════════ -->
+<section id="portada" class="page">
+  <div class="portada-bg"></div>
+  <div class="portada-grid"></div>
+  <div class="portada-stripe"></div>
+  <div class="portada-content">
+    <div class="portada-eyebrow">Manual de Marca — Versión 1.0 · 2025</div>
+    <div class="portada-logo">
+      <span class="portada-through">through</span>
+      <span class="portada-air">air</span>
+    </div>
+    <p class="portada-tagline">
+      Tecnología que trabaja<br/>para tu negocio.
+    </p>
+  </div>
+  <div class="portada-footer">
+    <div class="portada-footer-left">Confidencial — Uso interno y partners</div>
+    <div class="portada-footer-right">throughair.co · Bogotá, Colombia</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     02 — ÍNDICE
+══════════════════════════════════════════════════════════════════ -->
+<section id="indice" style="position:relative">
+  <div class="page-narrow" style="padding:140px 0">
+    <div class="section-label" style="color:var(--gray-500)">Contenido</div>
+    <h2 class="title">Índice</h2>
+  </div>
+  <div class="indice-grid">
+    <a href="#esencia" class="indice-item">
+      <div class="indice-num">01</div>
+      <div>
+        <div class="indice-title">Esencia de Marca</div>
+        <div class="indice-desc">Misión, visión, valores y manifiesto</div>
+      </div>
+    </a>
+    <a href="#logotipo" class="indice-item">
+      <div class="indice-num">02</div>
+      <div>
+        <div class="indice-title">Logotipo</div>
+        <div class="indice-desc">Variantes, anatomía y reglas de uso</div>
+      </div>
+    </a>
+    <a href="#colores" class="indice-item">
+      <div class="indice-num">03</div>
+      <div>
+        <div class="indice-title">Paleta de Color</div>
+        <div class="indice-desc">Colores primarios, neutros y gradientes</div>
+      </div>
+    </a>
+    <a href="#tipografia" class="indice-item">
+      <div class="indice-num">04</div>
+      <div>
+        <div class="indice-title">Tipografía</div>
+        <div class="indice-desc">Familia, pesos y jerarquía visual</div>
+      </div>
+    </a>
+    <a href="#voz" class="indice-item">
+      <div class="indice-num">05</div>
+      <div>
+        <div class="indice-title">Voz y Tono</div>
+        <div class="indice-desc">Personalidad, vocabulario y ejemplos</div>
+      </div>
+    </a>
+    <a href="#servicios" class="indice-item">
+      <div class="indice-num">06</div>
+      <div>
+        <div class="indice-title">Portafolio de Servicios</div>
+        <div class="indice-desc">Los 6 servicios y su comunicación</div>
+      </div>
+    </a>
+    <a href="#aplicaciones" class="indice-item">
+      <div class="indice-num">07</div>
+      <div>
+        <div class="indice-title">Aplicaciones</div>
+        <div class="indice-desc">Redes sociales, web, impreso y digital</div>
+      </div>
+    </a>
+    <a href="#contacto" class="indice-item">
+      <div class="indice-num">08</div>
+      <div>
+        <div class="indice-title">Contacto</div>
+        <div class="indice-desc">Archivos maestros y equipo de marca</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     03 — ESENCIA DE MARCA
+══════════════════════════════════════════════════════════════════ -->
+<section id="esencia" class="page">
+  <div class="section-label" style="color:var(--orange)">01 — Esencia de Marca</div>
+  <h2 class="title">Quiénes<br/>somos.</h2>
+  <p class="lead">Through Air conecta a los negocios colombianos con la economía digital — sin tecnicismos, sin intermediarios, con resultados desde el primer mes.</p>
+
+  <div class="divider"></div>
+
+  <div class="grid-2" style="gap:24px;margin-bottom:80px">
+    <div class="mision-card">
+      <div class="card-icon">🎯</div>
+      <div class="card-label">Misión</div>
+      <div class="card-title">Por qué existimos</div>
+      <div class="card-body">Democratizar el acceso a la tecnología digital para negocios pequeños y medianos en Colombia, entregando herramientas de clase mundial con precios justos y soporte real.</div>
+    </div>
+    <div class="vision-card">
+      <div class="card-icon">🔭</div>
+      <div class="card-label">Visión</div>
+      <div class="card-title">Hacia dónde vamos</div>
+      <div class="card-body">Ser el aliado tecnológico de 10.000 negocios latinoamericanos antes de 2028 — el nombre que los dueños de negocio recomienden cuando alguien pregunte "¿cómo digitalizarse?"</div>
+    </div>
+  </div>
+
+  <div class="mision-card" style="margin-bottom:80px">
+    <div class="card-icon">💎</div>
+    <div class="card-label">Valores</div>
+    <div class="card-title">Lo que nos guía</div>
+    <div class="valores-grid">
+      <div class="valor-item"><div class="valor-dot"></div><div class="valor-text"><strong>Claridad ante todo</strong> — Sin jerga técnica, sin letra pequeña</div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div class="valor-text"><strong>Resultados, no promesas</strong> — Medimos todo, entregamos datos reales</div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div class="valor-text"><strong>Velocidad</strong> — En 30 días tu negocio está operando digitalmente</div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div class="valor-text"><strong>Escalabilidad</strong> — Soluciones que crecen con el negocio</div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div class="valor-text"><strong>Honestidad</strong> — Te decimos qué necesitas, no qué es más caro</div></div>
+      <div class="valor-item"><div class="valor-dot"></div><div class="valor-text"><strong>Cercanía</strong> — Somos el equipo digital de tu negocio, no un proveedor</div></div>
+    </div>
+  </div>
+
+  <div class="manifesto-block">
+    <div class="manifesto-quote">
+      "Digital o <em>invisible.</em><br/>
+      Tu negocio merece estar<br/>
+      <em>donde están tus clientes.</em>"
+    </div>
+    <div class="manifesto-by">— Manifiesto Through Air</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     04 — LOGOTIPO
+══════════════════════════════════════════════════════════════════ -->
+<section id="logotipo" class="page" style="background:var(--gray-50)">
+  <div class="section-label" style="color:var(--orange)">02 — Logotipo</div>
+  <h2 class="title">El nombre<br/>como marca.</h2>
+  <p class="lead">El logotipo de Through Air es tipográfico: dos palabras, dos pesos, un solo carácter. La tensión entre "through" (bold) y "air" (light) comunica solidez y ligereza a la vez.</p>
+
+  <div class="logo-showcase">
+    <!-- Versión principal sobre oscuro -->
+    <div class="logo-box logo-box-dark">
+      <div class="logo-box-label">Versión Principal — Sobre oscuro</div>
+      <div class="logo-render">
+        <span class="l-through">through</span><span class="l-air">air</span>
+      </div>
+    </div>
+    <!-- Versión sobre blanco -->
+    <div class="logo-box logo-box-white">
+      <div class="logo-box-label">Versión Secundaria — Sobre blanco</div>
+      <div class="logo-render">
+        <span class="l-through">through</span><span class="l-air">air</span>
+      </div>
+    </div>
+    <!-- Versión navy -->
+    <div class="logo-box logo-box-navy">
+      <div class="logo-box-label">Versión sobre Navy</div>
+      <div class="logo-render">
+        <span class="l-through">through</span><span class="l-air">air</span>
+      </div>
+    </div>
+    <!-- Versión compacta -->
+    <div class="logo-box logo-box-compact" style="background:var(--white);border:1.5px solid var(--gray-100)">
+      <div class="logo-box-label">Versión Compacta — UI y app</div>
+      <div class="logo-render logo-compact">
+        <span class="l-through">through</span><span class="l-air">air</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Anatomía -->
+  <div class="anatomy">
+    <div class="section-label" style="color:var(--gray-500)">Anatomía del logotipo</div>
+    <div class="anatomy-render">
+      <span class="anatomy-through">through</span>
+      <span class="anatomy-air">air</span>
+    </div>
+    <div class="anatomy-labels">
+      <div class="anatomy-label">
+        <strong>Inter Black / 900</strong>
+        "through" — Identidad<br/>Color: Navy #1B1B6E (claro) / Blanco (oscuro)
+      </div>
+      <div class="anatomy-label">
+        <strong>Inter Light / 300</strong>
+        "air" — Diferenciador<br/>Color: Siempre Naranja #F26522
+      </div>
+    </div>
+  </div>
+
+  <!-- Reglas -->
+  <div class="logo-rules" style="margin-top:60px">
+    <div class="logo-rule do">
+      <div class="rule-tag ok">Correcto</div>
+      <div class="rule-title">Usar sobre fondos aprobados</div>
+      <div class="rule-desc">Solo sobre: negro #07070f, navy #1B1B6E, blanco #ffffff y gris #f9f9fc.</div>
+    </div>
+    <div class="logo-rule do">
+      <div class="rule-tag ok">Correcto</div>
+      <div class="rule-title">Respetar el espacio mínimo</div>
+      <div class="rule-desc">El área de protección es igual a la altura de la "t" en "through" en todos los lados.</div>
+    </div>
+    <div class="logo-rule do">
+      <div class="rule-tag ok">Correcto</div>
+      <div class="rule-title">Mantener proporciones</div>
+      <div class="rule-desc">Siempre escalar uniformemente. "air" siempre ocupa 120% del tamaño de "through".</div>
+    </div>
+    <div class="logo-rule dont">
+      <div class="rule-tag no">Incorrecto</div>
+      <div class="rule-title">No separar las palabras</div>
+      <div class="rule-desc">Jamás colocar "through" y "air" en líneas distintas, con distinto tamaño o solas.</div>
+    </div>
+    <div class="logo-rule dont">
+      <div class="rule-tag no">Incorrecto</div>
+      <div class="rule-title">No cambiar colores</div>
+      <div class="rule-desc">Nunca cambiar el naranja de "air" ni usar colores fuera de la paleta aprobada.</div>
+    </div>
+    <div class="logo-rule dont">
+      <div class="rule-tag no">Incorrecto</div>
+      <div class="rule-title">No alterar pesos tipográficos</div>
+      <div class="rule-desc">La tensión Bold/Light es esencial. No usar ninguna otra combinación de pesos.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     05 — PALETA DE COLOR
+══════════════════════════════════════════════════════════════════ -->
+<section id="colores" class="page">
+  <div class="section-label" style="color:var(--orange)">03 — Paleta de Color</div>
+  <h2 class="title">Colores que<br/>dicen algo.</h2>
+  <p class="lead">Cada color tiene un rol. El navy comunica confianza y solidez. El naranja es acción y energía. El coral y el magenta son los aceleradores — usarlos con intención.</p>
+
+  <!-- Paleta primaria -->
+  <div class="paleta-primaria">
+    <div class="color-swatch-main sw-navy">
+      <div>
+        <div class="swatch-name">Navy</div>
+        <div class="swatch-hex">#1B1B6E</div>
+        <div class="swatch-role">Color institucional · Confianza · Fondo principal</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <div class="color-swatch-sm sw-orange">
+        <div>
+          <div class="swatch-name">Orange</div>
+          <div class="swatch-hex">#F26522</div>
+        </div>
+      </div>
+      <div class="color-swatch-sm sw-coral">
+        <div>
+          <div class="swatch-name">Coral</div>
+          <div class="swatch-hex">#F04E37</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <div class="color-swatch-sm sw-magenta">
+        <div>
+          <div class="swatch-name">Magenta</div>
+          <div class="swatch-hex">#C8317A</div>
+        </div>
+      </div>
+      <div class="color-swatch-sm sw-dark">
+        <div>
+          <div class="swatch-name">Dark</div>
+          <div class="swatch-hex">#07070f</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roles de color -->
+  <div class="grid-3" style="gap:20px;margin-bottom:80px">
+    <div style="padding:28px;background:var(--gray-50);border-radius:16px;border:1.5px solid var(--gray-100)">
+      <div style="width:32px;height:32px;border-radius:8px;background:var(--navy);margin-bottom:16px"></div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:6px">Navy — Institucional</div>
+      <div style="font-size:13px;color:var(--gray-700);line-height:1.6">Encabezados, fondos, elementos de confianza. Comunica seriedad sin ser frío.</div>
+    </div>
+    <div style="padding:28px;background:var(--gray-50);border-radius:16px;border:1.5px solid var(--gray-100)">
+      <div style="width:32px;height:32px;border-radius:8px;background:var(--orange);margin-bottom:16px"></div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:6px">Orange — Acción</div>
+      <div style="font-size:13px;color:var(--gray-700);line-height:1.6">CTAs, el nombre "air" en el logo, precios, highlights clave. El color que activa.</div>
+    </div>
+    <div style="padding:28px;background:var(--gray-50);border-radius:16px;border:1.5px solid var(--gray-100)">
+      <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--coral),var(--magenta));margin-bottom:16px"></div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:6px">Coral + Magenta — Energía</div>
+      <div style="font-size:13px;color:var(--gray-700);line-height:1.6">Gradientes, acentos visuales, momentos de énfasis. Nunca como color de fondo principal.</div>
+    </div>
+  </div>
+
+  <!-- Gradientes -->
+  <h3 class="subtitle">Gradientes oficiales</h3>
+  <p style="font-size:15px;color:var(--gray-700);margin-bottom:32px">Los gradientes son la firma visual de Through Air en piezas de impacto. Siempre de izquierda a derecha o en ángulo 135°.</p>
+  <div class="gradient-row" style="margin-bottom:80px">
+    <div class="gradient-swatch grad-primary"><span>Primary · Orange → Magenta · 135°</span></div>
+    <div class="gradient-swatch grad-secondary"><span>Secondary · Navy → Magenta · 135°</span></div>
+    <div class="gradient-swatch grad-accent"><span>Accent · Coral → Orange · 135°</span></div>
+    <div class="gradient-swatch grad-dark"><span>Dark · #07070f → Navy · 135°</span></div>
+    <div class="gradient-swatch grad-warm"><span>Warm · Orange → Coral · 90°</span></div>
+    <div class="gradient-swatch grad-glow"><span>Glow · Radial sobre Dark</span></div>
+  </div>
+
+  <!-- Accesibilidad -->
+  <div style="background:var(--gray-50);border-radius:24px;padding:48px;border:1.5px solid var(--gray-100)">
+    <div class="section-label" style="color:var(--gray-500);margin-bottom:20px">Accesibilidad y contraste</div>
+    <div class="grid-3" style="gap:20px">
+      <div style="background:var(--navy);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:16px;font-weight:700;color:#fff">Blanco sobre Navy</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.5)">Ratio 9.8:1 — AAA ✓</div>
+      </div>
+      <div style="background:var(--dark);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:16px;font-weight:700;color:#fff">Blanco sobre Dark</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.5)">Ratio 18.1:1 — AAA ✓</div>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:24px;border:1px solid var(--gray-100);display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:16px;font-weight:700;color:var(--navy)">Navy sobre Blanco</div>
+        <div style="font-size:12px;color:var(--gray-500)">Ratio 9.8:1 — AAA ✓</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     06 — TIPOGRAFÍA
+══════════════════════════════════════════════════════════════════ -->
+<section id="tipografia" class="page" style="background:var(--gray-50)">
+  <div class="section-label" style="color:var(--orange)">04 — Tipografía</div>
+  <h2 class="title">Una sola fuente.<br/>Infinitos pesos.</h2>
+  <p class="lead">Inter es la tipografía exclusiva de Through Air. Moderna, legible, neutral y disponible en todos los pesos que necesitamos para construir jerarquía visual.</p>
+
+  <!-- Hero -->
+  <div class="tipo-hero">
+    <div style="font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gray-500);margin-bottom:40px">Inter — Google Fonts</div>
+    <div style="font-size:100px;font-weight:900;letter-spacing:-6px;line-height:.88;color:var(--dark);margin-bottom:8px">Inter</div>
+    <div style="font-size:40px;font-weight:300;letter-spacing:-2px;color:var(--gray-500)">Bold. Light. Everything between.</div>
+    <div style="margin-top:40px;padding-top:40px;border-top:1px solid var(--gray-100)">
+      <div style="font-size:18px;color:var(--gray-700);line-height:1.7">
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>
+        abcdefghijklmnopqrstuvwxyz<br/>
+        0123456789 .,;:!?@#$%&amp;()
+      </div>
+    </div>
+  </div>
+
+  <!-- Pesos -->
+  <h3 class="subtitle" style="margin-bottom:24px">Pesos en uso</h3>
+  <div class="tipo-weights">
+    <div class="tw-card">
+      <div class="tw-sample" style="font-weight:300">Aa</div>
+      <div class="tw-label">300 · Light<br/>Subtítulos, precios secundarios</div>
+    </div>
+    <div class="tw-card">
+      <div class="tw-sample" style="font-weight:400">Aa</div>
+      <div class="tw-label">400 · Regular<br/>Cuerpo de texto, descripciones</div>
+    </div>
+    <div class="tw-card">
+      <div class="tw-sample" style="font-weight:700">Aa</div>
+      <div class="tw-label">700 · Bold<br/>Subtítulos, etiquetas, precios</div>
+    </div>
+    <div class="tw-card">
+      <div class="tw-sample" style="font-weight:900">Aa</div>
+      <div class="tw-label">900 · Black<br/>Headlines, logotipo "through"</div>
+    </div>
+    <div class="tw-card" style="background:var(--navy)">
+      <div class="tw-sample" style="font-weight:900;color:#fff">Aa</div>
+      <div class="tw-label" style="color:rgba(255,255,255,.5)">Gradiente<br/>Para textos en portada y gráficas</div>
+    </div>
+  </div>
+
+  <!-- Jerarquía -->
+  <h3 class="subtitle" style="margin-bottom:24px">Jerarquía tipográfica</h3>
+  <div class="tipo-hierarchy">
+    <div class="hier-row">
+      <div class="hier-meta"><strong>Display</strong>Inter Black · 80px+<br/>Solo portadas y héroes</div>
+      <div class="h-display" style="color:var(--dark)">Display</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-meta"><strong>H1 — Título</strong>Inter Black · 52px<br/>Encabezado de sección</div>
+      <div class="h-h1" style="color:var(--dark)">Título principal</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-meta"><strong>H2 — Subtítulo</strong>Inter Bold · 36px<br/>Encabezados de tarjeta</div>
+      <div class="h-h2" style="color:var(--dark)">Subtítulo de sección</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-meta"><strong>H3 — Tertiary</strong>Inter Bold · 24px<br/>Títulos de componente</div>
+      <div class="h-h3" style="color:var(--dark)">Título de componente</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-meta"><strong>Body</strong>Inter Regular · 18px<br/>Cuerpo principal</div>
+      <div class="h-body">El cuerpo del texto debe ser siempre legible, claro y directo. Sin ornamentos innecesarios.</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-meta"><strong>Small</strong>Inter Regular · 14px<br/>Metadatos, notas al pie</div>
+      <div class="h-small">Texto secundario y metadatos de soporte</div>
+    </div>
+    <div class="hier-row">
+      <div class="hier-meta"><strong>Label</strong>Inter Bold · 11px · All Caps<br/>Etiquetas y categorías</div>
+      <div class="h-label">Etiqueta de categoría</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     07 — VOZ Y TONO
+══════════════════════════════════════════════════════════════════ -->
+<section id="voz" class="page">
+  <div class="section-label" style="color:var(--orange)">05 — Voz y Tono</div>
+  <h2 class="title">Cómo<br/>hablamos.</h2>
+  <p class="lead">Through Air habla como el socio inteligente que todo dueño de negocio quisiera tener: directo, claro, sin rodeos, siempre orientado al resultado.</p>
+
+  <!-- Personalidad -->
+  <div class="personalidad" style="margin:60px 0">
+    <div class="pers-card">
+      <div class="pers-word">Directo</div>
+      <div class="pers-but">pero no</div>
+      <div class="pers-not">Brusco</div>
+    </div>
+    <div class="pers-card">
+      <div class="pers-word">Cercano</div>
+      <div class="pers-but">pero no</div>
+      <div class="pers-not">Informal en exceso</div>
+    </div>
+    <div class="pers-card">
+      <div class="pers-word">Experto</div>
+      <div class="pers-but">pero no</div>
+      <div class="pers-not">Técnico o pedante</div>
+    </div>
+    <div class="pers-card">
+      <div class="pers-word">Optimista</div>
+      <div class="pers-but">pero no</div>
+      <div class="pers-not">Falso o exagerado</div>
+    </div>
+  </div>
+
+  <!-- Ejemplos -->
+  <div class="voz-grid">
+    <div class="voz-card">
+      <div class="voz-card-icon">🎯</div>
+      <div class="voz-card-title">Habla de resultados, no de características</div>
+      <div class="voz-card-desc">El cliente no compra tecnología, compra tiempo, ventas y tranquilidad.</div>
+      <div class="voz-examples">
+        <div class="ex-do"><div class="ex-tag">Correcto</div>"Tu bot responde mientras duermes — sin perder ni un cliente."</div>
+        <div class="ex-dont"><div class="ex-tag">Incorrecto</div>"Nuestra plataforma usa NLP avanzado con modelos de lenguaje de última generación."</div>
+      </div>
+    </div>
+    <div class="voz-card">
+      <div class="voz-card-icon">⚡</div>
+      <div class="voz-card-title">Sé específico con los números</div>
+      <div class="voz-card-desc">Los datos concretos generan confianza. Los vagos generan escepticismo.</div>
+      <div class="voz-examples">
+        <div class="ex-do"><div class="ex-tag">Correcto</div>"41% de tus visitantes se convierten en leads calificados en 2 minutos."</div>
+        <div class="ex-dont"><div class="ex-tag">Incorrecto</div>"Aumentamos tus conversiones significativamente con nuestra herramienta inteligente."</div>
+      </div>
+    </div>
+    <div class="voz-card">
+      <div class="voz-card-icon">🤝</div>
+      <div class="voz-card-title">Habla de "tu negocio", no de "tu empresa"</div>
+      <div class="voz-card-desc">Nuestro cliente es el dueño del restaurante, la peluquería, la tienda. No un CEO corporativo.</div>
+      <div class="voz-examples">
+        <div class="ex-do"><div class="ex-tag">Correcto</div>"¿Cuántos clientes perdiste este fin de semana porque no pudiste responder?"</div>
+        <div class="ex-dont"><div class="ex-tag">Incorrecto</div>"Optimice los flujos de atención al cliente de su organización empresarial."</div>
+      </div>
+    </div>
+    <div class="voz-card">
+      <div class="voz-card-icon">🚀</div>
+      <div class="voz-card-title">El tiempo es urgente, no intimidante</div>
+      <div class="voz-card-desc">Creamos urgencia honesta — el mercado digital no espera, pero lo hacemos accesible.</div>
+      <div class="voz-examples">
+        <div class="ex-do"><div class="ex-tag">Correcto</div>"Mientras lees esto, tu competencia ya está llegando a tus clientes en Instagram."</div>
+        <div class="ex-dont"><div class="ex-tag">Incorrecto</div>"¡ÚLTIMA OPORTUNIDAD! ¡NO TE QUEDES ATRÁS! ¡OFERTA POR TIEMPO LIMITADO!"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vocabulario -->
+  <div class="vocab-cols">
+    <div class="vocab-col vocab-yes">
+      <div class="vocab-col-title">Usamos estas palabras</div>
+      <div class="vocab-pills">
+        <div class="vocab-pill">negocio</div>
+        <div class="vocab-pill">clientes</div>
+        <div class="vocab-pill">resultados</div>
+        <div class="vocab-pill">automatizar</div>
+        <div class="vocab-pill">crecer</div>
+        <div class="vocab-pill">presencia digital</div>
+        <div class="vocab-pill">24/7</div>
+        <div class="vocab-pill">listo en 30 días</div>
+        <div class="vocab-pill">sin complicaciones</div>
+        <div class="vocab-pill">tu equipo</div>
+        <div class="vocab-pill">estrategia</div>
+        <div class="vocab-pill">conversiones</div>
+        <div class="vocab-pill">aliado</div>
+        <div class="vocab-pill">escalable</div>
+      </div>
+    </div>
+    <div class="vocab-col vocab-no">
+      <div class="vocab-col-title">Evitamos estas palabras</div>
+      <div class="vocab-pills">
+        <div class="vocab-pill">sinergias</div>
+        <div class="vocab-pill">disruptr</div>
+        <div class="vocab-pill">ecosistema omnicanal</div>
+        <div class="vocab-pill">IA revolucionaria</div>
+        <div class="vocab-pill">solución integral 360°</div>
+        <div class="vocab-pill">paradigma</div>
+        <div class="vocab-pill">innovación disruptiva</div>
+        <div class="vocab-pill">potenciar</div>
+        <div class="vocab-pill">empoderamiento</div>
+        <div class="vocab-pill">¡oferta!</div>
+        <div class="vocab-pill">garantizado 100%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     08 — SERVICIOS
+══════════════════════════════════════════════════════════════════ -->
+<section id="servicios" class="page" style="background:var(--gray-50)">
+  <div class="section-label" style="color:var(--orange)">06 — Portafolio de Servicios</div>
+  <h2 class="title">Lo que<br/>ofrecemos.</h2>
+  <p class="lead">Seis servicios diseñados para complementarse. El cliente puede empezar con uno y escalar al ecosistema completo.</p>
+
+  <div class="servicios-grid">
+    <div class="svc-card">
+      <div class="svc-badge mensual">Mensual</div>
+      <div class="svc-icon-big">📣</div>
+      <div class="svc-name">Pautas Digitales</div>
+      <div class="svc-desc">Gestión y optimización de campañas en Google Ads y Meta Ads. Tus clientes ya están buscando — hay que aparecer primero.</div>
+      <div class="svc-price">Desde $2.000.000 COP/mes</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-badge mensual">Mensual</div>
+      <div class="svc-icon-big">📱</div>
+      <div class="svc-name">Redes Sociales</div>
+      <div class="svc-desc">Diseño de contenido, calendario editorial, publicación estratégica y reporte mensual con métricas reales.</div>
+      <div class="svc-price">Desde $3.500.000 COP/mes</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-badge unico">Pago único</div>
+      <div class="svc-icon-big">🌐</div>
+      <div class="svc-name">Página Web</div>
+      <div class="svc-desc">Web profesional, optimizada para SEO, responsiva y lista en 15 días hábiles. Tu vitrina abierta 24/7.</div>
+      <div class="svc-price">Desde $2.000.000 COP</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-badge unico">Pago único</div>
+      <div class="svc-icon-big">🛍️</div>
+      <div class="svc-name">E-Commerce</div>
+      <div class="svc-desc">Tienda online completa con bot de ventas integrado. Vende mientras duermes y recupera carritos abandonados.</div>
+      <div class="svc-price">$3.900.000 COP</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-badge bot">Bot IA</div>
+      <div class="svc-icon-big">💬</div>
+      <div class="svc-name">WhatsApp Admin Bot</div>
+      <div class="svc-desc">Bot que atiende, cotiza y agenda por WhatsApp las 24 horas. Responde en segundos, aprende de cada conversación.</div>
+      <div class="svc-price">$2.500.000 + $500K/mes</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-badge bot">Bot IA</div>
+      <div class="svc-icon-big">🎯</div>
+      <div class="svc-name">Lead Qualifier Bot</div>
+      <div class="svc-desc">Widget inteligente que filtra visitantes de tu web y entrega solo los leads listos para comprar. Califica en 2 minutos.</div>
+      <div class="svc-price">$2.000.000 + $500K/mes</div>
+    </div>
+  </div>
+
+  <!-- Pack -->
+  <div style="margin-top:40px;background:var(--navy);border-radius:24px;padding:48px;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px">Pack Recomendado</div>
+      <div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:8px">Pack Mensual — Pautas + Redes</div>
+      <div style="font-size:15px;color:rgba(255,255,255,.5)">Los dos servicios más complementarios, a precio reducido. Estrategia unificada, un solo contacto.</div>
+    </div>
+    <div style="text-align:right;flex-shrink:0;margin-left:40px">
+      <div style="font-size:44px;font-weight:900;background:linear-gradient(135deg,#F26522,#C8317A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-2px;line-height:1">$4.000.000</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.3);margin-top:4px">COP/mes · Ahorras 27%</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     09 — APLICACIONES
+══════════════════════════════════════════════════════════════════ -->
+<section id="aplicaciones" class="page">
+  <div class="section-label" style="color:var(--orange)">07 — Aplicaciones</div>
+  <h2 class="title">La marca<br/>en acción.</h2>
+  <p class="lead">Estos son los principios que guían cómo aplicamos la marca en cualquier punto de contacto: redes sociales, web, documentos y comunicaciones.</p>
+
+  <div class="app-rule-grid" style="margin:60px 0">
+    <div class="app-rule-card">
+      <div class="app-rule-icon">📐</div>
+      <div class="app-rule-title">Formato Redes Sociales</div>
+      <div class="app-rule-desc">Todas las piezas para Instagram/LinkedIn son 1080×1080px (1:1). Las stories son 1080×1920px. Siempre JPG 95% de calidad mínima. Nunca menos de 300ppi para impresión.</div>
+    </div>
+    <div class="app-rule-card">
+      <div class="app-rule-icon">🌗</div>
+      <div class="app-rule-title">Modo Oscuro por Defecto</div>
+      <div class="app-rule-desc">Las piezas de mayor impacto visual (gráficas de servicios, portadas, bots) se producen sobre fondo oscuro #07070f o navy #1B1B6E. El blanco se reserva para documentos y comparativos.</div>
+    </div>
+    <div class="app-rule-card">
+      <div class="app-rule-icon">✍️</div>
+      <div class="app-rule-title">Jerarquía en Piezas</div>
+      <div class="app-rule-desc">Toda pieza sigue: 1) Tag de servicio (11px caps) → 2) Headline impactante (bold) → 3) Subline explicativa → 4) Logo + precio. El logo siempre en esquina inferior izquierda.</div>
+    </div>
+  </div>
+
+  <!-- Fondos aprobados -->
+  <h3 class="subtitle" style="margin-bottom:16px">Fondos aprobados para piezas</h3>
+  <div class="approved-bg">
+    <div class="bg-sample bg-dark"><span>#07070f</span></div>
+    <div class="bg-sample bg-navy"><span>#1B1B6E</span></div>
+    <div class="bg-sample bg-gradient"><span>Navy → Dark</span></div>
+    <div class="bg-sample bg-white"><span>#ffffff</span></div>
+    <div class="bg-sample bg-gray50"><span>#f9f9fc</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Prohibiciones -->
+  <h3 class="subtitle" style="margin-bottom:24px">Lo que nunca hacemos</h3>
+  <div class="prohibit-grid">
+    <div class="prohibit-card">
+      <div class="prohibit-x">🚫</div>
+      <div class="prohibit-text">No usar imágenes de stock genéricas como fondo de piezas de marca. Las piezas de Through Air son tipográficas y geométricas.</div>
+    </div>
+    <div class="prohibit-card">
+      <div class="prohibit-x">🚫</div>
+      <div class="prohibit-text">No mezclar más de 3 colores de la paleta en una misma pieza. Elegir 2 y usar el tercero como acento máximo.</div>
+    </div>
+    <div class="prohibit-card">
+      <div class="prohibit-x">🚫</div>
+      <div class="prohibit-text">No usar tipografías distintas a Inter. Nunca Comic Sans, Helvetica Neue, fuentes cursivas o de sistema.</div>
+    </div>
+    <div class="prohibit-card">
+      <div class="prohibit-x">🚫</div>
+      <div class="prohibit-text">No escribir el nombre con mayúscula: siempre "through air" en minúsculas — nunca "Through Air" en el logotipo.</div>
+    </div>
+    <div class="prohibit-card">
+      <div class="prohibit-x">🚫</div>
+      <div class="prohibit-text">No usar colores de marca sobre fotografías de fondo. El color debe aplicarse sobre superficies planas o gradientes propios.</div>
+    </div>
+    <div class="prohibit-card">
+      <div class="prohibit-x">🚫</div>
+      <div class="prohibit-text">No comprimir JPGs más allá de calidad 80 para publicación digital. Mantener calidad 95 como estándar.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Emojis -->
+  <h3 class="subtitle" style="margin-bottom:16px">Emojis en comunicación</h3>
+  <p style="font-size:15px;color:var(--gray-700);margin-bottom:24px">En piezas gráficas se usan emojis como elementos visuales complementarios (no decorativos). En textos de redes, máximo 1-2 por publicación, siempre al final de la frase.</p>
+  <div style="display:flex;gap:16px;flex-wrap:wrap">
+    <div style="padding:12px 20px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-100);font-size:15px">📣 Pautas</div>
+    <div style="padding:12px 20px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-100);font-size:15px">📱 Redes</div>
+    <div style="padding:12px 20px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-100);font-size:15px">🌐 Web</div>
+    <div style="padding:12px 20px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-100);font-size:15px">🛍️ E-Commerce</div>
+    <div style="padding:12px 20px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-100);font-size:15px">💬 WhatsApp Bot</div>
+    <div style="padding:12px 20px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-100);font-size:15px">🎯 Lead Bot</div>
+    <div style="padding:12px 20px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-100);font-size:15px">🚀 Crecimiento</div>
+    <div style="padding:12px 20px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-100);font-size:15px">📊 Métricas</div>
+    <div style="padding:12px 20px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-100);font-size:15px">⚡ Velocidad</div>
+    <div style="padding:12px 20px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-100);font-size:15px">✓ Resultados</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     10 — CONTACTO / CIERRE
+══════════════════════════════════════════════════════════════════ -->
+<section id="contacto" style="position:relative;background:var(--dark);min-height:80vh;display:flex;flex-direction:column;justify-content:flex-end">
+  <div class="contacto-bg"></div>
+  <div class="contacto-content">
+    <div style="font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:32px;position:relative;z-index:2">08 — Contacto y Archivos</div>
+    <div class="contacto-headline">
+      ¿Dudas sobre<br/>la <em>marca?</em>
+    </div>
+    <div class="contacto-info" style="position:relative;z-index:2">
+      <div>
+        <div class="contacto-item-label">Web</div>
+        <div class="contacto-item-val">throughair.co</div>
+      </div>
+      <div>
+        <div class="contacto-item-label">Email de marca</div>
+        <div class="contacto-item-val">hola@throughair.co</div>
+      </div>
+      <div>
+        <div class="contacto-item-label">Versión del manual</div>
+        <div class="contacto-item-val">v1.0 — 2025</div>
+      </div>
+    </div>
+    <div style="position:relative;z-index:2;padding:32px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;max-width:700px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px">Archivos maestros</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="font-size:14px;color:rgba(255,255,255,.5)">🗂 Fuente Inter — Google Fonts</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.5)">🎨 Paleta de colores (.ase, .clr)</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.5)">📁 Gráficas redes (.html + .jpg)</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.5)">📄 Manual de marca (.html)</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.5)">🔤 Logo SVG — todas las variantes</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.5)">📐 Plantillas Figma / Canva</div>
+      </div>
+    </div>
+  </div>
+  <div class="contacto-footer">
+    <div class="cf-brand"><span class="cf-through">through</span><span class="cf-air">air</span></div>
+    <div class="cf-note">Manual de Marca v1.0 · 2025 · Todos los derechos reservados</div>
+  </div>
+</section>
+
+</body>
+</html>

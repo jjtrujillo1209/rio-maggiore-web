@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Engagement Miedos — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 50% 5%, rgba(200,49,122,.22) 0%, rgba(27,27,110,.3) 42%, #07070f 68%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:12px}
+.headline{font-size:72px;font-weight:900;color:#fff;line-height:.92;letter-spacing:-3px;margin-bottom:6px}
+.headline em{font-style:normal;background:linear-gradient(135deg,#F26522,#C8317A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{font-size:22px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.4;margin-bottom:0}
+
+.options{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0;align-content:center}
+.option{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px 28px;display:flex;align-items:flex-start;gap:16px;cursor:pointer}
+.option:hover{border-color:rgba(242,101,34,.4);background:rgba(242,101,34,.08)}
+.option.a{border-left:3px solid #1B1B6E}
+.option.b{border-left:3px solid #F04E37}
+.option.c{border-left:3px solid #F26522}
+.option.d{border-left:3px solid #C8317A}
+.opt-letter{font-size:28px;font-weight:900;flex-shrink:0;line-height:1}
+.a .opt-letter{color:#6b7fd4}
+.b .opt-letter{color:#F04E37}
+.c .opt-letter{color:#F26522}
+.d .opt-letter{color:#C8317A}
+.opt-text{font-size:18px;font-weight:700;color:#fff;line-height:1.3;margin-bottom:6px}
+.opt-sub{font-size:14px;color:rgba(255,255,255,.4);line-height:1.4}
+
+.cta-area{margin-bottom:20px}
+.cta-card{background:rgba(242,101,34,.1);border:1px solid rgba(242,101,34,.25);border-radius:16px;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.cta-text{font-size:18px;font-weight:700;color:#fff}
+.cta-sub{font-size:14px;color:rgba(255,255,255,.4);margin-top:4px}
+.comment-badge{background:#F26522;color:#fff;font-size:14px;font-weight:700;padding:12px 24px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:26px;font-weight:300;color:#F26522}
+.tag{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:2px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div>
+    <div class="eyebrow">Cuéntanos — comentamos todos</div>
+    <div class="headline">¿Cuál es tu mayor<br/><em>miedo</em> al invertir<br/>en digital?</div>
+    <div class="sub">Comenta la letra — te respondemos con honestidad.</div>
+  </div>
+
+  <div class="options">
+    <div class="option a">
+      <span class="opt-letter">A</span>
+      <div>
+        <div class="opt-text">Gastar plata sin ver resultados</div>
+        <div class="opt-sub">Pagué antes y no sirvió de nada</div>
+      </div>
+    </div>
+    <div class="option b">
+      <span class="opt-letter">B</span>
+      <div>
+        <div class="opt-text">No entender qué está pasando</div>
+        <div class="opt-sub">Reportes que no entiende nadie</div>
+      </div>
+    </div>
+    <div class="option c">
+      <span class="opt-letter">C</span>
+      <div>
+        <div class="opt-text">Que no sea para mi tipo de negocio</div>
+        <div class="opt-sub">"Lo digital es para marcas grandes"</div>
+      </div>
+    </div>
+    <div class="option d">
+      <span class="opt-letter">D</span>
+      <div>
+        <div class="opt-text">No tener tiempo para manejarlo</div>
+        <div class="opt-sub">Ya tengo el día muy ocupado</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-area">
+    <div class="cta-card">
+      <div>
+        <div class="cta-text">Comenta A, B, C o D</div>
+        <div class="cta-sub">Respondemos a cada comentario con soluciones reales</div>
+      </div>
+      <div class="comment-badge">Comenta abajo</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+    <div class="tag">#PymeColombia #MarketingDigital</div>
+  </div>
+</div>
+</body>
+</html>

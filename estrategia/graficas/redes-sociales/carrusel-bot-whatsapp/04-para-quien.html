@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Para Quién — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 40% 8%, rgba(27,27,110,.6) 0%, rgba(37,211,102,.1) 50%, #07070f 68%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+.slide-num{position:absolute;top:28px;right:32px;font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.25);text-transform:uppercase}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}
+.headline{font-size:62px;font-weight:900;color:#fff;line-height:.9;letter-spacing:-3px;margin-bottom:8px}
+.headline em{font-style:normal;color:#25d366}
+.sub{font-size:19px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.4}
+
+.industries{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:24px 0;align-content:center}
+.ind{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px 20px;text-align:center}
+.ind.hl{background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.25)}
+.ind-icon{font-size:34px;margin-bottom:10px}
+.ind-name{font-size:17px;font-weight:700;color:#fff;margin-bottom:6px}
+.ind-use{font-size:13px;color:rgba(255,255,255,.4);line-height:1.4}
+.ind-badge{font-size:11px;font-weight:700;color:#25d366;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);padding:4px 10px;border-radius:20px;display:inline-block;margin-top:8px}
+
+.insight{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px 28px;display:flex;align-items:center;gap:20px;margin-bottom:20px}
+.insight-text{font-size:17px;color:rgba(255,255,255,.6);flex:1;line-height:1.5}
+.insight-text strong{color:#fff}
+.insight-btn{background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.35);color:#25d366;font-size:13px;font-weight:700;padding:11px 22px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:26px;font-weight:300;color:#F26522}
+.tag{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:2px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="slide-num">4 / 6 — Desliza</div>
+  <div>
+    <div class="eyebrow">Funciona para cualquier negocio con WhatsApp</div>
+    <div class="headline">¿Para qué<br/>negocios <em>sirve?</em></div>
+    <div class="sub">Si tienes clientes que te escriben por WhatsApp, lo necesitas.</div>
+  </div>
+
+  <div class="industries">
+    <div class="ind hl">
+      <div class="ind-icon">🍽️</div>
+      <div class="ind-name">Restaurantes</div>
+      <div class="ind-use">Pedidos, domicilios, reservas, menú del día</div>
+      <span class="ind-badge">+30% pedidos nocturnos</span>
+    </div>
+    <div class="ind hl">
+      <div class="ind-icon">🏥</div>
+      <div class="ind-name">Clínicas y Salud</div>
+      <div class="ind-use">Citas, precios, especialistas, ubicaciones</div>
+      <span class="ind-badge">-60% llamadas</span>
+    </div>
+    <div class="ind hl">
+      <div class="ind-icon">🛍️</div>
+      <div class="ind-name">Tiendas y Retail</div>
+      <div class="ind-use">Inventario, precios, envíos, tallas disponibles</div>
+      <span class="ind-badge">Vende 24/7</span>
+    </div>
+    <div class="ind">
+      <div class="ind-icon">🏗️</div>
+      <div class="ind-name">Constructoras</div>
+      <div class="ind-use">Cotizaciones, proyectos, visitas agendadas</div>
+    </div>
+    <div class="ind">
+      <div class="ind-icon">💇</div>
+      <div class="ind-name">Estéticas y Spa</div>
+      <div class="ind-use">Turnos, servicios, precios, disponibilidad</div>
+    </div>
+    <div class="ind">
+      <div class="ind-icon">⚖️</div>
+      <div class="ind-name">Servicios Profesionales</div>
+      <div class="ind-use">Consultas, tarifas, agendar reuniones</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="insight">
+      <div class="insight-text"><strong>¿No estás en esta lista?</strong> No importa. Si tus clientes te escriben preguntas repetidas por WhatsApp, hay un bot para ti.</div>
+      <div class="insight-btn">Ver precio →</div>
+    </div>
+    <div class="footer">
+      <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+      <div class="tag">#BotIA #PymeColombia #Automatización</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

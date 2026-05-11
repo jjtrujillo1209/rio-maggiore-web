@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables (NEVER commit secrets)
+.env
+.env.local
+.env.production
+.env.*.local
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+.cache/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pyenv/
+venv/
+.venv/
+
+# Logs
+logs/
+*.log
+
+# Private client data (keep locally, never push)
+Clientes/prospectos_2000.xlsx
+Clientes/contactos_reales.xlsx
+Clientes/outscraper_queries.csv

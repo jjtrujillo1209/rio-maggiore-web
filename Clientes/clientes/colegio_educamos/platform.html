@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plataforma Colegio Educamos</title>
+  <link rel="stylesheet" href="/platform.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="header">
+      <a class="brand" href="/index.html">
+        <img src="/assets/LOGO-NEGRO.png" alt="Logo Educamos" />
+        <div>
+          <strong>Colegio Educamos</strong>
+          <span>Plataforma academica completa</span>
+        </div>
+      </a>
+      <div class="header-actions">
+        <span class="badge info" id="currentRoleBadge">Sin sesion</span>
+        <button class="btn btn-secondary" id="reloadDashboard" type="button">Actualizar</button>
+        <button class="btn btn-danger hidden" id="logoutButton" type="button">Cerrar sesion</button>
+      </div>
+    </header>
+
+    <section class="login-card" id="loginSection">
+      <div class="login-grid">
+        <div class="login-copy">
+          <span class="eyebrow">Backend + interfaces por rol</span>
+          <h1>Profesor, estudiante, admin y padres en una misma plataforma</h1>
+          <p>
+            Esta version demo ya incluye backend con autenticacion, cursos, clases, tareas, notas,
+            asistencia, anuncios y mensajeria. Usa cualquiera de los accesos de prueba para entrar
+            y ver cada rol trabajando sobre los mismos datos.
+          </p>
+          <div class="credentials-grid" id="credentialsGrid"></div>
+        </div>
+
+        <form class="panel login-form stack" id="loginForm">
+          <div>
+            <span class="eyebrow">Ingreso</span>
+            <h2>Entrar al sistema</h2>
+          </div>
+          <div class="field">
+            <label for="email">Correo</label>
+            <input id="email" name="email" type="email" placeholder="admin@educamos.demo" required />
+          </div>
+          <div class="field">
+            <label for="password">Contrasena</label>
+            <input id="password" name="password" type="password" placeholder="demo123" required />
+          </div>
+          <button class="btn btn-primary" type="submit">Iniciar sesion</button>
+          <p class="status-note" id="loginMessage">Puedes entrar como administrador, profesor, estudiante o padre con las cuentas de prueba.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="app-layout" id="appLayout">
+      <aside class="panel sidebar">
+        <span class="eyebrow">Navegacion</span>
+        <h3 id="sidebarTitle">Panel principal</h3>
+        <p id="sidebarSubtitle">Selecciona una seccion para trabajar.</p>
+        <nav class="sidebar-nav" id="sidebarNav"></nav>
+      </aside>
+
+      <div class="content">
+        <section class="panel hero-panel">
+          <span class="eyebrow" id="heroEyebrow">Panel</span>
+          <div class="section-head">
+            <div>
+              <h2 id="heroTitle">Bienvenido</h2>
+              <p id="heroDescription">Carga un rol para ver su interfaz.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats-grid" id="statsGrid"></section>
+
+        <section class="cards-grid" id="primaryGrid"></section>
+
+        <section class="cards-grid" id="secondaryGrid"></section>
+      </div>
+    </section>
+  </main>
+
+  <script src="/platform.js"></script>
+</body>
+</html>

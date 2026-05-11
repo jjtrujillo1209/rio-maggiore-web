@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta Comercial y Pasos a Seguir · Through Air</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:         #09090f;
+      --surface:    #111118;
+      --surface-2:  #18181f;
+      --border:     rgba(255,255,255,0.07);
+      --border-hot: rgba(242,101,34,0.35);
+
+      --orange:     #F26522;
+      --coral:      #F04E37;
+      --magenta:    #C8317A;
+      --grad:       linear-gradient(135deg, #F26522 0%, #F04E37 48%, #C8317A 100%);
+      --grad-text:  linear-gradient(90deg, #F26522, #F04E37);
+
+      --white:      #ffffff;
+      --muted:      rgba(255,255,255,0.5);
+      --faint:      rgba(255,255,255,0.22);
+
+      --green:      #22c55e;
+      --yellow:     #eab308;
+      --blue:       #3b82f6;
+
+      --display:    'Nunito', sans-serif;
+      --body:       'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 64px; padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(9,9,15,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo .through { color: var(--white); }
+    .nav-logo .air {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex; gap: 8px;
+    }
+    .nav-links a {
+      font-size: 0.72rem; font-weight: 500; text-decoration: none;
+      padding: 6px 14px; border-radius: 6px;
+      color: var(--muted);
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+
+    .nav-badge {
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 14px; border-radius: 100px;
+      background: rgba(242,101,34,0.12);
+      border: 1px solid rgba(242,101,34,0.3);
+      color: var(--orange);
+    }
+
+    /* ── HERO ────────────────────────────────────────────────────── */
+    .hero {
+      padding: 140px 48px 80px;
+      max-width: 880px;
+    }
+
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--orange);
+      border: 1px solid rgba(242,101,34,0.3);
+      border-radius: 100px; padding: 6px 16px;
+      margin-bottom: 28px;
+    }
+    .hero-chip::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--orange);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .hero h1 .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1rem; font-weight: 300;
+      color: var(--muted); line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ── PIPELINE STRIP ──────────────────────────────────────────── */
+    .pipeline {
+      margin: 0 48px 64px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .pip-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex; align-items: center; gap: 16px;
+      transition: border-color 0.2s;
+      text-decoration: none; color: inherit;
+    }
+    .pip-card:hover { border-color: rgba(242,101,34,0.3); }
+
+    .pip-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .pip-dot.confirmed { background: var(--green); box-shadow: 0 0 8px rgba(34,197,94,0.4); }
+    .pip-dot.negotiation { background: var(--yellow); box-shadow: 0 0 8px rgba(234,179,8,0.4); }
+    .pip-dot.proposal { background: var(--blue); box-shadow: 0 0 8px rgba(59,130,246,0.4); }
+
+    .pip-info .pip-status {
+      font-size: 0.52rem; font-weight: 600; letter-spacing: 0.28em;
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+    .pip-info .pip-status.confirmed { color: var(--green); }
+    .pip-info .pip-status.negotiation { color: var(--yellow); }
+    .pip-info .pip-status.proposal { color: var(--blue); }
+    .pip-info .pip-name {
+      font-family: var(--display); font-size: 1rem; font-weight: 700;
+      color: var(--white);
+    }
+    .pip-info .pip-value {
+      font-size: 0.68rem; color: var(--muted); margin-top: 2px;
+    }
+    .pip-arrow {
+      margin-left: auto; color: var(--faint); font-size: 1rem;
+    }
+
+    /* ── DIVIDER ─────────────────────────────────────────────────── */
+    .section-divider {
+      height: 1px; background: var(--border);
+      margin: 0 48px 64px;
+    }
+
+    /* ── CLIENT SECTION ──────────────────────────────────────────── */
+    .client-section {
+      padding: 0 48px 80px;
+      scroll-margin-top: 80px;
+    }
+
+    .client-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .client-tag {
+      font-size: 0.55rem; font-weight: 600; letter-spacing: 0.32em;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .client-tag::before {
+      content: ''; display: block;
+      width: 24px; height: 2px;
+      background: var(--grad);
+      border-radius: 1px;
+    }
+
+    .client-title {
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 900; letter-spacing: -0.5px;
+      color: var(--white);
+    }
+
+    .client-desc {
+      font-size: 0.8rem; font-weight: 300;
+      color: var(--muted); line-height: 1.7;
+      max-width: 520px; margin-top: 8px;
+    }
+
+    .status-badge {
+      flex-shrink: 0;
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; padding: 8px 18px;
+      border-radius: 100px; white-space: nowrap;
+    }
+    .status-badge.confirmed {
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: var(--green);
+    }
+    .status-badge.negotiation {
+      background: rgba(234,179,8,0.1);
+      border: 1px solid rgba(234,179,8,0.3);
+      color: var(--yellow);
+    }
+    .status-badge.proposal {
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: var(--blue);
+    }
+
+    /* ── GRID DE SERVICIOS ───────────────────────────────────────── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .svc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 20px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .svc-card:hover {
+      border-color: var(--border-hot);
+      background: var(--surface-2);
+    }
+    .svc-card .svc-type {
+      font-size: 0.5rem; font-weight: 600; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .svc-card .svc-name {
+      font-family: var(--display); font-size: 0.9rem; font-weight: 700;
+      color: var(--white); margin-bottom: 6px; line-height: 1.3;
+    }
+    .svc-card .svc-detail {
+      font-size: 0.65rem; font-weight: 300;
+      color: var(--muted); line-height: 1.6; margin-bottom: 16px;
+    }
+    .svc-card .svc-price {
+      font-family: var(--display); font-size: 1.3rem; font-weight: 900;
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .svc-card .svc-price-sub {
+      font-size: 0.52rem; font-weight: 400;
+      color: var(--faint); margin-top: 2px; letter-spacing: 0.12em;
+    }
+    .svc-card.free-month .svc-price {
+      background: none;
+      -webkit-text-fill-color: var(--green);
+      font-size: 0.78rem; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 100px; padding: 4px 12px;
+      display: inline-block;
+    }
+    .svc-card.wide {
+      grid-column: span 2;
+    }
+
+    /* ── DEAL BOX ────────────────────────────────────────────────── */
+    .deal-box {
+      background: linear-gradient(135deg, rgba(242,101,34,0.08) 0%, rgba(200,49,122,0.06) 100%);
+      border: 1px solid rgba(242,101,34,0.2);
+      border-radius: 12px;
+      padding: 28px 32px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .deal-stat { text-align: center; }
+    .deal-stat .ds-label {
+      font-size: 0.5rem; font-weight: 600; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
+    }
+    .deal-stat .ds-num {
+      font-family: var(--display); font-size: 1.8rem; font-weight: 900;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .deal-stat .ds-sub {
+      font-size: 0.52rem; color: var(--faint);
+      margin-top: 4px; letter-spacing: 0.1em;
+    }
+    .deal-vr {
+      width: 1px; height: 48px;
+      background: rgba(242,101,34,0.2);
+    }
+    .deal-verify {
+      font-family: var(--display);
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--green);
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 8px; padding: 10px 16px;
+      text-align: center;
+    }
+    .deal-verify .dv-eq {
+      font-size: 0.5rem; font-weight: 400; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(34,197,94,0.6); display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ── BULLET TIMELINE ─────────────────────────────────────────── */
+    .bullet-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .bt-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 20px;
+      position: relative; overflow: hidden;
+    }
+    .bt-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--border);
+    }
+    .bt-card.active::before { background: var(--grad); }
+    .bt-card.bullet-pay::before { background: linear-gradient(90deg, var(--orange), var(--magenta)); }
+    .bt-card.recurring::before { background: rgba(255,255,255,0.1); }
+
+    .bt-period {
+      font-size: 0.5rem; font-weight: 600; letter-spacing: 0.3em;
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .bt-card.active .bt-period { color: var(--orange); }
+    .bt-card.bullet-pay .bt-period { color: var(--magenta); }
+    .bt-card.recurring .bt-period { color: var(--muted); }
+
+    .bt-name {
+      font-family: var(--display); font-size: 1.1rem; font-weight: 900;
+      color: var(--white); margin-bottom: 16px;
+    }
+
+    .bt-rows { display: flex; flex-direction: column; gap: 10px; }
+
+    .bt-row {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 8px;
+    }
+    .bt-row .br-label {
+      font-size: 0.65rem; font-weight: 400;
+      color: var(--muted); line-height: 1.4;
+    }
+    .bt-row .br-label small {
+      display: block; font-size: 0.55rem;
+      color: var(--faint); margin-top: 1px;
+    }
+    .bt-row .br-val {
+      font-family: var(--display); font-size: 0.95rem; font-weight: 700;
+      color: var(--white); white-space: nowrap; flex-shrink: 0;
+    }
+    .bt-row .br-val.free {
+      font-family: var(--body); font-size: 0.55rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green); background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.25);
+      border-radius: 100px; padding: 3px 10px;
+    }
+    .bt-row .br-val.included {
+      font-family: var(--body); font-size: 0.62rem; font-weight: 400;
+      color: var(--faint);
+    }
+    .bt-row .br-val.grad {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.1rem;
+    }
+
+    .bt-sep {
+      border: none; border-top: 1px solid var(--border);
+      margin: 10px 0;
+    }
+
+    .bt-total {
+      display: flex; align-items: baseline;
+      justify-content: space-between; gap: 8px;
+    }
+    .bt-total .btt-label {
+      font-size: 0.5rem; font-weight: 600; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .bt-total .btt-amount {
+      font-family: var(--display); font-size: 1.4rem; font-weight: 900;
+    }
+    .bt-card.active .btt-amount { color: var(--orange); }
+    .bt-card.bullet-pay .btt-amount {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .bt-card.recurring .btt-amount { color: var(--white); }
+
+    /* ── PAUTA EXTERNA ───────────────────────────────────────────── */
+    .pauta-strip {
+      border: 1px dashed rgba(242,101,34,0.25);
+      border-radius: 10px; padding: 18px 24px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
+      margin-bottom: 28px; flex-wrap: wrap;
+    }
+    .pauta-strip .ps-left .ps-tag {
+      font-size: 0.5rem; font-weight: 600; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+    }
+    .pauta-strip .ps-left .ps-title {
+      font-family: var(--display); font-size: 0.9rem; font-weight: 700;
+      color: var(--white);
+    }
+    .pauta-strip .ps-left .ps-desc {
+      font-size: 0.62rem; color: var(--muted); margin-top: 4px; line-height: 1.5;
+    }
+    .pauta-strip .ps-right {
+      text-align: right; flex-shrink: 0;
+    }
+    .pauta-strip .ps-right .ps-amount {
+      font-family: var(--display); font-size: 1.4rem; font-weight: 900;
+      color: var(--orange);
+    }
+    .pauta-strip .ps-right .ps-freq {
+      font-size: 0.52rem; color: var(--muted); letter-spacing: 0.14em;
+    }
+
+    /* ── NEXT STEPS ──────────────────────────────────────────────── */
+    .next-steps {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 28px;
+    }
+    .next-steps .ns-title {
+      font-size: 0.55rem; font-weight: 700; letter-spacing: 0.32em;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .next-steps .ns-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: rgba(242,101,34,0.15);
+    }
+    .steps-list {
+      display: flex; flex-direction: column; gap: 10px;
+      list-style: none;
+    }
+    .steps-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 0.72rem; font-weight: 400;
+      color: rgba(255,255,255,0.75); line-height: 1.5;
+    }
+    .step-num {
+      width: 22px; height: 22px; border-radius: 6px;
+      background: rgba(242,101,34,0.12);
+      border: 1px solid rgba(242,101,34,0.25);
+      font-size: 0.6rem; font-weight: 700; color: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .step-done .step-num {
+      background: rgba(34,197,94,0.12);
+      border-color: rgba(34,197,94,0.25);
+      color: var(--green);
+    }
+    .step-done span { text-decoration: line-through; color: var(--faint); }
+
+    /* ── PENDING SECTION ─────────────────────────────────────────── */
+    .pending-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .pending-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .pending-card .pc-icon {
+      font-size: 1.4rem; margin-bottom: 10px;
+    }
+    .pending-card .pc-name {
+      font-family: var(--display); font-size: 0.95rem; font-weight: 700;
+      color: var(--white); margin-bottom: 6px;
+    }
+    .pending-card .pc-desc {
+      font-size: 0.65rem; font-weight: 300;
+      color: var(--muted); line-height: 1.6;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────────── */
+    footer {
+      margin-top: 40px; padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    footer .ft-logo {
+      font-family: var(--display); font-size: 1.1rem; font-weight: 900;
+    }
+    footer .ft-logo .through { color: var(--white); }
+    footer .ft-logo .air {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    footer .ft-info {
+      font-size: 0.6rem; color: var(--faint);
+      text-align: right; letter-spacing: 0.1em;
+    }
+
+    /* ── UTILS ───────────────────────────────────────────────────── */
+    /* ── KEY DATES ───────────────────────────────────────────────── */
+    .key-dates {
+      display: flex; align-items: flex-start;
+      gap: 0; margin-bottom: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    .kd-item {
+      flex: 1; padding: 16px 18px;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .kd-item:last-child { border-right: none; }
+    .kd-item:hover { background: var(--surface-2); }
+    .kd-date {
+      font-family: var(--display); font-size: 0.85rem; font-weight: 700;
+      color: var(--white); margin-bottom: 4px;
+    }
+    .kd-label {
+      font-size: 0.58rem; font-weight: 400;
+      color: var(--muted); line-height: 1.4;
+    }
+    .kd-item.milestone { background: rgba(242,101,34,0.05); }
+    .kd-item.milestone .kd-date { color: var(--orange); }
+    .kd-item.milestone .kd-label { color: rgba(242,101,34,0.7); }
+    .kd-item.launch { background: rgba(234,179,8,0.06); }
+    .kd-item.launch .kd-date {
+      background: linear-gradient(90deg, #eab308, #F26522);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .kd-item.launch .kd-label { color: rgba(234,179,8,0.7); }
+
+    /* ── SPRINT GRID ─────────────────────────────────────────────── */
+    .sprint-section { margin-bottom: 28px; }
+    .sprint-section-title {
+      font-size: 0.55rem; font-weight: 700; letter-spacing: 0.32em;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sprint-section-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: rgba(242,101,34,0.15);
+    }
+
+    .sprint-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .sprint-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 18px;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .sprint-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .sprint-card.s1::before { background: linear-gradient(90deg, #F26522, #F04E37); }
+    .sprint-card.s2::before { background: linear-gradient(90deg, #F04E37, #C8317A); }
+    .sprint-card.s3::before { background: linear-gradient(90deg, #C8317A, #9333ea); }
+    .sprint-card.s4::before { background: linear-gradient(90deg, #9333ea, #3b82f6); }
+
+    .sprint-num {
+      font-size: 0.5rem; font-weight: 700; letter-spacing: 0.32em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 2px;
+    }
+    .sprint-dates {
+      font-size: 0.6rem; font-weight: 600;
+      color: var(--orange); margin-bottom: 6px;
+    }
+    .sprint-name {
+      font-family: var(--display); font-size: 0.95rem; font-weight: 900;
+      color: var(--white); margin-bottom: 4px; line-height: 1.2;
+    }
+    .sprint-etapa {
+      display: inline-block;
+      font-size: 0.5rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--orange);
+      background: rgba(242,101,34,0.1); border: 1px solid rgba(242,101,34,0.2);
+      border-radius: 100px; padding: 3px 10px;
+      margin-bottom: 14px; width: fit-content;
+    }
+    .sprint-tasks {
+      list-style: none; flex: 1;
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .sprint-tasks li {
+      font-size: 0.65rem; font-weight: 400;
+      color: rgba(255,255,255,0.7); line-height: 1.4;
+      padding-left: 14px; position: relative;
+    }
+    .sprint-tasks li::before {
+      content: '·'; position: absolute; left: 0;
+      color: var(--orange); font-weight: 900;
+    }
+    .sprint-tasks li strong { color: var(--white); font-weight: 600; }
+    .sprint-cost {
+      margin-top: 16px; padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-family: var(--display); font-size: 1rem; font-weight: 900;
+      background: var(--grad-text);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .sprint-cost-label {
+      font-size: 0.5rem; font-weight: 400;
+      color: var(--faint); letter-spacing: 0.14em; margin-bottom: 2px;
+    }
+
+    /* ── FIRMA BOX ───────────────────────────────────────────────── */
+    .firma-box {
+      border: 1px solid rgba(242,101,34,0.3);
+      border-radius: 10px;
+      padding: 28px 32px;
+      background: rgba(242,101,34,0.04);
+      margin-bottom: 28px;
+    }
+    .firma-box .fb-title {
+      font-family: var(--display); font-size: 1rem; font-weight: 900;
+      color: var(--white); margin-bottom: 20px;
+    }
+    .firma-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .firma-slot {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 14px;
+    }
+    .firma-slot .fs-label {
+      font-size: 0.52rem; font-weight: 600; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
+    }
+    .firma-slot .fs-line {
+      height: 1px; background: rgba(255,255,255,0.1);
+      margin-bottom: 6px;
+    }
+    .firma-slot .fs-name {
+      font-size: 0.65rem; color: var(--faint);
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .hero { padding: 120px 20px 60px; }
+      .pipeline { margin: 0 20px 48px; grid-template-columns: 1fr; }
+      .client-section { padding: 0 20px 60px; }
+      .section-divider { margin: 0 20px 48px; }
+      .bullet-timeline { grid-template-columns: 1fr; }
+      .client-header { flex-direction: column; }
+      footer { padding: 24px 20px; flex-direction: column; gap: 12px; }
+      footer .ft-info { text-align: left; }
+      .svc-card.wide { grid-column: span 1; }
+      .sprint-grid { grid-template-columns: 1fr 1fr; }
+      .key-dates { flex-direction: column; }
+      .kd-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .firma-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <span class="through">through</span><span class="air">air</span>
+    </div>
+    <div class="nav-links">
+      <a href="#rio-maggiore">Rio Maggiore</a>
+      <a href="#educamos">Educamos</a>
+      <a href="#centro-hipico">Centro Hípico</a>
+    </div>
+    <div class="nav-badge">2026</div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-chip">Propuesta activa · Abril 2026</div>
+    <h1>Propuesta Comercial<br><span class="grad-text">y Pasos a Seguir.</span></h1>
+    <p class="hero-sub">
+      Resumen de acuerdos, estructuras de pago y acciones pendientes para los tres proyectos activos de Through Air.
+    </p>
+  </div>
+
+  <!-- PIPELINE -->
+  <div class="pipeline">
+    <a class="pip-card" href="#rio-maggiore">
+      <div class="pip-dot negotiation"></div>
+      <div class="pip-info">
+        <div class="pip-status negotiation">En propuesta</div>
+        <div class="pip-name">Rio Maggiore</div>
+        <div class="pip-value">$13.050.000 · Bullet 2 meses · Por firmar</div>
+      </div>
+      <div class="pip-arrow">→</div>
+    </a>
+    <a class="pip-card" href="#educamos">
+      <div class="pip-dot negotiation"></div>
+      <div class="pip-info">
+        <div class="pip-status negotiation">En negociación</div>
+        <div class="pip-name">Plataforma Educamos</div>
+        <div class="pip-value">Plataforma + Marketing digital</div>
+      </div>
+      <div class="pip-arrow">→</div>
+    </a>
+    <a class="pip-card" href="#centro-hipico">
+      <div class="pip-dot proposal"></div>
+      <div class="pip-info">
+        <div class="pip-status proposal">Propuesta enviada</div>
+        <div class="pip-name">Centro Hípico</div>
+        <div class="pip-value">Presencia digital + Audiovisual</div>
+      </div>
+      <div class="pip-arrow">→</div>
+    </a>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- RIO MAGGIORE -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="client-section" id="rio-maggiore">
+    <div class="client-header">
+      <div>
+        <div class="client-tag">Proyecto 01 · En propuesta · Para firmar</div>
+        <div class="client-title">Rio Maggiore</div>
+        <div class="client-desc">Proyecto inmobiliario de lujo · Armenia, Colombia. Lanzamiento sala de ventas <strong style="color:var(--orange)">6 de junio</strong>. Plan de 4 sprints semanales con estructura de pago diferido tipo bullet.</div>
+      </div>
+      <span class="status-badge negotiation">⟳ Por firmar</span>
+    </div>
+
+    <!-- Servicios -->
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-type">Único</div>
+        <div class="svc-name">Página Web</div>
+        <div class="svc-detail">Diseño responsivo + SEO técnico + WhatsApp. Entrega 15 días hábiles.</div>
+        <div class="svc-price">$3.500.000</div>
+        <div class="svc-price-sub">COP · Pago único</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-type">Único</div>
+        <div class="svc-name">Producción Audiovisual</div>
+        <div class="svc-detail">Drones 4K + fotografía profesional + edición completa. Entrega 7 días hábiles.</div>
+        <div class="svc-price">$5.000.000</div>
+        <div class="svc-price-sub">COP · Pago único</div>
+      </div>
+      <div class="svc-card wide">
+        <div class="svc-type">Mensual recurrente</div>
+        <div class="svc-name">Pack Presencia Total</div>
+        <div class="svc-detail">Pautas Digitales (Google + Meta) · Gestión de Redes (12 piezas/mes + calendario + métricas) · Reporte mensual · Soporte prioritario.</div>
+        <div class="svc-price">$4.500.000</div>
+        <div class="svc-price-sub">COP / mes · Ahorra $1.000.000 vs. contratar separado</div>
+      </div>
+      <div class="svc-card free-month">
+        <div class="svc-type">Cortesía acordada</div>
+        <div class="svc-name">Mes 1 del Pack</div>
+        <div class="svc-detail">Primer mes del Pack Presencia Total incluido como bonificación al cliente.</div>
+        <div class="svc-price">Gratis</div>
+        <div class="svc-price-sub">Beneficio: $4.500.000</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-type">Mensual recurrente</div>
+        <div class="svc-name">Mantenimiento Web</div>
+        <div class="svc-detail">Actualizaciones · soporte técnico · monitoreo · backups semanales.</div>
+        <div class="svc-price">$100.000</div>
+        <div class="svc-price-sub">COP / mes</div>
+      </div>
+    </div>
+
+    <!-- Deal summary -->
+    <div class="deal-box">
+      <div class="deal-stat">
+        <div class="ds-label">Etapa 1 · Arranque + Pauta</div>
+        <div class="ds-num">$4.550.000</div>
+        <div class="ds-sub">$4M gestión + $550K medios</div>
+      </div>
+      <div class="deal-vr"></div>
+      <div class="deal-stat">
+        <div class="ds-label">Etapa 2 · Audiovisual</div>
+        <div class="ds-num">$5.000.000</div>
+        <div class="ds-sub">producción · drones · edición</div>
+      </div>
+      <div class="deal-vr"></div>
+      <div class="deal-stat">
+        <div class="ds-label">Etapa 3 · Página Web</div>
+        <div class="ds-num">$3.500.000</div>
+        <div class="ds-sub">diseño · SEO · entrega 15 días</div>
+      </div>
+      <div class="deal-vr"></div>
+      <div class="deal-verify">
+        <span class="dv-eq">total propuesta</span>
+        $13.050.000 COP
+      </div>
+    </div>
+
+    <!-- Bullet timeline -->
+    <div class="bullet-timeline">
+      <div class="bt-card active">
+        <div class="bt-period">Mes 1 · Firma</div>
+        <div class="bt-name">Pago Base</div>
+        <div class="bt-rows">
+          <div class="bt-row">
+            <div class="br-label">Anticipo<small>Activa todos los servicios</small></div>
+            <div class="br-val grad">$4.000.000</div>
+          </div>
+          <div class="bt-row">
+            <div class="br-label">Pack Presencia Total<small>Primer mes cortesía</small></div>
+            <div class="br-val free">Gratis</div>
+          </div>
+          <div class="bt-row">
+            <div class="br-label">Mantenimiento Web<small>Incluido en cortesía</small></div>
+            <div class="br-val free">Gratis</div>
+          </div>
+        </div>
+        <hr class="bt-sep" />
+        <div class="bt-total">
+          <div class="btt-label">Total Mes 1</div>
+          <div class="btt-amount">$4.000.000</div>
+        </div>
+      </div>
+
+      <div class="bt-card bullet-pay">
+        <div class="bt-period">Mes 2 · Bullet</div>
+        <div class="bt-name">Saldo Diferido</div>
+        <div class="bt-rows">
+          <div class="bt-row">
+            <div class="br-label">Saldo bullet<small>Cancela el total del acuerdo</small></div>
+            <div class="br-val grad">$6.000.000</div>
+          </div>
+          <div class="bt-row">
+            <div class="br-label">Pack Presencia Total<small>Incluido en el deal</small></div>
+            <div class="br-val included">Incluido</div>
+          </div>
+          <div class="bt-row">
+            <div class="br-label">Mantenimiento Web<small>Incluido en el deal</small></div>
+            <div class="br-val included">Incluido</div>
+          </div>
+        </div>
+        <hr class="bt-sep" />
+        <div class="bt-total">
+          <div class="btt-label">Total Mes 2</div>
+          <div class="btt-amount">$6.000.000</div>
+        </div>
+      </div>
+
+      <div class="bt-card recurring">
+        <div class="bt-period">Mes 3 en adelante · Recurrente</div>
+        <div class="bt-name">Renovación Mensual</div>
+        <div class="bt-rows">
+          <div class="bt-row">
+            <div class="br-label">Pack Presencia Total<small>Pautas + Redes + Soporte</small></div>
+            <div class="br-val">$4.500.000</div>
+          </div>
+          <div class="bt-row">
+            <div class="br-label">Mantenimiento Web<small>Hosting, actualizaciones, backups</small></div>
+            <div class="br-val">$100.000</div>
+          </div>
+        </div>
+        <hr class="bt-sep" />
+        <div class="bt-total">
+          <div class="btt-label">Total mensual</div>
+          <div class="btt-amount">$4.600.000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pauta externa -->
+    <div class="pauta-strip">
+      <div class="ps-left">
+        <div class="ps-tag">Por fuera del deal · Presupuesto de medios</div>
+        <div class="ps-title">Pauta Digital — Google Ads + Meta Ads</div>
+        <div class="ps-desc">Presupuesto destinado directamente a las plataformas. Corre independiente del deal acordado.</div>
+      </div>
+      <div class="ps-right">
+        <div class="ps-amount">$550.000</div>
+        <div class="ps-freq">COP · por mes · pago directo a plataformas</div>
+      </div>
+    </div>
+
+    <!-- Plan de Sprints -->
+    <div class="sprint-section">
+      <div class="sprint-section-title">Plan de ejecución · 4 sprints semanales hacia el lanzamiento</div>
+
+      <!-- Fechas clave -->
+      <div class="key-dates">
+        <div class="kd-item">
+          <div class="kd-date">Abr 28</div>
+          <div class="kd-label">Firma del contrato<br>Arranque Sprint 1</div>
+        </div>
+        <div class="kd-item">
+          <div class="kd-date">May 5</div>
+          <div class="kd-label">Sprint 2<br>Pre-lanzamiento digital</div>
+        </div>
+        <div class="kd-item">
+          <div class="kd-date">May 12</div>
+          <div class="kd-label">Sprint 3<br>Producción y web</div>
+        </div>
+        <div class="kd-item">
+          <div class="kd-date">May 19</div>
+          <div class="kd-label">Sprint 4<br>Preparación final</div>
+        </div>
+        <div class="kd-item milestone">
+          <div class="kd-date">May 29</div>
+          <div class="kd-label">📷 Producción Audiovisual<br>en locación (tentativo)</div>
+        </div>
+        <div class="kd-item launch">
+          <div class="kd-date">Jun 6</div>
+          <div class="kd-label">🎉 Apertura Sala de Ventas<br>Lanzamiento oficial</div>
+        </div>
+      </div>
+
+      <!-- Sprint cards -->
+      <div class="sprint-grid">
+
+        <!-- SPRINT 1 -->
+        <div class="sprint-card s1">
+          <div class="sprint-num">Sprint 1</div>
+          <div class="sprint-dates">Abr 28 – May 2</div>
+          <div class="sprint-name">Arranque y Fundamentos</div>
+          <div class="sprint-etapa">Etapa 1</div>
+          <ul class="sprint-tasks">
+            <li>Firma del contrato y recibo del pago base <strong>$4.000.000</strong></li>
+            <li>Activar y configurar perfiles en redes sociales (logo + bio + links)</li>
+            <li>Pre-checklist de lista de ventas Town House</li>
+            <li>Brief creativo y visual aprobado (moodboard + renders)</li>
+            <li>Configurar <strong>bot WhatsApp</strong> de respuesta automática</li>
+            <li>Planificación logística producción audiovisual (May 29)</li>
+          </ul>
+          <div class="sprint-cost-label">Costo etapa</div>
+          <div class="sprint-cost">$4.000.000</div>
+        </div>
+
+        <!-- SPRINT 2 -->
+        <div class="sprint-card s2">
+          <div class="sprint-num">Sprint 2</div>
+          <div class="sprint-dates">May 5 – May 9</div>
+          <div class="sprint-name">Pre-lanzamiento Digital</div>
+          <div class="sprint-etapa">Etapa 1 cont.</div>
+          <ul class="sprint-tasks">
+            <li>Crear y publicar <strong>4 piezas de pre-lanzamiento</strong> con renders Town House</li>
+            <li>Activar pauta <strong>Meta Ads + Google Ads</strong> (presupuesto $550.000)</li>
+            <li>Landing de <strong>registro virtual</strong> activo y funcional</li>
+            <li>Generar <strong>código QR</strong> para registro público en sala de ventas</li>
+            <li>Inicio desarrollo página web</li>
+            <li>Video de apertura con características del proyecto (con renders)</li>
+          </ul>
+          <div class="sprint-cost-label">Presupuesto medios</div>
+          <div class="sprint-cost">$550.000</div>
+        </div>
+
+        <!-- SPRINT 3 -->
+        <div class="sprint-card s3">
+          <div class="sprint-num">Sprint 3</div>
+          <div class="sprint-dates">May 12 – May 16</div>
+          <div class="sprint-name">Producción y Desarrollo</div>
+          <div class="sprint-etapa">Etapa 2</div>
+          <ul class="sprint-tasks">
+            <li>Avance <strong>página web</strong> 70% completado</li>
+            <li><strong>Video introductorio</strong> sala de ventas con renders animados</li>
+            <li>Optimización de pauta con análisis de primeros resultados</li>
+            <li>Contenido semana 4 y lanzamiento programado</li>
+            <li>Material digital sala de ventas (pantallas, QR, brochure)</li>
+            <li>Configurar y probar <strong>datáfonos Bolt</strong></li>
+          </ul>
+          <div class="sprint-cost-label">Costo etapa</div>
+          <div class="sprint-cost">$5.000.000</div>
+        </div>
+
+        <!-- SPRINT 4 -->
+        <div class="sprint-card s4">
+          <div class="sprint-num">Sprint 4</div>
+          <div class="sprint-dates">May 19 – May 23</div>
+          <div class="sprint-name">Preparación Final</div>
+          <div class="sprint-etapa">Etapa 3</div>
+          <ul class="sprint-tasks">
+            <li>Aprobación y publicación <strong>página web</strong> ($3.500.000)</li>
+            <li>Revisión y prueba final del bot WhatsApp</li>
+            <li>Brief confirmado para producción audiovisual <strong>May 29</strong></li>
+            <li>Pre-lanzamiento en redes con <strong>countdown</strong> al 6 de junio</li>
+            <li>Ensayo general de apertura sala de ventas</li>
+            <li>Todo listo para el <strong>lanzamiento 6 de junio</strong></li>
+          </ul>
+          <div class="sprint-cost-label">Costo etapa</div>
+          <div class="sprint-cost">$3.500.000</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Firma -->
+    <div class="firma-box">
+      <div class="fb-title">Acuerdo de servicios · Para firma</div>
+      <div class="firma-grid">
+        <div class="firma-slot">
+          <div class="fs-label">Through Air · Proveedor</div>
+          <div class="fs-line"></div>
+          <div class="fs-name">Firma y fecha</div>
+        </div>
+        <div class="firma-slot">
+          <div class="fs-label">Rio Maggiore · Cliente</div>
+          <div class="fs-line"></div>
+          <div class="fs-name">Firma y fecha</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pasos a seguir -->
+    <div class="next-steps">
+      <div class="ns-title">Pasos inmediatos</div>
+      <ul class="steps-list">
+        <li>
+          <div class="step-num">1</div>
+          <span>Revisar y aprobar esta propuesta. Ajustar cualquier ítem antes de la firma.</span>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <span>Firmar el contrato y realizar el pago base de <strong>$4.000.000</strong> para activar el Sprint 1 el 28 de abril.</span>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <span>Transferir presupuesto de pauta de <strong>$550.000</strong> directamente a plataformas (corre por fuera del contrato).</span>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <span>Confirmar la fecha tentativa del <strong>29 de mayo</strong> para la producción audiovisual en locación y sala de ventas.</span>
+        </li>
+        <li>
+          <div class="step-num">5</div>
+          <span>Gestionar pago de <strong>Etapa 2 ($5.000.000)</strong> al inicio del Sprint 3 (12 de mayo) y <strong>Etapa 3 ($3.500.000)</strong> al iniciar Sprint 4.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- EDUCAMOS -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="client-section" id="educamos">
+    <div class="client-header">
+      <div>
+        <div class="client-tag">Proyecto 02 · En negociación</div>
+        <div class="client-title">Plataforma Educamos</div>
+        <div class="client-desc">Colegio virtual con gestión académica integral. Propuesta enfocada en plataforma LMS + marketing digital para captación de nuevos estudiantes.</div>
+      </div>
+      <span class="status-badge negotiation">⟳ En negociación</span>
+    </div>
+
+    <!-- Servicios propuestos -->
+    <div class="pending-grid">
+      <div class="pending-card">
+        <div class="pc-icon">🌐</div>
+        <div class="pc-name">Plataforma LMS</div>
+        <div class="pc-desc">Sistema con roles (admin, profesor, estudiante, padre). Gestión de cursos, clases, tareas, notas, asistencia y pagos. Clases Jitsi integradas.</div>
+      </div>
+      <div class="pending-card">
+        <div class="pc-icon">📣</div>
+        <div class="pc-name">Marketing de Captación</div>
+        <div class="pc-desc">Pautas Google + Meta orientadas a admisiones. Segmentación por familias con hijos en edad escolar. Formularios de captación integrados.</div>
+      </div>
+      <div class="pending-card">
+        <div class="pc-icon">📱</div>
+        <div class="pc-name">Gestión de Redes</div>
+        <div class="pc-desc">Contenido educativo para redes sociales. Calendario editorial mensual + reporte de métricas de alcance y conversión.</div>
+      </div>
+      <div class="pending-card">
+        <div class="pc-icon">📊</div>
+        <div class="pc-name">Reportes y Analytics</div>
+        <div class="pc-desc">Dashboard de KPIs de admisiones, actividad en plataforma y rendimiento de pautas. Entrega mensual con recomendaciones.</div>
+      </div>
+    </div>
+
+    <!-- Pasos a seguir -->
+    <div class="next-steps">
+      <div class="ns-title">Pasos a seguir</div>
+      <ul class="steps-list">
+        <li class="step-done">
+          <div class="step-num">✓</div>
+          <span>Propuesta comercial enviada con servicios de plataforma y marketing.</span>
+        </li>
+        <li class="step-done">
+          <div class="step-num">✓</div>
+          <span>Demo de la plataforma LMS desarrollada y lista para presentación.</span>
+        </li>
+        <li>
+          <div class="step-num">1</div>
+          <span>Agendar reunión de presentación del demo con los tomadores de decisión de Educamos.</span>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <span>Definir alcance final del proyecto: número de usuarios, módulos a activar y plan de marketing.</span>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <span>Cerrar valores y estructura de pago (evaluar si aplica bullet o mensualidades).</span>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <span>Firmar contrato e iniciar onboarding de la plataforma con carga de datos semilla.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- CENTRO HÍPICO -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="client-section" id="centro-hipico">
+    <div class="client-header">
+      <div>
+        <div class="client-tag">Proyecto 03 · Propuesta enviada</div>
+        <div class="client-title">Centro Hípico</div>
+        <div class="client-desc">Club ecuestre en el Eje Cafetero. Propuesta de presencia digital completa con identidad de marca, sitio web y producción audiovisual aérea.</div>
+      </div>
+      <span class="status-badge proposal">◉ Propuesta enviada</span>
+    </div>
+
+    <!-- Servicios propuestos -->
+    <div class="pending-grid">
+      <div class="pending-card">
+        <div class="pc-icon">🌐</div>
+        <div class="pc-name">Página Web</div>
+        <div class="pc-desc">Sitio responsivo con galería ecuestre, formulario de contacto, integración WhatsApp y SEO técnico enfocado en turismo y eventos.</div>
+      </div>
+      <div class="pending-card">
+        <div class="pc-icon">🚁</div>
+        <div class="pc-name">Producción Audiovisual</div>
+        <div class="pc-desc">Vuelos de drones 4K sobre las instalaciones, sesión fotográfica profesional de caballos y jinetes. Edición completa con derechos comerciales.</div>
+      </div>
+      <div class="pending-card">
+        <div class="pc-icon">📣</div>
+        <div class="pc-name">Pack Presencia Total</div>
+        <div class="pc-desc">Google Ads + Meta Ads gestionados · 12 piezas/mes en redes · Calendario editorial · Reporte mensual con métricas.</div>
+      </div>
+      <div class="pending-card">
+        <div class="pc-icon">⚙️</div>
+        <div class="pc-name">Mantenimiento Web</div>
+        <div class="pc-desc">Actualizaciones de contenido, soporte técnico prioritario, monitoreo de rendimiento y backups semanales.</div>
+      </div>
+    </div>
+
+    <!-- Pasos a seguir -->
+    <div class="next-steps">
+      <div class="ns-title">Pasos a seguir</div>
+      <ul class="steps-list">
+        <li class="step-done">
+          <div class="step-num">✓</div>
+          <span>Landing comercial del Centro Hípico desarrollada y enviada al cliente.</span>
+        </li>
+        <li>
+          <div class="step-num">1</div>
+          <span>Hacer seguimiento a la propuesta enviada — confirmar si el cliente la revisó y resolver dudas.</span>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <span>Negociar valores finales y definir qué servicios prioriza el cliente para el primer trimestre.</span>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <span>Evaluar estructura de pago: si aplica bullet (como Rio Maggiore) o plan de cuotas por fases de entrega.</span>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <span>Coordinar sesión de drones: revisar permisos de vuelo en la zona del Eje Cafetero y agenda del club.</span>
+        </li>
+        <li>
+          <div class="step-num">5</div>
+          <span>Cerrar contrato y activar producción web + audiovisual + pack mensual en paralelo.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="ft-logo">
+      <span class="through">through</span><span class="air">air</span>
+    </div>
+    <div class="ft-info">
+      throughair.co · Propuesta Comercial 2026<br>
+      Documento interno · Confidencial
+    </div>
+  </footer>
+
+</body>
+</html>

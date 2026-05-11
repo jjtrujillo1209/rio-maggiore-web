@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alquiler Equipos de Sonido e Iluminación Bogotá | People Sound Ltda</title>
+    <meta name="description" content="Alquiler profesional de equipos de sonido, iluminación, tarimas y backline para eventos, conciertos y conferencias en Bogotá D.C. 15+ años de experiencia.">
+    <meta name="keywords" content="alquiler equipos sonido Bogotá, alquiler iluminación eventos, alquiler maquinaria industrial, equipos de audio profesionales, tarimas eventos Bogotá">
+    <meta name="author" content="People Sound Ltda">
+    <meta property="og:title" content="Alquiler Equipos de Sonido e Iluminación Bogotá | People Sound Ltda">
+    <meta property="og:description" content="Profesionales en alquiler de equipos de sonido, iluminación y tarimas para eventos en Bogotá. Servicio 24/7.">
+    <meta property="og:type" content="business.business">
+    <meta property="og:url" content="https://peoplesound.co">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://peoplesound.co">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts - Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.03em;
+            font-weight: 800;
+        }
+
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        .navbar-bg {
+            background: rgba(0, 82, 204, 0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0052CC 0%, #0052CC 50%, #003D99 100%);
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(245, 200, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(245, 200, 0, 0.5);
+            transform: translateY(-5px);
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .carousel-track-wrapper {
+            width: 100%;
+            max-height: 600px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+            height: 700px;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: top;
+            display: block;
+        }
+
+        .carousel-slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-slide:hover .carousel-slide-overlay {
+            opacity: 1;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 0, 0.9);
+            color: #0A0A0A;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            font-weight: bold;
+        }
+
+        .carousel-btn:hover {
+            background: #FFFF00;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn-prev {
+            left: 20px;
+        }
+
+        .carousel-btn-next {
+            right: 20px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 0, 0.3);
+            border: 2px solid #FFFF00;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicator.active {
+            background: #FFFF00;
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 768px) {
+            .carousel-slide {
+                height: 500px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-btn-prev {
+                left: 10px;
+            }
+
+            .carousel-btn-next {
+                right: 10px;
+            }
+        }
+
+        /* Modal DOOM Festival */
+        .doom-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow: auto;
+        }
+
+        .doom-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doom-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            background: #0A0A0A;
+            border: 2px solid #FFFF00;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .doom-modal-header {
+            background: #0052CC;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #FFFF00;
+        }
+
+        .doom-modal-body {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            background: #000;
+        }
+
+        .doom-modal-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: top;
+        }
+
+        .doom-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #FFFF00;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .doom-modal-close:hover {
+            color: #FFE33D;
+            transform: scale(1.2);
+        }
+
+        .doom-modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 0, 0.9);
+            color: #0A0A0A;
+            border: none;
+            padding: 15px 20px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1002;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .doom-modal-nav:hover {
+            background: #FFFF00;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .doom-modal-prev {
+            left: 15px;
+        }
+
+        .doom-modal-next {
+            right: 15px;
+        }
+
+        .doom-modal-counter {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #FFFF00;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .doom-modal-body {
+                height: 500px;
+            }
+
+            .doom-modal-nav {
+                padding: 12px 15px;
+                font-size: 18px;
+            }
+        }
+
+        .btn-primary {
+            background-color: #FFFF00;
+            color: #0A0A0A;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-primary:hover {
+            background-color: #FFE33D;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(245, 200, 0, 0.3);
+        }
+
+        .btn-secondary {
+            border: 2px solid #FFFF00;
+            color: #FFFF00;
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #FFFF00;
+            color: #0A0A0A;
+        }
+
+        .section-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #FFFF00;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FFFF00;
+        }
+
+        .stat-label {
+            color: #B0B0B0;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(13, 27, 42, 0.98);
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            padding: 1.5rem;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 0.75rem 0;
+            color: #FFFFFF;
+            border-bottom: 1px solid rgba(245, 200, 0, 0.1);
+        }
+
+        /* SLIDER STYLES */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            top: 0;
+            left: 0;
+        }
+
+        .slider-slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .slider-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.7) 0%, rgba(26, 35, 126, 0.5) 50%, rgba(13, 27, 42, 0.7) 100%);
+            z-index: 20;
+        }
+
+        .slider-content {
+            position: relative;
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 40;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #FFFF00;
+        }
+
+        .slider-dot.active {
+            background: #FFFF00;
+            transform: scale(1.3);
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(245, 200, 0, 0.8);
+            color: #0A0A0A;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 40;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .slider-button:hover {
+            background: #FFE33D;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-button.prev {
+            left: 20px;
+        }
+
+        .slider-button.next {
+            right: 20px;
+        }
+
+        .slider-label {
+            position: absolute;
+            bottom: 100px;
+            background: rgba(245, 200, 0, 0.9);
+            color: #0A0A0A;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 40;
+        }
+
+        /* EQUALIZER STYLES */
+        .equalizer-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(245, 200, 0, 0.2);
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .equalizer-title {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #FFFF00;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .equalizer-bands {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            align-items: flex-end;
+            min-height: 250px;
+            margin-bottom: 2rem;
+        }
+
+        .eq-band {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .eq-slider-wrapper {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .eq-slider {
+            width: 4px;
+            height: 100%;
+            -webkit-appearance: slider-vertical;
+            appearance: slider-vertical;
+            background: linear-gradient(to top, #FFFF00, rgba(245, 200, 0, 0.3));
+            outline: none;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .eq-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            background: #FFFF00;
+            border: 2px solid #0A0A0A;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 10px rgba(245, 200, 0, 0.5);
+        }
+
+        .eq-slider::-webkit-slider-thumb:hover {
+            width: 28px;
+            height: 28px;
+            box-shadow: 0 0 20px rgba(245, 200, 0, 0.8);
+        }
+
+        .eq-slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            background: #FFFF00;
+            border: 2px solid #0A0A0A;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 10px rgba(245, 200, 0, 0.5);
+        }
+
+        .eq-slider::-moz-range-thumb:hover {
+            width: 28px;
+            height: 28px;
+            box-shadow: 0 0 20px rgba(245, 200, 0, 0.8);
+        }
+
+        .eq-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #B0B0B0;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            width: 50px;
+            text-align: center;
+        }
+
+        .eq-value {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FFFF00;
+            color: #0A0A0A;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            min-width: 40px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .eq-band:hover .eq-value {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .equalizer-bands {
+                gap: 1rem;
+            }
+
+            .eq-slider-wrapper {
+                height: 150px;
+            }
+
+            .eq-label {
+                font-size: 0.65rem;
+                width: 40px;
+            }
+        }
+
+        /* HERO LOGO ANIMATION */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        /* BRANDING COLORS */
+        :root {
+            --primary-blue: #0052CC;
+            --bright-yellow: #FFFF00;
+            --dark-bg: #0A0A0A;
+        }
+    </style>
+
+    <!-- Schema Markup (LocalBusiness) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "LocalBusiness",
+      "name": "People Sound Ltda",
+      "image": "https://peoplesound.co/logo.svg",
+      "description": "Alquiler profesional de equipos de sonido, iluminación y maquinaria para eventos",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bogotá",
+        "addressLocality": "Bogotá",
+        "addressRegion": "Cundinamarca",
+        "postalCode": "110111",
+        "addressCountry": "CO"
+      },
+      "telephone": "+57300123456",
+      "url": "https://peoplesound.co",
+      "sameAs": [
+        "https://www.instagram.com/peoplesoundcolombia/"
+      ],
+      "priceRange": "$$",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "500"
+      }
+    }
+    </script>
+</head>
+<body class="bg-black text-white scroll-smooth" style="background: #0A0A0A;">
+
+    <!-- NAVBAR FIJA -->
+    <nav class="navbar-bg fixed w-full top-0 z-50 border-b border-yellow-400/20">
+        <div class="max-w-full mx-auto px-6 py-1 flex justify-between items-center gap-16">
+            <!-- Logo - Prominente -->
+            <div class="flex-shrink-0">
+                <img src="../Contenido people sound/logo.svg" alt="People Sound Ltda - Alquiler de Equipos de Sonido e Iluminación" class="h-18 w-auto transition-transform hover:scale-105" style="filter: drop-shadow(0 3px 8px rgba(0,0,0,0.4));">
+            </div>
+
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex space-x-10 flex-1">
+                <a href="#servicios" class="text-white hover:text-yellow-300 transition text-sm font-medium">Servicios</a>
+                <a href="#catalog" class="text-white hover:text-yellow-300 transition text-sm font-medium">Catálogo</a>
+                <a href="#eventos-realizados" class="text-white hover:text-yellow-300 transition text-sm font-medium">Eventos</a>
+                <a href="#nosotros" class="text-white hover:text-yellow-300 transition text-sm font-medium">Nosotros</a>
+                <a href="#contacto" class="text-white hover:text-yellow-300 transition text-sm font-medium">Contacto</a>
+            </div>
+
+            <!-- CTA + Menu Mobile -->
+            <div class="flex items-center space-x-4 flex-shrink-0">
+                <a href="https://wa.me/573001234567" target="_blank" class="hidden sm:block btn-primary px-6 py-2 rounded text-sm font-bold">
+                    Cotizar
+                </a>
+                <button onclick="toggleMenu()" class="md:hidden text-yellow-300 text-2xl">
+                    ☰
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#servicios" onclick="toggleMenu()" class="text-white">Servicios</a>
+            <a href="#catalog" onclick="toggleMenu()" class="text-white">Catálogo</a>
+            <a href="#eventos-realizados" onclick="toggleMenu()" class="text-white">Eventos</a>
+            <a href="#nosotros" onclick="toggleMenu()" class="text-white">Nosotros</a>
+            <a href="#contacto" onclick="toggleMenu()" class="text-white">Contacto</a>
+            <a href="https://wa.me/573001234567" target="_blank" class="btn-primary px-4 py-2 rounded text-sm mt-4 inline-block">Cotizar</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION CON SLIDER -->
+    <section class="relative min-h-screen pt-20 flex items-center justify-center overflow-hidden">
+        <div class="slider-container w-full h-screen absolute top-0 left-0">
+            <div class="slider-wrapper">
+                <!-- Slide 1: Montaje -->
+                <div class="slider-slide active">
+                    <img src="../Contenido people sound/freepik_img1-i-need-this-stake-in-a-panoramic-view-ultra-realistic-aupgrade-de-qualitiy-4k-i-need-it-more-realistic_0001.png" alt="Montaje de equipos">
+                    <div class="slider-overlay"></div>
+                    <div class="slider-label">MONTAJE</div>
+                </div>
+
+                <!-- Slide 2: Evento en vivo -->
+                <div class="slider-slide">
+                    <img src="../Contenido people sound/freepik_img2-i-need-this-stake-in-a-panoramic-view-ultra-realistic-aupgrade-de-qualitiy-4k-i-need-it-more-realistic_0001.png" alt="Evento en vivo">
+                    <div class="slider-overlay"></div>
+                    <div class="slider-label">EVENTO EN VIVO</div>
+                </div>
+
+                <!-- Slide 3: Público -->
+                <div class="slider-slide">
+                    <img src="../Contenido people sound/freepik_img2-i-need-this-stake-in-a-panoramic-view-ultra-realistic-aupgrade-de-qualitiy-4k-i-need-it-more-realistic_0001.png" alt="Público disfrutando">
+                    <div class="slider-overlay"></div>
+                    <div class="slider-label">EXPERIENCIA</div>
+                </div>
+            </div>
+
+            <!-- Controles del slider -->
+            <button class="slider-button prev" onclick="prevSlide()">❮</button>
+            <button class="slider-button next" onclick="nextSlide()">❯</button>
+
+            <!-- Indicadores -->
+            <div class="slider-indicators">
+                <span class="slider-dot active" onclick="currentSlide(0)"></span>
+                <span class="slider-dot" onclick="currentSlide(1)"></span>
+                <span class="slider-dot" onclick="currentSlide(2)"></span>
+            </div>
+        </div>
+
+        <!-- Contenido del Hero -->
+        <div class="slider-content relative z-50 max-w-6xl mx-auto text-center px-4">
+            <!-- Logo encima del título -->
+            <img src="../Contenido people sound/logo_people_sound_final.png" alt="People Sound Logo" style="width: 100%; max-width: 650px; height: auto; margin: 0 auto 40px; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4));">
+
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-black mb-6 leading-tight" style="letter-spacing: -0.02em; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                La producción que <span class="text-yellow-300">tu evento</span> se merece
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-200 mb-8 max-w-2xl mx-auto font-medium">
+                Alquiler profesional de maquinaria y equipos para eventos, conciertos, producciones y más. Bogotá D.C., Colombia.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/573001234567" target="_blank" class="btn-primary px-8 py-4 rounded-lg font-bold text-lg">
+                    COTIZAR AHORA
+                </a>
+                <a href="#servicios" class="btn-secondary px-8 py-4 rounded-lg font-bold text-lg">
+                    VER SERVICIOS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="py-16 px-4" style="background: linear-gradient(135deg, #0A0A0A 0%, #0052CC 100%); opacity: 0.95;">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="stat-box">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Años de Experiencia</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">2000+</div>
+                    <div class="stat-label">Eventos Atendidos</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Clientes Satisfechos</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Equipos Disponibles</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARRUSEL DE EVENTOS REALIZADOS -->
+    <section id="eventos-realizados" class="py-20 px-4" style="background: #0A0A0A;">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title mb-16">Conócenos</h2>
+
+            <!-- CARRUSEL DE VIDEOS (PRINCIPAL) -->
+            <div class="mb-20">
+                <h3 class="text-2xl font-bold mb-8 text-yellow-300">Videos</h3>
+                <div class="carousel-container relative">
+                    <!-- Carousel Track -->
+                    <div class="carousel-track-wrapper overflow-hidden rounded-lg">
+                        <div class="carousel-track" id="carouselTrackVideos">
+                            <!-- Video slides will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <button class="carousel-btn carousel-btn-prev" id="carouselVideoPrev">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn carousel-btn-next" id="carouselVideoNext">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators" id="carouselVideoIndicators"></div>
+                </div>
+            </div>
+
+            <!-- CARRUSEL DE FOTOS -->
+            <div>
+                <h3 class="text-2xl font-bold mb-8 text-yellow-300">Fotos</h3>
+                <div class="carousel-container relative">
+                    <!-- Carousel Track -->
+                    <div class="carousel-track-wrapper overflow-hidden rounded-lg">
+                        <div class="carousel-track" id="carouselTrackPhotos">
+                            <!-- Photo slides will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <button class="carousel-btn carousel-btn-prev" id="carouselPhotoPrev">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn carousel-btn-next" id="carouselPhotoNext">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators" id="carouselPhotoIndicators"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS SECTION -->
+    <section id="servicios" class="py-20 px-4" style="background: #0A0A0A;">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title mb-16">Nuestros Servicios</h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Sonido -->
+                <div class="service-card p-8 rounded-lg">
+                    <div class="w-16 h-16 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.26 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Sonido Profesional</h3>
+                    <p class="text-gray-300 text-sm">Equipos de audio de última generación para conciertos, conferencias y eventos corporativos.</p>
+                </div>
+
+                <!-- Iluminación -->
+                <div class="service-card p-8 rounded-lg">
+                    <div class="w-16 h-16 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Iluminación Escénica</h3>
+                    <p class="text-gray-300 text-sm">Sistemas de iluminación LED, proyectores y efectos especiales para todo tipo de eventos.</p>
+                </div>
+
+                <!-- Tarimas -->
+                <div class="service-card p-8 rounded-lg">
+                    <div class="w-16 h-16 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Tarimas y Estructuras</h3>
+                    <p class="text-gray-300 text-sm">Plataformas, escenarios modulares y estructuras personalizadas para cualquier evento.</p>
+                </div>
+
+                <!-- Backline -->
+                <div class="service-card p-8 rounded-lg">
+                    <div class="w-16 h-16 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 3v9.28c-.47-.46-1.12-.72-1.84-.72-1.66 0-3 1.34-3 3s1.34 3 3 3c1.66 0 3-1.34 3-3V7h4V3h-4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Backline Completo</h3>
+                    <p class="text-gray-300 text-sm">Amplificadores, instrumentos musicales y equipos de producción profesional.</p>
+                </div>
+            </div>
+
+            <!-- EQUALIZER SECTION -->
+            <div class="mt-20 pt-20 border-t border-slate-700">
+                <h3 class="text-center text-2xl font-bold mb-12">Calibración de Sonido Profesional</h3>
+                <div class="equalizer-container max-w-4xl mx-auto">
+                    <div class="equalizer-title">🎚️ Ecualizador de Audio</div>
+                    <div class="equalizer-bands" id="equalizerContainer">
+                        <!-- Los sliders se generarán con JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ NOSOTROS -->
+    <section id="nosotros" class="py-20 px-4" style="background: linear-gradient(135deg, #0052CC 0%, #0A0A0A 100%); opacity: 0.98;">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title mb-16">Por Qué Elegirnos</h2>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="flex gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-slate-900">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Equipos de Calidad Premium</h3>
+                        <p class="text-gray-300">Trabajamos con marcas líderes internacionales en sonido e iluminación. Mantenimiento constante para garantizar óptimo funcionamiento.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-slate-900">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Equipo Profesional Experto</h3>
+                        <p class="text-gray-300">Técnicos certificados y con experiencia en montaje, operación y soporte durante todos tus eventos.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-slate-900">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Precios Competitivos</h3>
+                        <p class="text-gray-300">Ofertas flexibles y personalizadas según el tamaño y tipo de tu evento. Descuentos por volumen y eventos recurrentes.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-slate-900">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Entrega y Montaje Rápido</h3>
+                        <p class="text-gray-300">Disponibilidad en 24-48 horas. Instalación profesional y segura. Servicio post-evento garantizado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA WHATSAPP -->
+    <section class="py-20 px-4" style="background: #FFFF00;">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                ¿Necesitas Equipos para tu Evento?
+            </h2>
+            <p class="text-xl text-slate-800 mb-8">
+                Contáctanos hoy mismo y obtén una cotización personalizada. Respuesta en menos de 1 hora.
+            </p>
+            <a href="https://wa.me/573001234567" target="_blank" class="inline-block bg-slate-900 text-yellow-500 px-10 py-4 rounded-lg font-bold text-lg hover:bg-slate-800 transition">
+                💬 CHATEAR POR WHATSAPP
+            </a>
+        </div>
+    </section>
+
+    <!-- GALERÍA PROYECTOS -->
+    <section id="catalog" class="py-20 px-4" style="background: #0A0A0A;">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title mb-16">Galería de Proyectos</h2>
+
+            <div class="flex justify-center">
+                <!-- DOOM Festival 2026 -->
+                <div class="group relative overflow-hidden rounded-lg cursor-pointer" onclick="openDoomModal()" style="max-width: 500px;">
+                    <img src="../Contenido people sound/flyerdoom.png" alt="DOOM Festival 2026" class="w-full h-64 object-cover group-hover:scale-105 transition duration-300">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <p class="text-white font-bold text-center px-4">DOOM Festival 2026 - The Steel World</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-20 px-4" style="background: linear-gradient(135deg, #0052CC 0%, #0A0A0A 100%); opacity: 0.97;">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title mb-16">Contáctanos</h2>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Información -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">Información de Contacto</h3>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-yellow-500 font-bold mb-2">📍 Ubicación</h4>
+                            <p class="text-gray-300">Bogotá D.C., Colombia</p>
+                        </div>
+
+                        <div>
+                            <h4 class="text-yellow-500 font-bold mb-2">📞 Teléfono</h4>
+                            <p class="text-gray-300"><a href="tel:+573001234567" class="hover:text-yellow-500 transition">+57 300 123 4567</a></p>
+                        </div>
+
+                        <div>
+                            <h4 class="text-yellow-500 font-bold mb-2">📧 Email</h4>
+                            <p class="text-gray-300"><a href="mailto:info@peoplesound.co" class="hover:text-yellow-500 transition">info@peoplesound.co</a></p>
+                        </div>
+
+                        <div>
+                            <h4 class="text-yellow-500 font-bold mb-2">🕐 Horarios</h4>
+                            <p class="text-gray-300">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                            <p class="text-gray-300">Sábado: 9:00 AM - 4:00 PM</p>
+                            <p class="text-gray-300">Emergencias 24/7 disponibles</p>
+                        </div>
+                    </div>
+
+                    <!-- Redes Sociales -->
+                    <div class="mt-8 pt-8 border-t border-slate-700">
+                        <h4 class="text-yellow-500 font-bold mb-4">Síguenos</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://www.instagram.com/peoplesoundcolombia/" target="_blank" class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-slate-900 transition">
+                                📷
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-slate-900 transition">
+                                👍
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-slate-900 transition">
+                                🎥
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Cotización Rápida</h3>
+                    <p class="text-gray-400 mb-8 text-sm">Responderemos en máximo 1 hora</p>
+
+                    <form class="space-y-5" id="contactForm">
+                        <!-- Nombre -->
+                        <div>
+                            <label for="nombre" class="block text-sm font-semibold text-gray-200 mb-2">Nombre Completo <span class="text-yellow-300">*</span></label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required class="w-full bg-slate-700 border-2 border-slate-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 focus:bg-slate-600 transition" minlength="3">
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-200 mb-2">Correo Electrónico <span class="text-yellow-300">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="tu@empresa.com" required class="w-full bg-slate-700 border-2 border-slate-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 focus:bg-slate-600 transition">
+                        </div>
+
+                        <!-- Teléfono -->
+                        <div>
+                            <label for="telefono" class="block text-sm font-semibold text-gray-200 mb-2">Teléfono <span class="text-yellow-300">*</span></label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="+57 300 123 4567" required class="w-full bg-slate-700 border-2 border-slate-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 focus:bg-slate-600 transition" pattern="[0-9+\s\-()]*">
+                        </div>
+
+                        <!-- Tipo de Evento -->
+                        <div>
+                            <label for="evento" class="block text-sm font-semibold text-gray-200 mb-2">Tipo de Evento <span class="text-yellow-300">*</span></label>
+                            <select id="evento" name="evento" required class="w-full bg-slate-700 border-2 border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-yellow-400 focus:bg-slate-600 transition cursor-pointer">
+                                <option value="">-- Selecciona un tipo de evento --</option>
+                                <option value="concierto">🎵 Concierto / Festival</option>
+                                <option value="corporativo">💼 Evento Corporativo</option>
+                                <option value="boda">💒 Boda / Celebración</option>
+                                <option value="conferencia">🎤 Conferencia / Seminario</option>
+                                <option value="produccion">🎬 Producción / Streaming</option>
+                                <option value="otro">📋 Otro</option>
+                            </select>
+                        </div>
+
+                        <!-- Detalles del Evento -->
+                        <div>
+                            <label for="detalles" class="block text-sm font-semibold text-gray-200 mb-2">Detalles del Evento <span class="text-yellow-300">*</span></label>
+                            <textarea id="detalles" name="detalles" placeholder="Cuéntanos sobre tu evento: fecha, lugar, cantidad de personas, equipos específicos que necesitas..." rows="4" required minlength="10" class="w-full bg-slate-700 border-2 border-slate-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 focus:bg-slate-600 transition resize-none"></textarea>
+                        </div>
+
+                        <!-- Checkbox Términos -->
+                        <div class="flex items-start">
+                            <input type="checkbox" id="terminos" name="terminos" required class="mt-1 w-4 h-4 cursor-pointer">
+                            <label for="terminos" class="ml-3 text-xs text-gray-400">Acepto que People Sound se comunique conmigo para proporcionar una cotización</label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full btn-primary py-4 rounded-lg font-bold text-lg hover:shadow-lg transition-all duration-300 mt-6">
+                            ✉️ RECIBIR COTIZACIÓN AHORA
+                        </button>
+
+                        <p class="text-center text-xs text-gray-500 mt-4">O contáctanos directamente por WhatsApp para respuesta inmediata</p>
+                    </form>
+
+                    <!-- Form Success Message (Hidden by default) -->
+                    <div id="successMessage" class="hidden mt-6 p-4 bg-green-900/30 border border-green-600 rounded-lg text-green-300 text-center">
+                        ✓ ¡Gracias! Recibirás una cotización en máximo 1 hora
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Logo -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-yellow-500 rounded flex items-center justify-center">
+                            <span class="text-black font-bold text-xs">PS</span>
+                        </div>
+                        <span class="font-bold">PEOPLE SOUND</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Alquiler profesional de equipos de sonido e iluminación.</p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="text-yellow-500 font-bold mb-4">Navegación</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-500 transition text-sm">Servicios</a></li>
+                        <li><a href="#catalog" class="text-gray-400 hover:text-yellow-500 transition text-sm">Catálogo</a></li>
+                        <li><a href="#eventos-realizados" class="text-gray-400 hover:text-yellow-500 transition text-sm">Eventos</a></li>
+                        <li><a href="#nosotros" class="text-gray-400 hover:text-yellow-500 transition text-sm">Nosotros</a></li>
+                        <li><a href="#contacto" class="text-gray-400 hover:text-yellow-500 transition text-sm">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Servicios -->
+                <div>
+                    <h4 class="text-yellow-500 font-bold mb-4">Servicios</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition text-sm">Sonido</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition text-sm">Iluminación</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition text-sm">Estructuras</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition text-sm">Backline</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="text-yellow-500 font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition text-sm">Términos y Condiciones</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition text-sm">Política de Privacidad</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500 transition text-sm">Garantías</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-slate-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2026 People Sound Ltda. Todos los derechos reservados.</p>
+                    <p class="text-gray-400 text-sm mt-4 md:mt-0">Bogotá D.C., Colombia | Servicio 24/7</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DOOM Festival Modal -->
+    <div id="doomModal" class="doom-modal">
+        <div class="doom-modal-content">
+            <span class="doom-modal-close" onclick="closeDoomModal()">&times;</span>
+            <div class="doom-modal-header">
+                <h2 style="color: #FFFF00; font-size: 2rem; margin: 0;">DOOM FESTIVAL 2026</h2>
+                <p style="color: #FFFFFF; margin: 10px 0 0 0;">The Steel World - Abril 04</p>
+            </div>
+            <div class="doom-modal-body">
+                <img id="doomModalImg" src="" alt="DOOM Festival Image" class="doom-modal-img">
+                <button class="doom-modal-nav doom-modal-prev" onclick="prevDoomImage()">❮</button>
+                <button class="doom-modal-nav doom-modal-next" onclick="nextDoomImage()">❯</button>
+                <div class="doom-modal-counter">
+                    <span id="doomImageCounter">1</span> / <span id="doomImageTotal">24</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // ===== SLIDER CON CONTROL DE MOUSE =====
+        let currentSlideIndex = 0;
+        const sliderContainer = document.querySelector('.slider-container');
+        const totalSlides = document.querySelectorAll('.slider-slide').length;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slider-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+
+            if (n >= totalSlides) {
+                currentSlideIndex = totalSlides - 1;
+            }
+            if (n < 0) {
+                currentSlideIndex = 0;
+            }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlideIndex++;
+            showSlide(currentSlideIndex);
+        }
+
+        function prevSlide() {
+            currentSlideIndex--;
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(n) {
+            currentSlideIndex = n;
+            showSlide(currentSlideIndex);
+        }
+
+        // Control automático con movimiento del mouse
+        sliderContainer.addEventListener('mousemove', (e) => {
+            const rect = sliderContainer.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const percentage = mouseX / rect.width; // 0 a 1
+
+            // Convertir posición del mouse a índice de slide (0, 1, 2)
+            const slideIndex = Math.floor(percentage * totalSlides);
+
+            if (slideIndex !== currentSlideIndex && slideIndex < totalSlides) {
+                currentSlideIndex = slideIndex;
+                showSlide(currentSlideIndex);
+            }
+        });
+
+        // Inicializar slider
+        showSlide(currentSlideIndex);
+
+        // ===== EQUALIZER INITIALIZATION =====
+        const equalizerConfig = [
+            { freq: '60 Hz', min: -5, max: 5, default: 2 },
+            { freq: '250 Hz', min: -5, max: 5, default: 1 },
+            { freq: '1K', min: -5, max: 5, default: -1 },
+            { freq: '4K', min: -5, max: 5, default: -3 },
+            { freq: '16K', min: -5, max: 5, default: 2 }
+        ];
+
+        const equalizerContainer = document.getElementById('equalizerContainer');
+
+        equalizerConfig.forEach((band, index) => {
+            const bandDiv = document.createElement('div');
+            bandDiv.className = 'eq-band';
+            bandDiv.innerHTML = `
+                <div class="eq-slider-wrapper">
+                    <span class="eq-value" id="value-${index}">0</span>
+                    <input
+                        type="range"
+                        min="${band.min}"
+                        max="${band.max}"
+                        value="${band.default}"
+                        class="eq-slider"
+                        id="slider-${index}"
+                        aria-label="${band.freq}"
+                    >
+                </div>
+                <span class="eq-label">${band.freq}</span>
+            `;
+            equalizerContainer.appendChild(bandDiv);
+
+            // Event listener para mostrar valor
+            const slider = bandDiv.querySelector(`#slider-${index}`);
+            const valueSpan = bandDiv.querySelector(`#value-${index}`);
+
+            slider.addEventListener('input', (e) => {
+                valueSpan.textContent = e.target.value;
+            });
+
+            // Inicializar valor
+            valueSpan.textContent = band.default;
+        });
+
+        // ===== TOGGLE MOBILE MENU =====
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+        // ===== NAVBAR ON SCROLL =====
+        const navbar = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.style.borderBottom = '1px solid rgba(245, 200, 0, 0.3)';
+            } else {
+                navbar.style.borderBottom = '1px solid rgba(245, 200, 0, 0.1)';
+            }
+        });
+
+        // ===== FORM HANDLING (CRO OPTIMIZED) =====
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Get form data
+                const formData = {
+                    nombre: document.getElementById('nombre').value,
+                    email: document.getElementById('email').value,
+                    telefono: document.getElementById('telefono').value,
+                    evento: document.getElementById('evento').value,
+                    detalles: document.getElementById('detalles').value
+                };
+
+                // Enviar a WhatsApp o email (en producción)
+                const whatsappMessage = `Nuevo contacto desde web: ${formData.nombre} - ${formData.email} - ${formData.telefono} - Evento: ${formData.evento}`;
+                const whatsappUrl = `https://wa.me/573001234567?text=${encodeURIComponent(whatsappMessage)}`;
+
+                // Mostrar mensaje de éxito
+                contactForm.style.display = 'none';
+                successMessage.classList.remove('hidden');
+
+                // Redirigir a WhatsApp después de 2 segundos
+                setTimeout(() => {
+                    window.location.href = whatsappUrl;
+                }, 2000);
+            });
+
+            // Real-time validation feedback
+            const inputs = contactForm.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.hasAttribute('required') && !this.value) {
+                        this.classList.add('border-red-500');
+                    } else {
+                        this.classList.remove('border-red-500');
+                    }
+                });
+            });
+        }
+
+        // ===== CAROUSEL INITIALIZATION =====
+
+        // Videos array
+        const videoItems = [
+            { src: '../Contenido people sound/Drone1.mp4', type: 'video' },
+            { src: '../Contenido people sound/Drone 2.mp4', type: 'video' },
+            { src: '../Contenido people sound/Drone 3.mp4', type: 'video' },
+            { src: '../Contenido people sound/Drone 4.mp4', type: 'video' }
+        ];
+
+        // Photos array
+        const photoItems = [
+            { src: '../Contenido people sound/DJI_0170.jpg', type: 'image' },
+            { src: '../Contenido people sound/DJI_0174.jpg', type: 'image' },
+            { src: '../Contenido people sound/DJI_0176.jpg', type: 'image' },
+            { src: '../Contenido people sound/DSC00241.jpg', type: 'image' },
+            { src: '../Contenido people sound/DJI_0180.jpg', type: 'image' },
+            { src: '../Contenido people sound/DSC00249.jpg', type: 'image' },
+            { src: '../Contenido people sound/DJI_0205.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4437.jpg', type: 'image' },
+            { src: '../Contenido people sound/DJI_0213.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4449.jpg', type: 'image' },
+            { src: '../Contenido people sound/DJI_0217.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4480.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4486.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4511.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4525.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4533.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4591.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4613.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4646.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4731.jpg', type: 'image' }
+        ];
+
+        // Create carousel function
+        function createCarousel(items, trackId, prevId, nextId, indicatorsId) {
+            const track = document.getElementById(trackId);
+            const indicators = document.getElementById(indicatorsId);
+            const prevBtn = document.getElementById(prevId);
+            const nextBtn = document.getElementById(nextId);
+
+            let currentIndex = 0;
+            const totalSlides = items.length;
+
+            // Create slides
+            items.forEach((item, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+
+                if (item.type === 'video') {
+                    slide.innerHTML = `
+                        <video src="${item.src}" autoplay muted loop style="width: 100%; height: 100%; object-fit: contain; object-position: top;"></video>
+                        <div class="carousel-slide-overlay"></div>
+                    `;
+                } else {
+                    slide.innerHTML = `
+                        <img src="${item.src}" alt="Evento ${index + 1}" loading="lazy">
+                        <div class="carousel-slide-overlay"></div>
+                    `;
+                }
+                track.appendChild(slide);
+
+                // Create indicator
+                const indicator = document.createElement('button');
+                indicator.className = 'carousel-indicator' + (index === 0 ? ' active' : '');
+                indicator.addEventListener('click', () => goToSlide(index));
+                indicators.appendChild(indicator);
+            });
+
+            function updatePosition() {
+                const offset = -currentIndex * 100;
+                track.style.transform = `translateX(${offset}%)`;
+                indicators.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function goToSlide(index) {
+                currentIndex = index;
+                updatePosition();
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updatePosition();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updatePosition();
+            }
+
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            // Auto-rotate every 8 seconds
+            setInterval(nextSlide, 8000);
+
+            updatePosition();
+        }
+
+        // Initialize both carousels
+        createCarousel(videoItems, 'carouselTrackVideos', 'carouselVideoPrev', 'carouselVideoNext', 'carouselVideoIndicators');
+        createCarousel(photoItems, 'carouselTrackPhotos', 'carouselPhotoPrev', 'carouselPhotoNext', 'carouselPhotoIndicators');
+
+        // ===== DOOM FESTIVAL MODAL =====
+        const doomImages = [
+            { src: '../Contenido people sound/DJI_0170.jpg', type: 'image' },
+            { src: '../Contenido people sound/Drone1.mp4', type: 'video' },
+            { src: '../Contenido people sound/DJI_0174.jpg', type: 'image' },
+            { src: '../Contenido people sound/DJI_0176.jpg', type: 'image' },
+            { src: '../Contenido people sound/Drone 2.mp4', type: 'video' },
+            { src: '../Contenido people sound/DSC00241.jpg', type: 'image' },
+            { src: '../Contenido people sound/DJI_0180.jpg', type: 'image' },
+            { src: '../Contenido people sound/Drone 3.mp4', type: 'video' },
+            { src: '../Contenido people sound/DSC00249.jpg', type: 'image' },
+            { src: '../Contenido people sound/DJI_0205.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4437.jpg', type: 'image' },
+            { src: '../Contenido people sound/Drone 4.mp4', type: 'video' },
+            { src: '../Contenido people sound/DJI_0213.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4449.jpg', type: 'image' },
+            { src: '../Contenido people sound/DJI_0217.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4480.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4486.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4511.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4525.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4533.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4591.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4613.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4646.jpg', type: 'image' },
+            { src: '../Contenido people sound/STA_4731.jpg', type: 'image' }
+        ];
+
+        let currentDoomImageIndex = 0;
+
+        function openDoomModal() {
+            const modal = document.getElementById('doomModal');
+            modal.classList.add('active');
+            currentDoomImageIndex = 0;
+            showDoomImage(0);
+        }
+
+        function closeDoomModal() {
+            const modal = document.getElementById('doomModal');
+            modal.classList.remove('active');
+        }
+
+        function showDoomImage(index) {
+            const modal = document.getElementById('doomModal');
+            if (!modal.classList.contains('active')) return;
+
+            if (index >= doomImages.length) {
+                currentDoomImageIndex = 0;
+            } else if (index < 0) {
+                currentDoomImageIndex = doomImages.length - 1;
+            } else {
+                currentDoomImageIndex = index;
+            }
+
+            const item = doomImages[currentDoomImageIndex];
+            const imgElement = document.getElementById('doomModalImg');
+
+            if (item.type === 'video') {
+                imgElement.style.display = 'none';
+                let videoElement = document.getElementById('doomModalVideo');
+                if (!videoElement) {
+                    videoElement = document.createElement('video');
+                    videoElement.id = 'doomModalVideo';
+                    videoElement.style.width = '100%';
+                    videoElement.style.height = '100%';
+                    videoElement.style.objectFit = 'contain';
+                    videoElement.style.objectPosition = 'top';
+                    videoElement.autoplay = true;
+                    videoElement.muted = true;
+                    videoElement.loop = true;
+                    const body = modal.querySelector('.doom-modal-body');
+                    body.appendChild(videoElement);
+                }
+                videoElement.src = item.src;
+                videoElement.style.display = 'block';
+            } else {
+                imgElement.style.display = 'block';
+                imgElement.src = item.src;
+                const videoElement = document.getElementById('doomModalVideo');
+                if (videoElement) videoElement.style.display = 'none';
+            }
+
+            document.getElementById('doomImageCounter').textContent = currentDoomImageIndex + 1;
+        }
+
+        function nextDoomImage() {
+            showDoomImage(currentDoomImageIndex + 1);
+        }
+
+        function prevDoomImage() {
+            showDoomImage(currentDoomImageIndex - 1);
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('doomModal');
+            if (event.target === modal) {
+                closeDoomModal();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (event) => {
+            const modal = document.getElementById('doomModal');
+            if (modal.classList.contains('active')) {
+                if (event.key === 'ArrowRight') nextDoomImage();
+                if (event.key === 'ArrowLeft') prevDoomImage();
+                if (event.key === 'Escape') closeDoomModal();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rio Maggiore · Propuesta Comercial · Through Air</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy:     #1a1464;
+      --orange:   #F26522;
+      --coral:    #F04E37;
+      --magenta:  #D4327A;
+      --grad:     linear-gradient(135deg, #F26522 0%, #F04E37 45%, #D4327A 100%);
+      --grad-h:   linear-gradient(90deg, #F26522, #F04E37, #D4327A);
+      --white:    #ffffff;
+      --offwhite: #fafafa;
+      --gray:     #f2f2f5;
+      --muted:    #6b6b8a;
+      --border:   rgba(26,20,100,0.08);
+      --d: 'Nunito', sans-serif;
+      --b: 'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; }
+
+    body {
+      font-family: var(--b);
+      background: #e8e8ee;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SLIDE SHELL ─────────────────────────────────────────────── */
+    .deck {
+      width: 100vw; height: 100vh;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute; inset: 0;
+      background: var(--white);
+      overflow: hidden;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.45s ease;
+    }
+    .slide.active { opacity: 1; pointer-events: all; }
+
+    /* ── BLOB SHAPES (bottom wave) ───────────────────────────────── */
+    .blob-wrap {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      pointer-events: none;
+    }
+
+    .blob-main {
+      position: absolute;
+      bottom: 0; left: -5%; right: -5%;
+      height: 100%;
+      background: var(--grad);
+      border-radius: 55% 65% 0 0 / 45% 55% 0 0;
+    }
+
+    .blob-inner {
+      position: absolute;
+      bottom: 0; left: 10%; right: -10%;
+      height: 82%;
+      background: linear-gradient(135deg, #F04E37 0%, #D4327A 100%);
+      border-radius: 70% 50% 0 0 / 60% 70% 0 0;
+      opacity: .65;
+    }
+
+    .blob-circle {
+      position: absolute;
+      width: 18vw; height: 18vw;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F04E37, #D4327A);
+    }
+
+    /* slide-specific blob positioning */
+    #slide-1 .blob-circle { right: 6%; bottom: 28%; }
+    #slide-2 .blob-circle { right: 4%; bottom: 32%; width: 12vw; height: 12vw; }
+    #slide-2 .blob-wrap { height: 28%; }
+
+    /* ── TOP BAR ─────────────────────────────────────────────────── */
+    .topbar {
+      position: absolute; top: 0; left: 0; right: 0;
+      padding: 28px 52px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+    }
+
+    .logo {
+      font-family: var(--d);
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .logo .through { color: var(--navy); }
+    .logo .air {
+      background: var(--grad-h);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .logo .tagline {
+      font-family: var(--b);
+      font-size: 0.52rem; font-weight: 400;
+      color: var(--muted); letter-spacing: 0.1em;
+      display: block; margin-top: 3px;
+    }
+
+    .slide-badge {
+      font-family: var(--b);
+      font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .slide-badge strong {
+      background: var(--grad-h);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+    }
+
+    /* ── LEFT ACCENT LINE ────────────────────────────────────────── */
+    .accent-line {
+      position: absolute;
+      left: 52px; top: 50%; transform: translateY(-50%);
+      width: 4px; height: 48%;
+      background: var(--grad);
+      border-radius: 2px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* SLIDE 1                                                        */
+    /* ══════════════════════════════════════════════════════════════ */
+    #slide-1 .content {
+      position: absolute;
+      top: 88px; left: 72px; right: 52px; bottom: 40%;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* left: hero + services mini */
+    .s1-left {
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .s1-eyebrow {
+      font-family: var(--b);
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 10px;
+    }
+
+    .s1-title {
+      font-family: var(--d);
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -0.5px; color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .s1-title .gt {
+      background: var(--grad-h);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .s1-desc {
+      font-size: 0.75rem; font-weight: 400;
+      color: var(--muted); line-height: 1.65;
+      max-width: 380px; margin-bottom: 20px;
+    }
+
+    /* services list */
+    .svc-list {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .svc-item {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--gray);
+      border-radius: 10px; padding: 10px 14px;
+    }
+    .svc-item .si-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .svc-item .si-info { flex: 1; min-width: 0; }
+    .svc-item .si-name {
+      font-family: var(--d); font-size: 0.78rem; font-weight: 800;
+      color: var(--navy); line-height: 1.2;
+    }
+    .svc-item .si-desc {
+      font-size: 0.58rem; font-weight: 400;
+      color: var(--muted); margin-top: 1px;
+    }
+    .svc-item .si-price {
+      font-family: var(--d); font-size: 0.95rem; font-weight: 900;
+      background: var(--grad-h);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; white-space: nowrap; flex-shrink: 0;
+    }
+    .svc-item .si-badge {
+      font-size: 0.48rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #16a34a;
+      background: #dcfce7; border-radius: 100px;
+      padding: 3px 10px; white-space: nowrap;
+      -webkit-text-fill-color: #16a34a;
+    }
+
+    /* right: investment */
+    .inv-panel {
+      background: var(--gray);
+      border-radius: 16px;
+      padding: 22px 22px;
+      height: 100%;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .inv-panel-title {
+      font-family: var(--d); font-size: 0.55rem; font-weight: 800;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--navy); padding-bottom: 10px;
+      border-bottom: 2px solid rgba(26,20,100,.08);
+    }
+
+    /* ── VERTICAL TIMELINE ───────────────────────────────────────── */
+    .tl { display: flex; flex-direction: column; flex: 1; gap: 0; }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 56px 1px 1fr;
+      gap: 0 12px;
+      position: relative;
+    }
+
+    .tl-date {
+      text-align: right; padding-top: 2px; padding-bottom: 14px;
+    }
+    .tl-date .td-day {
+      font-family: var(--d); font-size: 0.68rem; font-weight: 900;
+      color: var(--navy); line-height: 1;
+    }
+    .tl-date .td-month {
+      font-size: 0.46rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--muted); margin-top: 1px;
+    }
+
+    .tl-line {
+      display: flex; flex-direction: column; align-items: center;
+      padding-bottom: 14px;
+    }
+    .tl-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+      background: var(--white); border: 2px solid var(--orange);
+      margin-top: 3px; position: relative; z-index: 1;
+    }
+    .tl-dot.fill { background: var(--orange); }
+    .tl-dot.launch-dot {
+      width: 13px; height: 13px;
+      background: var(--navy); border-color: var(--navy);
+    }
+    .tl-line::after {
+      content: ''; flex: 1; width: 2px;
+      background: linear-gradient(to bottom, rgba(242,101,34,.3), rgba(242,101,34,.08));
+      margin-top: 4px;
+    }
+    .tl-item:last-child .tl-line::after { display: none; }
+
+    .tl-body { padding-bottom: 14px; }
+    .tl-body .tb-label {
+      font-size: 0.46rem; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 2px;
+    }
+    .tl-body .tb-name {
+      font-family: var(--d); font-size: 0.78rem; font-weight: 900;
+      color: var(--navy); margin-bottom: 3px; line-height: 1.2;
+    }
+    .tl-body .tb-detail {
+      font-size: 0.56rem; font-weight: 400;
+      color: var(--muted); line-height: 1.4;
+    }
+    .tl-body .tb-cost {
+      display: inline-block;
+      margin-top: 4px;
+      font-family: var(--d); font-size: 0.82rem; font-weight: 900;
+      background: var(--grad-h);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tl-body .tb-cost-label {
+      font-size: 0.44rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      margin-right: 4px;
+    }
+    .tl-item.launch-item .tl-body .tb-name { color: var(--navy); font-size: 0.85rem; }
+    .tl-item.launch-item .tl-body .tb-label { color: var(--navy); }
+
+    .inv-total-box {
+      background: var(--navy);
+      border-radius: 10px; padding: 14px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .inv-total-box .itb-left .itb-label {
+      font-size: 0.5rem; font-weight: 600; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(255,255,255,.55);
+    }
+    .inv-total-box .itb-left .itb-sub {
+      font-size: 0.56rem; font-weight: 400;
+      color: rgba(255,255,255,.38); margin-top: 3px;
+    }
+    .inv-total-box .itb-num {
+      font-family: var(--d); font-size: 1.7rem; font-weight: 900;
+      background: var(--grad-h);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .pauta-note {
+      border: 1.5px dashed rgba(242,101,34,.35);
+      border-radius: 10px; padding: 10px 14px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .pauta-note .pn-label {
+      font-size: 0.56rem; font-weight: 500; color: var(--muted);
+      line-height: 1.4;
+    }
+    .pauta-note .pn-label strong {
+      color: var(--navy); font-weight: 700; display: block;
+      font-size: 0.68rem; margin-bottom: 1px;
+    }
+    .pauta-note .pn-amount {
+      font-family: var(--d); font-size: 1.05rem; font-weight: 900;
+      color: var(--orange); white-space: nowrap; text-align: right;
+    }
+    .pauta-note .pn-freq {
+      font-size: 0.48rem; font-weight: 400; color: var(--muted);
+    }
+
+    /* bullet strip — over the wave */
+    .bullet-strip {
+      position: absolute;
+      bottom: 4%;
+      left: 72px; right: 52px;
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 12px;
+      z-index: 5;
+    }
+
+    .bs {
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 12px; padding: 14px 16px;
+    }
+    .bs .bs-period {
+      font-size: 0.46rem; font-weight: 700; letter-spacing: 0.26em;
+      text-transform: uppercase; color: rgba(255,255,255,.75);
+      margin-bottom: 2px;
+    }
+    .bs .bs-name {
+      font-family: var(--d); font-size: 0.82rem; font-weight: 900;
+      color: var(--white); margin-bottom: 7px;
+    }
+    .bs .bs-rows { display: flex; flex-direction: column; gap: 4px; }
+    .bs .bs-row { display: flex; justify-content: space-between; gap: 6px; }
+    .bs .bs-row .brl { font-size: 0.58rem; color: rgba(255,255,255,.7); }
+    .bs .bs-row .brv { font-family: var(--d); font-size: 0.8rem; font-weight: 800; color: var(--white); white-space: nowrap; }
+    .bs .bs-row .brv.fr {
+      font-family: var(--b); font-size: 0.5rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: #bbf7d0; background: rgba(255,255,255,.12);
+      border-radius: 100px; padding: 2px 8px;
+    }
+    .bs .bs-row .brv.inc { font-size: 0.58rem; color: rgba(255,255,255,.45); font-weight: 400; font-family: var(--b); }
+    .bs-sep { border: none; border-top: 1px solid rgba(255,255,255,.2); margin: 5px 0; }
+    .bs .bs-total { display: flex; justify-content: space-between; align-items: baseline; }
+    .bs .bs-total .btl { font-size: 0.46rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+    .bs .bs-total .bta { font-family: var(--d); font-size: 1.15rem; font-weight: 900; color: var(--white); }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* SLIDE 2                                                        */
+    /* ══════════════════════════════════════════════════════════════ */
+    #slide-2 .content {
+      position: absolute;
+      top: 88px; left: 72px; right: 52px; bottom: 28%;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+
+    .s2-title {
+      font-family: var(--d);
+      font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+      font-weight: 900; letter-spacing: -0.3px;
+      color: var(--navy); flex-shrink: 0;
+    }
+    .s2-title .gt {
+      background: var(--grad-h);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* key dates */
+    .key-dates {
+      display: flex; border-radius: 10px; overflow: hidden;
+      border: 1px solid var(--border); flex-shrink: 0;
+      background: var(--gray);
+    }
+    .kd { flex: 1; padding: 10px 14px; border-right: 1px solid var(--border); }
+    .kd:last-child { border-right: none; }
+    .kd .kd-date {
+      font-family: var(--d); font-size: 0.82rem; font-weight: 900;
+      color: var(--navy); margin-bottom: 2px;
+    }
+    .kd .kd-lbl { font-size: 0.55rem; font-weight: 400; color: var(--muted); line-height: 1.35; }
+    .kd.milestone { background: rgba(242,101,34,.06); }
+    .kd.milestone .kd-date { color: var(--orange); }
+    .kd.milestone .kd-lbl { color: rgba(242,80,34,.65); }
+    .kd.launch { background: rgba(26,20,100,.05); }
+    .kd.launch .kd-date { color: var(--navy); }
+    .kd.launch .kd-lbl { color: var(--navy); opacity: .7; font-weight: 600; }
+
+    /* sprint grid */
+    .sprint-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 10px; flex: 1; min-height: 0;
+    }
+
+    .sp {
+      background: var(--gray); border-radius: 10px;
+      padding: 14px 13px;
+      display: flex; flex-direction: column;
+      border-top: 3px solid transparent;
+    }
+    .sp.s1 { border-top-color: var(--orange); }
+    .sp.s2 { border-top-color: var(--coral); }
+    .sp.s3 { border-top-color: var(--magenta); }
+    .sp.s4 { border-top-color: var(--navy); }
+
+    .sp .sp-num {
+      font-size: 0.44rem; font-weight: 800; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 1px;
+    }
+    .sp .sp-dates {
+      font-size: 0.58rem; font-weight: 700;
+      color: var(--orange); margin-bottom: 4px;
+    }
+    .sp .sp-name {
+      font-family: var(--d); font-size: 0.82rem; font-weight: 900;
+      color: var(--navy); line-height: 1.15; margin-bottom: 3px;
+    }
+    .sp .sp-etapa {
+      display: inline-block;
+      font-size: 0.44rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: var(--grad); color: var(--white);
+      -webkit-text-fill-color: var(--white);
+      border-radius: 100px; padding: 2px 9px; margin-bottom: 9px;
+      width: fit-content;
+    }
+    .sp .sp-tasks { list-style: none; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .sp .sp-tasks li {
+      font-size: 0.6rem; font-weight: 400;
+      color: var(--muted); line-height: 1.35;
+      padding-left: 11px; position: relative;
+    }
+    .sp .sp-tasks li::before { content: '·'; position: absolute; left: 0; color: var(--orange); font-weight: 900; }
+    .sp .sp-tasks li strong { color: var(--navy); font-weight: 700; }
+    .sp .sp-footer {
+      margin-top: 10px; padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+    .sp .sp-cost-lbl {
+      font-size: 0.42rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 1px;
+    }
+    .sp .sp-cost {
+      font-family: var(--d); font-size: 1rem; font-weight: 900;
+      background: var(--grad-h);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* firma — over the wave */
+    .firma-wrap {
+      position: absolute;
+      bottom: 3.5%;
+      left: 72px; right: 52px;
+      z-index: 5;
+    }
+    .firma-box {
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.32);
+      border-radius: 12px;
+      padding: 14px 20px;
+    }
+    .firma-title {
+      font-family: var(--d); font-size: 0.55rem; font-weight: 900;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .firma-title::after { content: ''; flex:1; height:1px; background: rgba(255,255,255,.25); }
+
+    .firma-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+    }
+    .firma-slot .fs-label {
+      font-size: 0.48rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 10px;
+    }
+    .firma-slot .fs-line {
+      height: 1px; background: rgba(255,255,255,.25); margin-bottom: 5px;
+    }
+    .firma-slot .fs-sub {
+      font-size: 0.5rem; color: rgba(255,255,255,.4);
+    }
+
+    /* ── NAV ─────────────────────────────────────────────────────── */
+    .nav {
+      position: fixed; bottom: 22px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; align-items: center; gap: 20px; z-index: 200;
+    }
+
+    .nav-btn {
+      font-family: var(--b); font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.14em; padding: 8px 22px;
+      border-radius: 100px; border: none; cursor: pointer;
+      background: var(--navy); color: var(--white);
+      transition: opacity .2s, transform .2s;
+    }
+    .nav-btn:hover { opacity: .85; transform: translateY(-1px); }
+    .nav-btn:disabled { opacity: .3; cursor: default; transform: none; }
+
+    .dots { display: flex; gap: 8px; align-items: center; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(26,20,100,.2); cursor: pointer;
+      transition: background .3s, transform .3s;
+    }
+    .dot.active {
+      background: var(--navy); transform: scale(1.3);
+    }
+  </style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SLIDE 1 — Propuesta Comercial                                 -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="slide active" id="slide-1">
+
+    <!-- blobs -->
+    <div class="blob-wrap">
+      <div class="blob-inner"></div>
+      <div class="blob-main"></div>
+    </div>
+    <div class="blob-circle"></div>
+
+    <!-- top bar -->
+    <div class="topbar">
+      <div class="logo">
+        <span class="through">through</span><span class="air">air</span>
+        <span class="tagline">Conectando tu negocio con el mundo</span>
+      </div>
+      <div class="slide-badge">Propuesta Comercial · <strong>Rio Maggiore</strong> · 01 / 02</div>
+    </div>
+
+    <!-- content -->
+    <div class="content">
+
+      <!-- LEFT -->
+      <div class="s1-left">
+        <div>
+          <div class="s1-eyebrow">Lanzamiento · 6 de junio de 2026</div>
+          <div class="s1-title">
+            Propuesta<br>Comercial<br><span class="gt">Rio Maggiore.</span>
+          </div>
+          <div class="s1-desc">
+            Proyecto inmobiliario de lujo · Town House · Armenia, Colombia.<br>
+            Estrategia digital completa para la apertura de sala de ventas con estructura de pago diferido tipo bullet a 2 meses.
+          </div>
+        </div>
+
+        <div class="svc-list">
+          <div class="svc-item">
+            <div class="si-icon">📣</div>
+            <div class="si-info">
+              <div class="si-name">Pack Presencia Total</div>
+              <div class="si-desc">Pautas Google + Meta · 12 piezas/mes · Reporte · Soporte</div>
+            </div>
+            <div class="si-price">$4.500.000<span style="font-size:.5rem;-webkit-text-fill-color:var(--muted);background:none;color:var(--muted)">/mes</span></div>
+          </div>
+          <div class="svc-item">
+            <div class="si-icon">🌐</div>
+            <div class="si-info">
+              <div class="si-name">Página Web</div>
+              <div class="si-desc">Diseño responsivo · SEO técnico · Registro virtual · QR · Entrega 15 días hábiles</div>
+            </div>
+            <div class="si-price">$2.500.000<span style="font-size:.5rem;-webkit-text-fill-color:var(--muted);background:none;color:var(--muted)"> único</span></div>
+          </div>
+          <div class="svc-item">
+            <div class="si-icon">🚁</div>
+            <div class="si-info">
+              <div class="si-name">Producción Audiovisual</div>
+              <div class="si-desc">Drones 4K · Fotografía profesional · Edición completa · Derechos comerciales</div>
+            </div>
+            <div class="si-price">$3.000.000<span style="font-size:.5rem;-webkit-text-fill-color:var(--muted);background:none;color:var(--muted)"> único</span></div>
+          </div>
+          <div class="svc-item">
+            <div class="si-icon">⚙️</div>
+            <div class="si-info">
+              <div class="si-name">Mantenimiento Web</div>
+              <div class="si-desc">Actualizaciones · soporte técnico · backups semanales</div>
+            </div>
+            <div class="si-price">$100.000<span style="font-size:.5rem;-webkit-text-fill-color:var(--muted);background:none;color:var(--muted)">/mes</span></div>
+          </div>
+          <div class="svc-item" style="background:#f0fdf4;border:1px solid #bbf7d0">
+            <div class="si-icon">🎁</div>
+            <div class="si-info">
+              <div class="si-name" style="color:#15803d">1 Mes de Cortesía</div>
+              <div class="si-desc">Primer mes del Pack Presencia Total incluido sin costo</div>
+            </div>
+            <div class="si-badge">Gratis · $4.500.000</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — timeline -->
+      <div class="inv-panel">
+        <div class="inv-panel-title">Línea de tiempo del proyecto</div>
+
+        <div class="tl">
+
+          <div class="tl-item">
+            <div class="tl-date"><div class="td-day">27</div><div class="td-month">Abr</div></div>
+            <div class="tl-line"><div class="tl-dot fill"></div></div>
+            <div class="tl-body">
+              <div class="tb-label">Etapa 1 · Firma</div>
+              <div class="tb-name">Arranque Digital</div>
+              <div class="tb-detail">Redes sociales · Bot WhatsApp · Brief creativo · Checklist sala de ventas</div>
+              <div><span class="tb-cost-label">Pago base</span><span class="tb-cost">$4.000.000</span></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-date"><div class="td-day">5</div><div class="td-month">May</div></div>
+            <div class="tl-line"><div class="tl-dot"></div></div>
+            <div class="tl-body">
+              <div class="tb-label">Etapa 1 cont. · Sprint 2</div>
+              <div class="tb-name">Pre-lanzamiento Digital</div>
+              <div class="tb-detail">4 piezas con renders · Pauta Meta+Google · Registro virtual · QR · Video apertura</div>
+              <div><span class="tb-cost-label">Medios</span><span class="tb-cost">$550.000</span></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-date"><div class="td-day">12</div><div class="td-month">May</div></div>
+            <div class="tl-line"><div class="tl-dot"></div></div>
+            <div class="tl-body">
+              <div class="tb-label">Etapa 2 · Sprint 3</div>
+              <div class="tb-name">Producción y Desarrollo</div>
+              <div class="tb-detail">Drones 4K · Fotografía · Video sala de ventas · Web 70% · Datáfonos Bolt</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-date"><div class="td-day">19</div><div class="td-month">May</div></div>
+            <div class="tl-line"><div class="tl-dot"></div></div>
+            <div class="tl-body">
+              <div class="tb-label">Etapa 3 · Sprint 4</div>
+              <div class="tb-name">Preparación Final</div>
+              <div class="tb-detail">Web publicada · Material sala listo · Countdown lanzamiento</div>
+              <div><span class="tb-cost-label">Bullet</span><span class="tb-cost">$6.000.000</span></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-date"><div class="td-day">29</div><div class="td-month">May</div></div>
+            <div class="tl-line"><div class="tl-dot fill"></div></div>
+            <div class="tl-body">
+              <div class="tb-label">Producción audiovisual · Tentativo</div>
+              <div class="tb-name">📷 Grabación en locación</div>
+              <div class="tb-detail">Drones 4K · Sesión fotográfica · Sala de ventas</div>
+            </div>
+          </div>
+
+          <div class="tl-item launch-item">
+            <div class="tl-date"><div class="td-day" style="color:var(--navy)">6</div><div class="td-month">Jun</div></div>
+            <div class="tl-line"><div class="tl-dot launch-dot"></div></div>
+            <div class="tl-body">
+              <div class="tb-label" style="color:var(--navy);font-size:.5rem">🎉 Lanzamiento oficial</div>
+              <div class="tb-name">Apertura Sala de Ventas</div>
+              <div class="tb-detail">Rio Maggiore · Town House · Armenia, Colombia</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="inv-total-box">
+          <div class="itb-left">
+            <div class="itb-label">Total acordado</div>
+            <div class="itb-sub">Estructura bullet · $4M firma + $6M mes 2</div>
+          </div>
+          <div class="itb-num">$10.000.000</div>
+        </div>
+
+        <div class="pauta-note">
+          <div class="pn-label">
+            <strong>Pauta Digital · Google Ads + Meta Ads</strong>
+            Corre por fuera · pago directo a plataformas
+          </div>
+          <div>
+            <div class="pn-amount">$550.000</div>
+            <div class="pn-freq">COP · por mes</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bullet payment — over wave -->
+    <div class="bullet-strip">
+      <div class="bs">
+        <div class="bs-period">Mes 1 · Firma del contrato</div>
+        <div class="bs-name">Pago Base</div>
+        <div class="bs-rows">
+          <div class="bs-row"><div class="brl">Anticipo</div><div class="brv">$4.000.000</div></div>
+          <div class="bs-row"><div class="brl">Pack mensual</div><div class="brv fr">Gratis</div></div>
+        </div>
+        <hr class="bs-sep"/>
+        <div class="bs-total"><div class="btl">Total Mes 1</div><div class="bta">$4.000.000</div></div>
+      </div>
+      <div class="bs">
+        <div class="bs-period">Mes 2 · Pago bullet diferido</div>
+        <div class="bs-name">Saldo Diferido</div>
+        <div class="bs-rows">
+          <div class="bs-row"><div class="brl">Saldo bullet</div><div class="brv">$6.000.000</div></div>
+          <div class="bs-row"><div class="brl">Pack mensual</div><div class="brv inc">Incluido en deal</div></div>
+        </div>
+        <hr class="bs-sep"/>
+        <div class="bs-total"><div class="btl">Total Mes 2</div><div class="bta">$6.000.000</div></div>
+      </div>
+      <div class="bs">
+        <div class="bs-period">Mes 3 en adelante · Recurrente</div>
+        <div class="bs-name">Renovación Mensual</div>
+        <div class="bs-rows">
+          <div class="bs-row"><div class="brl">Pack Presencia Total</div><div class="brv">$4.500.000</div></div>
+          <div class="bs-row"><div class="brl">Mantenimiento Web</div><div class="brv">$100.000</div></div>
+        </div>
+        <hr class="bs-sep"/>
+        <div class="bs-total"><div class="btl">Total mensual</div><div class="bta">$4.600.000</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SLIDE 2 — Plan de Sprints + Firma                             -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="slide" id="slide-2">
+
+    <!-- blobs -->
+    <div class="blob-wrap">
+      <div class="blob-inner"></div>
+      <div class="blob-main"></div>
+    </div>
+    <div class="blob-circle"></div>
+
+    <!-- top bar -->
+    <div class="topbar">
+      <div class="logo">
+        <span class="through">through</span><span class="air">air</span>
+        <span class="tagline">Conectando tu negocio con el mundo</span>
+      </div>
+      <div class="slide-badge">Plan de Ejecución · <strong>4 Sprints</strong> · 02 / 02</div>
+    </div>
+
+    <!-- content -->
+    <div class="content">
+
+      <div class="s2-title">
+        Plan de ejecución · <span class="gt">4 sprints semanales.</span>
+      </div>
+
+      <!-- key dates -->
+      <div class="key-dates">
+        <div class="kd">
+          <div class="kd-date">Abr 27</div>
+          <div class="kd-lbl">Firma · Arranque<br>Sprint 1</div>
+        </div>
+        <div class="kd">
+          <div class="kd-date">May 5</div>
+          <div class="kd-lbl">Sprint 2<br>Pre-lanzamiento</div>
+        </div>
+        <div class="kd">
+          <div class="kd-date">May 12</div>
+          <div class="kd-lbl">Sprint 3<br>Producción</div>
+        </div>
+        <div class="kd">
+          <div class="kd-date">May 19</div>
+          <div class="kd-lbl">Sprint 4<br>Preparación final</div>
+        </div>
+        <div class="kd milestone">
+          <div class="kd-date">May 29</div>
+          <div class="kd-lbl">📷 Producción<br>Audiovisual · Tentativo</div>
+        </div>
+        <div class="kd launch">
+          <div class="kd-date">Jun 6 🎉</div>
+          <div class="kd-lbl">Apertura oficial<br>Sala de Ventas</div>
+        </div>
+      </div>
+
+      <!-- sprints -->
+      <div class="sprint-grid">
+
+        <div class="sp s1">
+          <div class="sp-num">Sprint 1</div>
+          <div class="sp-dates">Abr 27 – May 2</div>
+          <div class="sp-name">Arranque y Fundamentos</div>
+          <div class="sp-etapa">Etapa 1</div>
+          <ul class="sp-tasks">
+            <li>Firma y <strong>pago base $4M</strong></li>
+            <li>Activar redes sociales (logo + bio)</li>
+            <li>Pre-checklist lista de ventas</li>
+            <li>Brief creativo aprobado</li>
+            <li>Configurar <strong>bot WhatsApp</strong></li>
+            <li>Logística audiovisual May 29</li>
+          </ul>
+          <div class="sp-footer">
+            <div class="sp-cost-lbl">Costo etapa</div>
+            <div class="sp-cost">$4.000.000</div>
+          </div>
+        </div>
+
+        <div class="sp s2">
+          <div class="sp-num">Sprint 2</div>
+          <div class="sp-dates">May 5 – May 9</div>
+          <div class="sp-name">Pre-lanzamiento Digital</div>
+          <div class="sp-etapa">Etapa 1 cont.</div>
+          <ul class="sp-tasks">
+            <li><strong>4 piezas</strong> con renders Town House</li>
+            <li>Activar <strong>Meta + Google</strong> $550K</li>
+            <li>Landing <strong>registro virtual</strong></li>
+            <li><strong>Código QR</strong> público</li>
+            <li>Video apertura con características</li>
+            <li>Inicio desarrollo página web</li>
+          </ul>
+          <div class="sp-footer">
+            <div class="sp-cost-lbl">Presupuesto medios</div>
+            <div class="sp-cost">$550.000</div>
+          </div>
+        </div>
+
+        <div class="sp s3">
+          <div class="sp-num">Sprint 3</div>
+          <div class="sp-dates">May 12 – May 16</div>
+          <div class="sp-name">Producción y Desarrollo</div>
+          <div class="sp-etapa">Etapa 2</div>
+          <ul class="sp-tasks">
+            <li>Avance página web <strong>70%</strong></li>
+            <li><strong>Video</strong> introductorio sala ventas</li>
+            <li>Optimización pauta · resultados</li>
+            <li>Material digital sala de ventas</li>
+            <li>Configurar <strong>datáfonos Bolt</strong></li>
+            <li>Contenido semana 4 programado</li>
+          </ul>
+          <div class="sp-footer">
+            <div class="sp-cost-lbl">Costo etapa</div>
+            <div class="sp-cost">$5.000.000</div>
+          </div>
+        </div>
+
+        <div class="sp s4">
+          <div class="sp-num">Sprint 4</div>
+          <div class="sp-dates">May 19 – May 23</div>
+          <div class="sp-name">Preparación Final</div>
+          <div class="sp-etapa">Etapa 3</div>
+          <ul class="sp-tasks">
+            <li>Publicación <strong>página web</strong></li>
+            <li>Revisión final bot WhatsApp</li>
+            <li>Brief producción <strong>May 29</strong></li>
+            <li>Countdown lanzamiento en redes</li>
+            <li>Ensayo general sala de ventas</li>
+            <li>Todo listo para el <strong>6 de junio</strong></li>
+          </ul>
+          <div class="sp-footer">
+            <div class="sp-cost-lbl">Costo etapa</div>
+            <div class="sp-cost">$3.500.000</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Firma — over wave -->
+    <div class="firma-wrap">
+      <div class="firma-box">
+        <div class="firma-title">Acuerdo de servicios · Para firma</div>
+        <div class="firma-grid">
+          <div class="firma-slot">
+            <div class="fs-label">Through Air · Proveedor</div>
+            <div class="fs-line"></div>
+            <div class="fs-sub">Firma autorizada y fecha</div>
+          </div>
+          <div class="firma-slot">
+            <div class="fs-label">CC / NIT proveedor</div>
+            <div class="fs-line"></div>
+            <div class="fs-sub">&nbsp;</div>
+          </div>
+          <div class="firma-slot">
+            <div class="fs-label">Rio Maggiore · Cliente</div>
+            <div class="fs-line"></div>
+            <div class="fs-sub">Firma autorizada y fecha</div>
+          </div>
+          <div class="firma-slot">
+            <div class="fs-label">CC / NIT cliente</div>
+            <div class="fs-line"></div>
+            <div class="fs-sub">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button class="nav-btn" id="prev" onclick="go(-1)" disabled>← Anterior</button>
+  <div class="dots">
+    <div class="dot active" onclick="goTo(0)"></div>
+    <div class="dot" onclick="goTo(1)"></div>
+  </div>
+  <button class="nav-btn" id="next" onclick="go(1)">Siguiente →</button>
+</div>
+
+<script>
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots   = document.querySelectorAll('.dot');
+  const prev   = document.getElementById('prev');
+  const next   = document.getElementById('next');
+
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(n, slides.length - 1));
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+    prev.disabled = cur === 0;
+    next.disabled = cur === slides.length - 1;
+  }
+  function go(d) { goTo(cur + d); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
+  });
+</script>
+
+</body>
+</html>

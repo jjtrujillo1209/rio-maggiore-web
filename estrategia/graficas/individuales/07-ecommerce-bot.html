@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>E-Commerce Bot — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 72% 10%, rgba(242,101,34,.28) 0%, rgba(200,49,122,.12) 40%, #07070f 65%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px}
+.mega{font-size:195px;font-weight:900;line-height:.82;letter-spacing:-11px;color:#fff}
+.mega em{font-style:normal;color:#F26522}
+
+/* conversation + metrics */
+.visual{flex:1;display:flex;gap:28px;margin:28px 0}
+.convo{flex:1;display:flex;flex-direction:column;gap:10px;justify-content:center}
+.step-row{display:flex;gap:14px;align-items:flex-start}
+.step-bullet{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;margin-top:2px}
+.b1{background:#1B1B6E}.b2{background:#F04E37}.b3{background:#F26522}.b4{background:linear-gradient(135deg,#F26522,#C8317A)}
+.step-bubble{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px 18px;flex:1}
+.step-bubble.active{background:rgba(242,101,34,.08);border-color:rgba(242,101,34,.3)}
+.step-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:4px}
+.step-msg{font-size:14px;color:#fff;line-height:1.4}
+.step-msg em{font-style:normal;color:#F26522;font-weight:700}
+
+/* metrics */
+.metrics{width:240px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.metric-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px 20px}
+.metric-card.featured{background:rgba(242,101,34,.1);border-color:rgba(242,101,34,.28)}
+.m-num{font-size:44px;font-weight:900;letter-spacing:-2px;line-height:1;background:linear-gradient(135deg,#F26522,#C8317A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.m-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:6px}
+.m-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:3px}
+
+/* bottom */
+.info-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px}
+.info-text{font-size:16px;color:rgba(255,255,255,.6);line-height:1.5;flex:1}
+.info-text strong{color:#fff}
+.cta-pill{background:#F26522;color:#fff;font-size:13px;font-weight:700;padding:12px 24px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:25px;font-weight:300;color:#F26522}
+.price{font-size:13px;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase}
+.price strong{color:rgba(255,255,255,.65);font-size:18px;font-weight:700;letter-spacing:-0.5px}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div>
+    <div class="eyebrow">Tu vendedor más</div>
+    <div class="mega">RÁPI<em>DO.</em></div>
+  </div>
+
+  <div class="visual">
+    <div class="convo">
+      <div class="step-row">
+        <div class="step-bullet b1">1</div>
+        <div class="step-bubble">
+          <div class="step-tag">Cliente llega</div>
+          <div class="step-msg">"Tienen zapatillas talla 42 en negro?"</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-bullet b2">2</div>
+        <div class="step-bubble active">
+          <div class="step-tag">Bot recomienda</div>
+          <div class="step-msg">Sí, tenemos 3 modelos. El más popular es <em>Runner Pro a $220k</em>. Lo agrego?</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-bullet b3">3</div>
+        <div class="step-bubble">
+          <div class="step-tag">Carrito listo</div>
+          <div class="step-msg">Pedido listo. Pagas con <em>PSE o Nequi?</em></div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-bullet b4">4</div>
+        <div class="step-bubble">
+          <div class="step-tag">Venta cerrada</div>
+          <div class="step-msg"><em>Venta confirmada.</em> Orden #A-4821 — entrega en 24 hrs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric-card featured">
+        <div class="m-num">+30%</div>
+        <div class="m-label">Conversión</div>
+        <div class="m-sub">vs. tienda sin bot</div>
+      </div>
+      <div class="metric-card">
+        <div class="m-num">0s</div>
+        <div class="m-label">Respuesta</div>
+        <div class="m-sub">Instantánea 24/7</div>
+      </div>
+      <div class="metric-card">
+        <div class="m-num">-60%</div>
+        <div class="m-label">Carritos abandonados</div>
+        <div class="m-sub">Recuperación automática</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="info-card">
+      <div class="info-text"><strong>Recomienda, cierra y cobra mientras tú te enfocas en crecer.</strong> Incluido con tu tienda.</div>
+      <div class="cta-pill">Activar bot</div>
+    </div>
+    <div class="footer">
+      <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+      <div class="price">Incluido con <strong>E-Commerce</strong></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<title>Estudio de Mercado — Rio Maggiore Residencial Club</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 22mm 16mm; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    font-size: 10px;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.55;
+  }
+  /* ── HEADER DE PÁGINA ── */
+  .page-header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1.5px solid #2e5c2e;
+    padding-bottom: 5px; margin-bottom: 10px;
+    font-family: Arial, sans-serif; font-size: 8px;
+    color: #2e5c2e; letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  /* ── PORTADA ── */
+  .cover {
+    min-height: 260mm;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    page-break-after: always;
+    background: #fff;
+    gap: 28px;
+  }
+  .cover-badge {
+    background: #2e5c2e; color: #fff;
+    font-family: Arial, sans-serif; font-size: 13px;
+    font-weight: 700; letter-spacing: 0.18em;
+    padding: 12px 40px; text-transform: uppercase;
+  }
+  .cover-project {
+    font-family: Georgia, serif;
+    font-size: 32px; font-weight: 700;
+    color: #1a1a1a; letter-spacing: 0.05em;
+    line-height: 1.1;
+  }
+  .cover-sub {
+    font-family: Georgia, serif; font-style: italic;
+    font-size: 14px; color: #5a5a4a;
+  }
+  .cover-table {
+    border-collapse: collapse; width: 380px;
+    font-family: Arial, sans-serif; font-size: 9px;
+  }
+  .cover-table td {
+    padding: 7px 12px; border-bottom: 1px solid #e0e0d0;
+    text-align: left;
+  }
+  .cover-table td:first-child { color: #2e5c2e; font-weight: 700; width: 160px; }
+  .cover-table td:last-child { color: #444; }
+  .cover-legend {
+    background: #1a1a1a; color: #fff;
+    font-family: Arial, sans-serif; font-size: 9px;
+    padding: 8px 28px; letter-spacing: 0.1em;
+  }
+  .cover-disclaimer {
+    font-family: Arial, sans-serif; font-size: 8px;
+    color: #888; max-width: 420px; text-align: center; line-height: 1.6;
+  }
+
+  /* ── SECTIONS ── */
+  .section-header {
+    background: #1a3a1a; color: #fff;
+    font-family: Arial, sans-serif; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 9px 14px; margin: 18px 0 12px;
+  }
+  .section-header.green { background: #2e5c2e; }
+  .section-header.gold  { background: #7a6020; }
+  .section-header.dark  { background: #1a1a1a; }
+
+  h2 { font-size: 11px; font-weight: 700; margin: 14px 0 6px; color: #1a3a1a; }
+  h3 { font-size: 10px; font-weight: 700; margin: 10px 0 5px; color: #333; }
+  p  { font-size: 9.5px; margin-bottom: 6px; line-height: 1.6; }
+  ul { margin: 4px 0 8px 16px; }
+  li { font-size: 9.5px; line-height: 1.6; margin-bottom: 2px; }
+
+  /* ── TABLES ── */
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 12px; font-size: 8.5px; }
+  th {
+    background: #2e5c2e; color: #fff;
+    padding: 6px 8px; text-align: center;
+    font-family: Arial, sans-serif; font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  th.dark-head { background: #1a3a1a; }
+  th.gold-head { background: #8b6914; }
+  td {
+    padding: 5px 8px; border-bottom: 1px solid #e8e8e0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #f5f5ee; }
+  tr:last-child td { border-bottom: none; }
+  .td-label { font-weight: 700; color: #2e5c2e; }
+  .td-center { text-align: center; }
+  .td-right  { text-align: right; }
+
+  /* ── HIGHLIGHT BOXES ── */
+  .box-green {
+    border-left: 4px solid #2e5c2e; background: #f0f7f0;
+    padding: 10px 14px; margin: 10px 0;
+    font-size: 9.5px; line-height: 1.65;
+  }
+  .box-gold {
+    border-left: 4px solid #c9a030; background: #fdf8ee;
+    padding: 10px 14px; margin: 10px 0;
+    font-size: 9.5px; line-height: 1.65;
+  }
+  .box-dark {
+    border-left: 4px solid #1a1a1a; background: #f4f4f2;
+    padding: 10px 14px; margin: 10px 0;
+    font-size: 9.5px; line-height: 1.65;
+  }
+  .box-viabilidad {
+    display: flex; gap: 0; margin: 10px 0;
+    border: 1px solid #ccc;
+  }
+  .box-viab-label {
+    background: #2e5c2e; color: #fff;
+    font-family: Arial, sans-serif; font-weight: 700;
+    font-size: 9px; text-align: center;
+    padding: 10px 12px; display: flex;
+    align-items: center; justify-content: center;
+    min-width: 90px; text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .box-viab-text { padding: 10px 14px; font-size: 9.5px; line-height: 1.6; }
+
+  /* ── BADGES ── */
+  .badge-alto  { background: #c0392b; color: #fff; padding: 2px 8px; font-size: 8px; font-weight: 700; }
+  .badge-medio { background: #e67e22; color: #fff; padding: 2px 8px; font-size: 8px; font-weight: 700; }
+  .badge-bajo  { background: #27ae60; color: #fff; padding: 2px 8px; font-size: 8px; font-weight: 700; }
+  .badge-oport { background: #2e5c2e; color: #fff; padding: 2px 8px; font-size: 8px; font-weight: 700; }
+  .stars { color: #2e5c2e; font-size: 10px; }
+
+  /* ── PRODUCT SECTIONS ── */
+  .product-block {
+    border: 1px solid #2e5c2e; margin: 14px 0;
+    page-break-inside: avoid;
+  }
+  .product-title {
+    background: #2e5c2e; color: #fff;
+    font-family: Arial, sans-serif; font-weight: 700;
+    font-size: 10px; letter-spacing: 0.12em;
+    padding: 8px 14px; text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .product-tag {
+    background: rgba(255,255,255,0.15); padding: 2px 10px;
+    font-size: 8px; font-weight: 400; letter-spacing: 0.05em;
+  }
+  .product-body { padding: 10px 14px; }
+  .product-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0; }
+
+  /* ── INVESTOR PROFILE CARDS ── */
+  .investor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+  .investor-card {
+    border: 1px solid #ddd; padding: 10px;
+    page-break-inside: avoid;
+  }
+  .investor-card-header {
+    font-family: Arial, sans-serif; font-weight: 700;
+    font-size: 9px; color: #2e5c2e;
+    border-bottom: 1px solid #e0e0d0;
+    padding-bottom: 5px; margin-bottom: 7px;
+    text-transform: uppercase; letter-spacing: 0.07em;
+  }
+  .investor-row { display: flex; gap: 6px; margin-bottom: 3px; font-size: 8.5px; }
+  .investor-key { font-weight: 700; color: #555; min-width: 70px; flex-shrink: 0; }
+  .investor-val { color: #222; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    border-top: 1px solid #2e5c2e;
+    padding: 4px 16mm;
+    display: flex; justify-content: space-between;
+    font-family: Arial, sans-serif; font-size: 7.5px;
+    color: #666; background: #fff;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .page-break { page-break-before: always; }
+    .no-break { page-break-inside: avoid; }
+  }
+  .page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<!-- FOOTER FIJO -->
+<div class="page-footer">
+  <span>Confidencial · Uso exclusivo para inversionistas y tomadores de decisión de Rio Maggiore</span>
+  <span>Abril 2026</span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PORTADA
+═══════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Rio Maggiore Residencial Club</div>
+  <div class="cover-project">ESTUDIO DE MERCADO<br/>E INVERSIÓN</div>
+  <div class="cover-sub">Armenia · La Tebaida · Quindío · Colombia</div>
+  <p style="font-size:10px;color:#666;font-style:italic;max-width:380px;">
+    Análisis integral de proyecciones, viabilidad financiera y segmentos de inversión
+    alineado con el portafolio de productos del proyecto
+  </p>
+  <table class="cover-table">
+    <tr><td>Fecha de elaboración:</td><td>Abril 2026</td></tr>
+    <tr><td>Preparado por:</td><td>Consultor Senior Real Estate</td></tr>
+    <tr><td>Proyecto:</td><td>Rio Maggiore Residencial Club</td></tr>
+    <tr><td>Ubicación:</td><td>Km 7 Vía La Tebaida, Armenia, Quindío</td></tr>
+    <tr><td>Diseño:</td><td>Didier Rincón S. + Gabriela Behlok S. Arquitectos</td></tr>
+    <tr><td>Constructor:</td><td>Rincón &amp; Franz Adolphs Constructores</td></tr>
+    <tr><td>Fiducia:</td><td>Acción Fiduciaria S.A.</td></tr>
+    <tr><td>Mercados cubiertos:</td><td>Residencial · Turístico · Comercial · No VIS</td></tr>
+  </table>
+  <div class="cover-legend">[C] Confirmado · [E] Estimado · [I] Inferido</div>
+  <div class="cover-disclaimer">
+    Los datos se clasifican según nivel de confiabilidad: [C] fuente oficial verificable,
+    [E] derivado de datos confirmados con metodología explícita, [I] inferencia
+    razonada de fuentes indirectas. Este documento no reemplaza una debida diligencia
+    completa, estudio de títulos ni presupuesto de obra real.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     A. RESUMEN EJECUTIVO
+═══════════════════════════════════════════════════════════ -->
+<div class="page-header">
+  <span>ESTUDIO DE MERCADO — RIO MAGGIORE RESIDENCIAL CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header">A. Resumen Ejecutivo</div>
+
+<h2>A.1 Síntesis del Proyecto</h2>
+<p>Rio Maggiore Residencial Club es un desarrollo inmobiliario de uso mixto ubicado en el Km 7 vía La Tebaida,
+Armenia, Quindío. Diseñado por Didier Rincón S. + Gabriela Behlok S. Arquitectos e integrado bajo fiducia
+de Acción Fiduciaria, el proyecto articula cuatro tipologías complementarias: <strong>Townhouses para renta corta
+(240 unidades), Casas Campestres premium (7 lotes), Riviera Mall y Plaza Boulevar.</strong></p>
+<p>Su ubicación periurbana privilegiada — a 6 minutos del Aeropuerto Internacional El Edén, colindante con el
+Club Campestre de Armenia y frente al Centro Recreativo Comfenalco — lo posiciona como el proyecto de mayor
+escala y ecosistema completo en el corredor periurbano norte del Quindío.</p>
+
+<h2>A.2 Principales Hallazgos Aplicados a Rio Maggiore</h2>
+<table>
+  <tr>
+    <th style="width:4%">N°</th>
+    <th style="width:56%">Hallazgo Clave</th>
+    <th style="width:20%">Nivel</th>
+    <th style="width:20%">Relevancia RM</th>
+  </tr>
+  <tr>
+    <td class="td-center">1</td>
+    <td>Quindío N.°1 en Colombia en compras por colombianos en el exterior. 25% de transacciones son no residentes [C].</td>
+    <td><span class="badge-oport">OPORTUNIDAD</span></td>
+    <td>Townhouses 45-90m² Airbnb-ready son el producto ideal</td>
+  </tr>
+  <tr>
+    <td class="td-center">2</td>
+    <td>Aeropuerto El Edén a 6 min → tráfico turístico creciente (~780,000 pax/año est.) [E].</td>
+    <td><span class="badge-oport">FORTALEZA</span></td>
+    <td>Ventaja competitiva directa en renta corta vs. Zona Norte</td>
+  </tr>
+  <tr>
+    <td class="td-center">3</td>
+    <td>Rentabilidad renta corta Colombia 16–18% anual con ocupación 55–65% [C].</td>
+    <td><span class="badge-oport">OPORTUNIDAD</span></td>
+    <td>240 townhouses → masa crítica para gestión profesional Airbnb</td>
+  </tr>
+  <tr>
+    <td class="td-center">4</td>
+    <td>Déficit estructural oferta ~660 uds/año vs. demanda real en Armenia [E].</td>
+    <td><span class="badge-oport">OPORTUNIDAD</span></td>
+    <td>Validación absorción para 240 townhouses en 3–4 años</td>
+  </tr>
+  <tr>
+    <td class="td-center">5</td>
+    <td>Precios zona periurbana premium: $3.5M–$6.5M/m² para No VIS con amenidades club [E].</td>
+    <td>Contexto</td>
+    <td>RM opera en rango superior por ecosistema completo + fiducia</td>
+  </tr>
+  <tr>
+    <td class="td-center">6</td>
+    <td>Casas campestres No VIS: dinamismo medio, compradores regionales y pensionados [C].</td>
+    <td>Contexto</td>
+    <td>7 unidades premium → absorción 12–24 meses, segmento defensivo</td>
+  </tr>
+</table>
+
+<h2>A.3 Oportunidad Específica Rio Maggiore</h2>
+<div class="box-green">
+  Rio Maggiore captura una oportunidad que ningún competidor actual en Armenia tiene: <strong>escala institucional
+  de renta corta (240 unidades) en un ecosistema con amenidades de club, comercio propio y seguridad jurídica
+  fiduciaria.</strong> La cercanía al aeropuerto supera la ventaja de localización urbana de proyectos en
+  Av. Centenario para el segmento turístico. El componente comercial (Riviera Mall + Plaza Boulevar) genera
+  valorización cruzada y flujo de clientes cautivos.
+</div>
+
+<h2>A.4 Conclusión de Viabilidad Preliminar</h2>
+<div class="box-viabilidad">
+  <div class="box-viab-label">VIABLE CON<br/>CONDICIONES</div>
+  <div class="box-viab-text">
+    El proyecto es atractivo para inversionistas de renta corta si: (1) los Townhouses se habilitan
+    legalmente para Airbnb desde el reglamento PH, (2) se estructura operador de gestión delegada
+    para inversionistas remotos, (3) se pre-vende mínimo el 30% antes de inicio de obras,
+    y (4) el precio de venta se posiciona en $4.8M–$6.2M/m² según tipología.
+    Las Casas Campestres ($1,500M–$2,000M COP) tienen absorción más lenta pero margen superior.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     B. CONTEXTO DE MERCADO (aplicado)
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO DE MERCADO — RIO MAGGIORE RESIDENCIAL CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header green">B. Contexto Macroeconómico Aplicado a Rio Maggiore</div>
+
+<h2>B.1 Variables Clave del Mercado Armenia — Impacto Directo</h2>
+<table>
+  <tr>
+    <th style="width:35%">Indicador</th>
+    <th style="width:20%">Valor</th>
+    <th style="width:15%">Fuente</th>
+    <th style="width:30%">Impacto en RM</th>
+  </tr>
+  <tr><td>Tasa Banco República</td><td class="td-center">9.25% EA</td><td class="td-center">[C] Abr 2025</td><td>Reactiva compradores hipotecarios locales</td></tr>
+  <tr><td>Tasas hipotecarias</td><td class="td-center">10–11% EA</td><td class="td-center">[C] Abr 2025</td><td>Favorece inversionistas al contado (exterior)</td></tr>
+  <tr><td>Colombianos exterior comprando en Quindío</td><td class="td-center">25% transacciones</td><td class="td-center">[C]</td><td>Segmento primario Townhouses</td></tr>
+  <tr><td>Quindío: N.°1 compras colombianos exterior</td><td class="td-center">Primero en Colombia</td><td class="td-center">[C]</td><td>Demanda estructural garantizada</td></tr>
+  <tr><td>Pax Aeropuerto El Edén</td><td class="td-center">~780,000/año</td><td class="td-center">[E]</td><td>Alimenta ocupación Airbnb Townhouses</td></tr>
+  <tr><td>Colombia: ranking Airbnb LATAM</td><td class="td-center">3.° puesto</td><td class="td-center">[C]</td><td>Validación modelo renta corta</td></tr>
+  <tr><td>Variación interanual arriendo/m²</td><td class="td-center">+9.3%</td><td class="td-center">[C] Feb 2026</td><td>Upside renta larga como respaldo</td></tr>
+  <tr><td>Nuevos hogares Armenia/año</td><td class="td-center">~2,500</td><td class="td-center">[E]</td><td>Absorción casas campestres factible</td></tr>
+  <tr><td>Valorización acumulada proyectada 5 años</td><td class="td-center">+38% (escenario base)</td><td class="td-center">[E/I]</td><td>Retorno patrimonial en venta futura</td></tr>
+</table>
+
+<h2>B.2 Ventaja de Ubicación: Km 7 La Tebaida vs. Zona Norte Armenia</h2>
+<table>
+  <tr>
+    <th style="width:30%">Criterio</th>
+    <th class="dark-head" style="width:35%">Rio Maggiore (Km 7 La Tebaida)</th>
+    <th style="width:35%">Zona Norte (Av. Centenario)</th>
+  </tr>
+  <tr>
+    <td class="td-label">Distancia aeropuerto</td>
+    <td class="td-center"><strong>6 min</strong> ✓</td>
+    <td class="td-center">15–20 min</td>
+  </tr>
+  <tr>
+    <td class="td-label">Vecindad premium</td>
+    <td>Club Campestre, Comfenalco, Riviera Park Cenexpo</td>
+    <td>Estratos 4–5 consolidados</td>
+  </tr>
+  <tr>
+    <td class="td-label">Entorno natural</td>
+    <td><strong>Guaduales, paisaje cafetero</strong> ✓</td>
+    <td>Urbano consolidado</td>
+  </tr>
+  <tr>
+    <td class="td-label">Escala del proyecto</td>
+    <td><strong>Ecosistema completo</strong> (residencial + comercial) ✓</td>
+    <td>Proyectos individuales</td>
+  </tr>
+  <tr>
+    <td class="td-label">Precio/m² objetivo</td>
+    <td>$4.5M–$6.5M/m² (premium periurbano)</td>
+    <td>$5.5M–$7.5M/m² (zona norte)</td>
+  </tr>
+  <tr>
+    <td class="td-label">Perfil renta corta</td>
+    <td><strong>ALTO</strong> (turismo + aeropuerto) ✓</td>
+    <td>Medio-Alto (urbano)</td>
+  </tr>
+  <tr>
+    <td class="td-label">Conectividad a Cali/Bogotá</td>
+    <td>Vía nacional directa; 5h Bogotá, 3h Cali ✓</td>
+    <td>Similar (acceso ciudad)</td>
+  </tr>
+</table>
+<p style="font-size:8.5px;color:#555;">[I] La ubicación periurbana de RM es superior para turismo por aeropuerto y naturaleza; la zona norte tiene más demanda residencial urbana de largo plazo.</p>
+
+<!-- ═══════════════════════════════════════════════════════════
+     C. PROYECCIONES POR PRODUCTO
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO DE MERCADO — RIO MAGGIORE RESIDENCIAL CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header dark">C. Proyecciones por Producto</div>
+
+<!-- ── PRODUCTO 1: TOWNHOUSES ── -->
+<div class="product-block">
+  <div class="product-title">
+    <span>01 · Townhouses — Renta Corta (Airbnb)</span>
+    <span class="product-tag">240 UNIDADES · 40 TORRES · 3 PISOS</span>
+  </div>
+  <div class="product-body">
+    <div class="product-cols">
+      <div>
+        <h3>Especificaciones Técnicas (Brochure)</h3>
+        <table>
+          <tr><th>Tipología</th><th>Área</th><th>Alcobas</th><th>Unidades est.</th></tr>
+          <tr><td>Estudio / Studio</td><td class="td-center">~38–45 m²</td><td class="td-center">1</td><td class="td-center">~80</td></tr>
+          <tr><td>Apartamento Estándar</td><td class="td-center">~75–90 m²</td><td class="td-center">2</td><td class="td-center">~120</td></tr>
+          <tr><td>Dúplex Premium</td><td class="td-center">~113–120 m²</td><td class="td-center">3</td><td class="td-center">~40</td></tr>
+          <tr><td><strong>TOTAL</strong></td><td></td><td></td><td class="td-center"><strong>240</strong></td></tr>
+        </table>
+        <p style="font-size:8px;color:#555;">Torres Tipo 1: 75.10 m² por nivel + Dúplex (Piso 3 Nivel 2: 38.81 m²).
+        Torres Tipo 2: 75.10 m² + módulo 38.56 m² central. Cada torre: 3 pisos, planta tipo idéntica. [C Brochure]</p>
+      </div>
+      <div>
+        <h3>Proyección de Precios de Venta</h3>
+        <table>
+          <tr><th>Tipología</th><th>Precio/m²</th><th>Ticket Estimado</th></tr>
+          <tr><td>45 m² (estudio)</td><td class="td-center">$5.0M–$6.0M</td><td class="td-center">$225M–$270M COP</td></tr>
+          <tr><td>90 m² (2 alc.)</td><td class="td-center">$4.8M–$6.0M</td><td class="td-center">$432M–$540M COP</td></tr>
+          <tr><td>120 m² (dúplex)</td><td class="td-center">$4.5M–$5.8M</td><td class="td-center">$540M–$696M COP</td></tr>
+        </table>
+        <p style="font-size:8px;color:#555;">[E] Posicionamiento sobre mercado periurbano base ($1.5M–$3.5M/m²) por:
+        ecosistema club, fiducia, diseño Didier Rincón, amenidades premium y habilitación Airbnb.</p>
+      </div>
+    </div>
+
+    <h3>Proyección Financiera — Renta Corta (Airbnb)</h3>
+    <div class="box-gold">
+      <strong>Supuesto operativo:</strong> Townhouses habilitados para renta corta desde reglamento PH ·
+      Plataformas Airbnb + Booking + VRBO · Operador de gestión delegada para inversionistas remotos ·
+      Temporadas altas: Semana Santa, junio–julio, diciembre · Aeropuerto a 6 min como ventaja competitiva directa
+    </div>
+    <table>
+      <tr>
+        <th>Tipología</th>
+        <th>Tarifa/noche est.</th>
+        <th>Ocupación 55%<br/>(conservador)</th>
+        <th>Ocupación 65%<br/>(base)</th>
+        <th>Ocupación 72%<br/>(optimista)</th>
+        <th>Rentabilidad<br/>anual est.</th>
+      </tr>
+      <tr>
+        <td><strong>45 m² estudio</strong><br/><span style="font-size:8px;color:#666;">Ticket: $247M COP</span></td>
+        <td class="td-center">$180,000–$230,000</td>
+        <td class="td-center">$35.6M–$45.5M</td>
+        <td class="td-center">$42.1M–$53.8M</td>
+        <td class="td-center">$46.7M–$59.7M</td>
+        <td class="td-center"><strong>14%–24%</strong></td>
+      </tr>
+      <tr>
+        <td><strong>90 m² 2 alcobas</strong><br/><span style="font-size:8px;color:#666;">Ticket: $486M COP</span></td>
+        <td class="td-center">$280,000–$360,000</td>
+        <td class="td-center">$55.4M–$71.3M</td>
+        <td class="td-center">$65.5M–$84.2M</td>
+        <td class="td-center">$72.6M–$93.3M</td>
+        <td class="td-center"><strong>13%–19%</strong></td>
+      </tr>
+      <tr>
+        <td><strong>120 m² dúplex</strong><br/><span style="font-size:8px;color:#666;">Ticket: $618M COP</span></td>
+        <td class="td-center">$380,000–$500,000</td>
+        <td class="td-center">$75.2M–$98.9M</td>
+        <td class="td-center">$88.9M–$117M</td>
+        <td class="td-center">$98.5M–$130M</td>
+        <td class="td-center"><strong>14%–21%</strong></td>
+      </tr>
+    </table>
+    <p style="font-size:8px;color:#555;">[E/I] Ingresos brutos anuales antes de comisión operador (~20–25%), servicios y mantenimiento (~8–10%).
+    Rentabilidad neta estimada 10–16% en escenario base. Tarifas referenciadas en Airbnb Armenia, Salento y mercado cafetero activo.</p>
+
+    <h3>Absorción Comercial Proyectada</h3>
+    <table>
+      <tr><th>Fase</th><th>Período</th><th>Unidades</th><th>Meta acumulada</th><th>Precio/m² objetivo</th></tr>
+      <tr><td>Preventa silenciosa</td><td>Meses 1–3</td><td>24–36 uds</td><td>10–15%</td><td>$4.8M–$5.0M/m²</td></tr>
+      <tr><td>Lanzamiento (Colombia + Exterior)</td><td>Meses 3–8</td><td>72–96 uds</td><td>40–55%</td><td>$5.0M–$5.5M/m²</td></tr>
+      <tr><td>Maduración obra</td><td>Meses 8–20</td><td>84–96 uds</td><td>75–95%</td><td>$5.5M–$6.0M/m²</td></tr>
+      <tr><td>Cierre entrega</td><td>Meses 20–30</td><td>Remanente</td><td>100%</td><td>$6.0M–$6.5M/m²</td></tr>
+    </table>
+
+    <div class="box-green">
+      <strong>Diferenciadores vs. competencia armenia:</strong> Único proyecto con 240 unidades Airbnb-habilitadas
+      en Armenia · Ecosistema propio (mall + plaza) que eleva satisfacción del huésped ·
+      Gestión delegada institucionalizada → segmento inversionista remoto · Fiducia Acción Fiduciaria →
+      seguridad jurídica para colombianos en exterior
+    </div>
+  </div>
+</div>
+
+<!-- ── PRODUCTO 2: CASAS CAMPESTRES ── -->
+<div class="product-block">
+  <div class="product-title">
+    <span>02 · Casas Campestres</span>
+    <span class="product-tag">7 LOTES · ~2,200 M² · CASA ORIENTAL + CASA CUBISTA</span>
+  </div>
+  <div class="product-body">
+    <div class="product-cols">
+      <div>
+        <h3>Especificaciones (Brochure)</h3>
+        <ul>
+          <li>7 lotes de ~2,200 m² cada uno</li>
+          <li>2 tipologías: <strong>Casa Oriental</strong> y <strong>Casa Cubista</strong></li>
+          <li>~380 m² construidos por casa</li>
+          <li>Planta 1 nivel: Sala, Comedor, Cocina, 4 Alcobas</li>
+          <li>Piscina privada, 3 parqueaderos, jardín</li>
+          <li>Acabados premium: madera, piedra, concreto expuesto</li>
+          <li>Lote propio + acceso al club de amenidades RM</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Proyección de Precio de Venta</h3>
+        <table>
+          <tr><th>Componente</th><th>Valor estimado</th></tr>
+          <tr><td>Precio/m² construido</td><td class="td-center">$3.8M–$5.5M/m²</td></tr>
+          <tr><td>Valor construcción (380 m²)</td><td class="td-center">$1,444M–$2,090M COP</td></tr>
+          <tr><td>Valor lote (2,200 m²)</td><td class="td-center">$300M–$600M COP</td></tr>
+          <tr><td><strong>Ticket total estimado</strong></td><td class="td-center"><strong>$1,750M–$2,700M COP</strong></td></tr>
+          <tr><td>Ticket en USD (ref.)</td><td class="td-center">USD $430,000–$665,000</td></tr>
+        </table>
+        <p style="font-size:8px;color:#555;">[E] Serenity Homes (116 m²) en Armenia activo a $621M–$751M [C].
+        RM a 380 m² con lote propio y piscina justifica rango superior.</p>
+      </div>
+    </div>
+
+    <h3>Proyecciones Financieras</h3>
+    <table>
+      <tr>
+        <th>Escenario</th>
+        <th>Precio venta (casa)</th>
+        <th>Absorción esperada</th>
+        <th>Ingresos totales (7 casas)</th>
+        <th>Valorización 5 años</th>
+      </tr>
+      <tr>
+        <td>Conservador</td>
+        <td class="td-center">$1,750M COP</td>
+        <td class="td-center">18–24 meses</td>
+        <td class="td-center">$12,250M COP</td>
+        <td class="td-center">+20% (valor a $2,100M)</td>
+      </tr>
+      <tr>
+        <td>Base</td>
+        <td class="td-center">$2,100M COP</td>
+        <td class="td-center">12–18 meses</td>
+        <td class="td-center">$14,700M COP</td>
+        <td class="td-center">+38% (valor a $2,900M)</td>
+      </tr>
+      <tr>
+        <td>Optimista</td>
+        <td class="td-center">$2,700M COP</td>
+        <td class="td-center">8–14 meses</td>
+        <td class="td-center">$18,900M COP</td>
+        <td class="td-center">+55% (valor a $4,185M)</td>
+      </tr>
+    </table>
+
+    <h3>Perfil Comprador Casas Campestres</h3>
+    <table>
+      <tr><th>Criterio</th><th>Detalle</th></tr>
+      <tr><td class="td-label">Segmento primario</td><td>Familia de alto poder adquisitivo. Segunda vivienda de campo cerca Armenia</td></tr>
+      <tr><td class="td-label">Origen</td><td>Bogotá, Medellín, Cali; también colombianos retornados del exterior</td></tr>
+      <tr><td class="td-label">Edad</td><td>45–65 años. Independientes, empresarios, profesionales senior</td></tr>
+      <tr><td class="td-label">Ticket</td><td>$1,750M–$2,700M COP. Compra frecuente al contado o con crédito mínimo</td></tr>
+      <tr><td class="td-label">Motivación</td><td>Clima, naturaleza, calidad de vida, exclusividad, PCC. Semana Santa + vacaciones</td></tr>
+      <tr><td class="td-label">Diferenciador RM</td><td>Piscina propia + club comunal + seguridad + vecindad Club Campestre Armenia</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ── PRODUCTO 3: RIVIERA MALL ── -->
+<div class="product-block">
+  <div class="product-title">
+    <span>03 · Riviera Mall</span>
+    <span class="product-tag">CENTRO COMERCIAL · LOCALES EN VENTA O RENTA</span>
+  </div>
+  <div class="product-body">
+    <div class="product-cols">
+      <div>
+        <h3>Posicionamiento Estratégico</h3>
+        <p>Centro comercial de nueva generación articulado al ecosistema residencial de Rio Maggiore.
+        Diseñado para capturar el flujo interno del proyecto (~1,300 residentes en Townhouses + 35 familias
+        en Casas Campestres) y el corredor periurbano norte (Km 7 vía La Tebaida).</p>
+        <ul>
+          <li>Marcas nacionales e internacionales selectas</li>
+          <li>Gastronomía, salud, entretenimiento, servicios</li>
+          <li>Diseño arquitectónico integrado al proyecto</li>
+          <li>Flujo adicional desde Club Campestre, Comfenalco, hoteles del corredor</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Proyección Financiera Comercial</h3>
+        <table>
+          <tr><th>Concepto</th><th>Valor estimado</th></tr>
+          <tr><td>Precio/m² venta local comercial</td><td class="td-center">$8M–$14M/m²</td></tr>
+          <tr><td>Canon arriendo/m²/mes</td><td class="td-center">$60,000–$100,000</td></tr>
+          <tr><td>Ocupación target año 1</td><td class="td-center">65–75%</td></tr>
+          <tr><td>Ocupación target año 3</td><td class="td-center">80–90%</td></tr>
+          <tr><td>Cap rate referencia (comercial)</td><td class="td-center">7–10% anual</td></tr>
+        </table>
+        <p style="font-size:8px;color:#555;">[E/I] Mercado comercial Armenia post-COVID con alta vacancia en centros
+        históricos [C]. Corredor periurbano Km 7 no presenta sobreoferta — ventana estratégica.</p>
+      </div>
+    </div>
+    <div class="box-dark">
+      <strong>Advertencia:</strong> El componente comercial requiere validación de demanda específica (levantamiento
+      con operadores retail) y análisis de tráfico vehicular del corredor. La vacancia comercial nacional
+      post-COVID es un riesgo que se mitiga con el mercado cautivo del proyecto residencial.
+    </div>
+  </div>
+</div>
+
+<!-- ── PRODUCTO 4: PLAZA BOULEVAR ── -->
+<div class="product-block">
+  <div class="product-title">
+    <span>04 · Plaza Boulevar</span>
+    <span class="product-tag">ESPACIO COMERCIAL ABIERTO · GASTRONOMÍA · LIFESTYLE</span>
+  </div>
+  <div class="product-body">
+    <div class="product-cols">
+      <div>
+        <h3>Concepto y Rol en el Ecosistema</h3>
+        <p>La Plaza Boulevar es el componente de comercio abierto, gastronomía y lifestyle del proyecto.
+        Funciona como ancla social y punto de confluencia entre residentes, huéspedes de Airbnb y visitantes
+        del corredor vial. Su rol es estratégico: <strong>aumenta la tasa de ocupación de Airbnb al ofrecer
+        experiencia in-situ</strong> sin necesidad de movilizarse al centro de Armenia.</p>
+        <ul>
+          <li>Gastronomía selecta: restaurantes, cafés, bar de vinos</li>
+          <li>Boutiques, bienestar, coworking abierto</li>
+          <li>Ejes peatonales con espejos de agua (diseño Didier Rincón)</li>
+          <li>Activaciones culturales y ferias artesanales</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Proyección de Valor</h3>
+        <table>
+          <tr><th>Concepto</th><th>Valor estimado</th></tr>
+          <tr><td>Precio/m² venta (plaza abierta)</td><td class="td-center">$6M–$10M/m²</td></tr>
+          <tr><td>Canon arriendo/m²/mes</td><td class="td-center">$50,000–$80,000</td></tr>
+          <tr><td>Perfil operador ideal</td><td class="td-center">Cafés specialty, restaurantes, salud</td></tr>
+          <tr><td>Impacto en TH valorizac.</td><td class="td-center">+5–8% premium sobre Townhouses adyacentes</td></tr>
+        </table>
+        <p style="font-size:8px;color:#555;">[E/I] La Plaza Boulevar aumenta la calificación del proyecto en Airbnb
+        (huéspedes valoran gastronomía y amenidades walking distance). Contribuye al posicionamiento
+        "Donde la inversión y el paisaje cafetero se encuentran".</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     D. SEGMENTO DE INVERSIONISTAS
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO DE MERCADO — RIO MAGGIORE RESIDENCIAL CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header gold">D. Estudio de Segmento de Inversionistas — Rio Maggiore</div>
+
+<p>El análisis de segmentos combina los hallazgos del mercado de Armenia (25% compradores no residentes [C],
+mayor demanda renta corta [C]) con las características específicas de Rio Maggiore: escala turística, fiducia,
+proximidad aeropuerto y productos con vocación mixta. Se identifican <strong>8 perfiles de inversionista</strong>:
+3 locales/regionales, 3 nacionales y 2 internacionales.</p>
+
+<h2>D.1 Perfiles Locales y Regionales</h2>
+<div class="investor-grid">
+  <div class="investor-card">
+    <div class="investor-card-header">L1 · Profesional Armenio / Cafetero</div>
+    <div class="investor-row"><span class="investor-key">Edad:</span><span class="investor-val">30–48 años</span></div>
+    <div class="investor-row"><span class="investor-key">Ingresos:</span><span class="investor-val">$6M–$15M/mes</span></div>
+    <div class="investor-row"><span class="investor-key">Ocupación:</span><span class="investor-val">Médico, abogado, empresario mediano, profesional independiente</span></div>
+    <div class="investor-row"><span class="investor-key">Ticket RM:</span><span class="investor-val">$225M–$486M (Townhouse 45–90 m²)</span></div>
+    <div class="investor-row"><span class="investor-key">Financiación:</span><span class="investor-val">50–70% crédito hipotecario + ahorro</span></div>
+    <div class="investor-row"><span class="investor-key">Motivación:</span><span class="investor-val">Primera inversión inmobiliaria; dejar de arrendar; generar renta</span></div>
+    <div class="investor-row"><span class="investor-key">Atributo clave:</span><span class="investor-val">Ubicación (conoce el corredor), fiducia, acabados</span></div>
+    <div class="investor-row"><span class="investor-key">Objeción:</span><span class="investor-val">Tasa hipotecaria alta (>10%); prefiere si puede pre-vender en renta</span></div>
+    <div class="investor-row"><span class="investor-key">Canal:</span><span class="investor-val">Redes sociales locales, ferias inmobiliarias Armenia/Pereira</span></div>
+    <div class="investor-row"><span class="investor-key">Producto ideal:</span><span class="investor-val">Townhouse 90 m² — uso propio fin de semana + Airbnb en ausencia</span></div>
+  </div>
+  <div class="investor-card">
+    <div class="investor-card-header">L2 · Empresario Regional Quindío / Eje Cafetero</div>
+    <div class="investor-row"><span class="investor-key">Edad:</span><span class="investor-val">45–65 años</span></div>
+    <div class="investor-row"><span class="investor-key">Ingresos:</span><span class="investor-val">$20M–$80M/mes</span></div>
+    <div class="investor-row"><span class="investor-key">Origen:</span><span class="investor-val">Pereira, Manizales, Armenia, Ibagué</span></div>
+    <div class="investor-row"><span class="investor-key">Ticket RM:</span><span class="investor-val">$486M–$2,700M (TH 90-120m² o Casa Campestre)</span></div>
+    <div class="investor-row"><span class="investor-key">Financiación:</span><span class="investor-val">Frecuente al contado o leasing</span></div>
+    <div class="investor-row"><span class="investor-key">Motivación:</span><span class="investor-val">Diversificación patrimonial, renta pasiva, segunda vivienda</span></div>
+    <div class="investor-row"><span class="investor-key">Atributo clave:</span><span class="investor-val">Exclusividad, vecindad Club Campestre, diseño premium, fiducia</span></div>
+    <div class="investor-row"><span class="investor-key">Objeción:</span><span class="investor-val">Compara con proyectos en Salento/Montenegro (precios más altos)</span></div>
+    <div class="investor-row"><span class="investor-key">Canal:</span><span class="investor-val">Fuerza de ventas directa, referidos, cámara de comercio</span></div>
+    <div class="investor-row"><span class="investor-key">Producto ideal:</span><span class="investor-val">Casa Campestre Oriental o Cubista — uso propio + valorización</span></div>
+  </div>
+  <div class="investor-card">
+    <div class="investor-card-header">L3 · Jubilado / Pensionado Cafetero</div>
+    <div class="investor-row"><span class="investor-key">Edad:</span><span class="investor-val">55–72 años</span></div>
+    <div class="investor-row"><span class="investor-key">Capital:</span><span class="investor-val">Pensión + ahorros $300M–$1,200M COP</span></div>
+    <div class="investor-row"><span class="investor-key">Origen:</span><span class="investor-val">Armenia, Calarcá, Cali, Bogotá (con raíces cafeteras)</span></div>
+    <div class="investor-row"><span class="investor-key">Ticket RM:</span><span class="investor-val">$225M–$486M (Townhouse) o Casa Campestre si capital</span></div>
+    <div class="investor-row"><span class="investor-key">Financiación:</span><span class="investor-val">Al contado preferiblemente; crédito si pensión lo respalda</span></div>
+    <div class="investor-row"><span class="investor-key">Motivación:</span><span class="investor-val">Reducir tamaño, clima ideal, calidad de vida, renta estable</span></div>
+    <div class="investor-row"><span class="investor-key">Atributo clave:</span><span class="investor-val">Seguridad física (vigilancia 24h), servicios médicos cercanos, naturaleza</span></div>
+    <div class="investor-row"><span class="investor-key">Objeción:</span><span class="investor-val">Preocupación por "ciudad pequeña"; lejanía de familia en grandes ciudades</span></div>
+    <div class="investor-row"><span class="investor-key">Canal:</span><span class="investor-val">Ferias AARP-tipo, referidos, sala de ventas presencial</span></div>
+    <div class="investor-row"><span class="investor-key">Producto ideal:</span><span class="investor-val">Townhouse 120 m² dúplex — uso propio + Airbnb cuando viaja</span></div>
+  </div>
+</div>
+
+<h2>D.2 Perfiles Nacionales</h2>
+<div class="investor-grid">
+  <div class="investor-card">
+    <div class="investor-card-header">N1 · Bogotano — 2ª Vivienda + Renta Corta</div>
+    <div class="investor-row"><span class="investor-key">Edad:</span><span class="investor-val">38–60 años</span></div>
+    <div class="investor-row"><span class="investor-key">Ingresos:</span><span class="investor-val">$15M–$50M/mes</span></div>
+    <div class="investor-row"><span class="investor-key">Ticket RM:</span><span class="investor-val">$432M–$696M (TH 90–120 m²) o Casa Campestre</span></div>
+    <div class="investor-row"><span class="investor-key">Financiación:</span><span class="investor-val">Crédito hipotecario + preventa; o contado según patrimonio</span></div>
+    <div class="investor-row"><span class="investor-key">Motivación:</span><span class="investor-val">Escape de Bogotá, segunda vivienda de descanso, Airbnb cuando no usa</span></div>
+    <div class="investor-row"><span class="investor-key">Atributo clave:</span><span class="investor-val">PCC, café, clima, vuelo directo Bogotá–Armenia (45 min), diseño contemporáneo</span></div>
+    <div class="investor-row"><span class="investor-key">Objeción:</span><span class="investor-val">Prefiere Salento o Montenegro; percepción de Armenia como "ciudad", no destino</span></div>
+    <div class="investor-row"><span class="investor-key">Mensaje clave:</span><span class="investor-val">"Club privado con Airbnb habilitado — tu segunda vivienda se paga sola"</span></div>
+    <div class="investor-row"><span class="investor-key">Canal:</span><span class="investor-val">Meta Ads Bogotá, ferias vivienda (Corferias), agentes aliados</span></div>
+  </div>
+  <div class="investor-card">
+    <div class="investor-card-header">N2 · Medellín / Cali — Portafolio Inmobiliario</div>
+    <div class="investor-row"><span class="investor-key">Edad:</span><span class="investor-val">32–55 años</span></div>
+    <div class="investor-row"><span class="investor-key">Ingresos:</span><span class="investor-val">$12M–$40M/mes</span></div>
+    <div class="investor-row"><span class="investor-key">Ticket RM:</span><span class="investor-val">$225M–$540M (TH 45–90 m²); busca rendimiento Airbnb</span></div>
+    <div class="investor-row"><span class="investor-key">Financiación:</span><span class="investor-val">Al contado o leasing bancario</span></div>
+    <div class="investor-row"><span class="investor-key">Motivación:</span><span class="investor-val">Diversificar fuera de Medellín/Cali; menor precio/m² que su ciudad</span></div>
+    <div class="investor-row"><span class="investor-key">Atributo clave:</span><span class="investor-val">Gestión delegada disponible, escala de proyecto (seguridad operacional), fiducia</span></div>
+    <div class="investor-row"><span class="investor-key">Objeción:</span><span class="investor-val">Armenia percibida como secundaria vs. su ciudad; necesita prueba de demanda Airbnb</span></div>
+    <div class="investor-row"><span class="investor-key">Mensaje clave:</span><span class="investor-val">"240 unidades bajo un mismo operador — la eficiencia de un hotel boutique"</span></div>
+    <div class="investor-row"><span class="investor-key">Canal:</span><span class="investor-val">Meta Ads Medellín/Cali, Instagram lifestyle, eventos privados</span></div>
+  </div>
+  <div class="investor-card">
+    <div class="investor-card-header">N3 · Inversionista Nómada Nacional (Renta Pura)</div>
+    <div class="investor-row"><span class="investor-key">Edad:</span><span class="investor-val">28–45 años</span></div>
+    <div class="investor-row"><span class="investor-key">Perfil:</span><span class="investor-val">Emprendedor digital, consultor, influencer financiero</span></div>
+    <div class="investor-row"><span class="investor-key">Ticket RM:</span><span class="investor-val">$225M–$270M (TH 45 m² estudio)</span></div>
+    <div class="investor-row"><span class="investor-key">Financiación:</span><span class="investor-val">Frecuente al contado; busca flujo inmediato</span></div>
+    <div class="investor-row"><span class="investor-key">Motivación:</span><span class="investor-val">Construir portafolio Airbnb; máximo rendimiento por menor inversión</span></div>
+    <div class="investor-row"><span class="investor-key">Atributo clave:</span><span class="investor-val">Rentabilidad 14%+, gestión delegada, transparencia de operación</span></div>
+    <div class="investor-row"><span class="investor-key">Objeción:</span><span class="investor-val">Exige prueba de rendimiento; escéptico si no ve datos reales de ocupación</span></div>
+    <div class="investor-row"><span class="investor-key">Mensaje clave:</span><span class="investor-val">"Estudio 45 m² — inversión $247M · renta estimada $42M–$54M/año · TIR 16–22%"</span></div>
+    <div class="investor-row"><span class="investor-key">Canal:</span><span class="investor-val">YouTube/TikTok finanzas, podcasts inversión, comunidades Telegram</span></div>
+  </div>
+</div>
+
+<h2>D.3 Perfiles Internacionales</h2>
+<div class="box-green" style="margin-bottom:10px;">
+  <strong>Contexto:</strong> El 25% de compradores en Quindío son colombianos no residentes [C].
+  Quindío es N.°1 en Colombia en compras por colombianos del exterior [C]. El COP depreciado frente al
+  USD/EUR hace que los precios de Rio Maggiore sean excepcionalmente atractivos para inversionistas
+  con ingresos en moneda extranjera.
+</div>
+<div class="investor-grid">
+  <div class="investor-card">
+    <div class="investor-card-header">I1 · Colombiano en Exterior (EE.UU. · España · Canadá)</div>
+    <div class="investor-row"><span class="investor-key">Edad:</span><span class="investor-val">35–55 años</span></div>
+    <div class="investor-row"><span class="investor-key">Ingresos:</span><span class="investor-val">USD $4,000–$12,000/mes</span></div>
+    <div class="investor-row"><span class="investor-key">Destinos:</span><span class="investor-val">Miami, Nueva York, Madrid, Barcelona, Toronto, Montreal</span></div>
+    <div class="investor-row"><span class="investor-key">Ticket RM:</span><span class="investor-val">$250M–$500M COP (≈ USD 60K–125K). Frecuente al contado</span></div>
+    <div class="investor-row"><span class="investor-key">Motivación:</span><span class="investor-val">Diversificación patrimonial en COP · ingreso pasivo · eventual retorno Colombia</span></div>
+    <div class="investor-row"><span class="investor-key">Atributo clave:</span><span class="investor-val">Fiducia Acción Fiduciaria (seguridad jurídica remota) · gestión delegada Airbnb · diseño internacional</span></div>
+    <div class="investor-row"><span class="investor-key">Objeción principal:</span><span class="investor-val">Desconoce Armenia como destino turístico; lo compara con Cartagena/Medellín</span></div>
+    <div class="investor-row"><span class="investor-key">Respuesta objeción:</span><span class="investor-val">"Quindío N.°1 en Colombia para colombianos del exterior · Aeropuerto 6 min · PCC UNESCO"</span></div>
+    <div class="investor-row"><span class="investor-key">Canal:</span><span class="investor-val">Meta Ads segmentado Miami/Madrid/Toronto · WhatsApp Business CRM · Tour virtual 360°</span></div>
+    <div class="investor-row"><span class="investor-key">Producto ideal:</span><span class="investor-val">TH 45–90 m² + contrato gestión delegada operador Airbnb desde día 1</span></div>
+  </div>
+  <div class="investor-card">
+    <div class="investor-card-header">I2 · Colombiano Retornado / Retirado Internacional</div>
+    <div class="investor-row"><span class="investor-key">Edad:</span><span class="investor-val">50–68 años</span></div>
+    <div class="investor-row"><span class="investor-key">Capital:</span><span class="investor-val">USD $150,000–$500,000 (ahorros pensión exterior)</span></div>
+    <div class="investor-row"><span class="investor-key">Motivación:</span><span class="investor-val">Retiro de alta calidad de vida en Colombia · costo de vida bajo vs. EE.UU./Europa</span></div>
+    <div class="investor-row"><span class="investor-key">Ticket RM:</span><span class="investor-val">$600M–$2,700M COP (TH dúplex o Casa Campestre)</span></div>
+    <div class="investor-row"><span class="investor-key">Financiación:</span><span class="investor-val">100% contado con capital exterior</span></div>
+    <div class="investor-row"><span class="investor-key">Atributo clave:</span><span class="investor-val">Club privado · seguridad · clima primaveral todo el año · vuelo directo internacional</span></div>
+    <div class="investor-row"><span class="investor-key">Objeción:</span><span class="investor-val">Prefiere Medellín o Cartagena como opción de retiro más conocida</span></div>
+    <div class="investor-row"><span class="investor-key">Respuesta:</span><span class="investor-val">"RM ofrece calidad de vida de El Poblado a 40% del precio · Aeropuerto con rutas a Miami"</span></div>
+    <div class="investor-row"><span class="investor-key">Canal:</span><span class="investor-val">Ferias LATAM en Miami/NYC · portales Properati internacional · referidos comunidad colombiana</span></div>
+    <div class="investor-row"><span class="investor-key">Producto ideal:</span><span class="investor-val">Casa Campestre (uso propio, Airbnb temporal) o TH 120 m² dúplex</span></div>
+  </div>
+  <div class="investor-card" style="grid-column: span 2;">
+    <div class="investor-card-header">I3 · Inversionista Latinoamericano (Venezuela · Ecuador · Panamá · México)</div>
+    <div class="investor-row"><span class="investor-key">Perfil:</span><span class="investor-val">Empresario o familia de alto patrimonio buscando activos en Colombia como reserva de valor</span></div>
+    <div class="investor-row"><span class="investor-key">Edad:</span><span class="investor-val">40–65 años</span></div>
+    <div class="investor-row"><span class="investor-key">Capital:</span><span class="investor-val">USD $80,000–$600,000 destinado a inmuebles Colombia</span></div>
+    <div class="investor-row"><span class="investor-key">Ticket RM:</span><span class="investor-val">$432M–$2,700M COP según capacidad · frecuente al contado</span></div>
+    <div class="investor-row"><span class="investor-key">Motivación:</span><span class="investor-val">Diversificación fuera de su país · estabilidad jurídica Colombia · potencial renta USD · apreciación COP</span></div>
+    <div class="investor-row"><span class="investor-key">Atributo clave:</span><span class="investor-val">Fiducia Acción Fiduciaria (garantía jurídica para extranjeros) · gestión remota · escrituración internacional facilitada</span></div>
+    <div class="investor-row"><span class="investor-key">Objeción:</span><span class="investor-val">Desconocimiento de Armenia; proceso notarial; restricciones cambiarias en su país de origen</span></div>
+    <div class="investor-row"><span class="investor-key">Canal:</span><span class="investor-val">Portales internacionales (Lamudi, Point2Homes) · corredores aliados Venezuela/Panamá · eventos FIABCI</span></div>
+    <div class="investor-row"><span class="investor-key">Producto ideal:</span><span class="investor-val">TH 90 m² + Casa Campestre (combinación: 1 casa de uso + 1 TH en renta)</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     E. MODELO FINANCIERO CONSOLIDADO
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO DE MERCADO — RIO MAGGIORE RESIDENCIAL CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header">E. Modelo Financiero Consolidado del Proyecto</div>
+
+<h2>E.1 Supuestos Base del Modelo por Producto</h2>
+<table>
+  <tr>
+    <th style="width:22%">Producto</th>
+    <th style="width:12%">Unidades</th>
+    <th style="width:16%">Área vendible</th>
+    <th style="width:18%">Precio/m² base</th>
+    <th style="width:16%">Ingreso total est.</th>
+    <th style="width:16%">Ritmo venta</th>
+  </tr>
+  <tr>
+    <td class="td-label">TH 45 m² (~80 uds)</td>
+    <td class="td-center">80</td>
+    <td class="td-center">3,200 m²</td>
+    <td class="td-center">$5.2M/m²</td>
+    <td class="td-center">$16,640M COP</td>
+    <td class="td-center">5–8 uds/mes</td>
+  </tr>
+  <tr>
+    <td class="td-label">TH 90 m² (~120 uds)</td>
+    <td class="td-center">120</td>
+    <td class="td-center">10,800 m²</td>
+    <td class="td-center">$5.0M/m²</td>
+    <td class="td-center">$54,000M COP</td>
+    <td class="td-center">5–7 uds/mes</td>
+  </tr>
+  <tr>
+    <td class="td-label">TH 120 m² (~40 uds)</td>
+    <td class="td-center">40</td>
+    <td class="td-center">4,800 m²</td>
+    <td class="td-center">$4.8M/m²</td>
+    <td class="td-center">$23,040M COP</td>
+    <td class="td-center">2–3 uds/mes</td>
+  </tr>
+  <tr>
+    <td class="td-label">Casas Campestres (7)</td>
+    <td class="td-center">7</td>
+    <td class="td-center">2,660 m²</td>
+    <td class="td-center">$4.2M/m²</td>
+    <td class="td-center">$11,172M COP</td>
+    <td class="td-center">0.5 uds/mes</td>
+  </tr>
+  <tr>
+    <td class="td-label">Comercial (Mall + Plaza) [E]</td>
+    <td class="td-center">—</td>
+    <td class="td-center">Est. 4,000–8,000 m²</td>
+    <td class="td-center">$8M–$12M/m²</td>
+    <td class="td-center">$32,000M–$96,000M</td>
+    <td class="td-center">Variable</td>
+  </tr>
+  <tr style="background:#e8f0e8;">
+    <td class="td-label"><strong>TOTAL RESIDENCIAL</strong></td>
+    <td class="td-center"><strong>247</strong></td>
+    <td class="td-center"><strong>21,460 m²</strong></td>
+    <td class="td-center">—</td>
+    <td class="td-center"><strong>$104,852M COP</strong></td>
+    <td class="td-center">~18–24 meses</td>
+  </tr>
+</table>
+<p style="font-size:8px;color:#555;">[E/I] Modelo ilustrativo. Requiere área real de cada lote, presupuesto de obra detallado y cronograma.
+No construir TIR ni VPN sobre estos datos sin validación de ingeniería. USD/COP referencia: $4,060.</p>
+
+<h2>E.2 Tres Escenarios — Townhouses (240 unidades)</h2>
+<table>
+  <tr>
+    <th style="width:32%">Variable</th>
+    <th class="dark-head" style="width:22%">Conservador</th>
+    <th style="width:23%">Base</th>
+    <th class="gold-head" style="width:23%">Optimista</th>
+  </tr>
+  <tr><td class="td-label">Precio/m² venta promedio</td><td class="td-center">$4,600,000</td><td class="td-center">$5,200,000</td><td class="td-center">$6,000,000</td></tr>
+  <tr><td class="td-label">Unidades vendidas (de 240)</td><td class="td-center">204 (85%)</td><td class="td-center">228 (95%)</td><td class="td-center">240 (100%)</td></tr>
+  <tr><td class="td-label">Tiempo de ventas</td><td class="td-center">28–36 meses</td><td class="td-center">18–24 meses</td><td class="td-center">12–16 meses</td></tr>
+  <tr><td class="td-label">Ingresos brutos (TH)</td><td class="td-center">~$72,000M COP</td><td class="td-center">~$93,600M COP</td><td class="td-center">~$115,200M COP</td></tr>
+  <tr><td class="td-label">Ocupación Airbnb post-entrega</td><td class="td-center">50%</td><td class="td-center">62%</td><td class="td-center">72%</td></tr>
+  <tr><td class="td-label">Rentabilidad inversionista (anual)</td><td class="td-center">10–12%</td><td class="td-center">14–16%</td><td class="td-center">18–22%</td></tr>
+  <tr><td class="td-label">Valorización 5 años</td><td class="td-center">+20%</td><td class="td-center">+38%</td><td class="td-center">+55%</td></tr>
+</table>
+
+<h2>E.3 Proyección de Valorización del Metro Cuadrado</h2>
+<table>
+  <tr>
+    <th>Horizonte</th>
+    <th>Escenario Conservador</th>
+    <th>Escenario Base</th>
+    <th>Escenario Optimista</th>
+    <th>Supuesto Clave</th>
+  </tr>
+  <tr><td>2026 (Preventa)</td><td class="td-center">$4.6M–$5.0M</td><td class="td-center">$5.0M–$5.5M</td><td class="td-center">$5.5M–$6.0M</td><td>Demanda inversionista regional + exterior</td></tr>
+  <tr><td>2027 (Entrega)</td><td class="td-center">$5.0M–$5.5M</td><td class="td-center">$5.5M–$6.2M</td><td class="td-center">$6.2M–$7.0M</td><td>Expansión aeropuerto + inauguración Mall</td></tr>
+  <tr><td>2028 (+1 año)</td><td class="td-center">$5.2M–$5.8M</td><td class="td-center">$6.0M–$6.8M</td><td class="td-center">$7.0M–$8.0M</td><td>Consolidación renta corta; demanda probada</td></tr>
+  <tr><td>Acum. 5 años</td><td class="td-center">+20%</td><td class="td-center">+38%</td><td class="td-center">+55%</td><td>Brecha vs. Pereira; infraestructura vial</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════
+     F. ESTRATEGIA COMERCIAL POR SEGMENTO
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO DE MERCADO — RIO MAGGIORE RESIDENCIAL CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header green">F. Estrategia Comercial por Segmento de Inversionista</div>
+
+<h2>F.1 Segmentación y Canales por Perfil</h2>
+<table>
+  <tr>
+    <th style="width:22%">Segmento</th>
+    <th style="width:20%">Producto Prioritario</th>
+    <th style="width:20%">Canal Principal</th>
+    <th style="width:22%">Mensaje Clave</th>
+    <th style="width:16%">Herramienta</th>
+  </tr>
+  <tr>
+    <td>L1 Profesional armenio</td>
+    <td>TH 90 m²</td>
+    <td>Instagram + feria Armenia</td>
+    <td>"Tu inversión local, renta inmediata"</td>
+    <td>Sala ventas presencial</td>
+  </tr>
+  <tr>
+    <td>L2 Empresario regional</td>
+    <td>Casa Campestre</td>
+    <td>Fuerza ventas directa</td>
+    <td>"Exclusividad + Club Campestre Armenia"</td>
+    <td>Tour presencial</td>
+  </tr>
+  <tr>
+    <td>L3 Jubilado cafetero</td>
+    <td>TH 120 m² dúplex</td>
+    <td>Ferias + referidos</td>
+    <td>"Calidad de vida + renta cuando viaja"</td>
+    <td>Evento lanzamiento</td>
+  </tr>
+  <tr>
+    <td>N1 Bogotano 2ª vivienda</td>
+    <td>TH 90–120 m²</td>
+    <td>Meta Ads Bogotá</td>
+    <td>"Club cafetero a 45 min en avión"</td>
+    <td>Landing page + CRM</td>
+  </tr>
+  <tr>
+    <td>N2 Medellín / Cali</td>
+    <td>TH 45–90 m²</td>
+    <td>Meta Ads + Instagram</td>
+    <td>"240 Airbnb bajo un operador · TIR 16%"</td>
+    <td>Sala virtual + webinar</td>
+  </tr>
+  <tr>
+    <td>N3 Nómada renta pura</td>
+    <td>TH 45 m² estudio</td>
+    <td>TikTok / YouTube</td>
+    <td>"$247M · $42M/año · gestión delegada"</td>
+    <td>Contenido financiero</td>
+  </tr>
+  <tr>
+    <td>I1 Colombiano exterior</td>
+    <td>TH 45–90 m²</td>
+    <td>Meta Ads Miami/Madrid</td>
+    <td>"Quindío N.°1 · Fiducia · COP a tu favor"</td>
+    <td>Tour 360° + WhatsApp</td>
+  </tr>
+  <tr>
+    <td>I2 Retornado / Retirado</td>
+    <td>Casa Campestre / TH 120</td>
+    <td>Ferias LATAM Miami/NYC</td>
+    <td>"Club privado · calidad Poblado a 40% precio"</td>
+    <td>Agentes aliados</td>
+  </tr>
+  <tr>
+    <td>I3 Latinoamericano</td>
+    <td>TH 90 m² + Casa</td>
+    <td>Portales internacionales</td>
+    <td>"Reserva de valor · fiducia · escritura remota"</td>
+    <td>Corredor aliado LATAM</td>
+  </tr>
+</table>
+
+<h2>F.2 Fases de Comercialización Rio Maggiore</h2>
+<table>
+  <tr><th>Fase</th><th>Período</th><th>Segmentos Prioritarios</th><th>Meta</th><th>Precio/m²</th></tr>
+  <tr>
+    <td>0 · Preventa silenciosa</td><td>Meses 1–3</td>
+    <td>L1, L2, N2 (inversionistas comprometidos)</td>
+    <td>24–36 TH + 2 Casas</td><td>$4.8M–$5.0M</td>
+  </tr>
+  <tr>
+    <td>1 · Lanzamiento nacional</td><td>Meses 3–8</td>
+    <td>N1, N2, N3, I1 (exterior)</td>
+    <td>40–50% TH vendidos</td><td>$5.0M–$5.5M</td>
+  </tr>
+  <tr>
+    <td>2 · Campaña exterior</td><td>Meses 6–14</td>
+    <td>I1, I2, I3 (Colombia exterior + LATAM)</td>
+    <td>+60 TH + 3 Casas</td><td>$5.3M–$6.0M</td>
+  </tr>
+  <tr>
+    <td>3 · Maduración obra</td><td>Meses 8–20</td>
+    <td>Todos; testimonios primeros compradores</td>
+    <td>80–95% TH vendidos</td><td>$5.8M–$6.5M</td>
+  </tr>
+  <tr>
+    <td>4 · Entrega y activación</td><td>Meses 20–30</td>
+    <td>Nuevos inversores (prueba Airbnb real)</td>
+    <td>100% escriturado</td><td>$6.2M–$7.0M</td>
+  </tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════
+     G. RIESGOS ESPECÍFICOS
+═══════════════════════════════════════════════════════════ -->
+<div class="section-header dark">G. Riesgos Específicos del Proyecto</div>
+
+<table>
+  <tr>
+    <th style="width:28%">Riesgo</th>
+    <th style="width:8%">Prob.</th>
+    <th style="width:8%">Impacto</th>
+    <th style="width:8%">Nivel</th>
+    <th style="width:48%">Medida de Mitigación</th>
+  </tr>
+  <tr>
+    <td>Baja ocupación Airbnb en Armenia (competencia Salento)</td>
+    <td class="td-center">Media</td><td class="td-center">Alto</td>
+    <td class="td-center"><span class="badge-alto">ALTO</span></td>
+    <td>Validar demanda en AirDNA/Transparent antes de preventa · operador con historial probado</td>
+  </tr>
+  <tr>
+    <td>Sobreoferta turística si entran otros proyectos similares</td>
+    <td class="td-center">Media</td><td class="td-center">Alto</td>
+    <td class="td-center"><span class="badge-alto">ALTO</span></td>
+    <td>240 unidades como primer mover crea barrera de entrada · escala y ecosistema difícil de replicar</td>
+  </tr>
+  <tr>
+    <td>Reglamento PH sin habilitación renta corta</td>
+    <td class="td-center">Baja</td><td class="td-center">Muy alto</td>
+    <td class="td-center"><span class="badge-alto">ALTO</span></td>
+    <td>Estructurar habilitación Airbnb ANTES de escrituración · incluir en promesas de compraventa</td>
+  </tr>
+  <tr>
+    <td>Inversionistas del exterior sin gestión delegada</td>
+    <td class="td-center">Media</td><td class="td-center">Alto</td>
+    <td class="td-center"><span class="badge-alto">ALTO</span></td>
+    <td>Lanzar operador de gestión delegada (SPV o alianza) como parte del paquete de inversión</td>
+  </tr>
+  <tr>
+    <td>Vacancia alta en componente comercial (Mall)</td>
+    <td class="td-center">Media</td><td class="td-center">Medio</td>
+    <td class="td-center"><span class="badge-medio">MEDIO</span></td>
+    <td>Pre-arrendar ancla (supermercado, clínica, banco) antes de comercializar locales pequeños</td>
+  </tr>
+  <tr>
+    <td>Costo construcción supera presupuesto</td>
+    <td class="td-center">Media</td><td class="td-center">Alto</td>
+    <td class="td-center"><span class="badge-alto">ALTO</span></td>
+    <td>Contrato precio fijo con Rincón &amp; Franz Adolphs · provisión 10–15% imprevistos · fiducia escrow</td>
+  </tr>
+  <tr>
+    <td>Tasas hipotecarias se mantienen >10%</td>
+    <td class="td-center">Media</td><td class="td-center">Medio</td>
+    <td class="td-center"><span class="badge-medio">MEDIO</span></td>
+    <td>Enfocar ventas en inversionistas al contado (exterior + empresarios) · menos dependencia crédito</td>
+  </tr>
+  <tr>
+    <td>Restricción futura renta corta (regulación)</td>
+    <td class="td-center">Baja</td><td class="td-center">Alto</td>
+    <td class="td-center"><span class="badge-medio">MEDIO</span></td>
+    <td>Diseñar unidades habilitadas también para renta larga desde el inicio · plan B evidente</td>
+  </tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════
+     H. RECOMENDACIONES FINALES
+═══════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="page-header">
+  <span>ESTUDIO DE MERCADO — RIO MAGGIORE RESIDENCIAL CLUB</span>
+  <span>Abril 2026</span>
+</div>
+
+<div class="section-header green">H. Recomendaciones Finales</div>
+
+<h2>H.1 Acciones Prioritarias</h2>
+<ul style="margin-left:16px;">
+  <li><strong>Habilitar legalmente renta corta desde el reglamento PH</strong> antes de cualquier promesa de compraventa. Es el activo diferenciador más crítico para el segmento inversionista.</li>
+  <li><strong>Estructurar operador de gestión delegada</strong> (alianza o SPV propio) para inversionistas remotos — clave para colombianos en exterior y latinoamericanos.</li>
+  <li><strong>Validar demanda Airbnb real en Armenia</strong> (AirDNA/Transparent) y publicar datos en material de ventas. Destruye la principal objeción del inversionista escéptico.</li>
+  <li><strong>Pre-arrendar ancla comercial</strong> en Riviera Mall antes de la comercialización de locales. Reduce riesgo de vacancia y valida el componente comercial.</li>
+  <li><strong>Lanzar campaña digital segmentada en Bogotá, Medellín y diáspora</strong> (Miami, Madrid, Toronto) desde el Mes 1. El 25% del mercado Quindío son no residentes [C].</li>
+  <li><strong>Confirmar restricciones del POT 2024</strong> para el predio Km 7 La Tebaida antes de comprometer ventas sobre áreas no aprobadas.</li>
+</ul>
+
+<h2>H.2 Nivel de Atractivo del Proyecto por Criterio</h2>
+<table>
+  <tr>
+    <th style="width:35%">Criterio</th>
+    <th style="width:20%">Calificación</th>
+    <th style="width:45%">Justificación</th>
+  </tr>
+  <tr>
+    <td>Potencial de valorización</td>
+    <td class="td-center"><span class="stars">★★★★</span>☆</td>
+    <td>+38% base a 5 años; brecha con Pereira por cerrar</td>
+  </tr>
+  <tr>
+    <td>Rentabilidad renta corta TH</td>
+    <td class="td-center"><span class="stars">★★★★</span>☆</td>
+    <td>14–18% anual en escenario base con ocupación 60–65%</td>
+  </tr>
+  <tr>
+    <td>Escala y ecosistema completo</td>
+    <td class="td-center"><span class="stars">★★★★★</span></td>
+    <td>Único proyecto de 240 uds + mall + plaza en Armenia periurbana</td>
+  </tr>
+  <tr>
+    <td>Seguridad jurídica</td>
+    <td class="td-center"><span class="stars">★★★★★</span></td>
+    <td>Fiducia Acción Fiduciaria — máxima confianza para inversionistas remotos</td>
+  </tr>
+  <tr>
+    <td>Riesgo de ejecución</td>
+    <td class="td-center"><span class="stars">★★★</span>☆☆</td>
+    <td>Escala grande requiere constructor sólido; Rincón &amp; Franz Adolphs validado</td>
+  </tr>
+  <tr>
+    <td>Demanda Airbnb local (validada)</td>
+    <td class="td-center"><span class="stars">★★★</span>☆☆</td>
+    <td>Armenia creciente pero no tan consolidada como Salento — requiere demostración</td>
+  </tr>
+  <tr>
+    <td>Diferenciación disponible</td>
+    <td class="td-center"><span class="stars">★★★★★</span></td>
+    <td>Ecosistema propio + Airbnb escala + diseño award-worthy — sin competidor directo</td>
+  </tr>
+  <tr style="background:#e8f0e8;">
+    <td><strong>ATRACTIVO GENERAL</strong></td>
+    <td class="td-center"><strong>ALTO</strong></td>
+    <td>Viable y atractivo si se estructura habilitación Airbnb + gestión delegada + preventa sólida</td>
+  </tr>
+</table>
+
+<h2>H.3 Propuesta de Valor Final para el Inversionista</h2>
+<div class="box-gold">
+  <strong>"Rio Maggiore es la primera inversión inmobiliaria en el Eje Cafetero con escala institucional de renta corta:
+  240 unidades Airbnb-habilitadas, club privado, ecosistema comercial propio y respaldo de Acción Fiduciaria.
+  A 6 minutos del único aeropuerto internacional del Quindío. Desde $225 millones COP.
+  Rentabilidad proyectada: 14%–18% anual."</strong>
+</div>
+
+<div style="margin-top:20px;padding:14px;border:1px solid #ccc;background:#fafaf8;font-size:8.5px;color:#666;">
+  <strong>NOTA FINAL:</strong> Este estudio es un insumo analítico preparado en Abril 2026 basado en datos de
+  mercado públicos, el brochure oficial de Rio Maggiore y estimaciones metodológicas. No reemplaza una debida
+  diligencia completa, presupuesto de obra real, estudio de títulos, análisis jurídico del predio ni
+  validación de tasas de ocupación Airbnb con datos primarios (AirDNA/Transparent). Los escenarios financieros
+  son ilustrativos. Consulte con asesores legales, financieros y de construcción antes de comprometer capital.
+</div>
+
+</body>
+</html>

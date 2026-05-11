@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Through Air — Conectando tu negocio con el mundo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1B1B6E;
+      --orange: #F26522;
+      --coral:  #F04E37;
+      --magenta:#C8317A;
+      --grad:   linear-gradient(135deg, #F26522 0%, #F04E37 45%, #C8317A 100%);
+      --grad-r: linear-gradient(135deg, #C8317A 0%, #F04E37 55%, #F26522 100%);
+      --white:  #ffffff;
+      --gray:   #f8f8fb;
+      --text:   #1a1a2e;
+      --muted:  #6b6b8a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 4rem;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+
+    .nav-logo { display: flex; align-items: center; gap: .5rem; }
+    .logo-through {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.9rem;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+    .logo-air {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 2.6rem;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: .9rem; font-weight: 500;
+      color: var(--text); transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--grad);
+      color: var(--white) !important;
+      padding: .55rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: transform .2s, box-shadow .2s !important;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(242,101,34,0.4) !important; color: var(--white) !important; }
+
+    /* ─── HERO ────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 7rem 4rem 4rem;
+      position: relative; overflow: hidden;
+      background: var(--white);
+    }
+
+    .hero-blob {
+      position: absolute; right: -5%; top: 10%;
+      width: 55vw; height: 55vw; max-width: 720px; max-height: 720px;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      background: var(--grad);
+      opacity: .12;
+      animation: morphBlob 12s ease-in-out infinite;
+    }
+    @keyframes morphBlob {
+      0%,100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      50%      { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 640px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(242,101,34,.1);
+      color: var(--orange);
+      font-size: .8rem; font-weight: 600;
+      padding: .35rem 1rem; border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: '●'; font-size: .5rem; }
+
+    .hero h1 {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 span {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.1rem; color: var(--muted); line-height: 1.7;
+      margin-bottom: 2rem; max-width: 520px;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--grad);
+      color: var(--white);
+      padding: .9rem 2rem;
+      border-radius: 50px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 32px rgba(242,101,34,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(242,101,34,0.4); }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      padding: .85rem 2rem;
+      border-radius: 50px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .btn-secondary:hover { background: var(--navy); color: var(--white); }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3rem;
+      padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .stat-num {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.8rem; font-weight: 900; color: var(--navy);
+    }
+    .stat-num span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stat-label { font-size: .8rem; color: var(--muted); font-weight: 500; }
+
+    .hero-visual {
+      position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
+      width: 42%; max-width: 560px; z-index: 1;
+    }
+    .hero-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: var(--grad);
+    }
+    .card-header {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .card-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .card-title { font-weight: 700; color: var(--navy); }
+    .card-sub { font-size: .8rem; color: var(--muted); }
+
+    .metric-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .8rem 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .metric-row:last-child { border-bottom: none; }
+    .metric-label { font-size: .85rem; color: var(--muted); }
+    .metric-val {
+      font-weight: 700; font-size: .9rem;
+      background: var(--grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .metric-bar { height: 6px; border-radius: 3px; background: #eee; overflow: hidden; margin-top: .3rem; }
+    .metric-fill { height: 100%; border-radius: 3px; background: var(--grad); transition: width 1s ease; }
+
+    .float-badge {
+      position: absolute; bottom: -1rem; right: -1rem;
+      background: var(--navy); color: var(--white);
+      padding: .8rem 1.2rem; border-radius: 16px;
+      font-size: .8rem; font-weight: 600;
+      box-shadow: 0 8px 24px rgba(27,27,110,0.3);
+    }
+
+    /* ─── CLIENTS ─────────────────────────────────── */
+    .clients {
+      padding: 3rem 4rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      background: var(--gray);
+    }
+    .clients-label {
+      text-align: center; font-size: .8rem; font-weight: 600;
+      color: var(--muted); letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .clients-grid {
+      display: flex; gap: 3rem; justify-content: center; align-items: center;
+      flex-wrap: wrap;
+    }
+    .client-name {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900; font-size: 1.1rem;
+      color: #bbb; transition: color .2s;
+    }
+    .client-name:hover { color: var(--navy); }
+
+    /* ─── SERVICES ────────────────────────────────── */
+    section { padding: 6rem 4rem; }
+
+    .section-label {
+      display: inline-block;
+      font-size: .8rem; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900; color: var(--navy); line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-sub { font-size: 1rem; color: var(--muted); max-width: 560px; line-height: 1.7; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      cursor: pointer;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--grad); opacity: 0;
+      transition: opacity .3s;
+      border-radius: 20px;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+    .service-card:hover::after { opacity: .04; }
+
+    .service-card.featured {
+      background: var(--grad);
+      border-color: transparent;
+      color: var(--white);
+    }
+
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+      background: rgba(242,101,34,.1);
+    }
+    .service-card.featured .service-icon { background: rgba(255,255,255,.2); }
+
+    .service-type {
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: .5rem;
+    }
+    .service-card.featured .service-type { color: rgba(255,255,255,.7); }
+
+    .service-name {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.3rem; font-weight: 900; color: var(--navy); margin-bottom: .6rem;
+    }
+    .service-card.featured .service-name { color: var(--white); }
+
+    .service-desc { font-size: .9rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; }
+    .service-card.featured .service-desc { color: rgba(255,255,255,.8); }
+
+    .service-price {
+      display: flex; align-items: baseline; gap: .3rem;
+      font-family: 'Nunito', sans-serif;
+    }
+    .price-amount { font-size: 2rem; font-weight: 900; color: var(--navy); }
+    .service-card.featured .price-amount { color: var(--white); }
+    .price-period { font-size: .85rem; color: var(--muted); }
+    .service-card.featured .price-period { color: rgba(255,255,255,.7); }
+
+    .service-includes { margin-top: 1.2rem; }
+    .include-item {
+      display: flex; align-items: flex-start; gap: .5rem;
+      font-size: .85rem; color: var(--muted); margin-bottom: .4rem; line-height: 1.4;
+    }
+    .service-card.featured .include-item { color: rgba(255,255,255,.8); }
+    .include-item::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+    .service-card.featured .include-item::before { color: var(--white); }
+
+    .service-cta {
+      display: inline-block; margin-top: 1.5rem;
+      padding: .7rem 1.5rem; border-radius: 50px;
+      font-weight: 700; font-size: .9rem; text-decoration: none;
+      background: var(--navy); color: var(--white);
+      transition: all .2s;
+    }
+    .service-card.featured .service-cta {
+      background: var(--white); color: var(--orange);
+    }
+    .service-cta:hover { opacity: .85; transform: translateY(-1px); }
+
+    /* ─── PRICING TABLE ──────────────────────────── */
+    .pricing { background: var(--gray); }
+    .pricing-wrapper { max-width: 900px; margin: 3.5rem auto 0; }
+
+    .pricing-tabs {
+      display: flex; gap: .5rem; margin-bottom: 2rem;
+      background: var(--white); padding: .4rem; border-radius: 50px;
+      width: fit-content;
+    }
+    .tab-btn {
+      padding: .55rem 1.4rem; border-radius: 50px; border: none; cursor: pointer;
+      font-weight: 600; font-size: .9rem; transition: all .2s;
+      background: transparent; color: var(--muted);
+    }
+    .tab-btn.active { background: var(--grad); color: var(--white); }
+
+    .pricing-panel { display: none; }
+    .pricing-panel.active { display: block; }
+
+    .pricing-card {
+      background: var(--white); border-radius: 20px;
+      padding: 2.5rem; margin-bottom: 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+      border: 1px solid rgba(0,0,0,0.07);
+      transition: box-shadow .2s;
+    }
+    .pricing-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .pricing-info { flex: 1; min-width: 220px; }
+    .pricing-name {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.3rem; font-weight: 900; color: var(--navy); margin-bottom: .3rem;
+    }
+    .pricing-desc { font-size: .9rem; color: var(--muted); }
+    .pricing-right { text-align: right; }
+    .pricing-amount {
+      font-family: 'Nunito', sans-serif;
+      font-size: 2.2rem; font-weight: 900;
+      background: var(--grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .pricing-label { font-size: .8rem; color: var(--muted); }
+
+    .pricing-total {
+      background: var(--navy); color: var(--white);
+      border-radius: 20px; padding: 2rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;
+    }
+    .total-label { font-size: 1rem; font-weight: 600; opacity: .8; }
+    .total-amount {
+      font-family: 'Nunito', sans-serif;
+      font-size: 2.5rem; font-weight: 900; color: var(--white);
+    }
+
+    /* ─── PAYMENT TIMELINE ────────────────────────── */
+    .timeline-section { }
+    .timeline {
+      display: flex; gap: 0; margin-top: 3rem; overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+    .timeline-step {
+      flex: 1; min-width: 130px; position: relative;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .timeline-step::after {
+      content: '';
+      position: absolute; top: 20px; left: 50%; right: -50%;
+      height: 2px; background: var(--grad);
+    }
+    .timeline-step:last-child::after { display: none; }
+    .t-circle {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--grad); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .85rem; z-index: 1; margin-bottom: .8rem;
+    }
+    .t-month { font-size: .75rem; font-weight: 700; color: var(--navy); margin-bottom: .2rem; }
+    .t-amount {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem; font-weight: 900;
+      background: var(--grad); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .t-note { font-size: .7rem; color: var(--muted); margin-top: .2rem; }
+
+    /* ─── PROCESS ─────────────────────────────────── */
+    .process { background: var(--gray); }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem; margin-top: 3.5rem;
+    }
+    .process-step { text-align: center; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--grad); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.3rem; font-weight: 900;
+      margin: 0 auto 1rem;
+    }
+    .step-title { font-weight: 700; color: var(--navy); margin-bottom: .4rem; }
+    .step-desc { font-size: .875rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── CTA SECTION ─────────────────────────────── */
+    .cta-section {
+      background: var(--grad);
+      padding: 6rem 4rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; top: -40%; left: -10%;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: rgba(255,255,255,.06);
+    }
+    .cta-section::after {
+      content: '';
+      position: absolute; bottom: -30%; right: 5%;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: rgba(255,255,255,.06);
+    }
+    .cta-section h2 {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900; color: var(--white); margin-bottom: 1rem; position: relative; z-index: 1;
+    }
+    .cta-section p { color: rgba(255,255,255,.85); font-size: 1.1rem; margin-bottom: 2rem; position: relative; z-index: 1; }
+    .btn-white {
+      display: inline-block; background: var(--white); color: var(--orange);
+      padding: 1rem 2.5rem; border-radius: 50px;
+      font-weight: 800; font-size: 1rem; text-decoration: none;
+      transition: transform .2s, box-shadow .2s; position: relative; z-index: 1;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.2); }
+
+    /* ─── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--navy); color: var(--white);
+      padding: 4rem 4rem 2rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand p { color: rgba(255,255,255,.6); font-size: .9rem; line-height: 1.7; margin-top: .8rem; }
+    .footer-col h4 { font-weight: 700; margin-bottom: 1rem; color: rgba(255,255,255,.9); }
+    .footer-col a { display: block; color: rgba(255,255,255,.55); text-decoration: none; font-size: .9rem; margin-bottom: .5rem; transition: color .2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .8rem; color: rgba(255,255,255,.4);
+    }
+
+    /* ─── MODAL ───────────────────────────────────── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white); border-radius: 24px;
+      padding: 2.5rem; max-width: 520px; width: 100%;
+      position: relative;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.2);
+    }
+    .modal-close {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted);
+    }
+    .modal h3 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.5rem; font-weight: 900; color: var(--navy); margin-bottom: .3rem;
+    }
+    .modal p { color: var(--muted); font-size: .9rem; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { font-size: .85rem; font-weight: 600; color: var(--navy); display: block; margin-bottom: .3rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: .75rem 1rem; border-radius: 10px;
+      border: 1.5px solid rgba(0,0,0,0.12); font-size: .9rem; font-family: 'Inter', sans-serif;
+      transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--orange);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      width: 100%; padding: .9rem;
+      background: var(--grad); color: var(--white);
+      border: none; border-radius: 50px;
+      font-weight: 700; font-size: 1rem; cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(242,101,34,.4); }
+
+    /* ─── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      .hero-visual { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .clients { padding: 2rem 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      footer { padding: 3rem 1.5rem 1.5rem; }
+      .cta-section { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────────── -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <div>
+        <div class="logo-through">through</div>
+        <div class="logo-air">air</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#bots">Bots IA</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#proceso">Cómo trabajamos</a></li>
+      <li><a href="#contacto" class="nav-cta">Solicitar propuesta</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── HERO ──────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-blob"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">Agencia de Marketing Digital</div>
+      <h1>
+        Conectamos tu negocio<br />
+        <span>con el mundo digital</span><br />
+        y lo llevamos hasta lo más alto
+      </h1>
+      <p>
+        Estrategia, pauta y presencia web para empresas que quieren crecer.
+        No eres un cliente más — eres nuestro aliado.
+      </p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary" onclick="openModal()">Solicitar propuesta gratis</a>
+        <a href="#servicios" class="btn-secondary">Ver servicios</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num"><span>+50</span></div>
+          <div class="stat-label">Clientes aliados</div>
+        </div>
+        <div>
+          <div class="stat-num"><span>3x</span></div>
+          <div class="stat-label">ROI promedio en pauta</div>
+        </div>
+        <div>
+          <div class="stat-num"><span>100%</span></div>
+          <div class="stat-label">Estrategia personalizada</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="card-header">
+          <div class="card-icon">📊</div>
+          <div>
+            <div class="card-title">Dashboard campaña activa</div>
+            <div class="card-sub">Tiempo real · Actualizado ahora</div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label">Alcance mensual</div>
+            <div class="metric-bar"><div class="metric-fill" style="width:78%"></div></div>
+          </div>
+          <div class="metric-val">78K</div>
+        </div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label">Leads generados</div>
+            <div class="metric-bar"><div class="metric-fill" style="width:62%"></div></div>
+          </div>
+          <div class="metric-val">342</div>
+        </div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label">ROI de campaña</div>
+            <div class="metric-bar"><div class="metric-fill" style="width:90%"></div></div>
+          </div>
+          <div class="metric-val">3.2x</div>
+        </div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label">Engagement rate</div>
+            <div class="metric-bar"><div class="metric-fill" style="width:55%"></div></div>
+          </div>
+          <div class="metric-val">5.5%</div>
+        </div>
+        <div class="float-badge">🔥 Campaña activa</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CLIENTS ────────────────────────────────────── -->
+  <div class="clients">
+    <div class="clients-label">Empresas que confían en nosotros</div>
+    <div class="clients-grid">
+      <span class="client-name">Sr. Insignia</span>
+      <span class="client-name">Universidad EAN</span>
+      <span class="client-name">WAVED</span>
+      <span class="client-name">ComputerWorld</span>
+    </div>
+  </div>
+
+  <!-- ─── SERVICES ──────────────────────────────────── -->
+  <section id="servicios">
+    <div class="section-label">Lo que hacemos</div>
+    <div class="section-title">Servicios diseñados<br />para hacerte crecer</div>
+    <div class="section-sub">
+      Combinamos marketing analítico, estratégico y táctico con herramientas digitales de vanguardia.
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card featured">
+        <div class="service-icon">🎯</div>
+        <div class="service-type">Servicio estrella</div>
+        <div class="service-name">Pautas Digitales</div>
+        <div class="service-desc">Creamos y administramos campañas en Google, Meta, Instagram y más. Tu presupuesto, máximos resultados.</div>
+        <div class="service-includes">
+          <div class="include-item">Estrategia, segmentación y presupuesto</div>
+          <div class="include-item">Configuración en Google Ads & Meta Ads</div>
+          <div class="include-item">Administración y seguimiento continuo</div>
+          <div class="include-item">Análisis de resultados y KPIs</div>
+          <div class="include-item">Plan de acción mensual</div>
+        </div>
+        <div class="service-price">
+          <span class="price-amount">$2.000.000</span>
+          <span class="price-period">COP/mes</span>
+        </div>
+        <a href="#contacto" class="service-cta" onclick="openModal('Pautas Digitales')">Empezar ahora →</a>
+      </div>
+
+      <div class="service-card featured">
+        <div class="service-icon">📱</div>
+        <div class="service-type">Servicio estrella</div>
+        <div class="service-name">Redes Sociales</div>
+        <div class="service-desc">Estrategia completa de contenido para Instagram, Facebook y TikTok. Creamos, publicamos e interactuamos.</div>
+        <div class="service-includes">
+          <div class="include-item">Benchmark y estrategia de contenido</div>
+          <div class="include-item">15 piezas gráficas al mes</div>
+          <div class="include-item">Textos y publicaciones incluidos</div>
+          <div class="include-item">Respuesta a comentarios</div>
+          <div class="include-item">Reporte mensual detallado</div>
+        </div>
+        <div class="service-price">
+          <span class="price-amount">$3.500.000</span>
+          <span class="price-period">COP/mes</span>
+        </div>
+        <a href="#contacto" class="service-cta" onclick="openModal('Redes Sociales')">Solicitar →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <div class="service-type">Único pago</div>
+        <div class="service-name">Página Web</div>
+        <div class="service-desc">Tu identidad corporativa materializada en una web rápida y amigable. Diseño + desarrollo + CMS incluido.</div>
+        <div class="service-includes">
+          <div class="include-item">Diseño personalizado en revisión continua</div>
+          <div class="include-item">Publicación y hosting configurado</div>
+          <div class="include-item">Panel administrador de contenido</div>
+          <div class="include-item">Política de tratamiento de datos</div>
+          <div class="include-item">Soporte en lanzamiento</div>
+        </div>
+        <div class="service-price">
+          <span class="price-amount">$2.000.000</span>
+          <span class="price-period">COP · único</span>
+        </div>
+        <a href="#contacto" class="service-cta" onclick="openModal('Página Web')">Solicitar →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🛒</div>
+        <div class="service-type">Único pago</div>
+        <div class="service-name">E-Commerce</div>
+        <div class="service-desc">Tienda online completa para que tus clientes compren en cualquier momento. Optimizada para conversión.</div>
+        <div class="service-includes">
+          <div class="include-item">Catálogo de productos ilimitado</div>
+          <div class="include-item">Pasarela de pagos integrada</div>
+          <div class="include-item">Panel de administración de pedidos</div>
+          <div class="include-item">Optimización móvil completa</div>
+          <div class="include-item">Configuración SEO inicial</div>
+        </div>
+        <div class="service-price">
+          <span class="price-amount">$3.900.000</span>
+          <span class="price-period">COP · único</span>
+        </div>
+        <a href="#contacto" class="service-cta" onclick="openModal('E-Commerce')">Solicitar →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── BOTS ──────────────────────────────────────── -->
+  <section id="bots">
+    <div class="section-label">Automatización inteligente</div>
+    <div class="section-title">Bots que trabajan<br /><span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">mientras tú descansas</span></div>
+    <div class="section-sub">
+      Integra inteligencia artificial en tu negocio. Tus clientes son atendidos, tus leads calificados y tus ventas cerradas — las 24 horas, los 7 días.
+    </div>
+    <div class="services-grid" style="margin-top:3.5rem;">
+
+      <div class="service-card featured">
+        <div class="service-icon">💬</div>
+        <div class="service-type">Bot estrella</div>
+        <div class="service-name">WhatsApp Admin Bot</div>
+        <div class="service-desc">Tus clientes son 24/7. Tus respuestas en WhatsApp también lo serán.</div>
+        <div class="service-includes">
+          <div class="include-item">Responde preguntas frecuentes al instante</div>
+          <div class="include-item">Agenda citas y envía recordatorios</div>
+          <div class="include-item">Califica leads y los pasa al equipo</div>
+          <div class="include-item">Integración con WhatsApp Business API</div>
+          <div class="include-item">Panel de conversaciones en tiempo real</div>
+        </div>
+        <div class="service-price">
+          <span class="price-amount">$2.500.000</span>
+          <span class="price-period">COP · implementación</span>
+        </div>
+        <a href="#contacto" class="service-cta" onclick="openModal('WhatsApp Admin Bot')">Activar bot →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <div class="service-type">Automatización</div>
+        <div class="service-name">Lead Qualifier Bot</div>
+        <div class="service-desc">Nunca pierdas un prospecto. Tu bot captura, califica y agenda mientras tú cierras negocios.</div>
+        <div class="service-includes">
+          <div class="include-item">Captura leads de tus anuncios de Meta y Google</div>
+          <div class="include-item">Conversación automática de calificación</div>
+          <div class="include-item">Agenda reuniones directo al calendario</div>
+          <div class="include-item">Notificación inmediata al equipo de ventas</div>
+          <div class="include-item">Integración con tu CRM actual</div>
+        </div>
+        <div class="service-price">
+          <span class="price-amount">$2.000.000</span>
+          <span class="price-period">COP · implementación</span>
+        </div>
+        <a href="#contacto" class="service-cta" onclick="openModal('Lead Qualifier Bot')">Solicitar →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🛒</div>
+        <div class="service-type">Automatización</div>
+        <div class="service-name">E-commerce Sales Bot</div>
+        <div class="service-desc">Tu tienda vende sola. El bot atiende, recomienda productos y recupera carritos abandonados 24/7.</div>
+        <div class="service-includes">
+          <div class="include-item">Consultas de productos y disponibilidad</div>
+          <div class="include-item">Seguimiento de pedidos en tiempo real</div>
+          <div class="include-item">Recuperación automática de carritos</div>
+          <div class="include-item">Recomendaciones personalizadas con IA</div>
+          <div class="include-item">Integración con Shopify / WooCommerce</div>
+        </div>
+        <div class="service-price">
+          <span class="price-amount">$2.800.000</span>
+          <span class="price-period">COP · implementación</span>
+        </div>
+        <a href="#contacto" class="service-cta" onclick="openModal('E-commerce Sales Bot')">Solicitar →</a>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:2rem;font-size:.85rem;color:var(--muted);">
+      Todos los bots incluyen <strong>$500.000 COP/mes</strong> de mantenimiento y actualización continua.
+    </p>
+  </section>
+
+  <!-- ─── PRICING TABLE ─────────────────────────────── -->
+  <section id="precios" class="pricing">
+    <div class="section-label">Inversión clara</div>
+    <div class="section-title">Precios transparentes,<br />sin sorpresas</div>
+    <div class="section-sub">
+      Elige los servicios que necesitas. Financiamos proyectos hasta 5 meses.
+    </div>
+
+    <div class="pricing-wrapper">
+      <div class="pricing-tabs">
+        <button class="tab-btn active" onclick="showTab('monthly')">Servicios mensuales</button>
+        <button class="tab-btn" onclick="showTab('onetime')">Desarrollo web</button>
+      </div>
+
+      <div class="pricing-panel active" id="tab-monthly">
+        <div class="pricing-card">
+          <div class="pricing-info">
+            <div class="pricing-name">Pautas Digitales</div>
+            <div class="pricing-desc">Google Ads · Meta Ads · Landing pages · Seguimiento de campañas</div>
+          </div>
+          <div class="pricing-right">
+            <div class="pricing-amount">$2.000.000</div>
+            <div class="pricing-label">COP por mes · Sin presupuesto de pauta</div>
+          </div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-info">
+            <div class="pricing-name">Estrategia y Redes Sociales</div>
+            <div class="pricing-desc">Instagram · Facebook · TikTok · 15 piezas/mes · Comunidad</div>
+          </div>
+          <div class="pricing-right">
+            <div class="pricing-amount">$3.500.000</div>
+            <div class="pricing-label">COP por mes</div>
+          </div>
+        </div>
+        <div class="pricing-total">
+          <div>
+            <div class="total-label">Pack completo mensual</div>
+            <div style="font-size:.8rem;opacity:.5;margin-top:.2rem">Pautas + Redes Sociales</div>
+          </div>
+          <div class="total-amount">$5.500.000 COP/mes</div>
+        </div>
+      </div>
+
+      <div class="pricing-panel" id="tab-onetime">
+        <div class="pricing-card">
+          <div class="pricing-info">
+            <div class="pricing-name">Página Web Informativa</div>
+            <div class="pricing-desc">Diseño + Desarrollo + CMS + Publicación + Política de datos</div>
+          </div>
+          <div class="pricing-right">
+            <div class="pricing-amount">$2.000.000</div>
+            <div class="pricing-label">COP · Pago único</div>
+          </div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-info">
+            <div class="pricing-name">E-Commerce completo</div>
+            <div class="pricing-desc">Tienda online · Catálogo · Pagos · Panel de pedidos · SEO inicial</div>
+          </div>
+          <div class="pricing-right">
+            <div class="pricing-amount">$3.900.000</div>
+            <div class="pricing-label">COP · Pago único</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── PROCESS ────────────────────────────────────── -->
+  <section id="proceso" class="process">
+    <div class="section-label">Cómo trabajamos</div>
+    <div class="section-title">Un aliado, no un proveedor</div>
+    <div class="section-sub">
+      Proceso transparente desde el día 1. Tú eres parte del proceso.
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-title">Diagnóstico</div>
+        <div class="step-desc">Entendemos tu negocio, objetivos y competencia antes de proponer cualquier solución.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-title">Estrategia</div>
+        <div class="step-desc">Diseñamos un plan personalizado basado en datos, no en suposiciones.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-title">Ejecución</div>
+        <div class="step-desc">Implementamos con velocidad y cuidado. Cada pieza alineada a tus objetivos.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-title">Medición</div>
+        <div class="step-desc">Reportes claros, KPIs reales. Sabes exactamente qué está pasando con tu inversión.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <div class="step-title">Optimización</div>
+        <div class="step-desc">Mejora continua. Lo que funciona se escala, lo que no se corrige de inmediato.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ────────────────────────────────────────── -->
+  <section class="cta-section" id="contacto">
+    <h2>¿Listo para crecer?<br />Ahora estás en buenas manos.</h2>
+    <p>Solicita tu propuesta personalizada — sin costo, sin compromisos.</p>
+    <a href="#" class="btn-white" onclick="openModal(); return false;">
+      Solicitar propuesta gratuita →
+    </a>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div>
+          <span style="font-family:Nunito;font-weight:900;font-size:1.1rem;color:#fff;">through</span>
+          <span style="font-family:Nunito;font-weight:900;font-size:1.5rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-left:.3rem;">air</span>
+        </div>
+        <p>Conectando tu negocio con el mundo. Agencia de marketing digital especializada en empresas colombianas con visión global.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <a href="#">Pautas Digitales</a>
+        <a href="#">Redes Sociales</a>
+        <a href="#">Página Web</a>
+        <a href="#">E-Commerce</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="#">Juan José Trujillo</a>
+        <a href="#">hola@throughair.co</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Through Air · Todos los derechos reservados</span>
+      <span>Hecho con ❤ en Colombia</span>
+    </div>
+  </footer>
+
+  <!-- ─── MODAL ─────────────────────────────────────── -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h3>Solicitar propuesta</h3>
+      <p>Te contactamos en menos de 24 horas con una propuesta personalizada.</p>
+      <div class="form-group">
+        <label>Nombre completo</label>
+        <input type="text" placeholder="Tu nombre" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="correo@empresa.com" />
+      </div>
+      <div class="form-group">
+        <label>Empresa</label>
+        <input type="text" placeholder="Nombre de tu empresa" />
+      </div>
+      <div class="form-group">
+        <label>Servicio de interés</label>
+        <select id="service-select">
+          <option>Pautas Digitales — $275/mes</option>
+          <option>Redes Sociales — $380/mes</option>
+          <option>Página Web — $450</option>
+          <option>E-Commerce — $975</option>
+          <option>Pack completo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Cuéntanos sobre tu negocio</label>
+        <textarea placeholder="¿Cuál es tu principal objetivo digital?"></textarea>
+      </div>
+      <button class="form-submit">Enviar solicitud →</button>
+    </div>
+  </div>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Pricing tabs
+    function showTab(id) {
+      document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // Modal
+    function openModal(service) {
+      document.getElementById('modal').classList.add('open');
+      if (service) {
+        const sel = document.getElementById('service-select');
+        for (let i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].text.includes(service)) { sel.selectedIndex = i; break; }
+        }
+      }
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+    }
+    document.getElementById('modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+
+    // Animate metric bars on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.width = e.target.dataset.width;
+        }
+      });
+    });
+    document.querySelectorAll('.metric-fill').forEach(el => {
+      el.dataset.width = el.style.width;
+      el.style.width = '0';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

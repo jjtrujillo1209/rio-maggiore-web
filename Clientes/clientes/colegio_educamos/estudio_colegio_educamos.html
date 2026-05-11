@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estudio de Marca - Colegio Educamos</title>
+  <style>
+    :root {
+      --bg: #f4f8fb;
+      --paper: #ffffff;
+      --ink: #12263a;
+      --muted: #526277;
+      --line: #d8e3ec;
+      --sky: #19b5e6;
+      --sky-deep: #0895c3;
+      --navy: #0e2238;
+      --mint: #dff7fb;
+      --gold: #f4b942;
+      --shadow: 0 24px 60px rgba(13, 35, 57, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(180deg, #eef6fb 0%, #f9fcfe 100%);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 40px 0 72px;
+    }
+
+    .cover {
+      background:
+        radial-gradient(circle at top right, rgba(25, 181, 230, 0.24), transparent 36%),
+        linear-gradient(135deg, #0b1f33 0%, #173b59 54%, #1ab5e6 100%);
+      color: #fff;
+      border-radius: 32px;
+      padding: 54px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .brand-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 10px 18px;
+      margin-bottom: 18px;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .brand-chip img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      max-width: 760px;
+    }
+
+    .cover p {
+      max-width: 690px;
+      font-size: 1.06rem;
+      color: rgba(255, 255, 255, 0.84);
+      margin: 0;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .meta-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .meta-label {
+      margin: 0 0 8px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    .meta-value {
+      margin: 0;
+      font-size: 1rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .section {
+      margin-top: 28px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 22px 50px rgba(13, 35, 57, 0.06);
+      overflow: hidden;
+    }
+
+    .section-head {
+      padding: 22px 28px 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--sky-deep);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .section-body {
+      padding: 22px 28px 30px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fcff 100%);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .card p,
+    .card li {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li + li { margin-top: 8px; }
+
+    .quote {
+      border-left: 4px solid var(--sky);
+      background: var(--mint);
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: var(--navy);
+      font-size: 1rem;
+      margin-bottom: 18px;
+    }
+
+    .score {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .score.high { background: rgba(22, 163, 74, 0.12); color: #166534; }
+    .score.mid { background: rgba(245, 158, 11, 0.16); color: #92400e; }
+    .score.low { background: rgba(220, 38, 38, 0.14); color: #991b1b; }
+
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .swatch-color {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      flex-shrink: 0;
+    }
+
+    .source-list a {
+      color: var(--sky-deep);
+      text-decoration: none;
+    }
+
+    .source-list a:hover { text-decoration: underline; }
+
+    .footer-note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .page { width: min(100% - 28px, 1120px); padding-top: 22px; }
+      .cover { padding: 32px 24px; border-radius: 24px; }
+      .meta-grid,
+      .grid-2,
+      .grid-3,
+      .grid-4 { grid-template-columns: 1fr; }
+      .section-head,
+      .section-body { padding-left: 20px; padding-right: 20px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { width: 100%; padding: 0; }
+      .section, .cover { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="cover">
+      <div class="brand-chip">
+        <img src="assets/LOGO-NEGRO.png" alt="Logo Educamos" />
+        Estudio de marca y oportunidad digital
+      </div>
+      <h1>Colegio Educamos como plataforma de colegio virtual</h1>
+      <p>
+        Diagnóstico de marca, propuesta de reposicionamiento y oportunidades de experiencia digital
+        para evolucionar la presencia actual de Educamos Online hacia un ecosistema de admisiones,
+        vida académica y seguimiento estudiantil más claro, confiable y escalable.
+      </p>
+      <div class="meta-grid">
+        <article class="meta-card">
+          <p class="meta-label">Referencia analizada</p>
+          <p class="meta-value">educamosonline.com</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">Fecha de análisis</p>
+          <p class="meta-value">19 de abril de 2026</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">Enfoque</p>
+          <p class="meta-value">Colegio virtual + admisiones</p>
+        </article>
+        <article class="meta-card">
+          <p class="meta-label">Resultado esperado</p>
+          <p class="meta-value">Marca más clara y plataforma más usable</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Hallazgo central</span>
+        <h2>La oferta existe, pero hoy compite más como catálogo de servicios que como colegio virtual confiable</h2>
+      </div>
+      <div class="section-body">
+        <div class="quote">
+          La marca comunica amplitud de servicios: bachillerato por ciclos, acelerado, tutorías, cursos rápidos,
+          e-learning y asesoría comercial. Sin embargo, esa amplitud dispersa la promesa principal y dificulta
+          que un acudiente o estudiante entienda rápidamente qué se estudia, cómo se ingresa y cómo se sigue el proceso académico.
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Lo que sí está funcionando</h3>
+            <ul>
+              <li>Promesa concreta de educación virtual con profesores en vivo.</li>
+              <li>Oferta visible para jóvenes y adultos con rutas flexibles de estudio.</li>
+              <li>Proceso comercial activo con WhatsApp, formularios y call center.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Lo que genera fricción</h3>
+            <ul>
+              <li>Navegación saturada con varias líneas de negocio compitiendo entre sí.</li>
+              <li>Jerarquía visual antigua y poco enfocada en confianza institucional.</li>
+              <li>Poca visibilidad del seguimiento académico, calendario y vida estudiantil.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Oportunidad</h3>
+            <ul>
+              <li>Convertir la propuesta en una experiencia de colegio virtual integral.</li>
+              <li>Separar admisiones, estudio y soporte en rutas fáciles de entender.</li>
+              <li>Posicionar a Educamos como alternativa moderna y acompañada.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Diagnóstico de marca</span>
+        <h2>Lectura de identidad actual</h2>
+      </div>
+      <div class="section-body">
+        <div class="grid-2">
+          <article class="card">
+            <h3>Territorio verbal actual</h3>
+            <ul>
+              <li>Educación con tecnología al alcance de todos.</li>
+              <li>Bachillerato por ciclos, acelerado, tutorías y cursos rápidos.</li>
+              <li>Acompañamiento comercial directo y tono cercano.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Percepción que proyecta hoy</h3>
+            <ul>
+              <li>Marca accesible y resolutiva.</li>
+              <li>Institución flexible para personas que necesitan terminar estudios rápido.</li>
+              <li>Estructura híbrida entre academia, LMS, cursos y tienda.</li>
+            </ul>
+          </article>
+        </div>
+        <div class="grid-4" style="margin-top:18px;">
+          <article class="card">
+            <h3>Claridad de propuesta</h3>
+            <div class="score mid">Media</div>
+          </article>
+          <article class="card">
+            <h3>Credibilidad institucional</h3>
+            <div class="score mid">Media</div>
+          </article>
+          <article class="card">
+            <h3>Capacidad de conversión</h3>
+            <div class="score high">Alta</div>
+          </article>
+          <article class="card">
+            <h3>Experiencia digital</h3>
+            <div class="score low">Baja</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Sistema visual</span>
+        <h2>Elementos de marca identificados</h2>
+      </div>
+      <div class="section-body">
+        <div class="grid-2">
+          <article class="card">
+            <h3>Lectura del logo</h3>
+            <p>
+              El isotipo triangular con la “e” interna funciona bien para un entorno digital: comunica play,
+              avance, contenido y tecnología. Es un activo valioso que conviene conservar y modernizar en aplicaciones web.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Lenguaje visual recomendado</h3>
+            <p>
+              Mantener el azul turquesa como color firma, reforzar un azul noche institucional para confianza,
+              limpiar el layout y pasar de una estética de portal antiguo a una interfaz más académica, humana y guiada.
+            </p>
+          </article>
+        </div>
+        <div class="grid-3" style="margin-top:18px;">
+          <article class="card">
+            <div class="swatch">
+              <div class="swatch-color" style="background:#19b5e6;"></div>
+              <div>
+                <h3>Turquesa digital</h3>
+                <p>#19B5E6</p>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="swatch">
+              <div class="swatch-color" style="background:#0e2238;"></div>
+              <div>
+                <h3>Azul institucional</h3>
+                <p>#0E2238</p>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="swatch">
+              <div class="swatch-color" style="background:#f4b942;"></div>
+              <div>
+                <h3>Acento de acción</h3>
+                <p>#F4B942</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Arquitectura de negocio</span>
+        <h2>Servicios actuales que deben ordenarse por rutas de usuario</h2>
+      </div>
+      <div class="section-body">
+        <div class="grid-3">
+          <article class="card">
+            <h3>Ruta 1. Quiero estudiar</h3>
+            <ul>
+              <li>Primaria y bachillerato virtual.</li>
+              <li>Bachillerato por ciclos.</li>
+              <li>Bachillerato acelerado.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Ruta 2. Quiero reforzar</h3>
+            <ul>
+              <li>Tutorías académicas.</li>
+              <li>Sesiones psicológicas o acompañamiento complementario.</li>
+              <li>Clases en vivo con grabaciones.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Ruta 3. Quiero certificarme</h3>
+            <ul>
+              <li>Cursos rápidos certificados.</li>
+              <li>Oferta corporativa o institucional.</li>
+              <li>Desarrollo de plataformas e-learning a medida.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Problemas detectados</span>
+        <h2>Fricciones que hoy le restan valor al colegio virtual</h2>
+      </div>
+      <div class="section-body">
+        <div class="grid-2">
+          <article class="card">
+            <h3>1. Exceso de opciones en el primer contacto</h3>
+            <p>
+              El usuario llega y encuentra menú, sliders, tienda, cursos, blog, convenios y servicios sin una
+              prioridad clara. Eso eleva la carga cognitiva y dificulta convertir visitas en inscripciones.
+            </p>
+          </article>
+          <article class="card">
+            <h3>2. Poca visualización del proceso académico</h3>
+            <p>
+              La web explica cómo inscribirse, pero casi no muestra cómo se vive el estudio luego del pago:
+              horarios, tareas, progreso, reportes, clases grabadas, soporte o panel del estudiante.
+            </p>
+          </article>
+          <article class="card">
+            <h3>3. Imagen más promocional que institucional</h3>
+            <p>
+              El tono comercial funciona para captar, pero un colegio virtual necesita también transmitir orden,
+              metodología, acompañamiento, seguridad y estructura académica.
+            </p>
+          </article>
+          <article class="card">
+            <h3>4. Fragmentación de dominios y plataformas</h3>
+            <p>
+              La convivencia entre dominios, formularios y herramientas externas puede romper continuidad visual y
+              generar dudas en usuarios que necesitan una ruta simple y confiable.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Propuesta estratégica</span>
+        <h2>Reposicionar como “Colegio Educamos” con una promesa más simple</h2>
+      </div>
+      <div class="section-body">
+        <div class="quote">
+          Propuesta de valor sugerida: “Colegio virtual con acompañamiento real, inscripción simple y seguimiento académico visible”.
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Pilar 1. Confianza</h3>
+            <ul>
+              <li>Mostrar metodología, cronograma, docentes y rutas de estudio.</li>
+              <li>Elevar el tono institucional sin perder cercanía.</li>
+              <li>Presentar testimonios y resultados con más estructura.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Pilar 2. Facilidad</h3>
+            <ul>
+              <li>Unificar preinscripción, pagos y activación de acceso.</li>
+              <li>Reducir el proceso de ingreso a pocos pasos visibles.</li>
+              <li>Agregar orientación por perfil: estudiante, acudiente o empresa.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Pilar 3. Acompañamiento</h3>
+            <ul>
+              <li>Dashboard con asistencia, progreso y tareas.</li>
+              <li>Alertas de clases en vivo y grabadas.</li>
+              <li>Canales de soporte visibles para estudiantes y familias.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Qué debe construir la nueva web</span>
+        <h2>Capas funcionales prioritarias</h2>
+      </div>
+      <div class="section-body">
+        <div class="grid-2">
+          <article class="card">
+            <h3>Front comercial</h3>
+            <ul>
+              <li>Landing principal con segmentación clara de la oferta.</li>
+              <li>Formulario de preinscripción conectado a admisiones.</li>
+              <li>Página de programas con requisitos, duración y modalidad.</li>
+              <li>WhatsApp y call center como apoyo, no como única ruta.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Portal académico</h3>
+            <ul>
+              <li>Inicio de estudiante con agenda del día y estado académico.</li>
+              <li>Clases en vivo, grabaciones y tareas pendientes.</li>
+              <li>Módulo de notas, asistencia y avance por módulo o ciclo.</li>
+              <li>Vista de acudiente con reportes y alertas.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Fuentes</span>
+        <h2>Referencias consultadas</h2>
+      </div>
+      <div class="section-body source-list">
+        <div class="grid-2">
+          <article class="card">
+            <h3>Sitio principal</h3>
+            <p><a href="https://www.educamosonline.com/">https://www.educamosonline.com/</a></p>
+          </article>
+          <article class="card">
+            <h3>Contacto y datos base</h3>
+            <p><a href="https://www.educamosonline.com/contact-us/">https://www.educamosonline.com/contact-us/</a></p>
+          </article>
+          <article class="card">
+            <h3>Oferta de primaria y bachillerato</h3>
+            <p><a href="https://www.educamosonline.com/primaria-y-bachillerato/">https://www.educamosonline.com/primaria-y-bachillerato/</a></p>
+          </article>
+          <article class="card">
+            <h3>Tarifas y proceso de inscripción</h3>
+            <p><a href="https://www.educamosonline.com/nuestras-tarifas/">https://www.educamosonline.com/nuestras-tarifas/</a></p>
+          </article>
+        </div>
+        <p class="footer-note">
+          Documento de trabajo elaborado a partir del contenido visible en la web pública de referencia el 19 de abril de 2026.
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

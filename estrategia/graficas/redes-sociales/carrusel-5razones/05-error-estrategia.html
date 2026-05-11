@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Error 04 — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 50% 5%, rgba(200,49,122,.25) 0%, rgba(27,27,110,.25) 45%, #07070f 68%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+.slide-num{position:absolute;top:28px;right:32px;font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.25);text-transform:uppercase}
+.err-badge{background:rgba(200,49,122,.12);border:1px solid rgba(200,49,122,.35);border-radius:50px;padding:8px 20px;font-size:12px;font-weight:700;color:#C8317A;letter-spacing:3px;text-transform:uppercase;display:inline-block;margin-bottom:20px}
+.number{font-size:220px;font-weight:900;line-height:.8;letter-spacing:-14px;color:rgba(255,255,255,.04);position:absolute;right:60px;top:100px}
+.headline{font-size:68px;font-weight:900;color:#fff;line-height:.9;letter-spacing:-3.5px;margin-bottom:16px;position:relative;z-index:2}
+.headline em{font-style:normal;color:#C8317A}
+.body-text{font-size:22px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.6;max-width:680px;position:relative;z-index:2;margin:20px 0}
+.body-text strong{color:#fff;font-weight:700}
+
+.comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:4px 0 20px;position:relative;z-index:2}
+.comp-col{border-radius:18px;padding:20px 24px}
+.comp-col.bad{background:rgba(200,49,122,.08);border:1px solid rgba(200,49,122,.2)}
+.comp-col.good{background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2)}
+.comp-title{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.bad .comp-title{color:#C8317A}
+.good .comp-title{color:#25d366}
+.comp-item{font-size:14px;color:rgba(255,255,255,.6);padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:8px}
+.comp-item:last-child{border:none}
+.ci-icon{font-size:13px;width:16px;flex-shrink:0;text-align:center}
+
+.fix-box{background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.25);border-radius:18px;padding:22px 28px;margin-bottom:24px;position:relative;z-index:2}
+.fix-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#25d366;margin-bottom:8px}
+.fix-text{font-size:18px;font-weight:700;color:#fff;line-height:1.4}
+
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:26px;font-weight:300;color:#F26522}
+.tag{font-size:12px;color:rgba(255,255,255,.25);letter-spacing:2px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="slide-num">5 / 7 — Desliza</div>
+  <div class="number">04</div>
+  <div class="err-badge">Error 04</div>
+  <div class="headline">Publicas sin<br/><em>estrategia</em></div>
+  <div class="body-text"><strong>Los likes no pagan la nómina.</strong> Publicar "para que exista el perfil" sin un objetivo claro es gastar tiempo y no mover ventas.</div>
+
+  <div class="comparison">
+    <div class="comp-col bad">
+      <div class="comp-title">Sin estrategia</div>
+      <div class="comp-item"><span class="ci-icon">❌</span>Publicaciones al azar</div>
+      <div class="comp-item"><span class="ci-icon">❌</span>Sin llamada a la acción</div>
+      <div class="comp-item"><span class="ci-icon">❌</span>Fotos de stock genéricas</div>
+      <div class="comp-item"><span class="ci-icon">❌</span>Sin métricas ni reporte</div>
+      <div class="comp-item"><span class="ci-icon">❌</span>0 clientes nuevos/mes</div>
+    </div>
+    <div class="comp-col good">
+      <div class="comp-title">Con estrategia</div>
+      <div class="comp-item"><span class="ci-icon">✓</span>Calendario editorial</div>
+      <div class="comp-item"><span class="ci-icon">✓</span>Copy con CTA claro</div>
+      <div class="comp-item"><span class="ci-icon">✓</span>Piezas de marca consistentes</div>
+      <div class="comp-item"><span class="ci-icon">✓</span>Reporte mensual de resultados</div>
+      <div class="comp-item"><span class="ci-icon">✓</span>Leads reales cada mes</div>
+    </div>
+  </div>
+
+  <div class="fix-box">
+    <div class="fix-label">La solución</div>
+    <div class="fix-text">Gestión de redes con objetivo de ventas: 12 piezas/mes + calendario + reporte. Desde $3.500.000/mes.</div>
+  </div>
+
+  <div class="footer">
+    <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+    <div class="tag">#ContentMarketing #PymeColombia</div>
+  </div>
+</div>
+</body>
+</html>

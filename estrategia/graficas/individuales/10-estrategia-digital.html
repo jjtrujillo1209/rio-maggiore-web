@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Estrategia Digital — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 50% 5%, rgba(27,27,110,.65) 0%, rgba(242,101,34,.1) 55%, #07070f 75%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px}
+.mega{font-size:175px;font-weight:900;line-height:.82;letter-spacing:-10px;color:#fff}
+.mega em{font-style:normal;background:linear-gradient(135deg,#F26522,#C8317A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* manifesto */
+.manifesto{font-size:22px;color:rgba(255,255,255,.45);line-height:1.6;max-width:780px;margin:24px 0 0}
+
+/* pillars */
+.pillars{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin:28px 0;align-content:center}
+.pillar{border-radius:18px;padding:24px 20px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);position:relative;overflow:hidden}
+.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.p1::before{background:#1B1B6E}
+.p2::before{background:#F04E37}
+.p3::before{background:#F26522}
+.p4::before{background:linear-gradient(90deg,#F26522,#C8317A)}
+.pillar-step{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:14px}
+.pillar-title{font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:10px}
+.p1 .pillar-title{color:#6b7fd4}
+.p2 .pillar-title{color:#f47558}
+.p3 .pillar-title{color:#F26522}
+.p4 .pillar-title{background:linear-gradient(135deg,#F26522,#C8317A);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.pillar-desc{font-size:13px;color:rgba(255,255,255,.38);line-height:1.55}
+
+/* accent line */
+.accent-line{height:1px;background:linear-gradient(90deg,transparent,rgba(242,101,34,.5),transparent);margin:0 0 20px}
+
+/* bottom */
+.info-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px}
+.info-text{font-size:16px;color:rgba(255,255,255,.6);line-height:1.5;flex:1}
+.info-text strong{color:#fff}
+.cta-pill{background:linear-gradient(135deg,#1B1B6E,#F26522);color:#fff;font-size:13px;font-weight:700;padding:12px 28px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:25px;font-weight:300;color:#F26522}
+.tagline{font-size:13px;color:rgba(255,255,255,.3);letter-spacing:1px}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div>
+    <div class="eyebrow">Crece</div>
+    <div class="mega">SIN LÍMI<em>TES.</em></div>
+    <p class="manifesto">No es una página web. Es un ecosistema digital que trabaja 24/7 para tu negocio colombiano — atrae, convierte, automatiza y escala.</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar p1">
+      <div class="pillar-step">Paso 01</div>
+      <div class="pillar-title">Atrae</div>
+      <div class="pillar-desc">Pautas y redes que llevan el mensaje correcto a las personas correctas en Colombia</div>
+    </div>
+    <div class="pillar p2">
+      <div class="pillar-step">Paso 02</div>
+      <div class="pillar-title">Convierte</div>
+      <div class="pillar-desc">Web y e-commerce optimizados para que cada visita se convierta en cliente</div>
+    </div>
+    <div class="pillar p3">
+      <div class="pillar-step">Paso 03</div>
+      <div class="pillar-title">Automatiza</div>
+      <div class="pillar-desc">Bots que atienden, califican y venden mientras tú duermes</div>
+    </div>
+    <div class="pillar p4">
+      <div class="pillar-step">Paso 04</div>
+      <div class="pillar-title">Escala</div>
+      <div class="pillar-desc">Sin contratar personal, sin horarios, sin límites geográficos</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="accent-line"></div>
+    <div class="info-card">
+      <div class="info-text"><strong>Todo integrado, un solo equipo.</strong> Cada pieza conectada para que tu negocio crezca solo.</div>
+      <div class="cta-pill">Ver ecosistema</div>
+    </div>
+    <div class="footer">
+      <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+      <div class="tagline">Tecnología que trabaja para tu negocio</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

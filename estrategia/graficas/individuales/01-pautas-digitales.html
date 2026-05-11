@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>Pautas Digitales — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 70% 10%, rgba(242,101,34,.32) 0%, rgba(27,27,110,.2) 45%, #07070f 68%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+
+/* header */
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px}
+.mega{font-size:210px;font-weight:900;line-height:.82;letter-spacing:-12px;color:#fff;margin-bottom:0}
+.mega em{font-style:normal;color:#F26522}
+
+/* center visual */
+.visual{flex:1;display:flex;align-items:center;justify-content:center;gap:24px;margin:28px 0}
+.platform-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:24px 28px;width:220px}
+.platform-card.featured{background:rgba(242,101,34,.12);border-color:rgba(242,101,34,.35)}
+.platform-logo{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px}
+.platform-stat{font-size:52px;font-weight:900;letter-spacing:-3px;color:#fff;line-height:1}
+.platform-stat em{font-style:normal;color:#F26522}
+.platform-label{font-size:12px;color:rgba(255,255,255,.35);margin-top:6px;line-height:1.4}
+.divider-v{width:1px;height:140px;background:rgba(255,255,255,.08);align-self:center}
+.roi-badge{background:rgba(242,101,34,.18);border:1.5px solid rgba(242,101,34,.4);border-radius:50%;width:140px;height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px}
+.roi-num{font-size:42px;font-weight:900;color:#F26522;letter-spacing:-2px;line-height:1}
+.roi-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:4px}
+
+/* bottom */
+.bottom{display:flex;flex-direction:column;gap:20px}
+.info-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.info-text{font-size:16px;color:rgba(255,255,255,.6);line-height:1.5;flex:1}
+.info-text strong{color:#fff;font-weight:700}
+.cta-pill{background:#F26522;color:#fff;font-size:13px;font-weight:700;letter-spacing:.5px;padding:12px 24px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:25px;font-weight:300;color:#F26522}
+.price{font-size:13px;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase}
+.price strong{color:rgba(255,255,255,.65);font-size:18px;font-weight:700;letter-spacing:-0.5px}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div>
+    <div class="eyebrow">Tus clientes ya están</div>
+    <div class="mega">BUSCAN<em>DO.</em></div>
+  </div>
+
+  <div class="visual">
+    <div class="platform-card">
+      <div class="platform-logo">Google Ads</div>
+      <div class="platform-stat">+<em>280</em>%</div>
+      <div class="platform-label">Tráfico cualificado al sitio</div>
+    </div>
+    <div class="divider-v"></div>
+    <div class="roi-badge">
+      <div class="roi-num">3×</div>
+      <div class="roi-label">ROI mínimo garantizado</div>
+    </div>
+    <div class="divider-v"></div>
+    <div class="platform-card featured">
+      <div class="platform-logo">Meta Ads</div>
+      <div class="platform-stat"><em>24</em>/7</div>
+      <div class="platform-label">Campañas activas sin parar</div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="info-card">
+      <div class="info-text"><strong>Presupuesto colombiano, resultados reales.</strong> Google y Meta gestionados por expertos — cada peso trabajando para tu negocio.</div>
+      <div class="cta-pill">Activar pauta</div>
+    </div>
+    <div class="footer">
+      <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+      <div class="price">Desde <strong>$2.000.000</strong> COP/mes</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

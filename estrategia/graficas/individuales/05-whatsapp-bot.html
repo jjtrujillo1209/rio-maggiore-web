@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<title>WhatsApp Bot — Through Air</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse at 65% 8%, rgba(37,211,102,.18) 0%, rgba(27,27,110,.25) 45%, #07070f 68%)}
+.canvas{width:1080px;height:1080px;display:flex;flex-direction:column;padding:72px 80px;position:relative}
+
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px}
+.headline-wrap{margin-bottom:0}
+.small-line{font-size:42px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:-1px;line-height:1.1}
+.mega{font-size:200px;font-weight:900;line-height:.82;letter-spacing:-11px;color:#fff}
+.mega em{font-style:normal;color:#25d366}
+
+/* main visual: phone + floating elements */
+.visual{flex:1;display:flex;align-items:center;justify-content:center;gap:40px;margin:20px 0;position:relative}
+
+/* phone */
+.phone{width:280px;background:#1a1a2e;border-radius:28px;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 80px rgba(0,0,0,.6);overflow:hidden;flex-shrink:0}
+.wa-header{background:#1f2d24;padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.06)}
+.wa-avatar{width:34px;height:34px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;flex-shrink:0}
+.wa-info{flex:1}
+.wa-name{font-size:13px;font-weight:700;color:#fff}
+.wa-status{font-size:10px;color:#25d366}
+.wa-messages{background:#111827;padding:14px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:80%;padding:9px 13px;border-radius:12px;font-size:12px;line-height:1.4;color:#e2e8f0}
+.msg.user{background:#1f2d24;align-self:flex-start;border-bottom-left-radius:3px}
+.msg.bot{background:#25d366;color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
+.msg-time{font-size:9px;opacity:.45;margin-top:3px;text-align:right}
+.typing{background:#1f2d24;padding:9px 13px;border-radius:12px;display:flex;gap:3px;align-items:center;width:fit-content}
+.t-dot{width:5px;height:5px;border-radius:50%;background:#25d366}
+
+/* right side text */
+.text-col{flex:1;display:flex;flex-direction:column;gap:20px}
+.feature-line{display:flex;align-items:flex-start;gap:14px}
+.feat-icon{width:36px;height:36px;border-radius:10px;background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.feat-line{width:14px;height:2px;background:#25d366}
+.feat-text{font-size:15px;color:rgba(255,255,255,.55);line-height:1.4}
+.feat-text strong{color:#fff;display:block;margin-bottom:2px}
+
+/* badge floating */
+.time-badge{position:absolute;top:20px;right:20px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px 20px;text-align:center}
+.time-num{font-size:40px;font-weight:900;color:#fff;letter-spacing:-2px;line-height:1}
+.time-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px}
+
+/* bottom */
+.info-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:20px}
+.info-text{font-size:16px;color:rgba(255,255,255,.6);line-height:1.5;flex:1}
+.info-text strong{color:#fff}
+.cta-pill{background:#25d366;color:#fff;font-size:13px;font-weight:700;padding:12px 24px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.footer{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:baseline;gap:3px}
+.through{font-size:20px;font-weight:900;color:#fff;letter-spacing:-1px}
+.air{font-size:25px;font-weight:300;color:#F26522}
+.price{font-size:13px;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase}
+.price strong{color:rgba(255,255,255,.65);font-size:18px;font-weight:700;letter-spacing:-0.5px}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="headline-wrap">
+    <div class="eyebrow">Esto no es otro</div>
+    <div class="small-line">Responde a las</div>
+    <div class="mega"><em>3 AM.</em></div>
+  </div>
+
+  <div class="visual">
+    <div class="phone">
+      <div class="wa-header">
+        <div class="wa-avatar">TN</div>
+        <div class="wa-info">
+          <div class="wa-name">Tu Negocio</div>
+          <div class="wa-status">en línea</div>
+        </div>
+      </div>
+      <div class="wa-messages">
+        <div class="msg user">Hola! Hacen domicilios a Chapinero? Cuánto tarda?<div class="msg-time">3:17 am</div></div>
+        <div class="msg bot">Hola! Claro, hacemos domicilios a Chapinero en 30-45 min. Qué necesitas?<div class="msg-time">3:17 am</div></div>
+        <div class="msg user">Cuánto vale el combo ejecutivo?<div class="msg-time">3:18 am</div></div>
+        <div class="typing"><div class="t-dot"></div><div class="t-dot"></div><div class="t-dot"></div></div>
+      </div>
+    </div>
+
+    <div class="text-col">
+      <div class="feature-line">
+        <div class="feat-icon"><div class="feat-line"></div></div>
+        <div class="feat-text"><strong>Atención sin contratar personal</strong>Responde cotizaciones y citas 24/7</div>
+      </div>
+      <div class="feature-line">
+        <div class="feat-icon"><div class="feat-line"></div></div>
+        <div class="feat-text"><strong>Respuestas en segundos</strong>No en minutos — nunca pierdas un cliente por demora</div>
+      </div>
+      <div class="feature-line">
+        <div class="feat-icon"><div class="feat-line"></div></div>
+        <div class="feat-text"><strong>Aprende de cada conversación</strong>Cada semana más inteligente que la anterior</div>
+      </div>
+      <div class="feature-line">
+        <div class="feat-icon"><div class="feat-line"></div></div>
+        <div class="feat-text"><strong>Agenda reuniones automáticamente</strong>Sin intermediarios, sin coordinación manual</div>
+      </div>
+    </div>
+
+    <div class="time-badge">
+      <div class="time-num">24/7</div>
+      <div class="time-label">Siempre activo</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="info-card">
+      <div class="info-text"><strong>Tu negocio atiende por WhatsApp sin que estés conectado.</strong> El cliente colombiano espera respuesta inmediata — dásela.</div>
+      <div class="cta-pill">Ver demo</div>
+    </div>
+    <div class="footer">
+      <div class="brand"><span class="through">through</span><span class="air">air</span></div>
+      <div class="price"><strong>$3.500.000</strong> COP + $800K/mes</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

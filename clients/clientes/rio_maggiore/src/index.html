@@ -1124,16 +1124,28 @@
     }
 
     /* Mobile */
+    /* ── TABLET (768px - 1024px) ────────────────────────── */
+    @media (max-width: 1024px) {
+      .section { padding: 80px 40px; }
+      .section-full { padding: 80px 40px; }
+      .proyecto-inner { grid-template-columns: 1fr; gap: 50px; }
+      .ubicacion-inner { grid-template-columns: 1fr; gap: 50px; }
+      .contacto-inner { grid-template-columns: 1fr; gap: 60px; }
+      .hero-title { font-size: clamp(2.5rem, 6vw, 5rem); }
+    }
+
+    /* ── MOBILE LANDSCAPE & SMALL TABLET (481px - 768px) ── */
     @media (max-width: 768px) {
       /* Layout */
-      .section { padding: 70px 20px; }
-      .section-full { padding: 70px 20px; }
+      .section { padding: 60px 24px; }
+      .section-full { padding: 60px 24px; }
+      html { font-size: 15px; }
 
       /* Header */
-      .header { padding: 16px 20px; }
-      .header.scrolled { padding: 12px 20px; }
-      .header-logo svg { height: 34px; }
-      .header.scrolled .header-logo svg { height: 28px; }
+      .header { padding: 14px 20px; }
+      .header.scrolled { padding: 10px 20px; }
+      .header-logo svg { height: 48px; }
+      .header.scrolled .header-logo svg { height: 40px; }
       .header-nav { display: none; }
       .header-nav.open {
         display: flex;
@@ -1143,104 +1155,158 @@
         background: rgba(10,18,10,0.98);
         align-items: center;
         justify-content: center;
-        gap: 36px;
+        gap: 32px;
         z-index: 99;
+        padding: 40px 20px;
       }
       .header-nav.open a {
-        font-size: 1.1rem;
+        font-size: 1rem;
         letter-spacing: 0.2em;
         color: rgba(255,255,255,0.85);
       }
       .header-nav.open .header-cta {
         color: var(--green-deep) !important;
         background: var(--gold);
-        padding: 14px 32px;
-        font-size: 0.75rem;
+        padding: 12px 28px;
+        font-size: 0.7rem;
       }
       .menu-toggle { display: flex !important; }
 
       /* Hero */
-      .hero { min-height: 100svh; }
-      .hero-content { padding: 0 20px; }
-      .hero-overline { font-size: 0.55rem; letter-spacing: 0.35em; margin-bottom: 20px; }
-      .hero-rule { margin: 24px auto; }
-      .hero-tagline { font-size: 1.05rem; }
+      .hero { min-height: 100svh; padding: 80px 0 60px; }
+      .hero-content { padding: 0 20px; max-width: 100%; }
+      .hero-overline { font-size: 0.5rem; letter-spacing: 0.35em; margin-bottom: 18px; }
+      .hero-title { font-size: clamp(2.2rem, 6vw, 4rem); line-height: 0.95; }
+      .hero-rule { width: 50px; margin: 20px auto; }
+      .hero-tagline { font-size: 0.95rem; max-width: 100%; }
       .hero-cta-group {
         flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        margin-top: 36px;
+        align-items: stretch;
+        gap: 10px;
+        margin-top: 30px;
       }
       .btn-primary, .btn-outline {
         width: 100%;
-        max-width: 280px;
-        text-align: center;
-        padding: 15px 24px;
+        padding: 14px 20px;
+        font-size: 0.62rem;
       }
-      .scroll-indicator { bottom: 24px; }
+      .scroll-indicator { bottom: 20px; gap: 6px; }
+      .scroll-indicator span { font-size: 0.45rem; }
+      .scroll-line { height: 40px; }
 
       /* Section labels & titles */
-      .section-label { font-size: 0.55rem; letter-spacing: 0.3em; }
-      .gold-divider { margin: 24px 0; }
+      .section-label { font-size: 0.52rem; letter-spacing: 0.3em; gap: 12px; }
+      .section-label::before { width: 24px; }
+      .section-label::after { width: 24px; }
+      .section-title { font-size: clamp(2rem, 5vw, 3.5rem); }
+      .gold-divider { width: 40px; margin: 24px 0; }
 
       /* El Proyecto */
-      .proyecto-inner { gap: 36px; }
+      .proyecto-inner { gap: 40px; }
       .proyecto-stats { grid-template-columns: 1fr 1fr; gap: 1px; }
-      .stat-item { padding: 24px 20px; }
-      .stat-num { font-size: 2.2rem; }
-      .stat-label { font-size: 0.55rem; }
-      .proyecto-text p { font-size: 0.98rem; }
+      .stat-item { padding: 20px 16px; }
+      .stat-num { font-size: 2rem; }
+      .stat-label { font-size: 0.52rem; }
+      .proyecto-text p { font-size: 0.95rem; line-height: 1.8; }
+      .proyecto-text p:first-of-type::first-letter { font-size: 2.5rem; }
 
       /* Productos */
-      .products-grid { grid-template-columns: 1fr; }
-      .product-card { padding: 36px 28px; }
-      .product-name { font-size: 1.3rem; }
-      .product-desc { font-size: 0.9rem; }
+      .products-track {
+        grid-auto-columns: minmax(80vw, 1fr);
+        padding: 6px 0;
+      }
+      .product-card { padding: 28px 20px; border-radius: 24px; }
+      .product-media { aspect-ratio: 16 / 10; border-radius: 20px; }
+      .product-num { font-size: 0.65rem; margin-bottom: 16px; }
+      .product-name { font-size: 1.8rem; margin-bottom: 14px; }
+      .product-desc { font-size: 0.88rem; line-height: 1.8; }
+      .product-footer { margin-top: 20px; }
+      .product-tag { padding: 8px 12px; font-size: 0.58rem; }
 
       /* Ubicación */
-      .ubicacion-inner { gap: 36px; }
-      .map-container { aspect-ratio: 1 / 0.85; }
-      .location-item { padding: 20px 0; }
-      .location-item-text { font-size: 0.92rem; }
+      .ubicacion-inner { gap: 40px; }
+      .ubicacion-details { margin-top: 30px; }
+      .map-container { aspect-ratio: 1 / 0.8; border-radius: 16px; }
+      .location-item { padding: 18px 0; }
+      .location-item-title { font-size: 0.55rem; margin-bottom: 4px; }
+      .location-item-text { font-size: 0.88rem; line-height: 1.7; }
 
       /* Alianzas */
       .alianzas-grid { flex-direction: column; gap: 2px; }
-      .alianza-card { padding: 36px 28px; min-width: unset; }
-      .alianza-logo-wrap { height: 60px; }
-      .alianza-logo-wrap svg { max-height: 60px; }
+      .alianza-card { padding: 32px 24px; min-width: unset; border-radius: 20px; }
+      .alianza-logo-wrap { height: 50px; }
+      .alianza-logo-wrap svg { max-height: 50px; }
+      .alianza-text p { font-size: 0.9rem; }
 
       /* Contacto */
-      .contacto-inner { gap: 40px; }
-      .contacto-intro p { font-size: 0.98rem; }
-      .contact-item { padding: 18px 18px; gap: 14px; }
-      .contact-meta-value { font-size: 0.92rem; }
-      .showroom-box { padding: 24px 20px; }
-      .showroom-box p { font-size: 0.9rem; }
-      .showroom-hours { flex-direction: column; gap: 8px; }
-      .hour-badge { text-align: center; padding: 10px 16px; font-size: 0.62rem; }
+      .contacto-inner { gap: 50px; }
+      .contacto-intro h2 { font-size: clamp(1.8rem, 5vw, 3rem); }
+      .contacto-intro p { font-size: 0.95rem; line-height: 1.8; }
+      .contact-methods { gap: 1px; }
+      .contact-item { padding: 16px 16px; gap: 12px; border-radius: 12px; }
+      .contact-icon { width: 32px; height: 32px; }
+      .contact-meta-label { font-size: 0.52rem; }
+      .contact-meta-value { font-size: 0.9rem; }
+      .showroom-box { padding: 24px 20px; border-radius: 12px; }
+      .showroom-box p { font-size: 0.88rem; line-height: 1.7; }
+      .showroom-hours { flex-direction: column; gap: 12px; margin-top: 16px; }
+      .hour-badge { text-align: center; padding: 10px 14px; font-size: 0.6rem; border-radius: 6px; }
 
       /* Footer */
-      .footer { padding: 40px 20px; }
-      .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 20px; }
+      .footer { padding: 40px 24px; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
       .footer-rule { display: none; }
-      .footer-socials { justify-content: center; flex-wrap: wrap; gap: 16px; }
-      .footer-copy { flex-direction: column; gap: 6px; text-align: center; }
+      .footer-socials { justify-content: center; flex-wrap: wrap; gap: 20px; }
+      .footer-copy { flex-direction: column; gap: 8px; text-align: center; font-size: 0.85rem; }
 
       /* WhatsApp */
-      .whatsapp-btn { bottom: 20px; right: 20px; width: 50px; height: 50px; }
-      .whatsapp-btn svg { width: 22px; height: 22px; }
+      .whatsapp-btn { bottom: 20px; right: 20px; width: 56px; height: 56px; }
+      .whatsapp-btn svg { width: 28px; height: 28px; }
       .whatsapp-tooltip { display: none; }
     }
 
-    /* Small phones */
-    @media (max-width: 400px) {
-      .section { padding: 60px 16px; }
-      .section-full { padding: 60px 16px; }
-      .hero-title { letter-spacing: 0.03em; }
-      .stat-num { font-size: 1.9rem; }
-      .product-card { padding: 28px 20px; }
-      .alianza-card { padding: 28px 20px; }
+    /* ── SMALL MOBILE (< 480px) ─────────────────────────── */
+    @media (max-width: 480px) {
+      html { font-size: 14px; }
+      .section { padding: 50px 16px; }
+      .section-full { padding: 50px 16px; }
+
+      /* Header */
+      .header { padding: 12px 16px; }
+      .header.scrolled { padding: 8px 16px; }
+      .header-logo svg { height: 40px; }
+      .header.scrolled .header-logo svg { height: 32px; }
+      .header-cta { padding: 8px 16px; font-size: 0.6rem; }
+
+      /* Hero */
+      .hero { padding: 70px 0 50px; }
+      .hero-content { padding: 0 16px; }
+      .hero-overline { font-size: 0.48rem; margin-bottom: 16px; }
+      .hero-title { font-size: clamp(1.8rem, 5vw, 3rem); }
+      .hero-tagline { font-size: 0.9rem; }
+      .hero-cta-group { gap: 8px; margin-top: 24px; }
+      .btn-primary, .btn-outline { padding: 12px 16px; font-size: 0.6rem; }
+      .scroll-indicator { bottom: 16px; }
+
+      /* Sections */
+      .section-label { font-size: 0.48rem; }
+      .section-title { font-size: clamp(1.6rem, 4vw, 2.5rem); }
+      .stat-num { font-size: 1.8rem; }
+      .stat-item { padding: 18px 14px; }
+      .product-card { padding: 24px 16px; }
+      .product-name { font-size: 1.5rem; }
+      .product-desc { font-size: 0.85rem; }
+      .alianza-card { padding: 24px 16px; }
       .footer { padding: 32px 16px; }
+    }
+
+    /* ── EXTRA SMALL (< 360px) ──────────────────────────── */
+    @media (max-width: 360px) {
+      .hero-title { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+      .section-title { font-size: clamp(1.4rem, 3.5vw, 2.2rem); }
+      .btn-primary, .btn-outline { padding: 11px 14px; font-size: 0.55rem; }
+      .stat-num { font-size: 1.6rem; }
+      .product-name { font-size: 1.3rem; }
     }
   </style>
 </head>

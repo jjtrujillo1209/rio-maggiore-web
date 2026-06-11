@@ -1267,46 +1267,74 @@
 
     /* ── SMALL MOBILE (< 480px) ─────────────────────────── */
     @media (max-width: 480px) {
-      html { font-size: 14px; }
+      html { font-size: 15px; }
       .section { padding: 50px 16px; }
       .section-full { padding: 50px 16px; }
 
       /* Header */
-      .header { padding: 12px 16px; }
-      .header.scrolled { padding: 8px 16px; }
-      .header-logo svg { height: 40px; }
-      .header.scrolled .header-logo svg { height: 32px; }
-      .header-cta { padding: 8px 16px; font-size: 0.6rem; }
+      .header { padding: 14px 16px; }
+      .header.scrolled { padding: 10px 16px; }
+      .header-logo svg { height: 48px; }
+      .header.scrolled .header-logo svg { height: 40px; }
+      .header-cta { padding: 10px 18px; font-size: 0.62rem; }
 
       /* Hero */
-      .hero { padding: 70px 0 50px; }
+      .hero { padding: 80px 0 60px; min-height: 100svh; }
       .hero-content { padding: 0 16px; }
-      .hero-overline { font-size: 0.48rem; margin-bottom: 16px; }
-      .hero-title { font-size: clamp(1.8rem, 5vw, 3rem); }
-      .hero-tagline { font-size: 0.9rem; }
-      .hero-cta-group { gap: 8px; margin-top: 24px; }
-      .btn-primary, .btn-outline { padding: 12px 16px; font-size: 0.6rem; }
-      .scroll-indicator { bottom: 16px; }
+      .hero-overline { font-size: 0.52rem; margin-bottom: 18px; letter-spacing: 0.3em; }
+      .hero-title { font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 0.95; letter-spacing: -0.02em; }
+      .hero-rule { width: 50px; margin: 24px auto; }
+      .hero-tagline { font-size: 1rem; line-height: 1.6; }
+      .hero-cta-group { gap: 10px; margin-top: 32px; }
+      .btn-primary, .btn-outline {
+        padding: 14px 18px;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        min-height: 44px;
+      }
+      .scroll-indicator { bottom: 20px; gap: 8px; }
+      .scroll-indicator span { font-size: 0.48rem; }
+      .scroll-line { height: 45px; }
 
       /* Sections */
-      .section-label { font-size: 0.48rem; }
-      .section-title { font-size: clamp(1.6rem, 4vw, 2.5rem); }
-      .stat-num { font-size: 1.8rem; }
-      .stat-item { padding: 18px 14px; }
-      .product-card { padding: 24px 16px; }
-      .product-name { font-size: 1.5rem; }
-      .product-desc { font-size: 0.85rem; }
-      .alianza-card { padding: 24px 16px; }
-      .footer { padding: 32px 16px; }
+      .section-label { font-size: 0.5rem; gap: 12px; }
+      .section-label::before { width: 24px; }
+      .section-label::after { width: 24px; }
+      .section-title { font-size: clamp(2rem, 5.5vw, 3rem); line-height: 1.15; }
+      .gold-divider { width: 45px; margin: 28px 0; }
+
+      .stat-num { font-size: 2rem; }
+      .stat-item { padding: 20px 16px; }
+      .stat-label { font-size: 0.54rem; }
+
+      .product-card { padding: 26px 18px; border-radius: 22px; }
+      .product-media { aspect-ratio: 16 / 10; border-radius: 18px; margin-bottom: 16px; }
+      .product-num { font-size: 0.68rem; margin-bottom: 12px; }
+      .product-name { font-size: 1.9rem; line-height: 1.1; margin-bottom: 12px; }
+      .product-desc { font-size: 0.9rem; line-height: 1.8; }
+      .product-tag { padding: 8px 12px; font-size: 0.6rem; }
+
+      .alianza-card { padding: 28px 18px; border-radius: 18px; }
+      .alianza-logo-wrap { height: 55px; }
+      .alianza-text p { font-size: 0.92rem; line-height: 1.7; }
+
+      .contact-item { padding: 18px 16px; gap: 14px; }
+      .contact-meta-label { font-size: 0.54rem; }
+      .contact-meta-value { font-size: 0.92rem; }
+
+      .footer { padding: 36px 16px; }
+      .footer-text { font-size: 0.9rem; }
     }
 
     /* ── EXTRA SMALL (< 360px) ──────────────────────────── */
     @media (max-width: 360px) {
-      .hero-title { font-size: clamp(1.5rem, 4vw, 2.5rem); }
-      .section-title { font-size: clamp(1.4rem, 3.5vw, 2.2rem); }
-      .btn-primary, .btn-outline { padding: 11px 14px; font-size: 0.55rem; }
-      .stat-num { font-size: 1.6rem; }
-      .product-name { font-size: 1.3rem; }
+      html { font-size: 14px; }
+      .hero-title { font-size: clamp(2rem, 5vw, 3rem); }
+      .hero-tagline { font-size: 0.95rem; }
+      .section-title { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+      .btn-primary, .btn-outline { padding: 12px 16px; font-size: 0.62rem; }
+      .stat-num { font-size: 1.8rem; }
+      .product-name { font-size: 1.7rem; }
     }
   </style>
 </head>

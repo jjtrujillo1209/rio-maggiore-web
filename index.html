@@ -6,6 +6,7 @@
   <title>Through Air — Conectando tu negocio con el mundo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -43,23 +44,21 @@
     }
     nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
 
-    .nav-logo { display: flex; align-items: center; gap: .5rem; }
-    .logo-through {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 1.9rem;
-      color: var(--navy);
-      letter-spacing: -0.5px;
-    }
-    .logo-air {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 2.6rem;
-      background: var(--grad);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
       line-height: 1;
+    }
+    .brand-logo {
+      display: block;
+      width: auto;
+      height: 54px;
+      object-fit: contain;
+    }
+    footer .brand-logo {
+      width: 142px;
+      height: auto;
     }
 
     .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
@@ -77,6 +76,26 @@
       transition: transform .2s, box-shadow .2s !important;
     }
     .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(242,101,34,0.4) !important; color: var(--white) !important; }
+
+    /* ─── CURRENCY TOGGLE ─────────────────────────── */
+    .nav-right { display: flex; align-items: center; gap: 1.2rem; }
+    .currency-toggle {
+      display: inline-flex; align-items: center;
+      background: var(--gray);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 50px; padding: 3px;
+    }
+    .currency-toggle button {
+      border: none; background: transparent; cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: .78rem; font-weight: 700; color: var(--muted);
+      padding: .35rem .85rem; border-radius: 50px;
+      transition: color .2s, background .2s;
+    }
+    .currency-toggle button.active {
+      background: var(--grad); color: var(--white);
+      box-shadow: 0 3px 10px rgba(242,101,34,.3);
+    }
 
     /* ─── HERO ────────────────────────────────────── */
     .hero {
@@ -171,8 +190,8 @@
     .stat-label { font-size: .8rem; color: var(--muted); font-weight: 500; }
 
     .hero-visual {
-      position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
-      width: 42%; max-width: 560px; z-index: 1;
+      position: absolute; right: 5rem; top: 50%; transform: translateY(-50%);
+      z-index: 1; display: flex; justify-content: center;
     }
     .hero-card {
       background: var(--white);
@@ -221,6 +240,181 @@
       font-size: .8rem; font-weight: 600;
       box-shadow: 0 8px 24px rgba(27,27,110,0.3);
     }
+
+    /* ─── IPHONE MOCKUP + WHATSAPP CHAT ───────────────── */
+    .wa-phone {
+      position: relative;
+      width: 300px; height: 612px;
+      border-radius: 54px;
+      padding: 12px;
+      background: linear-gradient(135deg, #2a2c31 0%, #1c1e22 42%, #0e0f12 100%);
+      box-shadow: 0 24px 70px rgba(0,0,0,.32), 0 4px 12px rgba(0,0,0,.24);
+    }
+    .wa-screen {
+      position: relative;
+      width: 100%; height: 100%;
+      border-radius: 44px;
+      overflow: hidden;
+      background: #0b141a;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+      display: flex; flex-direction: column;
+    }
+    .wa-island {
+      position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
+      width: 110px; height: 30px; border-radius: 18px;
+      background: #000; z-index: 6;
+    }
+    .wa-home {
+      position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%);
+      width: 110px; height: 5px; border-radius: 3px;
+      background: rgba(255,255,255,.45); z-index: 6; pointer-events: none;
+    }
+
+    /* Header */
+    .wa-header {
+      flex-shrink: 0;
+      background: #075E54; color: #fff;
+      padding: 38px 12px 10px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .wa-back { font-size: 1.3rem; line-height: 1; opacity: .9; }
+    .wa-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--magenta));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(255,255,255,.25);
+    }
+    .wa-contact { flex: 1; min-width: 0; }
+    .wa-name { font-size: .92rem; font-weight: 700; line-height: 1.2; }
+    .wa-status { font-size: .68rem; opacity: .8; display: flex; align-items: center; gap: 4px; }
+    .wa-status::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: #5efc82; display: inline-block;
+    }
+    .wa-head-icons { display: flex; gap: 14px; font-size: 1rem; opacity: .9; }
+    .wa-restart {
+      background: none; border: none; color: #fff; cursor: pointer;
+      font-size: 1rem; opacity: .9; padding: 0;
+    }
+    .wa-restart:hover { opacity: 1; }
+
+    /* Body */
+    .wa-body {
+      flex: 1; overflow-y: auto; padding: 14px 10px 8px;
+      background-color: #0b141a;
+      background-image:
+        radial-gradient(rgba(255,255,255,.022) 1px, transparent 1px);
+      background-size: 22px 22px;
+      display: flex; flex-direction: column; gap: 7px;
+      scroll-behavior: smooth;
+    }
+    .wa-body::-webkit-scrollbar { width: 0; }
+
+    .wa-day {
+      align-self: center;
+      background: rgba(28,44,54,.85); color: #8aa3b0;
+      font-size: .62rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 8px; margin-bottom: 4px;
+    }
+
+    .wa-msg {
+      max-width: 82%;
+      padding: 6px 9px 7px; border-radius: 9px;
+      font-size: .78rem; line-height: 1.4; color: #e9edef;
+      position: relative; word-wrap: break-word;
+      box-shadow: 0 1px 1px rgba(0,0,0,.25);
+      animation: waPop .22s ease;
+    }
+    @keyframes waPop { from { opacity: 0; transform: translateY(6px) scale(.97); } to { opacity: 1; transform: none; } }
+    .wa-msg.in  { align-self: flex-start; background: #1f2c34; border-top-left-radius: 2px; }
+    .wa-msg.out { align-self: flex-end; background: #005c4b; border-top-right-radius: 2px; }
+    .wa-msg b { color: #fff; }
+    .wa-msg .wa-time {
+      display: block; text-align: right;
+      font-size: .56rem; color: rgba(233,237,239,.45); margin-top: 2px;
+    }
+    .wa-msg.out .wa-time::after { content: ' ✓✓'; color: #53bdeb; }
+
+    .wa-typing {
+      align-self: flex-start;
+      background: #1f2c34; border-radius: 9px; border-top-left-radius: 2px;
+      padding: 9px 12px; display: inline-flex; gap: 4px;
+    }
+    .wa-typing span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #8aa3b0; opacity: .5;
+      animation: waDot 1.2s infinite;
+    }
+    .wa-typing span:nth-child(2) { animation-delay: .2s; }
+    .wa-typing span:nth-child(3) { animation-delay: .4s; }
+    @keyframes waDot { 0%,60%,100% { opacity: .3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
+
+    .wa-msg .wa-cta-link {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 9px;
+      background: #00a884; color: #fff;
+      padding: 8px 14px; border-radius: 9px;
+      font-size: .78rem; font-weight: 800; text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0,168,132,.3);
+    }
+    .wa-msg .wa-cta-link:hover { background: #029e7c; }
+
+    /* Quick replies */
+    .wa-quick {
+      align-self: flex-end; max-width: 86%;
+      display: flex; flex-direction: column; gap: 5px;
+      margin: 2px 0 4px;
+    }
+    .wa-quick-btn {
+      background: #1f2c34; color: #53bdeb;
+      border: 1px solid rgba(83,189,235,.25); border-radius: 9px;
+      padding: 8px 12px; font-size: .76rem; font-weight: 600;
+      cursor: pointer; text-align: center; transition: background .15s, transform .1s;
+      font-family: 'Inter', sans-serif;
+    }
+    .wa-quick-btn:hover { background: #26343d; }
+    .wa-quick-btn:active { transform: scale(.97); }
+
+    /* Input bar */
+    .wa-input {
+      flex-shrink: 0; padding: 7px 9px 14px;
+      background: #0b141a; display: flex; align-items: center; gap: 7px;
+    }
+    .wa-input-field {
+      flex: 1; display: flex; align-items: center; gap: 6px;
+      background: #1f2c34; border-radius: 22px; padding: 8px 12px;
+    }
+    .wa-input-field input {
+      flex: 1; background: none; border: none; outline: none;
+      color: #e9edef; font-size: .78rem; font-family: 'Inter', sans-serif;
+      min-width: 0;
+    }
+    .wa-input-field input::placeholder { color: #6b7a83; }
+    .wa-input-field.disabled { opacity: .55; }
+    .wa-send {
+      width: 38px; height: 38px; flex-shrink: 0; border-radius: 50%;
+      background: #00a884; color: #fff; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .12s, opacity .15s;
+    }
+    .wa-send:hover { transform: scale(1.05); }
+    .wa-send:disabled { opacity: .4; cursor: default; transform: none; }
+    .wa-send svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .wa-float-badge {
+      position: absolute; top: -16px; right: 18px;
+      background: var(--navy); color: #fff;
+      padding: .45rem .85rem; border-radius: 999px;
+      font-size: .7rem; font-weight: 700;
+      box-shadow: 0 8px 24px rgba(27,27,110,.35);
+      z-index: 7;
+      animation: waFloat 3s ease-in-out infinite;
+    }
+    @keyframes waFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+    /* El widget flotante de WhatsApp se oculta cuando el demo está en pantalla */
+    .whatsapp-widget { transition: opacity .3s ease; }
+    .whatsapp-widget.demo-hidden { opacity: 0; pointer-events: none; }
 
     /* ─── CLIENTS ─────────────────────────────────── */
     .clients {
@@ -535,25 +729,614 @@
     }
     .form-group textarea { resize: vertical; min-height: 80px; }
     .form-submit {
+      display: block;
       width: 100%; padding: .9rem;
       background: var(--grad); color: var(--white);
       border: none; border-radius: 50px;
       font-weight: 700; font-size: 1rem; cursor: pointer;
+      text-align: center;
+      text-decoration: none;
       transition: transform .2s, box-shadow .2s;
     }
     .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(242,101,34,.4); }
 
+    /* ─── WHATSAPP POPUP ─────────────────────────── */
+    .whatsapp-widget {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      z-index: 180;
+      display: flex;
+      align-items: flex-end;
+      gap: .85rem;
+    }
+    .whatsapp-popup {
+      width: min(300px, calc(100vw - 7rem));
+      background: var(--white);
+      border: 1px solid rgba(27,27,110,.08);
+      border-radius: 16px;
+      box-shadow: 0 18px 50px rgba(27,27,110,.18);
+      padding: 1rem;
+      transform-origin: bottom right;
+      animation: whatsappIn .45s ease both;
+    }
+    @keyframes whatsappIn {
+      from { opacity: 0; transform: translateY(12px) scale(.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .whatsapp-popup.is-hidden { display: none; }
+    .whatsapp-popup-header {
+      display: flex;
+      justify-content: space-between;
+      gap: .75rem;
+      margin-bottom: .5rem;
+    }
+    .whatsapp-popup-title {
+      color: var(--navy);
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+    .whatsapp-close {
+      width: 28px;
+      height: 28px;
+      flex: 0 0 auto;
+      border: none;
+      border-radius: 50%;
+      background: rgba(27,27,110,.06);
+      color: var(--navy);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .whatsapp-popup p {
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.5;
+      margin-bottom: .85rem;
+    }
+    .whatsapp-popup-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      width: 100%;
+      min-height: 42px;
+      border-radius: 999px;
+      background: #25D366;
+      color: var(--white);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(37,211,102,.3);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .whatsapp-popup-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(37,211,102,.38);
+    }
+    .whatsapp-fab {
+      width: 60px;
+      height: 60px;
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #25D366;
+      color: var(--white);
+      box-shadow: 0 14px 34px rgba(37,211,102,.42);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .whatsapp-fab:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 18px 42px rgba(37,211,102,.5);
+    }
+    .whatsapp-icon {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+    }
+
+    /* ─── AI GROWTH PACK ────────────────────────────────── */
+    .ai-pack {
+      background: #07070f;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 4rem;
+    }
+    .ai-pack-bg-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .ai-pack-bg-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 15% 60%, rgba(27,27,110,.65) 0%, transparent 55%),
+                  radial-gradient(ellipse at 85% 15%, rgba(200,49,122,.12) 0%, transparent 45%);
+    }
+    .ai-pack-inner { position: relative; z-index: 1; }
+    .ai-pack .section-label { color: var(--orange); }
+    .ai-pack .section-title { color: #ffffff; }
+    .ai-pack .section-sub { color: rgba(255,255,255,.4); max-width: 560px; }
+
+    .ai-pack-badge {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: rgba(242,101,34,.1);
+      border: 1px solid rgba(242,101,34,.22);
+      border-radius: 50px; padding: .5rem 1.2rem; margin-bottom: 1.5rem;
+    }
+    .ai-pack-badge-text {
+      font-size: .78rem; font-weight: 800; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--orange);
+    }
+    .ai-pack-badge-price {
+      font-size: .78rem; color: rgba(255,255,255,.3);
+      padding-left: .7rem; border-left: 1px solid rgba(255,255,255,.1);
+    }
+
+    .ai-pack-services {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-top: 3rem;
+    }
+    .ai-pack-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px; padding: 1.5rem;
+      transition: border-color .25s, background .25s;
+    }
+    .ai-pack-card:hover {
+      border-color: rgba(242,101,34,.28);
+      background: rgba(242,101,34,.045);
+    }
+    .ai-pack-card.full-width {
+      grid-column: 1 / -1;
+      background: rgba(27,27,110,.38);
+      border-color: rgba(27,27,110,.7);
+    }
+    .ai-pack-card-icon { font-size: 1.5rem; margin-bottom: .7rem; }
+    .ai-pack-card-name {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.05rem; font-weight: 900; color: #fff; margin-bottom: .4rem;
+    }
+    .ai-pack-card-desc {
+      font-size: .82rem; color: rgba(255,255,255,.4); line-height: 1.6; margin-bottom: .8rem;
+    }
+    .ai-pack-card-items { list-style: none; display: flex; flex-direction: column; gap: .3rem; }
+    .ai-pack-card-items li {
+      font-size: .8rem; color: rgba(255,255,255,.5);
+      display: flex; align-items: flex-start; gap: .5rem; line-height: 1.45;
+    }
+    .ai-pack-card-items li::before { content: '→'; color: var(--orange); flex-shrink: 0; }
+    .ai-pack-card-outcome {
+      margin-top: .8rem; padding-top: .8rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      font-size: .75rem; font-weight: 700; color: var(--orange);
+    }
+
+    .ai-pack-investment {
+      margin-top: 3rem;
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 20px; overflow: hidden;
+    }
+    .ai-pack-inv-stripe {
+      height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--coral), var(--orange), var(--magenta));
+    }
+    .ai-pack-inv-body {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px; padding: 2rem;
+    }
+    .ai-inv-item {
+      text-align: center; padding: 1.5rem;
+      background: rgba(255,255,255,.03); border-radius: 12px;
+    }
+    .ai-inv-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .6rem;
+    }
+    .ai-inv-val {
+      font-family: 'Nunito', sans-serif;
+      font-size: 2rem; font-weight: 900; color: #fff; letter-spacing: -1px;
+    }
+    .ai-inv-val.orange { color: var(--orange); }
+    .ai-inv-sub { font-size: .72rem; color: rgba(255,255,255,.22); margin-top: .3rem; }
+
+    .ai-pack-cta-block {
+      text-align: center; margin-top: 2.5rem;
+      padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    }
+    .ai-pack-guarantee {
+      display: flex; align-items: center; gap: .4rem;
+      font-size: .82rem; color: rgba(255,255,255,.3);
+    }
+
+    /* ─── PRICING V2 ─────────────────────────────────────── */
+    .pricing-v2 { background: var(--gray); }
+
+    .pricing-toggle-wrap {
+      display: flex; align-items: center; gap: .9rem; justify-content: center;
+      flex-wrap: wrap; margin: 2.5rem 0 3rem;
+    }
+    .toggle-label {
+      font-size: .9rem; font-weight: 600;
+      color: var(--muted); transition: color .25s;
+    }
+    .toggle-label.active { color: var(--navy); }
+
+    .toggle-switch {
+      position: relative; width: 52px; height: 28px; cursor: pointer;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .toggle-track {
+      position: absolute; inset: 0;
+      background: #ddd; border-radius: 50px; transition: background .3s; cursor: pointer;
+    }
+    .toggle-switch input:checked ~ .toggle-track { background: var(--orange); }
+    .toggle-thumb {
+      position: absolute; top: 3px; left: 3px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: white; box-shadow: 0 2px 6px rgba(0,0,0,.2);
+      transition: transform .3s; pointer-events: none; z-index: 1;
+    }
+    .toggle-switch input:checked ~ .toggle-track .toggle-thumb { transform: translateX(24px); }
+
+    .save-pill {
+      display: inline-block;
+      background: rgba(242,101,34,.1); color: var(--orange);
+      font-size: .72rem; font-weight: 700; letter-spacing: .05em;
+      padding: .28rem .8rem; border-radius: 50px;
+      opacity: 0; transform: scale(.8) translateY(4px);
+      transition: opacity .3s, transform .3s;
+    }
+    .save-pill.visible { opacity: 1; transform: scale(1) translateY(0); }
+
+    .plans-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; max-width: 1020px; margin: 0 auto;
+      align-items: start;
+      padding-top: 1.5rem;
+    }
+
+    .plan-card {
+      background: var(--white);
+      border: 1.5px solid rgba(0,0,0,.08);
+      border-radius: 24px; padding: 2rem;
+      position: relative;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .plan-card:not(.popular):hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.09);
+    }
+    .plan-card.popular {
+      border-color: var(--orange);
+      border-width: 2px;
+      transform: translateY(-18px);
+      box-shadow: 0 28px 80px rgba(242,101,34,.18);
+      z-index: 2;
+    }
+    .plan-card.popular:hover { transform: translateY(-22px); }
+
+    .plan-popular-badge {
+      position: absolute; top: -1px; right: 1.5rem;
+      background: var(--grad); color: var(--white);
+      font-size: .72rem; font-weight: 700; letter-spacing: .04em;
+      padding: .28rem .9rem; border-radius: 0 0 10px 10px;
+    }
+
+    .plan-name {
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem;
+    }
+
+    .plan-price {
+      font-family: 'Nunito', sans-serif;
+      font-size: 3rem; font-weight: 900; color: var(--navy);
+      letter-spacing: -2px; line-height: 1;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .plan-price.price-out { opacity: 0; transform: translateY(-5px); }
+    .plan-price-currency { font-size: 1.5rem; letter-spacing: 0; vertical-align: top; margin-top: .45rem; display: inline-block; }
+    .plan-period { font-size: .82rem; color: var(--muted); margin: .3rem 0 1.2rem; min-height: 1.2em; }
+    .plan-desc { font-size: .87rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.4rem; }
+    .plan-divider { height: 1px; background: rgba(0,0,0,.06); margin-bottom: 1.4rem; }
+
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
+    .plan-features li {
+      display: flex; align-items: flex-start; gap: .6rem;
+      font-size: .87rem; color: var(--text); line-height: 1.45;
+    }
+    .plan-check {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: rgba(242,101,34,.1); color: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px; font-size: .65rem; font-weight: 800;
+    }
+
+    .plan-cta {
+      display: block; width: 100%; text-align: center;
+      margin-top: 1.5rem; padding: .88rem;
+      border-radius: 50px; font-weight: 700; font-size: .95rem;
+      text-decoration: none; transition: all .2s; cursor: pointer;
+    }
+    .plan-cta.outline {
+      border: 2px solid rgba(0,0,0,.1); color: var(--navy); background: transparent;
+    }
+    .plan-cta.outline:hover { border-color: var(--navy); background: var(--navy); color: white; }
+    .plan-cta.filled {
+      background: var(--grad); color: white;
+      box-shadow: 0 8px 24px rgba(242,101,34,.28); border: none;
+    }
+    .plan-cta.filled:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(242,101,34,.4); }
+
+    .plan-note {
+      font-size: .76rem; color: var(--muted); text-align: center; margin-top: .7rem;
+      transition: color .3s, font-weight .3s;
+    }
+    .plan-note.highlight { color: var(--orange); font-weight: 600; }
+
+    /* ─── AI PACK TEASER (banner antes de servicios) ────── */
+    .pack-teaser {
+      padding: 3rem 4rem;
+      background: var(--white);
+    }
+    .pack-teaser-card {
+      position: relative;
+      max-width: 1100px; margin: 0 auto;
+      background: #07070f;
+      border-radius: 28px;
+      padding: 3rem 3.5rem;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2.5rem; flex-wrap: wrap;
+      transition: transform .3s, box-shadow .3s;
+      box-shadow: 0 20px 60px rgba(7,7,15,.25);
+    }
+    .pack-teaser-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 80px rgba(7,7,15,.35);
+    }
+    .pack-teaser-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .pack-teaser-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 0% 50%, rgba(242,101,34,.28) 0%, transparent 50%),
+                  radial-gradient(ellipse at 100% 0%, rgba(200,49,122,.22) 0%, transparent 50%);
+      animation: teaserPulse 6s ease-in-out infinite;
+    }
+    @keyframes teaserPulse {
+      0%,100% { opacity: .7; }
+      50%     { opacity: 1; }
+    }
+    .pack-teaser-left { position: relative; z-index: 1; max-width: 600px; }
+    .pack-teaser-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(242,101,34,.14);
+      border: 1px solid rgba(242,101,34,.3);
+      border-radius: 50px; padding: .4rem 1rem; margin-bottom: 1.2rem;
+      font-size: .72rem; font-weight: 800; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--orange);
+    }
+    .pack-teaser-tag .pulse-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 0 rgba(242,101,34,.6);
+      animation: pulseDot 1.8s infinite;
+    }
+    @keyframes pulseDot {
+      0%   { box-shadow: 0 0 0 0 rgba(242,101,34,.6); }
+      70%  { box-shadow: 0 0 0 9px rgba(242,101,34,0); }
+      100% { box-shadow: 0 0 0 0 rgba(242,101,34,0); }
+    }
+    .pack-teaser-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900;
+      color: #fff; line-height: 1.12; letter-spacing: -1px; margin-bottom: .8rem;
+    }
+    .pack-teaser-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--orange), var(--magenta));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .pack-teaser-sub {
+      font-size: .95rem; color: rgba(255,255,255,.45); line-height: 1.6; margin-bottom: 1.5rem;
+    }
+    .pack-teaser-chips { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .pack-teaser-chip {
+      font-size: .72rem; font-weight: 600; color: rgba(255,255,255,.6);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50px; padding: .35rem .85rem;
+    }
+    .pack-teaser-right {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;
+    }
+    .pack-teaser-price-label {
+      font-size: .72rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(255,255,255,.3);
+    }
+    .pack-teaser-price {
+      font-family: 'Nunito', sans-serif; font-weight: 900;
+      font-size: 2.6rem; color: #fff; letter-spacing: -1.5px; line-height: 1;
+    }
+    .pack-teaser-price .js-amount { color: var(--orange); }
+    .pack-teaser-btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--grad); color: #fff;
+      padding: .9rem 1.8rem; border-radius: 50px;
+      font-weight: 700; font-size: .95rem; border: none; cursor: pointer;
+      box-shadow: 0 10px 30px rgba(242,101,34,.35);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pack-teaser-card:hover .pack-teaser-btn {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(242,101,34,.5);
+    }
+
+    /* ─── AI PACK MODAL ─────────────────────────────────── */
+    .pack-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 220;
+      background: rgba(7,7,15,.7); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .pack-modal-overlay.open { display: flex; animation: packFade .25s ease; }
+    @keyframes packFade { from { opacity: 0; } to { opacity: 1; } }
+
+    .pack-modal {
+      background: #07070f;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 24px;
+      max-width: 760px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      position: relative;
+      box-shadow: 0 40px 120px rgba(0,0,0,.5);
+      animation: packSlide .3s ease;
+    }
+    @keyframes packSlide {
+      from { opacity: 0; transform: translateY(20px) scale(.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .pack-modal::-webkit-scrollbar { width: 8px; }
+    .pack-modal::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 8px; }
+
+    .pack-modal-stripe {
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy), var(--coral), var(--orange), var(--magenta));
+      border-radius: 24px 24px 0 0;
+    }
+    .pack-modal-close {
+      position: absolute; top: 1.2rem; right: 1.2rem; z-index: 3;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,.08); color: #fff;
+      border: 1px solid rgba(255,255,255,.1);
+      font-size: 1.3rem; cursor: pointer; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .pack-modal-close:hover { background: rgba(255,255,255,.18); }
+
+    .pack-modal-hero {
+      position: relative; overflow: hidden;
+      padding: 2.5rem 2.5rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .pack-modal-hero-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 20% 30%, rgba(27,27,110,.5) 0%, transparent 55%),
+                  radial-gradient(ellipse at 95% 10%, rgba(200,49,122,.18) 0%, transparent 50%);
+    }
+    .pack-modal-hero-inner { position: relative; z-index: 1; }
+    .pack-modal-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(242,101,34,.12); border: 1px solid rgba(242,101,34,.25);
+      border-radius: 50px; padding: .4rem 1rem; margin-bottom: 1rem;
+      font-size: .72rem; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--orange);
+    }
+    .pack-modal-title {
+      font-family: 'Nunito', sans-serif; font-size: 1.8rem; font-weight: 900;
+      color: #fff; letter-spacing: -1px; line-height: 1.15; margin-bottom: .6rem;
+    }
+    .pack-modal-sub { font-size: .9rem; color: rgba(255,255,255,.45); line-height: 1.6; max-width: 520px; }
+
+    .pack-modal-body { padding: 2rem 2.5rem; }
+    .pack-modal-section-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 1rem;
+    }
+    .pack-modal-services { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-bottom: 2rem; }
+    .pm-service {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px; padding: 1.1rem 1.2rem;
+    }
+    .pm-service.full { grid-column: 1 / -1; background: rgba(27,27,110,.32); border-color: rgba(27,27,110,.6); }
+    .pm-service-head { display: flex; align-items: center; gap: .6rem; margin-bottom: .4rem; }
+    .pm-service-icon { font-size: 1.2rem; }
+    .pm-service-name { font-family: 'Nunito', sans-serif; font-size: .92rem; font-weight: 900; color: #fff; }
+    .pm-service-desc { font-size: .78rem; color: rgba(255,255,255,.42); line-height: 1.5; }
+    .pm-service-outcome { font-size: .72rem; font-weight: 700; color: var(--orange); margin-top: .5rem; }
+
+    .pack-modal-invest {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px; overflow: hidden; margin-bottom: 1.5rem;
+    }
+    .pm-inv { text-align: center; padding: 1.3rem 1rem; background: rgba(255,255,255,.02); }
+    .pm-inv-label { font-size: .64rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: .4rem; }
+    .pm-inv-val { font-family: 'Nunito', sans-serif; font-size: 1.6rem; font-weight: 900; color: #fff; letter-spacing: -1px; }
+    .pm-inv-val.orange { color: var(--orange); }
+    .pm-inv-sub { font-size: .66rem; color: rgba(255,255,255,.25); margin-top: .25rem; }
+
+    .pack-modal-guarantee {
+      display: flex; align-items: center; gap: .6rem;
+      background: rgba(242,101,34,.07); border: 1px solid rgba(242,101,34,.18);
+      border-radius: 12px; padding: .9rem 1.1rem; margin-bottom: 1.5rem;
+      font-size: .82rem; color: rgba(255,255,255,.6); line-height: 1.4;
+    }
+    .pack-modal-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .pack-modal-actions .pm-btn {
+      flex: 1; min-width: 180px; text-align: center;
+      padding: .95rem; border-radius: 50px;
+      font-weight: 700; font-size: .92rem; text-decoration: none;
+      cursor: pointer; transition: all .2s; border: none;
+    }
+    .pm-btn.primary { background: var(--grad); color: #fff; box-shadow: 0 10px 30px rgba(242,101,34,.32); }
+    .pm-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(242,101,34,.45); }
+    .pm-btn.ghost { background: rgba(255,255,255,.06); color: #fff; border: 1px solid rgba(255,255,255,.12); }
+    .pm-btn.ghost:hover { background: rgba(255,255,255,.12); }
+
     /* ─── RESPONSIVE ──────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
+      .brand-logo { height: 48px; }
+      footer .brand-logo { width: 128px; height: auto; }
       .nav-links { display: none; }
-      .hero { padding: 6rem 1.5rem 3rem; }
-      .hero-visual { display: none; }
+      .currency-toggle button { padding: .3rem .7rem; font-size: .74rem; }
+      .hero { padding: 6rem 1.5rem 3rem; flex-direction: column; }
+      .hero-visual {
+        position: static; transform: none; margin: 3rem auto 0; right: auto;
+      }
       section { padding: 4rem 1.5rem; }
       .clients { padding: 2rem 1.5rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       footer { padding: 3rem 1.5rem 1.5rem; }
       .cta-section { padding: 4rem 1.5rem; }
+      .whatsapp-widget { right: 1rem; bottom: 1rem; gap: .65rem; }
+      .whatsapp-popup { width: calc(100vw - 6.5rem); padding: .9rem; }
+      .whatsapp-fab { width: 56px; height: 56px; }
+      /* AI Pack responsive */
+      .ai-pack { padding: 4rem 1.5rem; }
+      .ai-pack-services { grid-template-columns: 1fr; }
+      .ai-pack-card.full-width { grid-column: auto; }
+      .ai-pack-inv-body { grid-template-columns: 1fr; gap: 1rem; }
+      /* Pricing responsive */
+      .plans-grid { grid-template-columns: 1fr; padding-top: 0; }
+      .plan-card.popular { transform: none; box-shadow: 0 12px 40px rgba(242,101,34,.2); }
+      .plan-card.popular:hover { transform: translateY(-4px); }
+      /* Teaser + modal responsive */
+      .pack-teaser { padding: 2rem 1.5rem; }
+      .pack-teaser-card { padding: 2rem 1.5rem; gap: 1.5rem; }
+      .pack-teaser-right { align-items: flex-start; width: 100%; }
+      .pack-modal-hero { padding: 2rem 1.5rem 1.5rem; }
+      .pack-modal-body { padding: 1.5rem; }
+      .pack-modal-services { grid-template-columns: 1fr; }
+      .pack-modal-invest { grid-template-columns: 1fr; }
+      .pack-modal-close { top: .8rem; right: .8rem; }
     }
   </style>
 </head>
@@ -561,19 +1344,23 @@
 
   <!-- ─── NAV ─────────────────────────────────────── -->
   <nav id="navbar">
-    <div class="nav-logo">
-      <div>
-        <div class="logo-through">through</div>
-        <div class="logo-air">air</div>
+    <a class="nav-logo" href="#" aria-label="Through Air">
+      <img class="brand-logo" src="assets/through-air-logo-no-slogan.png" alt="Through Air" />
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#bots">Bots IA</a></li>
+        <li><a href="#" onclick="openPackModal();return false;">AI Growth Pack</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#proceso">Cómo trabajamos</a></li>
+        <li><a href="https://wa.me/message/P6P5S2MEUBSUE1" class="nav-cta" target="_blank" rel="noopener">Solicitar propuesta</a></li>
+      </ul>
+      <div class="currency-toggle" role="group" aria-label="Moneda">
+        <button type="button" id="cur-cop" class="active" onclick="setCurrency('COP')">COP</button>
+        <button type="button" id="cur-usd" onclick="setCurrency('USD')">USD</button>
       </div>
     </div>
-    <ul class="nav-links">
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#bots">Bots IA</a></li>
-      <li><a href="#precios">Precios</a></li>
-      <li><a href="#proceso">Cómo trabajamos</a></li>
-      <li><a href="#contacto" class="nav-cta">Solicitar propuesta</a></li>
-    </ul>
   </nav>
 
   <!-- ─── HERO ──────────────────────────────────────── -->
@@ -592,8 +1379,8 @@
         No eres un cliente más — eres nuestro aliado.
       </p>
       <div class="hero-actions">
-        <a href="#contacto" class="btn-primary" onclick="openModal()">Solicitar propuesta gratis</a>
-        <a href="#servicios" class="btn-secondary">Ver servicios</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="btn-primary" target="_blank" rel="noopener">Solicitar propuesta gratis</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="btn-secondary" target="_blank" rel="noopener">Ver servicios</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -612,43 +1399,38 @@
     </div>
 
     <div class="hero-visual">
-      <div class="hero-card">
-        <div class="card-header">
-          <div class="card-icon">📊</div>
-          <div>
-            <div class="card-title">Dashboard campaña activa</div>
-            <div class="card-sub">Tiempo real · Actualizado ahora</div>
+      <div class="wa-phone">
+        <div class="wa-float-badge">💬 Demo interactivo</div>
+        <div class="wa-screen">
+          <div class="wa-island"></div>
+
+          <div class="wa-header">
+            <span class="wa-back">‹</span>
+            <div class="wa-avatar">🤖</div>
+            <div class="wa-contact">
+              <div class="wa-name">Aira · Agente IA</div>
+              <div class="wa-status" id="waStatus">en línea</div>
+            </div>
+            <div class="wa-head-icons">
+              <button class="wa-restart" id="waRestart" title="Reiniciar demo" aria-label="Reiniciar demo">↻</button>
+            </div>
           </div>
-        </div>
-        <div class="metric-row">
-          <div>
-            <div class="metric-label">Alcance mensual</div>
-            <div class="metric-bar"><div class="metric-fill" style="width:78%"></div></div>
+
+          <div class="wa-body" id="waBody">
+            <div class="wa-day">DEMO · HOY</div>
           </div>
-          <div class="metric-val">78K</div>
-        </div>
-        <div class="metric-row">
-          <div>
-            <div class="metric-label">Leads generados</div>
-            <div class="metric-bar"><div class="metric-fill" style="width:62%"></div></div>
+
+          <div class="wa-input">
+            <div class="wa-input-field disabled" id="waField">
+              <input type="text" id="waInput" placeholder="Escribe un mensaje" disabled autocomplete="off" />
+            </div>
+            <button class="wa-send" id="waSend" disabled aria-label="Enviar">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
           </div>
-          <div class="metric-val">342</div>
+
+          <div class="wa-home"></div>
         </div>
-        <div class="metric-row">
-          <div>
-            <div class="metric-label">ROI de campaña</div>
-            <div class="metric-bar"><div class="metric-fill" style="width:90%"></div></div>
-          </div>
-          <div class="metric-val">3.2x</div>
-        </div>
-        <div class="metric-row">
-          <div>
-            <div class="metric-label">Engagement rate</div>
-            <div class="metric-bar"><div class="metric-fill" style="width:55%"></div></div>
-          </div>
-          <div class="metric-val">5.5%</div>
-        </div>
-        <div class="float-badge">🔥 Campaña activa</div>
       </div>
     </div>
   </section>
@@ -661,6 +1443,38 @@
       <span class="client-name">Universidad EAN</span>
       <span class="client-name">WAVED</span>
       <span class="client-name">ComputerWorld</span>
+    </div>
+  </div>
+
+  <!-- ─── AI PACK TEASER (banner) ───────────────────── -->
+  <div class="pack-teaser">
+    <div class="pack-teaser-card" onclick="openPackModal()" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPackModal();}"
+         aria-label="Ver detalles del AI Growth Pack">
+      <div class="pack-teaser-grid"></div>
+      <div class="pack-teaser-glow"></div>
+      <div class="pack-teaser-left">
+        <div class="pack-teaser-tag"><span class="pulse-dot"></span>Nuevo · Producto estrella</div>
+        <div class="pack-teaser-title">El <em>AI Growth Pack</em><br />hace crecer tu negocio solo</div>
+        <div class="pack-teaser-sub">
+          6 servicios integrados gestionados con inteligencia artificial. El doble de trabajo, al mismo costo que una agencia tradicional.
+        </div>
+        <div class="pack-teaser-chips">
+          <span class="pack-teaser-chip">🤖 Agente AI</span>
+          <span class="pack-teaser-chip">📣 Pautas</span>
+          <span class="pack-teaser-chip">📲 Redes</span>
+          <span class="pack-teaser-chip">💬 Chatbot</span>
+          <span class="pack-teaser-chip">📊 Reportes</span>
+          <span class="pack-teaser-chip">🔍 SEO</span>
+        </div>
+      </div>
+      <div class="pack-teaser-right">
+        <div class="pack-teaser-price-label">Desde</div>
+        <div class="pack-teaser-price"><span class="js-amount" data-usd="1200"></span> <span class="js-cur" data-suffix="/mes"></span></div>
+        <button class="pack-teaser-btn" type="button" onclick="event.stopPropagation();openPackModal()">
+          Ver el pack completo →
+        </button>
+      </div>
     </div>
   </div>
 
@@ -686,10 +1500,10 @@
           <div class="include-item">Plan de acción mensual</div>
         </div>
         <div class="service-price">
-          <span class="price-amount">$2.000.000</span>
-          <span class="price-period">COP/mes</span>
+          <span class="price-amount js-amount" data-cop="2000000"></span>
+          <span class="price-period js-cur" data-suffix="/mes"></span>
         </div>
-        <a href="#contacto" class="service-cta" onclick="openModal('Pautas Digitales')">Empezar ahora →</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="service-cta" target="_blank" rel="noopener">Empezar ahora →</a>
       </div>
 
       <div class="service-card featured">
@@ -705,10 +1519,10 @@
           <div class="include-item">Reporte mensual detallado</div>
         </div>
         <div class="service-price">
-          <span class="price-amount">$3.500.000</span>
-          <span class="price-period">COP/mes</span>
+          <span class="price-amount js-amount" data-cop="3500000"></span>
+          <span class="price-period js-cur" data-suffix="/mes"></span>
         </div>
-        <a href="#contacto" class="service-cta" onclick="openModal('Redes Sociales')">Solicitar →</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="service-cta" target="_blank" rel="noopener">Solicitar →</a>
       </div>
 
       <div class="service-card">
@@ -724,10 +1538,10 @@
           <div class="include-item">Soporte en lanzamiento</div>
         </div>
         <div class="service-price">
-          <span class="price-amount">$2.000.000</span>
-          <span class="price-period">COP · único</span>
+          <span class="price-amount js-amount" data-cop="2000000"></span>
+          <span class="price-period js-cur" data-suffix=" · único"></span>
         </div>
-        <a href="#contacto" class="service-cta" onclick="openModal('Página Web')">Solicitar →</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="service-cta" target="_blank" rel="noopener">Solicitar →</a>
       </div>
 
       <div class="service-card">
@@ -743,10 +1557,10 @@
           <div class="include-item">Configuración SEO inicial</div>
         </div>
         <div class="service-price">
-          <span class="price-amount">$3.900.000</span>
-          <span class="price-period">COP · único</span>
+          <span class="price-amount js-amount" data-cop="3900000"></span>
+          <span class="price-period js-cur" data-suffix=" · único"></span>
         </div>
-        <a href="#contacto" class="service-cta" onclick="openModal('E-Commerce')">Solicitar →</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="service-cta" target="_blank" rel="noopener">Solicitar →</a>
       </div>
 
     </div>
@@ -774,10 +1588,10 @@
           <div class="include-item">Panel de conversaciones en tiempo real</div>
         </div>
         <div class="service-price">
-          <span class="price-amount">$2.500.000</span>
-          <span class="price-period">COP · implementación</span>
+          <span class="price-amount js-amount" data-cop="2500000"></span>
+          <span class="price-period js-cur" data-suffix=" · implementación"></span>
         </div>
-        <a href="#contacto" class="service-cta" onclick="openModal('WhatsApp Admin Bot')">Activar bot →</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="service-cta" target="_blank" rel="noopener">Activar bot →</a>
       </div>
 
       <div class="service-card">
@@ -793,10 +1607,10 @@
           <div class="include-item">Integración con tu CRM actual</div>
         </div>
         <div class="service-price">
-          <span class="price-amount">$2.000.000</span>
-          <span class="price-period">COP · implementación</span>
+          <span class="price-amount js-amount" data-cop="2000000"></span>
+          <span class="price-period js-cur" data-suffix=" · implementación"></span>
         </div>
-        <a href="#contacto" class="service-cta" onclick="openModal('Lead Qualifier Bot')">Solicitar →</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="service-cta" target="_blank" rel="noopener">Solicitar →</a>
       </div>
 
       <div class="service-card">
@@ -812,87 +1626,97 @@
           <div class="include-item">Integración con Shopify / WooCommerce</div>
         </div>
         <div class="service-price">
-          <span class="price-amount">$2.800.000</span>
-          <span class="price-period">COP · implementación</span>
+          <span class="price-amount js-amount" data-cop="2800000"></span>
+          <span class="price-period js-cur" data-suffix=" · implementación"></span>
         </div>
-        <a href="#contacto" class="service-cta" onclick="openModal('E-commerce Sales Bot')">Solicitar →</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="service-cta" target="_blank" rel="noopener">Solicitar →</a>
       </div>
 
     </div>
     <p style="text-align:center;margin-top:2rem;font-size:.85rem;color:var(--muted);">
-      Todos los bots incluyen <strong>$500.000 COP/mes</strong> de mantenimiento y actualización continua.
+      Todos los bots incluyen <strong><span class="js-amount" data-cop="500000"></span> <span class="js-cur" data-suffix="/mes"></span></strong> de mantenimiento y actualización continua.
     </p>
   </section>
 
-  <!-- ─── PRICING TABLE ─────────────────────────────── -->
-  <section id="precios" class="pricing">
+  <!-- ─── PRICING V2 ────────────────────────────────── -->
+  <section id="precios" class="pricing-v2">
     <div class="section-label">Inversión clara</div>
     <div class="section-title">Precios transparentes,<br />sin sorpresas</div>
     <div class="section-sub">
-      Elige los servicios que necesitas. Financiamos proyectos hasta 5 meses.
+      Elige el plan que se adapta a tu negocio. Cancela cuando quieras, sin compromisos de permanencia.
     </div>
 
-    <div class="pricing-wrapper">
-      <div class="pricing-tabs">
-        <button class="tab-btn active" onclick="showTab('monthly')">Servicios mensuales</button>
-        <button class="tab-btn" onclick="showTab('onetime')">Desarrollo web</button>
+    <div class="pricing-toggle-wrap">
+      <span class="toggle-label active" id="lbl-monthly">Mensual</span>
+      <label class="toggle-switch" aria-label="Cambiar a facturación anual">
+        <input type="checkbox" id="billing-toggle" onchange="toggleBilling(this)" />
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+      </label>
+      <span class="toggle-label" id="lbl-annual">Anual</span>
+      <span class="save-pill" id="save-pill">Ahorra 20%</span>
+    </div>
+
+    <p class="trm-note" id="trm-note" style="text-align:center;font-size:.76rem;color:var(--muted);margin:-1.5rem 0 2.5rem;"></p>
+
+    <div class="plans-grid">
+
+      <div class="plan-card">
+        <div class="plan-name">Pautas Digitales</div>
+        <div class="plan-price" id="price-1"><span class="plan-price-currency">$</span><span id="num-1">500</span></div>
+        <div class="plan-period" id="period-1">USD / mes · facturado mensualmente</div>
+        <div class="plan-desc">Google Ads + Meta Ads gestionados con estrategia y seguimiento. Tu presupuesto, máximos resultados.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="plan-check">✓</span>Estrategia y segmentación de audiencia</li>
+          <li><span class="plan-check">✓</span>Campañas en Google Ads y Meta Ads</li>
+          <li><span class="plan-check">✓</span>Creativos optimizados por plataforma</li>
+          <li><span class="plan-check">✓</span>Optimización y seguimiento continuo</li>
+          <li><span class="plan-check">✓</span>Reporte mensual de KPIs</li>
+        </ul>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="plan-cta outline" target="_blank" rel="noopener">Empezar →</a>
+        <div class="plan-note">Sin presupuesto de pauta incluido</div>
       </div>
 
-      <div class="pricing-panel active" id="tab-monthly">
-        <div class="pricing-card">
-          <div class="pricing-info">
-            <div class="pricing-name">Pautas Digitales</div>
-            <div class="pricing-desc">Google Ads · Meta Ads · Landing pages · Seguimiento de campañas</div>
-          </div>
-          <div class="pricing-right">
-            <div class="pricing-amount">$2.000.000</div>
-            <div class="pricing-label">COP por mes · Sin presupuesto de pauta</div>
-          </div>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-info">
-            <div class="pricing-name">Estrategia y Redes Sociales</div>
-            <div class="pricing-desc">Instagram · Facebook · TikTok · 15 piezas/mes · Comunidad</div>
-          </div>
-          <div class="pricing-right">
-            <div class="pricing-amount">$3.500.000</div>
-            <div class="pricing-label">COP por mes</div>
-          </div>
-        </div>
-        <div class="pricing-total">
-          <div>
-            <div class="total-label">Pack completo mensual</div>
-            <div style="font-size:.8rem;opacity:.5;margin-top:.2rem">Pautas + Redes Sociales</div>
-          </div>
-          <div class="total-amount">$5.500.000 COP/mes</div>
-        </div>
+      <div class="plan-card popular">
+        <div class="plan-popular-badge">⭐ Más popular</div>
+        <div class="plan-name">AI Growth Pack</div>
+        <div class="plan-price" id="price-2"><span class="plan-price-currency">$</span><span id="num-2">1,200</span></div>
+        <div class="plan-period" id="period-2">USD / mes · facturado mensualmente</div>
+        <div class="plan-desc">6 servicios integrados con inteligencia artificial. Todo lo que necesitas para crecer, en un solo equipo.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="plan-check">✓</span>Agente Marketing Digital AI</li>
+          <li><span class="plan-check">✓</span>Pautas en Meta Ads + Google Ads</li>
+          <li><span class="plan-check">✓</span>30 posts/mes en redes sociales</li>
+          <li><span class="plan-check">✓</span>Chatbot de ventas en WhatsApp</li>
+          <li><span class="plan-check">✓</span>Reportes automáticos mensuales</li>
+          <li><span class="plan-check">✓</span>SEO automatizado (4 artículos/mes)</li>
+        </ul>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="plan-cta filled" target="_blank" rel="noopener">Quiero este pack →</a>
+        <div class="plan-note" id="note-2">+ $800 USD setup · pago único</div>
       </div>
 
-      <div class="pricing-panel" id="tab-onetime">
-        <div class="pricing-card">
-          <div class="pricing-info">
-            <div class="pricing-name">Página Web Informativa</div>
-            <div class="pricing-desc">Diseño + Desarrollo + CMS + Publicación + Política de datos</div>
-          </div>
-          <div class="pricing-right">
-            <div class="pricing-amount">$2.000.000</div>
-            <div class="pricing-label">COP · Pago único</div>
-          </div>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-info">
-            <div class="pricing-name">E-Commerce completo</div>
-            <div class="pricing-desc">Tienda online · Catálogo · Pagos · Panel de pedidos · SEO inicial</div>
-          </div>
-          <div class="pricing-right">
-            <div class="pricing-amount">$3.900.000</div>
-            <div class="pricing-label">COP · Pago único</div>
-          </div>
-        </div>
+      <div class="plan-card">
+        <div class="plan-name">Pack Digital</div>
+        <div class="plan-price" id="price-3"><span class="plan-price-currency">$</span><span id="num-3">850</span></div>
+        <div class="plan-period" id="period-3">USD / mes · facturado mensualmente</div>
+        <div class="plan-desc">Pautas Digitales + Redes Sociales. El combo más solicitado por nuestros clientes en Colombia.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="plan-check">✓</span>Todo lo de Pautas Digitales</li>
+          <li><span class="plan-check">✓</span>15 piezas gráficas al mes</li>
+          <li><span class="plan-check">✓</span>Gestión Instagram, Facebook, TikTok</li>
+          <li><span class="plan-check">✓</span>Textos y publicaciones incluidos</li>
+          <li><span class="plan-check">✓</span>Respuesta a comentarios y comunidad</li>
+          <li><span class="plan-check">✓</span>Reporte mensual detallado</li>
+        </ul>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="plan-cta outline" target="_blank" rel="noopener">Solicitar →</a>
+        <div class="plan-note">Sin presupuesto de pauta incluido</div>
       </div>
 
     </div>
   </section>
+
 
   <!-- ─── PROCESS ────────────────────────────────────── -->
   <section id="proceso" class="process">
@@ -934,7 +1758,7 @@
   <section class="cta-section" id="contacto">
     <h2>¿Listo para crecer?<br />Ahora estás en buenas manos.</h2>
     <p>Solicita tu propuesta personalizada — sin costo, sin compromisos.</p>
-    <a href="#" class="btn-white" onclick="openModal(); return false;">
+    <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="btn-white" target="_blank" rel="noopener">
       Solicitar propuesta gratuita →
     </a>
   </section>
@@ -943,25 +1767,23 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <div>
-          <span style="font-family:Nunito;font-weight:900;font-size:1.1rem;color:#fff;">through</span>
-          <span style="font-family:Nunito;font-weight:900;font-size:1.5rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-left:.3rem;">air</span>
-        </div>
+        <img class="brand-logo" src="assets/through-air-logo-no-slogan.png" alt="Through Air" />
         <p>Conectando tu negocio con el mundo. Agencia de marketing digital especializada en empresas colombianas con visión global.</p>
       </div>
       <div class="footer-col">
         <h4>Servicios</h4>
-        <a href="#">Pautas Digitales</a>
-        <a href="#">Redes Sociales</a>
-        <a href="#">Página Web</a>
-        <a href="#">E-Commerce</a>
+        <a href="#" onclick="openPackModal();return false;">AI Growth Pack</a>
+        <a href="#servicios">Pautas Digitales</a>
+        <a href="#servicios">Redes Sociales</a>
+        <a href="#bots">Bots IA WhatsApp</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" target="_blank" rel="noopener">Página Web / E-Commerce</a>
       </div>
       <div class="footer-col">
         <h4>Contacto</h4>
-        <a href="#">Juan José Trujillo</a>
-        <a href="#">hola@throughair.co</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Instagram</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" target="_blank" rel="noopener">Juan José Trujillo</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" target="_blank" rel="noopener">hola@throughair.co</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/message/P6P5S2MEUBSUE1" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -991,36 +1813,145 @@
       <div class="form-group">
         <label>Servicio de interés</label>
         <select id="service-select">
-          <option>Pautas Digitales — $275/mes</option>
-          <option>Redes Sociales — $380/mes</option>
-          <option>Página Web — $450</option>
-          <option>E-Commerce — $975</option>
-          <option>Pack completo</option>
+          <option>AI Growth Pack</option>
+          <option>Pautas Digitales</option>
+          <option>Redes Sociales</option>
+          <option>Bots IA WhatsApp</option>
+          <option>Página Web</option>
+          <option>E-Commerce</option>
         </select>
       </div>
       <div class="form-group">
         <label>Cuéntanos sobre tu negocio</label>
         <textarea placeholder="¿Cuál es tu principal objetivo digital?"></textarea>
       </div>
-      <button class="form-submit">Enviar solicitud →</button>
+      <a class="form-submit" href="https://wa.me/message/P6P5S2MEUBSUE1" target="_blank" rel="noopener">Enviar solicitud →</a>
     </div>
   </div>
 
+  <!-- ─── AI PACK MODAL ───────────────────────────── -->
+  <div class="pack-modal-overlay" id="packModal">
+    <div class="pack-modal">
+      <div class="pack-modal-stripe"></div>
+      <button class="pack-modal-close" onclick="closePackModal()" aria-label="Cerrar">×</button>
+
+      <div class="pack-modal-hero">
+        <div class="pack-modal-hero-glow"></div>
+        <div class="pack-modal-hero-inner">
+          <div class="pack-modal-badge">✦ AI Growth Pack</div>
+          <div class="pack-modal-title">Tu negocio merece clientes<br />que llegan solos.</div>
+          <div class="pack-modal-sub">
+            Marketing digital con inteligencia artificial integrada desde el día 1. 6 servicios, un solo equipo, resultados en 7 días.
+          </div>
+        </div>
+      </div>
+
+      <div class="pack-modal-body">
+        <div class="pack-modal-section-label">Lo que incluye el pack</div>
+        <div class="pack-modal-services">
+
+          <div class="pm-service full">
+            <div class="pm-service-head">
+              <span class="pm-service-icon">🤖</span>
+              <span class="pm-service-name">Agente de Marketing Digital AI</span>
+            </div>
+            <div class="pm-service-desc">El núcleo del pack. Planea, ejecuta y optimiza todas las acciones de marketing con supervisión estratégica de nuestro equipo.</div>
+            <div class="pm-service-outcome">⚡ 60% menos horas de gestión que una agencia tradicional</div>
+          </div>
+
+          <div class="pm-service">
+            <div class="pm-service-head"><span class="pm-service-icon">📣</span><span class="pm-service-name">Pautas Digitales</span></div>
+            <div class="pm-service-desc">Meta Ads + Google Ads con optimización semanal basada en datos reales.</div>
+            <div class="pm-service-outcome">🎯 Leads calificados en 60 días</div>
+          </div>
+
+          <div class="pm-service">
+            <div class="pm-service-head"><span class="pm-service-icon">📲</span><span class="pm-service-name">Redes Sociales AI</span></div>
+            <div class="pm-service-desc">30 publicaciones/mes generadas con Claude — el doble del estándar.</div>
+            <div class="pm-service-outcome">📈 +15% crecimiento de seguidores/mes</div>
+          </div>
+
+          <div class="pm-service">
+            <div class="pm-service-head"><span class="pm-service-icon">💬</span><span class="pm-service-name">Chatbot WhatsApp</span></div>
+            <div class="pm-service-desc">Asistente que responde, califica y agenda 24/7, sin equipo humano.</div>
+            <div class="pm-service-outcome">⚡ Responde el 80% de DMs solo</div>
+          </div>
+
+          <div class="pm-service">
+            <div class="pm-service-head"><span class="pm-service-icon">📊</span><span class="pm-service-name">Reportes Automáticos</span></div>
+            <div class="pm-service-desc">El día 1 de cada mes recibes tu reporte con análisis real — sin pedirlo.</div>
+            <div class="pm-service-outcome">📋 Sin reuniones, sin esperas</div>
+          </div>
+
+          <div class="pm-service">
+            <div class="pm-service-head"><span class="pm-service-icon">🔍</span><span class="pm-service-name">SEO Automatizado</span></div>
+            <div class="pm-service-desc">4 artículos optimizados/mes publicados directo en tu blog.</div>
+            <div class="pm-service-outcome">🌱 Resultados orgánicos desde el mes 3</div>
+          </div>
+
+        </div>
+
+        <div class="pack-modal-section-label">La inversión</div>
+        <div class="pack-modal-invest">
+          <div class="pm-inv">
+            <div class="pm-inv-label">Setup único</div>
+            <div class="pm-inv-val orange js-amount" data-usd="800"></div>
+            <div class="pm-inv-sub js-cur" data-suffix=" · un solo pago"></div>
+          </div>
+          <div class="pm-inv">
+            <div class="pm-inv-label">Retainer mensual</div>
+            <div class="pm-inv-val js-amount" data-usd="1200"></div>
+            <div class="pm-inv-sub js-cur" data-suffix=" / mes · cancela cuando quieras"></div>
+          </div>
+          <div class="pm-inv">
+            <div class="pm-inv-label">Primer resultado</div>
+            <div class="pm-inv-val orange">7 días</div>
+            <div class="pm-inv-sub">desde el arranque</div>
+          </div>
+        </div>
+
+        <div class="pack-modal-guarantee">
+          <span>🛡️</span>
+          <span>Si no ves resultados en 60 días, el mes siguiente es completamente gratis. Sin letra pequeña, sin permanencia.</span>
+        </div>
+
+        <div class="pack-modal-actions">
+          <a href="https://wa.me/message/P6P5S2MEUBSUE1" class="pm-btn primary" target="_blank" rel="noopener">💬 Quiero el AI Growth Pack</a>
+          <a href="#precios" class="pm-btn ghost" onclick="closePackModal()">Ver todos los precios</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WHATSAPP POPUP ──────────────────────────── -->
+  <div class="whatsapp-widget" aria-label="Contacto por WhatsApp">
+    <div class="whatsapp-popup" id="whatsappPopup">
+      <div class="whatsapp-popup-header">
+        <div class="whatsapp-popup-title">¿Quieres llevar tu negocio por los cielos?</div>
+        <button class="whatsapp-close" type="button" onclick="closeWhatsappPopup()" aria-label="Cerrar WhatsApp">&times;</button>
+      </div>
+      <p>Hablemos por WhatsApp y armamos una propuesta digital para tu negocio.</p>
+      <a class="whatsapp-popup-link" href="https://wa.me/message/P6P5S2MEUBSUE1" target="_blank" rel="noopener">
+        <svg class="whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16.04 3.2A12.74 12.74 0 0 0 5.22 22.68L3.6 28.8l6.27-1.6A12.76 12.76 0 1 0 16.04 3.2Zm0 2.3a10.45 10.45 0 1 1-5.33 19.43l-.38-.23-3.72.95.96-3.62-.25-.39A10.44 10.44 0 0 1 16.04 5.5Zm-4.2 4.75c-.23 0-.6.08-.91.43-.31.35-1.19 1.16-1.19 2.83 0 1.67 1.22 3.29 1.39 3.51.17.23 2.35 3.77 5.82 5.13 2.88 1.13 3.47.91 4.1.85.63-.06 2.03-.83 2.32-1.63.29-.8.29-1.49.2-1.63-.08-.15-.31-.23-.66-.4-.34-.17-2.03-1-2.35-1.12-.31-.11-.54-.17-.77.17-.23.35-.88 1.12-1.08 1.35-.2.23-.4.26-.74.09-.34-.17-1.45-.54-2.77-1.71-1.02-.91-1.71-2.04-1.91-2.38-.2-.35-.02-.53.15-.7.16-.15.34-.4.51-.6.17-.2.23-.35.34-.58.11-.23.06-.43-.03-.6-.09-.17-.77-1.86-1.06-2.55-.28-.67-.56-.58-.77-.59h-.6Z"/>
+        </svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+    <a class="whatsapp-fab" href="https://wa.me/message/P6P5S2MEUBSUE1" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+      <svg class="whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16.04 3.2A12.74 12.74 0 0 0 5.22 22.68L3.6 28.8l6.27-1.6A12.76 12.76 0 1 0 16.04 3.2Zm0 2.3a10.45 10.45 0 1 1-5.33 19.43l-.38-.23-3.72.95.96-3.62-.25-.39A10.44 10.44 0 0 1 16.04 5.5Zm-4.2 4.75c-.23 0-.6.08-.91.43-.31.35-1.19 1.16-1.19 2.83 0 1.67 1.22 3.29 1.39 3.51.17.23 2.35 3.77 5.82 5.13 2.88 1.13 3.47.91 4.1.85.63-.06 2.03-.83 2.32-1.63.29-.8.29-1.49.2-1.63-.08-.15-.31-.23-.66-.4-.34-.17-2.03-1-2.35-1.12-.31-.11-.54-.17-.77.17-.23.35-.88 1.12-1.08 1.35-.2.23-.4.26-.74.09-.34-.17-1.45-.54-2.77-1.71-1.02-.91-1.71-2.04-1.91-2.38-.2-.35-.02-.53.15-.7.16-.15.34-.4.51-.6.17-.2.23-.35.34-.58.11-.23.06-.43-.03-.6-.09-.17-.77-1.86-1.06-2.55-.28-.67-.56-.58-.77-.59h-.6Z"/>
+      </svg>
+    </a>
+  </div>
+
   <script>
-    // Navbar scroll effect
+    // ── Navbar scroll ──────────────────────────────────────
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    // Pricing tabs
-    function showTab(id) {
-      document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('tab-' + id).classList.add('active');
-      event.target.classList.add('active');
-    }
-
-    // Modal
+    // ── Modal ──────────────────────────────────────────────
     function openModal(service) {
       document.getElementById('modal').classList.add('open');
       if (service) {
@@ -1037,19 +1968,455 @@
       if (e.target === e.currentTarget) closeModal();
     });
 
-    // Animate metric bars on scroll
-    const observer = new IntersectionObserver((entries) => {
+    // ── WhatsApp popup ─────────────────────────────────────
+    function closeWhatsappPopup() {
+      document.getElementById('whatsappPopup').classList.add('is-hidden');
+    }
+
+    // ── AI Pack modal ──────────────────────────────────────
+    function openPackModal() {
+      document.getElementById('packModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePackModal() {
+      document.getElementById('packModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('packModal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closePackModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePackModal();
+    });
+
+    // ── Metric bars animation ──────────────────────────────
+    const barObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.width = e.target.dataset.width;
-        }
+        if (e.isIntersecting) e.target.style.width = e.target.dataset.width;
       });
     });
     document.querySelectorAll('.metric-fill').forEach(el => {
       el.dataset.width = el.style.width;
       el.style.width = '0';
-      observer.observe(el);
+      barObserver.observe(el);
     });
+
+    // ══ CURRENCY SYSTEM ════════════════════════════════════
+    // TRM oficial — se actualiza a diario desde datos.gov.co
+    // (valor de respaldo por si la API no responde · vigencia 2026-06-13)
+    let TRM = 3475.72;
+    let TRM_DATE = '2026-06-13';
+    let CURRENCY = 'COP';      // moneda por defecto (mercado local)
+
+    // Convierte un valor desde su moneda base a {cop, usd}
+    function toBoth(base, value) {
+      const v = Number(value);
+      return base === 'USD'
+        ? { usd: v, cop: Math.round(v * TRM) }
+        : { cop: v, usd: Math.round(v / TRM) };
+    }
+    // Formatea según la moneda activa
+    function fmtBase(base, value) {
+      const m = toBoth(base, value);
+      return CURRENCY === 'USD'
+        ? '$' + m.usd.toLocaleString('en-US')
+        : '$' + m.cop.toLocaleString('es-CO');
+    }
+
+    // Planes — base por plan (COP local · USD producto internacional)
+    const PLANS = {
+      1: { base: 'COP', monthly: 2000000, annual: 1600000 }, // Pautas Digitales
+      2: { base: 'USD', monthly: 1200,    annual: 960     }, // AI Growth Pack
+      3: { base: 'COP', monthly: 3400000, annual: 2720000 }  // Pack Digital
+    };
+
+    // Actualiza todos los precios estáticos (servicios, bots, pack…)
+    function updateStaticPrices() {
+      document.querySelectorAll('.js-amount').forEach(el => {
+        const base = el.dataset.cop !== undefined ? 'COP' : 'USD';
+        const val  = el.dataset.cop !== undefined ? el.dataset.cop : el.dataset.usd;
+        el.textContent = fmtBase(base, val);
+      });
+      document.querySelectorAll('.js-cur').forEach(el => {
+        el.textContent = CURRENCY + (el.dataset.suffix || '');
+      });
+    }
+
+    // Render de los planes (respeta moneda + facturación)
+    function renderPlans(animate) {
+      const isAnnual = document.getElementById('billing-toggle').checked;
+      const mode = isAnnual ? 'annual' : 'monthly';
+      const periodTxt = CURRENCY + ' / mes · facturado ' + (isAnnual ? 'anualmente' : 'mensualmente');
+
+      [1, 2, 3].forEach(i => {
+        const plan    = PLANS[i];
+        const priceEl = document.getElementById('price-' + i);
+        const numEl   = document.getElementById('num-' + i);
+        const perEl   = document.getElementById('period-' + i);
+        const apply = () => {
+          numEl.textContent = fmtBase(plan.base, plan[mode]).replace('$', '');
+          perEl.textContent = periodTxt;
+        };
+        if (animate) {
+          priceEl.classList.add('price-out');
+          setTimeout(() => { apply(); priceEl.classList.remove('price-out'); }, 180);
+        } else {
+          apply();
+        }
+      });
+
+      // Nota AI Growth Pack
+      const note2 = document.getElementById('note-2');
+      if (isAnnual) {
+        note2.textContent = '🎉 Setup GRATIS al pagar anual';
+        note2.classList.add('highlight');
+      } else {
+        note2.textContent = '+ ' + fmtBase('USD', 800) + ' setup · pago único';
+        note2.classList.remove('highlight');
+      }
+    }
+
+    // Nota de TRM (solo visible en modo USD)
+    function updateTrmNote() {
+      const trmNote = document.getElementById('trm-note');
+      if (!trmNote) return;
+      trmNote.textContent = CURRENCY === 'USD'
+        ? 'Valores en USD calculados a la TRM del ' + TRM_DATE + ': $' +
+          TRM.toLocaleString('es-CO', { minimumFractionDigits: 2 }) + ' COP'
+        : '';
+    }
+
+    // Cambia la moneda global
+    function setCurrency(cur) {
+      CURRENCY = cur;
+      document.getElementById('cur-cop').classList.toggle('active', cur === 'COP');
+      document.getElementById('cur-usd').classList.toggle('active', cur === 'USD');
+      updateTrmNote();
+      updateStaticPrices();
+      renderPlans(false);
+    }
+
+    // ── Pricing billing toggle ─────────────────────────────
+    function toggleBilling(toggle) {
+      const isAnnual = toggle.checked;
+      document.getElementById('lbl-monthly').classList.toggle('active', !isAnnual);
+      document.getElementById('lbl-annual').classList.toggle('active', isAnnual);
+      document.getElementById('save-pill').classList.toggle('visible', isAnnual);
+
+      renderPlans(true);
+
+      if (isAnnual && typeof confetti === 'function') {
+        const rect = toggle.closest('label').getBoundingClientRect();
+        confetti({
+          particleCount: 55, spread: 65,
+          origin: {
+            x: (rect.left + rect.width / 2) / window.innerWidth,
+            y: (rect.top + rect.height / 2) / window.innerHeight
+          },
+          colors: ['#F26522', '#F04E37', '#C8317A', '#1B1B6E', '#ffffff'],
+          ticks: 200, gravity: 1.2, decay: 0.93, startVelocity: 28, shapes: ['circle']
+        });
+      }
+    }
+
+    // Repinta todos los precios con la TRM vigente
+    function refreshAllPrices() {
+      updateTrmNote();
+      updateStaticPrices();
+      renderPlans(false);
+    }
+
+    // ── TRM en vivo (datos.gov.co) — se actualiza a diario ──
+    async function fetchTRM() {
+      const URL = 'https://www.datos.gov.co/resource/32sa-8pi3.json' +
+                  '?$select=valor,vigenciadesde&$order=vigenciadesde%20DESC&$limit=1';
+      try {
+        const res = await fetch(URL, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        const row = Array.isArray(data) ? data[0] : null;
+        const valor = row && parseFloat(row.valor);
+        if (valor && valor > 0) {
+          TRM = valor;
+          if (row.vigenciadesde) TRM_DATE = row.vigenciadesde.slice(0, 10);
+          refreshAllPrices();
+        }
+      } catch (err) {
+        // Si la API falla, se conserva el valor de respaldo (sin romper la UI)
+        console.warn('No se pudo actualizar la TRM, usando valor de respaldo:', err);
+      }
+    }
+
+    // ── Init ───────────────────────────────────────────────
+    updateStaticPrices();
+    renderPlans(false);
+    fetchTRM();
+
+    // ══ WHATSAPP DEMO — Agente IA proactivo (texto libre) ══
+    (function () {
+      const body   = document.getElementById('waBody');
+      const input  = document.getElementById('waInput');
+      const field  = document.getElementById('waField');
+      const sendBtn = document.getElementById('waSend');
+      const status = document.getElementById('waStatus');
+      const restart = document.getElementById('waRestart');
+      const phone  = document.querySelector('.wa-phone');
+      const waWidget = document.querySelector('.whatsapp-widget');
+      if (!body) return;
+
+      let runId = 0;
+      let pending = null;          // resolver del input de texto
+      const ctx = { empresa: '', segmento: 'other' };
+
+      // Catálogo proactivo por segmento (el agente recomienda)
+      const PRODUCTS = {
+        retail:     ['la chaqueta urbana (más vendida)', 'el pack de 3 camisetas', 'las zapatillas edición limitada'],
+        food:       ['el combo familiar', 'la pizza artesanal del chef', 'el postre de la casa'],
+        services:   ['el Plan Pro', 'la consultoría inicial de 1h', 'el paquete a medida'],
+        health:     ['la consulta de valoración', 'el chequeo completo', 'la limpieza dental'],
+        realestate: ['el apartamento de 2 habitaciones', 'la casa campestre', 'la oficina de 40m²'],
+        other:      ['nuestro producto estrella', 'el plan premium', 'el servicio express']
+      };
+
+      const now = () => {
+        const d = new Date();
+        return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
+      };
+      const rid = () => Math.floor(100000 + Math.random() * 900000);
+      const esc = (t) => t.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const scroll = () => { body.scrollTop = body.scrollHeight; };
+      const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+      const ensure = (id) => { if (id !== runId) throw 'cancelled'; };
+      const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+      function bubble(html, side) {
+        const el = document.createElement('div');
+        el.className = 'wa-msg ' + side;
+        el.innerHTML = html + '<span class="wa-time">' + now() + '</span>';
+        body.appendChild(el); scroll();
+        return el;
+      }
+      function userSay(text) { bubble(esc(text), 'out'); }
+
+      async function botSay(html, id, delay) {
+        ensure(id);
+        status.textContent = 'escribiendo…';
+        const typing = document.createElement('div');
+        typing.className = 'wa-typing';
+        typing.innerHTML = '<span></span><span></span><span></span>';
+        body.appendChild(typing); scroll();
+        await sleep(delay || Math.min(1100, 350 + html.length * 11));
+        typing.remove();
+        ensure(id);
+        status.textContent = 'en línea';
+        bubble(html, 'in');
+      }
+
+      // Input de texto libre — el cliente escribe naturalmente
+      function ask(placeholder, id) {
+        ensure(id);
+        field.classList.remove('disabled');
+        input.disabled = false; sendBtn.disabled = false;
+        input.placeholder = placeholder || 'Escribe un mensaje';
+        input.focus();
+        return new Promise((resolve) => {
+          pending = (val) => {
+            pending = null;
+            input.value = '';
+            userSay(val);
+            resolve(val);
+          };
+        });
+      }
+      function lockInput() {
+        field.classList.add('disabled');
+        input.disabled = true; sendBtn.disabled = true;
+        input.placeholder = 'Escribe un mensaje';
+      }
+      function submitInput() {
+        const val = input.value.trim();
+        if (!val || !pending) return;
+        pending(val);
+      }
+      sendBtn.addEventListener('click', submitInput);
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter') submitInput(); });
+
+      // ── NLU ligera: detección de intención sobre texto libre ──
+      const has = (t, words) => words.some(w => t.includes(w));
+      function detectIntent(raw) {
+        const t = raw.toLowerCase();
+        if (has(t, ['agend','cita','reun','reserv','calendario','disponib','horario','visita','cuando pued','cuándo pued','programar']))
+          return 'agenda';
+        if (has(t, ['queja','reclam','problema','no lleg','no me lleg','no funciona','fallo','falla','defect','roto','daña','dañ','devol','reembols','molest','mal servicio','pqrs','demora','tardó','tardo','peor']))
+          return 'pqrs';
+        if (has(t, ['compr','quiero','me interesa','precio','cuánto','cuanto','vale','cost','pedido','orden','ordenar','necesito','catalog','catálogo','producto','llevar','disponible','vende','tienes','tienen','enví','envi']))
+          return 'venta';
+        if (has(t, ['hola','buenas','buenos días','buenos dias','buenas tardes','buenas noches','hey','qué tal','que tal']))
+          return 'saludo';
+        if (has(t, ['gracias','listo','nada más','nada mas','eso es todo','adiós','adios','chao','no gracias']))
+          return 'cierre';
+        return 'otro';
+      }
+      // Cantidad explícita (o null si no la mencionó)
+      function parseQtyOrNull(raw) {
+        const t = raw.toLowerCase();
+        const m = t.match(/\b(\d+)\b/);
+        if (m) return Math.max(1, parseInt(m[1], 10));
+        if (/\buna?\b|\buno\b/.test(t)) return 1;
+        if (/\bdos\b|\bpar\b/.test(t)) return 2;
+        if (/\btres\b/.test(t)) return 3;
+        return null;
+      }
+      const parseQty = (raw) => parseQtyOrNull(raw) || 1;
+
+      // Día mencionado en texto libre (o null)
+      const DOW = ['lunes','martes','miércoles','miercoles','jueves','viernes','sábado','sabado','domingo'];
+      function parseDay(raw) {
+        const t = raw.toLowerCase();
+        if (t.includes('pasado mañana')) return 'pasado mañana';
+        if (t.includes('mañana')) return 'mañana';
+        if (t.includes('hoy')) return 'hoy';
+        const d = DOW.find(x => t.includes(x));
+        return d || null;
+      }
+      // Hora mencionada en texto libre (o null)
+      function parseTime(raw) {
+        const t = raw.toLowerCase();
+        const ampm = (s) => s.replace(/\./g, '').toUpperCase();
+        let m = t.match(/(\d{1,2}):(\d{2})\s*(a\.?m\.?|p\.?m\.?)?/);   // 15:00 · 3:30 pm
+        if (m) return m[1] + ':' + m[2] + (m[3] ? ' ' + ampm(m[3]) : '');
+        m = t.match(/(\d{1,2})\s*(a\.?m\.?|p\.?m\.?)/);               // 3pm · 9 am
+        if (m) return m[1] + ':00 ' + ampm(m[2]);
+        m = t.match(/a las\s*(\d{1,2})/);                            // a las 3
+        if (m) return m[1] + ':00';
+        if (/(en|por) la mañana/.test(t)) return 'en la mañana';
+        if (t.includes('tarde')) return 'en la tarde';
+        return null;
+      }
+
+      // ── El agente actúa según la intención (proactivo) ──
+      async function actVenta(msg, id) {
+        const sugeridos = PRODUCTS[ctx.segmento] || PRODUCTS.other;
+        let qty = parseQtyOrNull(msg);
+        await botSay('¡Con gusto! 🙌 En <b>' + esc(ctx.empresa) + '</b> lo más recomendado es <b>' + pick(sugeridos) + '</b>.', id, 800);
+        if (qty === null) {
+          await botSay('¿Cuántas unidades quieres llevar?', id, 650);
+          qty = parseQty(await ask('Ej: “2” o “una”…', id));
+        }
+        await botSay('🧾 ¡Listo! Pedido <b>#' + rid() + '</b> por <b>' + qty + '</b> unidad' + (qty > 1 ? 'es' : '') + '. Te envié el <b>link de pago seguro</b> y el seguimiento en tiempo real 📲', id, 900);
+        await botSay('¿Le sumo <b>envío express</b> para que llegue mañana? 🚚', id, 650);
+        const up = (await ask('Sí / No…', id)).toLowerCase();
+        if (/\b(s[ií]|dale|ok|claro|bueno|listo|hazlo|porfa|obvio)\b/.test(up))
+          await botSay('¡Hecho! Envío express agregado 🚀 Gracias por tu compra en <b>' + esc(ctx.empresa) + '</b> 🧡 ¿Te ayudo con algo más?', id);
+        else
+          await botSay('Perfecto, queda en envío estándar. ¡Gracias por tu compra! 🧡 ¿Te ayudo con algo más?', id);
+      }
+
+      async function actPQRS(msg, id) {
+        await botSay('Lamento mucho el inconveniente 🙏. Ya estoy gestionando tu caso, no tienes que repetir nada.', id, 900);
+        await botSay('📋 Radiqué tu PQRS con el número <b>#' + rid() + '</b> y la escalé al área responsable de <b>' + esc(ctx.empresa) + '</b>.', id);
+        await botSay('Te doy una solución en menos de <b>2 horas</b> y te aviso por aquí mismo. ¿Quieres dejarme un correo para el soporte formal?', id);
+        const r = await ask('Tu correo (o “no”)…', id);
+        if (/@/.test(r)) {
+          await botSay('¡Anotado! Te llegará la confirmación a <b>' + esc(r) + '</b>. Quedo pendiente de resolverlo 💪 ¿Algo más?', id);
+        } else {
+          await botSay('Listo, te sigo por WhatsApp. Quedo pendiente de resolverlo cuanto antes 💪 ¿Algo más?', id);
+        }
+      }
+
+      async function actAgenda(msg, id) {
+        await botSay('¡Con gusto te agendo tu cita con <b>' + esc(ctx.empresa) + '</b>! 📅', id, 600);
+        // El agente siempre busca la mejor fecha y hora para el cliente
+        await botSay('Para ajustarme a ti, ¿qué <b>fecha y hora</b> te quedan mejor?', id, 700);
+        const when = await ask('Ej: “el viernes a las 3pm”…', id);
+        let dia  = parseDay(when)  || parseDay(msg);
+        let hora = parseTime(when) || parseTime(msg);
+        if (!dia) dia = when.trim();
+        if (!hora) {
+          await botSay('Perfecto. Para <b>' + esc(dia) + '</b> tengo <b>9:00 AM</b>, <b>11:00 AM</b> o <b>2:00 PM</b>. ¿Cuál prefieres?', id);
+          hora = await ask('Escribe la hora…', id);
+        }
+        await botSay('¡Genial! ¿A qué <b>correo</b> te envío la confirmación?', id, 650);
+        const email = await ask('tucorreo@email.com…', id);
+        const mailTxt = /@/.test(email) ? esc(email) : 'tu correo';
+        await botSay('✅ ¡Cita confirmada para <b>' + esc(dia) + '</b> a las <b>' + esc(hora) + '</b>!', id, 800);
+        await botSay('📧 Te envié la <b>confirmación a ' + mailTxt + '</b> y la <b>invitación a Google Calendar</b> con recordatorio 1h antes. ¡Ahí nos vemos! ¿Algo más?', id, 950);
+      }
+
+      // ── Conversación principal (el agente lleva la iniciativa) ──
+      // Mensaje de cierre del demo con CTA a WhatsApp
+      async function closing(id) {
+        await botSay('¡Gracias por probar el agente de <b>' + esc(ctx.empresa) + '</b>! Así vendería y atendería por ti, 24/7. 🧡', id, 800);
+        await botSay('✨ <b>Materializa el futuro de la AI en tu negocio.</b><br>' +
+          '<a class="wa-cta-link" href="https://wa.me/message/P6P5S2MEUBSUE1" target="_blank" rel="noopener">💬 Escríbenos por WhatsApp</a>', id, 1100);
+      }
+
+      async function loop(id) {
+        let idle = 0;
+        const HINT = 'Prueba: "quiero comprar" · "tengo un reclamo" · "quiero una cita"';
+        while (true) {
+          const msg = await ask(HINT, id);
+          const intent = detectIntent(msg);
+          if (intent === 'venta')       { await actVenta(msg, id); idle = 0; }
+          else if (intent === 'pqrs')   { await actPQRS(msg, id); idle = 0; }
+          else if (intent === 'agenda') { await actAgenda(msg, id); idle = 0; }
+          else if (intent === 'saludo') { await botSay('¡Hola! 👋 Soy el agente de <b>' + esc(ctx.empresa) + '</b>. ¿Quieres <b>comprar</b>, tienes un <b>reclamo</b> o prefieres <b>agendar una cita</b>? Dímelo con tus palabras.', id); }
+          else if (intent === 'cierre') { await closing(id); return; }
+          else {
+            idle++;
+            if (idle === 1) await botSay('Te entiendo 🙂. Puedo ayudarte a <b>comprar un producto</b>, resolver un <b>reclamo</b> o <b>agendar una cita</b>. ¿Qué necesitas?', id);
+            else await botSay('Cuando quieras escríbeme algo como “quiero comprar”, “tengo un problema con mi pedido” o “quiero agendar una cita” y yo me encargo del resto 🤝', id);
+          }
+        }
+      }
+
+      // ── Segmento desde texto libre ──
+      function mapSegment(raw) {
+        const t = raw.toLowerCase();
+        if (has(t, ['rest','comida','pizza','food','caf','bar','helader','panad','domicil'])) return 'food';
+        if (has(t, ['tienda','ropa','moda','retail','calzado','zapat','boutique','accesor','almac'])) return 'retail';
+        if (has(t, ['inmob','propiedad','apart','casa','finca','arriendo','inmueble','constru'])) return 'realestate';
+        if (has(t, ['salud','clinic','clínic','dent','medic','médic','spa','estétic','estetic','consultorio','odont','psico'])) return 'health';
+        if (has(t, ['servicio','consultor','agencia','software','marketing','abogad','contad','asesor','educa'])) return 'services';
+        return 'other';
+      }
+
+      async function run() {
+        const id = ++runId;
+        try {
+          await botSay('👋 ¡Hola! Soy <b>Aira</b>, el <b>agente de ventas y atención</b> de Through Air. Háblame normal, sin menús. Para empezar, ¿cómo se llama tu empresa?', id, 1000);
+          ctx.empresa = (await ask('Nombre de tu empresa…', id)).trim() || 'tu empresa';
+          await botSay('¡Genial, <b>' + esc(ctx.empresa) + '</b>! ¿A qué se dedican? (ej: restaurante, tienda, inmobiliaria…)', id, 650);
+          ctx.segmento = mapSegment(await ask('¿A qué se dedica?…', id));
+          await botSay('Perfecto ✨ Desde ahora actúo como el agente de <b>' + esc(ctx.empresa) + '</b>. Escríbeme como cliente: pídeme algo, pon una queja o agenda una cita. Yo me encargo. 👇', id, 900);
+          await loop(id);
+        } catch (e) { /* cancelado por reinicio */ }
+      }
+
+      function reset() {
+        runId++;            // cancela el flujo en curso
+        pending = null;
+        lockInput(); input.value = '';
+        body.innerHTML = '<div class="wa-day">DEMO · HOY</div>';
+        status.textContent = 'en línea';
+        run();
+      }
+      restart.addEventListener('click', reset);
+
+      // Arranca cuando el teléfono entra en viewport
+      const startObs = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => { if (e.isIntersecting) { run(); obs.disconnect(); } });
+      }, { threshold: 0.4 });
+      startObs.observe(phone);
+
+      // Oculta el widget flotante de WhatsApp mientras el demo está en pantalla
+      if (waWidget) {
+        const visObs = new IntersectionObserver((entries) => {
+          entries.forEach(e => waWidget.classList.toggle('demo-hidden', e.isIntersecting));
+        }, { threshold: 0.3 });
+        visObs.observe(phone);
+      }
+    })();
   </script>
 </body>
 </html>
